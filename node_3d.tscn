@@ -62,7 +62,7 @@ public partial class Player : CharacterBody3D
 script = SubResource("CSharpScript_4xowi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=42158729]
-transform = Transform3D(0.9272467, -0.100848764, 0.36061522, -0.2522736, 0.5434382, 0.8006453, -0.27671617, -0.83336943, 0.47845978, -0.06482124, 2.1426418, -0.590192)
+transform = Transform3D(-0.61428523, -0.7890649, -0.0055087847, 1.220639e-09, -0.0069812406, 0.99997556, -0.78908426, 0.6142702, 0.0042884727, -0.06482124, 6.6357183, -0.590192)
 mesh = SubResource("CapsuleMesh_4xowi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1297413744]
@@ -72,13 +72,13 @@ shape = SubResource("CapsuleShape3D_a202f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8877287, -0.2694391)
 
 [node name="Sketchfab_Scene" parent="CharacterBody3D" unique_id=908316810 instance=ExtResource("1_a202f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3465123, 0.5922095, -1.0683166)
+transform = Transform3D(1, 0, 0, 0, 0.08019893, 0.9967789, 0, -0.9967789, 0.08019893, 0.54671896, 4.47953, 0.5166111)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1725221086]
 transform = Transform3D(61.901848, 0, 0, 0, 1, 0, 0, 0, 68.91807, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=528983441]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.002536282, -0.13866806, 0.005480785)
+transform = Transform3D(0.9999997, 0, 0, 0, 1, 0, 0, 0, 0.99999976, -0.0023503285, -0.17831731, 0.005297322)
 mesh = SubResource("BoxMesh_noarx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1182377842]
