@@ -47,7 +47,6 @@ public partial class Player : CharacterBody3D
 "
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4xowi"]
-height = 1.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a202f"]
 
