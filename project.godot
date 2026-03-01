@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Balut Deliveries (Horror Minigame) EXPO"
+run/main_scene="uid://7ufc41piqg5v"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
