@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8sqrxg1ltumk"]
+[gd_scene format=3 uid="uid://c8sqrxg1ltumk"]
 
 [sub_resource type="CSharpScript" id="CSharpScript_4xowi"]
 script/source = "using Godot;
@@ -47,6 +47,7 @@ public partial class Player : CharacterBody3D
 "
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4xowi"]
+height = 1.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a202f"]
 
@@ -54,26 +55,26 @@ public partial class Player : CharacterBody3D
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a0tk4"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=797150590]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1853227250]
 script = SubResource("CSharpScript_4xowi")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=42158729]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0961628, 0)
 mesh = SubResource("CapsuleMesh_4xowi")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1297413744]
 shape = SubResource("CapsuleShape3D_a202f")
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=1211342979]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8877287, -0.2694391)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1725221086]
 transform = Transform3D(61.901848, 0, 0, 0, 1, 0, 0, 0, 68.91807, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=528983441]
 mesh = SubResource("BoxMesh_noarx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1182377842]
 shape = SubResource("BoxShape3D_a0tk4")
