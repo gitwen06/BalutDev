@@ -62,7 +62,7 @@ public partial class Player : CharacterBody3D
 script = SubResource("CSharpScript_4xowi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=42158729]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0961628, 0)
+transform = Transform3D(0.9272467, -0.100848764, 0.36061522, -0.2522736, 0.5434382, 0.8006453, -0.27671617, -0.83336943, 0.47845978, 0, 2.0961628, 0)
 mesh = SubResource("CapsuleMesh_4xowi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1297413744]
