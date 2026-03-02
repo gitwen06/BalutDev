@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://0vtj6etgydmm" path="res://icon.svg" id="1_5gx2l"]
 [ext_resource type="PackedScene" uid="uid://ea26kwtnp7jn" path="res://player/player.tscn" id="2_qohg2"]
 [ext_resource type="PackedScene" uid="uid://dkwu6po8m7c8r" path="res://3dmodels/trees/scene.gltf" id="2_vkbyq"]
+[ext_resource type="Script" path="res://level/DisplayStamina.cs" id="4_vkbyq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5gx2l"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -109,18 +110,27 @@ shape = SubResource("BoxShape3D_qohg2")
 [node name="CanvasLayer" type="CanvasLayer" parent="Node3D" unique_id=1912512684]
 
 [node name="Button" type="Button" parent="Node3D/CanvasLayer" unique_id=345202371]
-offset_left = 24.0
-offset_top = 26.0
-offset_right = 460.0
-offset_bottom = 197.0
+offset_left = 10.0
+offset_top = 17.0
+offset_right = 284.0
+offset_bottom = 120.0
 
 [node name="TextEdit" type="TextEdit" parent="Node3D/CanvasLayer/Button" unique_id=948261321]
 layout_mode = 0
-offset_left = 79.0
-offset_top = 34.0
-offset_right = 376.0
-offset_bottom = 139.0
+offset_left = 2.0
+offset_right = 260.0
+offset_bottom = 85.0
 text = "Press E to interact"
 
 [node name="Sketchfab_Scene" parent="." unique_id=1891883213 instance=ExtResource("2_vkbyq")]
 transform = Transform3D(-0.027856987, 0.0011129386, 0, 2.411249e-06, 0.0076744943, 0, 0, 0, -0.023591507, 12.969523, 0.49790525, 15.45249)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1420554751]
+
+[node name="displayStam" type="Label" parent="CanvasLayer" unique_id=320376609]
+offset_left = 105.0
+offset_top = 248.0
+offset_right = 438.0
+offset_bottom = 335.0
+text = "Stamina: "
+script = ExtResource("4_vkbyq")
