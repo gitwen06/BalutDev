@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://7ufc41piqg5v"]
+[gd_scene load_steps=10 format=3 uid="uid://7ufc41piqg5v"]
 
 [ext_resource type="Texture2D" uid="uid://0vtj6etgydmm" path="res://icon.svg" id="1_5gx2l"]
 [ext_resource type="PackedScene" uid="uid://ea26kwtnp7jn" path="res://player/player.tscn" id="2_qohg2"]
+[ext_resource type="PackedScene" uid="uid://c71d568d67h6x" path="res://3dmodels/house(test)/scene.gltf" id="3_qohg2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5gx2l"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -46,3 +47,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7675166, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.8394871, 0.54337966, 0, -0.54337966, -0.8394871, 0, 11.17981, -6.5076427)
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("3_qohg2")]
+transform = Transform3D(12.740891, 0, 0, 0, 16.311777, 0, 0, 0, 14.74797, -11.419964, 2.2528725, 0)
