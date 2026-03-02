@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcdfccc0qj3uf"
-path.s3tc="res://.godot/imported/Material_25_metallicRoughness.png-4280a13fda400b73324cd50f3c723379.s3tc.ctex"
+uid="uid://dlt1cfkyafcn6"
+path.s3tc="res://.godot/imported/Material_25_normal.png-4997cc2d7e6ba762878ef65aa89b3e5c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://3dmodels/house(test)/textures/Material_25_metallicRoughness.png"
-dest_files=["res://.godot/imported/Material_25_metallicRoughness.png-4280a13fda400b73324cd50f3c723379.s3tc.ctex"]
+source_file="res://3dmodels/house/textures/Material_25_normal.png"
+dest_files=["res://.godot/imported/Material_25_normal.png-4997cc2d7e6ba762878ef65aa89b3e5c.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +22,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://3dmodels/house/textures/Material_25_normal.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
