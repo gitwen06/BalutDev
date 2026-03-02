@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://2wl8r5x33mgs"]
 
-[ext_resource type="Script" uid="uid://b3yeup3aa58su" path="res://loading screen/control.gd" id="1_fl13q"]
+[ext_resource type="Script" uid="uid://b3yeup3aa58su" path="res://loading screen/control.gd" id="1_o0obu"]
 
 [node name="Ls" type="Control" unique_id=1386597484]
 layout_mode = 3
@@ -16,7 +16,7 @@ offset_left = 165.0
 offset_top = 84.0
 offset_right = 820.0
 offset_bottom = 536.0
-script = ExtResource("1_fl13q")
+script = ExtResource("1_o0obu")
 
 [node name="ColorRect" type="ColorRect" parent="Control" unique_id=39358012]
 layout_mode = 1
