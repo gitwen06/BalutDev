@@ -29,6 +29,43 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_vkbyq"]
 
+[sub_resource type="Animation" id="Animation_qohg2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vkbyq"]
+resource_name = "wideass"
+length = 0.53333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 0.24148476),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5707964, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ktfr2"]
+_data = {
+&"RESET": SubResource("Animation_qohg2"),
+&"wideass": SubResource("Animation_vkbyq")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_qohg2"]
 
 [node name="Node3D" type="Node3D" unique_id=602292512]
@@ -60,11 +97,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.500552, 0)
 transform = Transform3D(0.11644987, 0, 0, 0, 4.4033933, 0, 0, 0, 0.93117523, -3.241859, -2.6937697, 2.0074563)
 mesh = SubResource("BoxMesh_vkbyq")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D/MeshInstance3D" unique_id=39045653]
+libraries/ = SubResource("AnimationLibrary_ktfr2")
+
 [node name="Area3D" type="Area3D" parent="Node3D" unique_id=2021649293]
-transform = Transform3D(1.4740598, 0, 0, 0, 3.875746, 0, 0, 0, 1.5654532, 0, 0, 0)
+transform = Transform3D(1.4740598, 0, 0, 0, 3.875746, 0, 0, 0, 1.5654532, 1.8752401, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D" unique_id=882255369]
-transform = Transform3D(1, 0, 0, 0, 7.2680774, 0, 0, 0, 2.2030299, -3.1219192, -1.269279, 2.2528746)
+transform = Transform3D(0.9999999, 0, 0, 0, 7.2680783, 0, 0, 0, 2.2030296, -3.471087, -1.269279, 1.3810669)
 shape = SubResource("BoxShape3D_qohg2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Node3D" unique_id=1912512684]
