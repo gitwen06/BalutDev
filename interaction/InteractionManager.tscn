@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c862mevmajjgy"]
+
+[node name="InteractionManager" type="Node2D" unique_id=997682755]
+
+[node name="Label" type="Label" parent="." unique_id=1841373763]
+z_index = 999
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.0
+offset_top = 1.0
+offset_right = 55.0
+offset_bottom = 24.0
+grow_horizontal = 2
+text = "[E] to touch .v."
+horizontal_alignment = 1
+vertical_alignment = 1
