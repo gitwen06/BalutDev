@@ -6,6 +6,7 @@ var camera : Camera3D
 var normal_fov = 75.0
 var run_fov = 100.0
 var fov_lerp_speed = 6.0
+var isRunning = Global.isRunning
 
 func _ready():
 	camera = $Camera3D
@@ -14,7 +15,7 @@ func _ready():
 func _process(delta):
 	# kunin ang target fov
 	var target_fov = normal_fov
-	if Input.is_action_pressed("run"):
+	if (Input.is_action_pressed("run") && isRunning):
 		target_fov = run_fov
 
 	# transition
