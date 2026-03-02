@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://2wl8r5x33mgs"]
 
+[ext_resource type="Script" uid="uid://b3yeup3aa58su" path="res://loading screen/control.gd" id="1_fl13q"]
+
 [node name="Ls" type="Control" unique_id=1386597484]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +9,51 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Control" type="Control" parent="." unique_id=359604484]
+anchors_preset = 0
+offset_left = 165.0
+offset_top = 84.0
+offset_right = 820.0
+offset_bottom = 536.0
+script = ExtResource("1_fl13q")
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=39358012]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Control" unique_id=1034466540]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -351.0
+offset_top = -182.5
+offset_right = 351.0
+offset_bottom = 182.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Loading..."
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Control" unique_id=129345941]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -163.0
+offset_top = -27.0
+offset_right = 163.0
+grow_horizontal = 2
+grow_vertical = 0
