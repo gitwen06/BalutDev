@@ -8,7 +8,9 @@ public partial class Player : CharacterBody3D
 	public const float JumpVelocity = 4.5f;
 	public const float runSpeed = 8.0f;
 	public float stamina = 100.0f;
-	public bool isRunning = false;
+	private float regenDelayTimer = 0f;
+	private float regenDelay = 3f;
+	public bool isRunning = false;	
 
 	public CollisionShape3D playerCollision;
 	public MeshInstance3D playerMesh;
@@ -76,15 +78,23 @@ public partial class Player : CharacterBody3D
 		{
 			isRunning = true;
 			currentSpeed = runSpeed;
-			stamina -= 10.5f * (float)delta; 
+			stamina -= 10.5f * (float)delta;
+			regenDelayTimer = regenDelay;
 		}
-		else
+		else {
+			isRunning = false;
+
+			// Countdown the delay
+		if (regenDelayTimer > 0f)
 		{
-			Thread.Sleep(2000);
-			currentSpeed = Speed;
-			stamina += 10.5f * (float)delta;
+			regenDelayTimer -= (float)delta;
 		}
-		stamina = Mathf.Clamp(stamina, 0f, 100f);
+		else {
+		stamina += 10.5f * (float)delta;
+	}
+}
+
+stamina = Mathf.Clamp(stamina, 0f, 100f);
 
 		if (direction != Vector3.Zero)
 		{
