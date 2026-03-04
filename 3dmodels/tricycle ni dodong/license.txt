@@ -1,0 +1,11 @@
+Model Information:
+* title:	Tricycle Scene
+* source:	https://sketchfab.com/3d-models/tricycle-scene-37a62fb15a3c4b9881f7d1087ebd3a5a
+* author:	leolee (https://sketchfab.com/leolee)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Tricycle Scene" (https://sketchfab.com/3d-models/tricycle-scene-37a62fb15a3c4b9881f7d1087ebd3a5a) by leolee (https://sketchfab.com/leolee) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
