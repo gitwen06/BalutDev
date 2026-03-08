@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ea26kwtnp7jn" path="res://player/player.tscn" id="2_qohg2"]
 [ext_resource type="PackedScene" uid="uid://dkwu6po8m7c8r" path="res://3dmodels/trees/scene.gltf" id="2_vkbyq"]
 [ext_resource type="Shader" path="res://level/crt.gdshader" id="3_44x8d"]
+[ext_resource type="FontFile" uid="uid://ddnog8td2em4q" path="res://fonts/Fascinate/Fascinate-Regular.ttf" id="4_6gtgk"]
 [ext_resource type="Texture2D" uid="uid://cy5yie2rttsh0" path="res://textures/interface-user/crosshair.png" id="4_ivpvi"]
 [ext_resource type="Script" uid="uid://c4gs0fs3bppeo" path="res://level/DisplayStamina.cs" id="4_vkbyq"]
 [ext_resource type="PackedScene" path="res://Plugins and Scenes/house.tscn" id="5_ktfr2"]
@@ -1319,6 +1320,7 @@ theme_override_font_sizes/font_size = 50
 text = "Press E to interact"
 
 [node name="displayStam" type="Label" parent="Node3D/UserInterface" unique_id=320376609]
+visible = false
 self_modulate = Color(0.98234254, 0.9823423, 0.9823424, 1)
 offset_left = 35.0
 offset_top = 204.0
@@ -1333,10 +1335,11 @@ offset_left = 56.0
 offset_top = 61.0
 offset_right = 456.0
 offset_bottom = 101.0
+theme_override_fonts/font = ExtResource("4_6gtgk")
+theme_override_font_sizes/font_size = 26
 theme_override_styles/background = SubResource("StyleBoxFlat_0v1st")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6gtgk")
 value = 100.0
-show_percentage = false
 script = ExtResource("6_0v1st")
 
 [node name="healthBar" type="ProgressBar" parent="Node3D/UserInterface" unique_id=307776980]
@@ -1344,10 +1347,11 @@ offset_left = 56.0
 offset_top = 119.0
 offset_right = 456.0
 offset_bottom = 159.0
+theme_override_fonts/font = ExtResource("4_6gtgk")
+theme_override_font_sizes/font_size = 26
 theme_override_styles/background = SubResource("StyleBoxFlat_cw150")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xii2b")
 value = 100.0
-show_percentage = false
 
 [node name="ColorRect" type="ColorRect" parent="Node3D/UserInterface" unique_id=308562461]
 material = SubResource("ShaderMaterial_ivpvi")
