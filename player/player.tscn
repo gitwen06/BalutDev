@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wdt6v216tbjf" path="res://player/Player.cs" id="1_rkbax"]
 [ext_resource type="Script" uid="uid://bk2uhlgr4vt5" path="res://player/head.gd" id="2_rkbax"]
+[ext_resource type="PackedScene" uid="uid://bni2vy04ujnt4" path="res://interaction/player_ray.tscn" id="3_g1dw6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 
@@ -23,6 +24,15 @@ script = ExtResource("2_rkbax")
 [node name="Camera3D" type="Camera3D" parent="head" unique_id=1767537742]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.052657723, -0.19656166)
 
-[node name="playerRay" type="RayCast3D" parent="head/Camera3D" unique_id=856138390]
-transform = Transform3D(1, 0, 0, 0, -0.037576634, -0.9809058, 0, 2.0137877, -0.018303387, 0, -0.056491733, 0)
-collide_with_areas = true
+[node name="playerRay" parent="head/Camera3D" unique_id=1523906058 instance=ExtResource("3_g1dw6")]
+
+[node name="userInterface" type="Control" parent="." unique_id=1470841929]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="crossHair" type="TextureRect" parent="userInterface" unique_id=2066472502]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

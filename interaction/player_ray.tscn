@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bni2vy04ujnt4"]
+
+[node name="playerRay" type="RayCast3D" unique_id=1523906058]
+transform = Transform3D(1, 0, 0, 0, -0.037576634, -0.9809058, 0, 2.0137877, -0.018303387, 0, 0, 0)
+collide_with_areas = true
