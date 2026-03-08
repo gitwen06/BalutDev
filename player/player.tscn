@@ -26,14 +26,3 @@ script = ExtResource("2_rkbax")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.052657723, -0.19656166)
 
 [node name="playerRay" parent="head/Camera3D" unique_id=1523906058 instance=ExtResource("3_g1dw6")]
-
-[node name="userInterface" type="Control" parent="." unique_id=1470841929]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="crossHair" type="TextureRect" parent="userInterface" unique_id=2066472502]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0

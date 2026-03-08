@@ -29,7 +29,7 @@ public partial class Player : CharacterBody3D
 	private RayCast3D playerRay;
 	private SpotLight3D playerFlashlight;
 	private Camera3D playerCamera;
-	private Node3D headBone; 
+	private Node3D headBone;
 
 	// ============= CAMERA BOB & EFFECTS =============
 	private float bobTime = 0f;
