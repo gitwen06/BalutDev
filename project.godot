@@ -32,6 +32,10 @@ window/size/viewport_height=1080
 
 project/assembly_name="Balut Deliveries (Horror Minigame) EXPO"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 forward={
