@@ -279,9 +279,15 @@ shape = SubResource("BoxShape3D_44x8d")
 environment = SubResource("Environment_ktfr2")
 
 [node name="Sketchfab_Scene" parent="." unique_id=542473217 instance=ExtResource("8_6gtgk")]
-transform = Transform3D(3.996544, 0, 0, 0, 2.0945754, 0, 0, 0, 3.4421964, -0.049462497, 0.49924397, -0.9198239)
+transform = Transform3D(3.996544, 0, 0, 0, 2.0945754, 0, 0, 0, 3.4421964, -0.049462497, 0.03437245, -0.84252024)
 
 [node name="MAIN MAP" parent="." unique_id=941840229 instance=ExtResource("8_0v1st")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22790432, 0.9656086, -7.161408)
+
+[node name="playerFlashlight" type="SpotLight3D" parent="MAIN MAP" unique_id=1478763668]
+transform = Transform3D(1, 0, 0, 0, -0.04832678, 0.99883157, 0, -0.99883157, -0.04832678, 15.451674, 8.150531, 31.794863)
+spot_range = 100.0
+spot_attenuation = -0.65
+spot_angle_attenuation = 3.0
 
 [editable path="player"]
