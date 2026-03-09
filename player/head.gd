@@ -5,7 +5,7 @@ var contSensitivity = 0.1
 var contDeadzone = 0.15
 var camera : Camera3D
 
-var normal_fov = 75.0
+var normal_fov = 360.0
 var run_fov = 100.0
 var fov_lerp_speed = 6.0
 
