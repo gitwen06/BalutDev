@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://sayqc78pk1jm"
-path.s3tc="res://.godot/imported/land_baseColor.png-6bbdb353ee4d294e475d79385832fffa.s3tc.ctex"
+path.s3tc="res://.godot/imported/land_baseColor.png-8df966465bce0d028a4d270212c3cb45.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://3dmodels/tricycle ni dodong/textures/land_baseColor.png"
-dest_files=["res://.godot/imported/land_baseColor.png-6bbdb353ee4d294e475d79385832fffa.s3tc.ctex"]
+source_file="res://3dmodels/TRICYLE ( DRAFT 1)/textures/land_baseColor.png"
+dest_files=["res://.godot/imported/land_baseColor.png-8df966465bce0d028a4d270212c3cb45.s3tc.ctex"]
 
 [params]
 

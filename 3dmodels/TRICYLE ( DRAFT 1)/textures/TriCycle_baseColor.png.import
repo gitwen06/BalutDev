@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbrgkraa1v68b"
-path.s3tc="res://.godot/imported/TriCycle_baseColor.png-1024588f3a64ccfe27939c8722e7ab9a.s3tc.ctex"
+path.s3tc="res://.godot/imported/TriCycle_baseColor.png-9f5d4f9ecc2005aae2a7a15f53af6c82.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://3dmodels/tricycle ni dodong/textures/TriCycle_baseColor.png"
-dest_files=["res://.godot/imported/TriCycle_baseColor.png-1024588f3a64ccfe27939c8722e7ab9a.s3tc.ctex"]
+source_file="res://3dmodels/TRICYLE ( DRAFT 1)/textures/TriCycle_baseColor.png"
+dest_files=["res://.godot/imported/TriCycle_baseColor.png-9f5d4f9ecc2005aae2a7a15f53af6c82.s3tc.ctex"]
 
 [params]
 

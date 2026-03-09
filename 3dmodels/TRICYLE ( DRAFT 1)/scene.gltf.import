@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dey5sk1hq2jme"
-path="res://.godot/imported/scene.gltf-1bd4930add0c896052f818cae790311b.scn"
+path="res://.godot/imported/scene.gltf-327ef21ae9f35e98d739d926ac3357bb.scn"
 
 [deps]
 
-source_file="res://3dmodels/tricycle ni dodong/scene.gltf"
-dest_files=["res://.godot/imported/scene.gltf-1bd4930add0c896052f818cae790311b.scn"]
+source_file="res://3dmodels/TRICYLE ( DRAFT 1)/scene.gltf"
+dest_files=["res://.godot/imported/scene.gltf-327ef21ae9f35e98d739d926ac3357bb.scn"]
 
 [params]
 

@@ -1,19 +1,13 @@
 [gd_scene format=3 uid="uid://7ufc41piqg5v"]
 
-[ext_resource type="Texture2D" uid="uid://esdpcfvaexut" path="res://Plugins and Scenes/House/Textures/Grass.jpg" id="1_44x8d"]
 [ext_resource type="PackedScene" uid="uid://ea26kwtnp7jn" path="res://player/player.tscn" id="2_qohg2"]
 [ext_resource type="Shader" uid="uid://4r7ouyuealen" path="res://shaders/crt.gdshader" id="3_44x8d"]
 [ext_resource type="FontFile" uid="uid://ddnog8td2em4q" path="res://fonts/Fascinate/Fascinate-Regular.ttf" id="4_6gtgk"]
 [ext_resource type="Texture2D" uid="uid://cy5yie2rttsh0" path="res://Textures/interface-user/crosshair.png" id="4_ivpvi"]
 [ext_resource type="Script" uid="uid://c4gs0fs3bppeo" path="res://level/DisplayStamina.cs" id="4_vkbyq"]
 [ext_resource type="Script" uid="uid://dcfid73h07hsp" path="res://level/progress_bar.gd" id="6_0v1st"]
-[ext_resource type="PackedScene" uid="uid://dw12q54cbv05n" path="res://3dmodels/MAP/JM.gltf" id="8_0v1st"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktfr2"]
-albedo_texture = ExtResource("1_44x8d")
-uv1_scale = Vector3(3, 2, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_44x8d"]
+[ext_resource type="PackedScene" uid="uid://cn2edhw8hbu6h" path="res://3dmodels/MAIN MAP/MAP.gltf" id="7_0v1st"]
+[ext_resource type="PackedScene" uid="uid://ddsmtvsy7ilft" path="res://3dmodels/MANANANGGAL/scene.gltf" id="8_6gtgk"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qohg2"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
@@ -156,13 +150,8 @@ volumetric_fog_sky_affect = 0.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=557697972]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=517034138]
-transform = Transform3D(40.93296, 0, 0, 0, 1, 0, 0, 0, 51.816555, -17.065811, 17.147491, 84.62546)
-material_override = SubResource("StandardMaterial3D_ktfr2")
-mesh = SubResource("BoxMesh_44x8d")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=829669679]
-transform = Transform3D(40.93296, 0, 0, 0, 1, 0, 0, 0, 51.816555, 0, 0, 0)
+transform = Transform3D(351.57758, 0, 0, 0, 1, 0, 0, 0, 291.17416, -48.3849, -0.12522507, -13.431671)
 shape = SubResource("ConcavePolygonShape3D_qohg2")
 
 [node name="player" parent="." unique_id=1365062769 instance=ExtResource("2_qohg2")]
@@ -289,7 +278,10 @@ shape = SubResource("BoxShape3D_44x8d")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1620325039]
 environment = SubResource("Environment_ktfr2")
 
-[node name="JM" parent="." unique_id=336558225 instance=ExtResource("8_0v1st")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7134571, 1.0120883, -6.66051)
+[node name="MAP" parent="." unique_id=172170344 instance=ExtResource("7_0v1st")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.135976, 1.1343212, -5.1171165)
+
+[node name="Sketchfab_Scene" parent="." unique_id=542473217 instance=ExtResource("8_6gtgk")]
+transform = Transform3D(3.996544, 0, 0, 0, 2.0945754, 0, 0, 0, 3.4421964, -0.049462497, 0.7864593, -2.1437354)
 
 [editable path="player"]

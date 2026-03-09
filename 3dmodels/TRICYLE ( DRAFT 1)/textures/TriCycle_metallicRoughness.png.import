@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://do4pobblcglkd"
-path.s3tc="res://.godot/imported/TriCycle_metallicRoughness.png-c235e76b3bb43df0f5c0e443fd555e9e.s3tc.ctex"
+path.s3tc="res://.godot/imported/TriCycle_metallicRoughness.png-2db15cc60b7134f4a6b36fe510d61e05.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://3dmodels/tricycle ni dodong/textures/TriCycle_metallicRoughness.png"
-dest_files=["res://.godot/imported/TriCycle_metallicRoughness.png-c235e76b3bb43df0f5c0e443fd555e9e.s3tc.ctex"]
+source_file="res://3dmodels/TRICYLE ( DRAFT 1)/textures/TriCycle_metallicRoughness.png"
+dest_files=["res://.godot/imported/TriCycle_metallicRoughness.png-2db15cc60b7134f4a6b36fe510d61e05.s3tc.ctex"]
 
 [params]
 
