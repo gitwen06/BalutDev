@@ -1,0 +1,11 @@
+Model Information:
+* title:	(XYZ)Pro spin 8 karaoke-system
+* source:	https://sketchfab.com/3d-models/xyzpro-spin-8-karaoke-system-32e0d152945b48f78b1d549ab49ed9da
+* author:	Makushimushi (https://sketchfab.com/Makushimushi)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "(XYZ)Pro spin 8 karaoke-system" (https://sketchfab.com/3d-models/xyzpro-spin-8-karaoke-system-32e0d152945b48f78b1d549ab49ed9da) by Makushimushi (https://sketchfab.com/Makushimushi) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

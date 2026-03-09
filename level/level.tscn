@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dcfid73h07hsp" path="res://level/progress_bar.gd" id="6_0v1st"]
 [ext_resource type="PackedScene" uid="uid://b1b55va55qhod" path="res://3dmodels/MAIN MAP/MAIN MAP.gltf" id="8_0v1st"]
 [ext_resource type="PackedScene" uid="uid://ddsmtvsy7ilft" path="res://3dmodels/MANANANGGAL/scene.gltf" id="8_6gtgk"]
+[ext_resource type="PackedScene" uid="uid://d0limqrwrebft" path="res://3dmodels/Bush/scene.gltf" id="9_6gtgk"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qohg2"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
@@ -151,7 +152,7 @@ volumetric_fog_sky_affect = 0.0
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=557697972]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=829669679]
-transform = Transform3D(351.57758, 0, 0, 0, 1, 0, 0, 0, 291.17416, -48.3849, -0.12522507, -13.431671)
+transform = Transform3D(351.57758, 0, 0, 0, 1, 0, 0, 0, 291.17416, -48.3849, -0.27830124, -13.431671)
 shape = SubResource("ConcavePolygonShape3D_qohg2")
 
 [node name="player" parent="." unique_id=1365062769 instance=ExtResource("2_qohg2")]
@@ -284,10 +285,38 @@ transform = Transform3D(3.996544, 0, 0, 0, 2.0945754, 0, 0, 0, 3.4421964, -0.049
 [node name="MAIN MAP" parent="." unique_id=941840229 instance=ExtResource("8_0v1st")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22790432, 0.9656086, -7.161408)
 
-[node name="playerFlashlight" type="SpotLight3D" parent="MAIN MAP" unique_id=1478763668]
-transform = Transform3D(1, 0, 0, 0, -0.04832678, 0.99883157, 0, -0.99883157, -0.04832678, 15.451674, 8.150531, 31.794863)
+[node name="LIGHT 1" type="SpotLight3D" parent="MAIN MAP" unique_id=1478763668]
+transform = Transform3D(1, 0, 0, 0, -0.04832678, 0.99883157, 0, -0.99883157, -0.04832678, 15.229076, 8.245257, 31.829842)
+light_energy = 2.62
 spot_range = 100.0
 spot_attenuation = -0.65
 spot_angle_attenuation = 3.0
+
+[node name="bush2" parent="MAIN MAP" unique_id=1677073979 instance=ExtResource("9_6gtgk")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.468445, 0.05083108, 24.133743)
+
+[node name="bush" parent="MAIN MAP/bush2" unique_id=1795301108 instance=ExtResource("9_6gtgk")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9420204, -0.26440609, -0.8305721)
+
+[node name="bush3" parent="MAIN MAP/bush2" unique_id=1696708798 instance=ExtResource("9_6gtgk")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5421925, 0.08718765, 0.7875309)
+
+[node name="bush2" parent="MAIN MAP/bush2" unique_id=1133377561 instance=ExtResource("9_6gtgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55415344, 0.5239841, 1.4062481)
+
+[node name="bush3" parent="MAIN MAP" unique_id=639353083 instance=ExtResource("9_6gtgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.441204, 0.05083108, 38.33226)
+
+[node name="bush" parent="MAIN MAP/bush3" unique_id=870554025 instance=ExtResource("9_6gtgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9420204, -0.26440609, -0.8305721)
+
+[node name="bush3" parent="MAIN MAP/bush3" unique_id=2079591229 instance=ExtResource("9_6gtgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5421925, 0.08718765, 0.7875309)
+
+[node name="bush2" parent="MAIN MAP/bush3" unique_id=1874987603 instance=ExtResource("9_6gtgk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55415344, 0.5239841, 1.4062481)
 
 [editable path="player"]
