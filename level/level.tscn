@@ -281,6 +281,13 @@ environment = SubResource("Environment_ktfr2")
 [node name="MAP" parent="." unique_id=172170344 instance=ExtResource("7_0v1st")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.135976, 1.1343212, -5.1171165)
 
+[node name="SpotLight3D" type="SpotLight3D" parent="MAP" unique_id=604574657]
+transform = Transform3D(1, 0, 0, 0, 0.023524817, 0.99972326, 0, -0.99972326, 0.023524817, 51.10858, 8.0118475, 31.717922)
+light_energy = 16.0
+spot_range = 9.663
+spot_attenuation = 0.01
+spot_angle_attenuation = 0.02368303
+
 [node name="Sketchfab_Scene" parent="." unique_id=542473217 instance=ExtResource("8_6gtgk")]
 transform = Transform3D(3.996544, 0, 0, 0, 2.0945754, 0, 0, 0, 3.4421964, -0.049462497, 0.7864593, -2.1437354)
 
