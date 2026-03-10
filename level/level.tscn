@@ -1148,7 +1148,6 @@ transform = Transform3D(0.0038178533, 0, -0.09992709, 0, 0.1, 0, 0.09992709, 0, 
 
 [node name="Karaoke" parent="." unique_id=881807825 instance=ExtResource("12_m5ivw")]
 transform = Transform3D(0.055627376, 0, 0.14023261, 0, 0.14999998, 0, -0.13930395, 0, 0.055998217, 5.591263, 0.85633135, -32.506363)
-visible = false
 
 [node name="Sisig" parent="Karaoke" unique_id=287102888 instance=ExtResource("13_sui6v")]
 transform = Transform3D(-0.7847655, 0, -0.6197928, 0, 1, 0, 0.6156883, 0, -0.7795686, 0.15336609, 5.4023147, 23.970928)
