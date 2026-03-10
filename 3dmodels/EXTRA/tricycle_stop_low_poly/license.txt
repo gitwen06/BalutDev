@@ -1,0 +1,11 @@
+Model Information:
+* title:	Bus Stop low poly
+* source:	https://sketchfab.com/3d-models/bus-stop-low-poly-2d5af69bb7884551ba6ccfa3024e3a71
+* author:	ouz209 (https://sketchfab.com/ouz209)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Bus Stop low poly" (https://sketchfab.com/3d-models/bus-stop-low-poly-2d5af69bb7884551ba6ccfa3024e3a71) by ouz209 (https://sketchfab.com/ouz209) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Nmax Motorbike
+* source:	https://sketchfab.com/3d-models/nmax-motorbike-b4754cbe95fb4c39be1524300e93833b
+* author:	muhecsad (https://sketchfab.com/muhecsad)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Nmax Motorbike" (https://sketchfab.com/3d-models/nmax-motorbike-b4754cbe95fb4c39be1524300e93833b) by muhecsad (https://sketchfab.com/muhecsad) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)

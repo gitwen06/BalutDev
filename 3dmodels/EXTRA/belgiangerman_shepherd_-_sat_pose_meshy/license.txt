@@ -1,0 +1,11 @@
+Model Information:
+* title:	Belgian/German Shepherd - Sat Pose [MESHY]
+* source:	https://sketchfab.com/3d-models/belgiangerman-shepherd-sat-pose-meshy-54e815c3abb9454ab20989b0e032c471
+* author:	EthanFromEngland (https://sketchfab.com/EthanfromEngland)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Belgian/German Shepherd - Sat Pose [MESHY]" (https://sketchfab.com/3d-models/belgiangerman-shepherd-sat-pose-meshy-54e815c3abb9454ab20989b0e032c471) by EthanFromEngland (https://sketchfab.com/EthanfromEngland) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

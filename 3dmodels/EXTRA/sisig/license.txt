@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sisig
+* source:	https://sketchfab.com/3d-models/sisig-3dfe790f882a4c899e02233f2d4f923a
+* author:	Citrus (https://sketchfab.com/citrusfriendd)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sisig" (https://sketchfab.com/3d-models/sisig-3dfe790f882a4c899e02233f2d4f923a) by Citrus (https://sketchfab.com/citrusfriendd) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

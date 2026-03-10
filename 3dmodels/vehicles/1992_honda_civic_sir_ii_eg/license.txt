@@ -1,0 +1,11 @@
+Model Information:
+* title:	1992 Honda Civic SiR II (EG)
+* source:	https://sketchfab.com/3d-models/1992-honda-civic-sir-ii-eg-6da0242475be43649237efa16ea1061f
+* author:	OUTPISTON (https://sketchfab.com/outpiston)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "1992 Honda Civic SiR II (EG)" (https://sketchfab.com/3d-models/1992-honda-civic-sir-ii-eg-6da0242475be43649237efa16ea1061f) by OUTPISTON (https://sketchfab.com/outpiston) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)

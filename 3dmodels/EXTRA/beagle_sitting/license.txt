@@ -1,0 +1,11 @@
+Model Information:
+* title:	Beagle (Sitting)
+* source:	https://sketchfab.com/3d-models/beagle-sitting-26a6f93cc72d4a0bbd61f51f2ace2aae
+* author:	David Wigforss (https://sketchfab.com/dwigfor)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Beagle (Sitting)" (https://sketchfab.com/3d-models/beagle-sitting-26a6f93cc72d4a0bbd61f51f2ace2aae) by David Wigforss (https://sketchfab.com/dwigfor) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

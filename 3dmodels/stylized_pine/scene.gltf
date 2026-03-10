@@ -1,0 +1,304 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 2500,
+      "max": [
+        4.226560592651367,
+        4.119410037994385,
+        8.855393409729004
+      ],
+      "min": [
+        -4.3556928634643555,
+        -3.7105937004089355,
+        -5.014725685119629
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 30000,
+      "componentType": 5126,
+      "count": 2500,
+      "max": [
+        0.9992693066596985,
+        0.998388409614563,
+        0.999763548374176
+      ],
+      "min": [
+        -0.9994255304336548,
+        -0.9995266795158386,
+        -0.9722755551338196
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 2500,
+      "max": [
+        0.999657928943634,
+        0.9959166646003723,
+        0.9999897480010986,
+        1.0
+      ],
+      "min": [
+        -0.9990569949150085,
+        -0.9995532035827637,
+        -0.9963436126708984,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 2500,
+      "max": [
+        0.9580318927764893,
+        0.99951171875
+      ],
+      "min": [
+        0.00048828125,
+        0.0005767452530562878
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 20000,
+      "componentType": 5126,
+      "count": 2500,
+      "max": [
+        0.9580318927764893,
+        0.99951171875
+      ],
+      "min": [
+        0.00048828125,
+        0.0005767452530562878
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 10482,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "BiscuitEater (https://sketchfab.com/div.andromeda)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/stylized-pine-8a654cc7f8394416b8148f3de488453e",
+      "title": "Stylized Pine"
+    },
+    "generator": "Sketchfab-13.49.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 41928,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 40000,
+      "byteOffset": 41928,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 60000,
+      "byteOffset": 81928,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 40000,
+      "byteOffset": 141928,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 181928,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/Mat_Tree_baseColor.png"
+    },
+    {
+      "uri": "textures/Mat_Tree_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/Mat_Tree_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "name": "Mat_Tree",
+      "normalTexture": {
+        "index": 2
+      },
+      "occlusionTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Tree_Mat_Tree_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3,
+            "TEXCOORD_1": 4
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "a87d590cba6b450e9153fcf300b7c975.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        0.5949968380365707,
+        1.2962776919101822e-08,
+        -0.2992512124244627,
+        0.0,
+        -0.29925121242446284,
+        4.376296241595305e-08,
+        -0.5949968380365691,
+        0.0,
+        8.082894899926968e-09,
+        0.6660124063491806,
+        4.492101147376854e-08,
+        0.0,
+        0.0049822330474853516,
+        3.3087363243103027,
+        -0.04188966751098633,
+        1.0
+      ],
+      "name": "Tree"
+    },
+    {
+      "mesh": 0,
+      "name": "Tree_Mat_Tree_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ]
+}

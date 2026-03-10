@@ -1,0 +1,11 @@
+Model Information:
+* title:	Yamaha Aerox Modified 155
+* source:	https://sketchfab.com/3d-models/yamaha-aerox-modified-155-2adc2d623c1b4dc79e048526bd8245c6
+* author:	Pojan (https://sketchfab.com/fauzanahnaf13)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Yamaha Aerox Modified 155" (https://sketchfab.com/3d-models/yamaha-aerox-modified-155-2adc2d623c1b4dc79e048526bd8245c6) by Pojan (https://sketchfab.com/fauzanahnaf13) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
