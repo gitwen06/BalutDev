@@ -46,6 +46,7 @@ public partial class Player : CharacterBody3D
 	private bool needsCollisionUpdate = false;
 	private Vector3 cachedVelocity = Vector3.Zero;
 	private double lastFrameDelta = 0f;
+	
 
 	public override void _Ready()
 	{
@@ -106,9 +107,13 @@ public partial class Player : CharacterBody3D
 		// ============= INTERACTION RAYCAST (Simple) =============
 		if (playerRay != null && playerRay.IsColliding())
 		{
-			var target = playerRay.GetCollider();
-			// TODO: Handle interaction logic
-			// Emit signal or set variable for UI to show prompt
+			var target = playerRay.GetCollider() as Node;
+			
+			if(target != null) {
+				if(Input.IsActionJustPressed("interact")) {
+					GD.Print("interacted");
+				}
+			}
 		}
 
 		// ============= CROUCH TOGGLE =============

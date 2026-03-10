@@ -207,38 +207,38 @@ transform = Transform3D(0.72054356, 0, 0, 0, 0.8997947, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, -0.045072872, -0.9772544, 0, 2.4155223, -0.018235253, 0, -0.058211327, -0.009181261)
 collide_with_bodies = false
 
-[node name="SpotLight3D" type="SpotLight3D" parent="player/head/Camera3D" parent_id_path=PackedInt32Array(1365062769, 1767537742) index="1" unique_id=128108720]
+[node name="playerFlashlight" type="SpotLight3D" parent="player/head/Camera3D" parent_id_path=PackedInt32Array(1365062769, 1767537742) index="1" unique_id=128108720]
 spot_range = 100.0
 spot_attenuation = -0.1
 spot_angle_attenuation = 3.0
 
-[node name="Node3D" type="Node3D" parent="." unique_id=1060645970]
+[node name="Interactables" type="Node3D" parent="." unique_id=1060645970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.500552, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=906530645]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactables" unique_id=906530645 groups=["interactables"]]
 transform = Transform3D(0.11644987, 0, 0, 0, 4.4033933, 0, 0, 0, 0.93117523, -3.241859, -2.6937697, 2.0074563)
 mesh = SubResource("BoxMesh_vkbyq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D/MeshInstance3D" unique_id=39045653]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Interactables/MeshInstance3D" unique_id=39045653]
 libraries/ = SubResource("AnimationLibrary_ktfr2")
 
-[node name="Area3D" type="Area3D" parent="Node3D" unique_id=2021649293]
+[node name="Area3D" type="Area3D" parent="Interactables" unique_id=2021649293]
 transform = Transform3D(1.4740598, 0, 0, 0, 3.875746, 0, 0, 0, 1.5654532, 1.8752401, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D" unique_id=882255369]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Area3D" unique_id=882255369]
 transform = Transform3D(0.9999999, 0, 0, 0, 7.2680783, 0, 0, 0, 2.2030296, -3.471087, -1.269279, 1.3810669)
 shape = SubResource("BoxShape3D_qohg2")
 
-[node name="UserInterface" type="CanvasLayer" parent="Node3D" unique_id=1912512684]
+[node name="UserInterface" type="CanvasLayer" parent="Interactables" unique_id=1912512684]
 
-[node name="Button" type="Button" parent="Node3D/UserInterface" unique_id=345202371]
+[node name="Button" type="Button" parent="Interactables/UserInterface" unique_id=345202371]
 visible = false
 offset_left = 10.0
 offset_top = 17.0
 offset_right = 490.0
 offset_bottom = 182.0
 
-[node name="TextEdit" type="TextEdit" parent="Node3D/UserInterface/Button" unique_id=948261321]
+[node name="TextEdit" type="TextEdit" parent="Interactables/UserInterface/Button" unique_id=948261321]
 layout_mode = 0
 offset_top = 4.0
 offset_right = 453.0
@@ -246,7 +246,7 @@ offset_bottom = 140.0
 theme_override_font_sizes/font_size = 50
 text = "Press E to interact"
 
-[node name="displayStam" type="Label" parent="Node3D/UserInterface" unique_id=320376609]
+[node name="displayStam" type="Label" parent="Interactables/UserInterface" unique_id=320376609]
 visible = false
 self_modulate = Color(0.98234254, 0.9823423, 0.9823424, 1)
 offset_left = 35.0
@@ -257,7 +257,7 @@ theme_override_font_sizes/font_size = 50
 text = "Stamina: "
 script = ExtResource("4_vkbyq")
 
-[node name="staminaBar" type="ProgressBar" parent="Node3D/UserInterface" unique_id=1203224325]
+[node name="staminaBar" type="ProgressBar" parent="Interactables/UserInterface" unique_id=1203224325]
 offset_left = 56.0
 offset_top = 61.0
 offset_right = 456.0
@@ -269,7 +269,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_6gtgk")
 value = 100.0
 script = ExtResource("6_0v1st")
 
-[node name="healthBar" type="ProgressBar" parent="Node3D/UserInterface" unique_id=307776980]
+[node name="healthBar" type="ProgressBar" parent="Interactables/UserInterface" unique_id=307776980]
 offset_left = 56.0
 offset_top = 119.0
 offset_right = 456.0
@@ -280,14 +280,14 @@ theme_override_styles/background = SubResource("StyleBoxFlat_cw150")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xii2b")
 value = 100.0
 
-[node name="ColorRect" type="ColorRect" parent="Node3D/UserInterface" unique_id=308562461]
+[node name="ColorRect" type="ColorRect" parent="Interactables/UserInterface" unique_id=308562461]
 material = SubResource("ShaderMaterial_ivpvi")
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="Node3D" unique_id=1420554751]
+[node name="CanvasLayer2" type="CanvasLayer" parent="Interactables" unique_id=1420554751]
 
-[node name="Crosshair" type="TextureRect" parent="Node3D/CanvasLayer2" unique_id=1542250987]
+[node name="Crosshair" type="TextureRect" parent="Interactables/CanvasLayer2" unique_id=1542250987]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -302,17 +302,17 @@ grow_vertical = 2
 size_flags_horizontal = 0
 texture = ExtResource("4_ivpvi")
 
-[node name="Node3D2" type="Node3D" parent="." unique_id=1691470505]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6512375, 1.7149367, -3.453764)
+[node name="Node3D2" type="Node3D" parent="Interactables" unique_id=1691470505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6512375, -3.7856154, -3.453764)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2" unique_id=1354723103]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactables/Node3D2" unique_id=1354723103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75868034, 0)
 mesh = SubResource("BoxMesh_ktfr2")
 
-[node name="Area3D" type="Area3D" parent="Node3D2/MeshInstance3D" unique_id=922773413]
+[node name="Area3D" type="Area3D" parent="Interactables/Node3D2/MeshInstance3D" unique_id=922773413]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.032248497, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D2/MeshInstance3D/Area3D" unique_id=413075162]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Node3D2/MeshInstance3D/Area3D" unique_id=413075162]
 shape = SubResource("BoxShape3D_44x8d")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1620325039]
@@ -1354,7 +1354,7 @@ light_color = Color(1, 1, 0.8745098, 1)
 light_energy = 10.088
 shadow_enabled = true
 spot_range = 100.0
-spot_attenuation = -0.1
+spot_attenuation = -0.5
 spot_angle_attenuation = 3.0
 
 [node name="ebike" parent="." unique_id=2066842449 instance=ExtResource("18_xl7j7")]
