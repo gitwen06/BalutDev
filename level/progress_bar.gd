@@ -4,7 +4,7 @@ var player
 
 func _ready() -> void:
 	player = get_node("/root/playerGlobals")
-	min_value = 0
+	min_value = 10000
 	max_value = player.maxStamina
 	value = player.stamina
 
