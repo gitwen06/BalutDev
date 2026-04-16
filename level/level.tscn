@@ -84,6 +84,30 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qohg2"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ivpvi"]
+shader = ExtResource("3_44x8d")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(1080, 920)
+shader_parameter/pixelate = true
+shader_parameter/roll = false
+shader_parameter/roll_speed = 0.0
+shader_parameter/roll_size = 6.8610003258975
+shader_parameter/roll_variation = 0.10000000149012
+shader_parameter/distort_intensity = 0.0470000022325
+shader_parameter/noise_opacity = 0.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.0950000045125
+shader_parameter/aberration = 0.00100004754750004
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.070000003325
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.442000020995
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0v1st"]
 bg_color = Color(0.34374875, 0.30050412, 0.048988424, 1)
 border_color = Color(0, 0, 0, 1)
@@ -127,30 +151,6 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 30
 corner_detail = 3
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ivpvi"]
-shader = ExtResource("3_44x8d")
-shader_parameter/overlay = true
-shader_parameter/scanlines_opacity = 0.0
-shader_parameter/scanlines_width = 0.0
-shader_parameter/grille_opacity = 0.0
-shader_parameter/resolution = Vector2(1080, 920)
-shader_parameter/pixelate = true
-shader_parameter/roll = false
-shader_parameter/roll_speed = 0.0
-shader_parameter/roll_size = 6.8610003258975
-shader_parameter/roll_variation = 0.10000000149012
-shader_parameter/distort_intensity = 0.0470000022325
-shader_parameter/noise_opacity = 0.0
-shader_parameter/noise_speed = 5.0
-shader_parameter/static_noise_intensity = 0.0950000045125
-shader_parameter/aberration = 0.00100004754750004
-shader_parameter/brightness = 1.0
-shader_parameter/discolor = true
-shader_parameter/warp_amount = 0.070000003325
-shader_parameter/clip_warp = false
-shader_parameter/vignette_intensity = 0.4
-shader_parameter/vignette_opacity = 0.442000020995
 
 [sub_resource type="BoxMesh" id="BoxMesh_ktfr2"]
 
@@ -246,6 +246,11 @@ offset_bottom = 140.0
 theme_override_font_sizes/font_size = 50
 text = "Press E to interact"
 
+[node name="ColorRect" type="ColorRect" parent="Interactables/UserInterface" unique_id=308562461]
+material = SubResource("ShaderMaterial_ivpvi")
+offset_right = 1920.0
+offset_bottom = 1080.0
+
 [node name="displayStam" type="Label" parent="Interactables/UserInterface" unique_id=320376609]
 visible = false
 self_modulate = Color(0.98234254, 0.9823423, 0.9823424, 1)
@@ -279,11 +284,6 @@ theme_override_font_sizes/font_size = 26
 theme_override_styles/background = SubResource("StyleBoxFlat_cw150")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xii2b")
 value = 100.0
-
-[node name="ColorRect" type="ColorRect" parent="Interactables/UserInterface" unique_id=308562461]
-material = SubResource("ShaderMaterial_ivpvi")
-offset_right = 1920.0
-offset_bottom = 1080.0
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="Interactables" unique_id=1420554751]
 
@@ -325,7 +325,7 @@ transform = Transform3D(3.996544, 0, 0, 0, 2.0945754, 0, 0, 0, 3.4421964, 0.3580
 transform = Transform3D(-0.3727349, 0.02413505, -0.4695596, 0.06277431, 0.59639895, -0.019175537, 0.46597007, -0.061039448, -0.37302294, 2.1315672, 1.0605621, -24.052393)
 
 [node name="MAIN MAP2" parent="." unique_id=29562542 instance=ExtResource("18_sui6v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4096756, 0.03303194, -7.6110983)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38228798, 0.033030033, -7.6745405)
 
 [node name="SpotLight3D17" type="SpotLight3D" parent="MAIN MAP2" unique_id=170242047]
 transform = Transform3D(1, 0, 0, 0, 0.02507777, 0.9996855, 0, -0.9996855, 0.02507777, 50.417007, 8.125364, 63.48035)
