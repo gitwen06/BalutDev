@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://c4gs0fs3bppeo" path="res://level/DisplayStamina.cs" id="4_vkbyq"]
 [ext_resource type="Script" uid="uid://dcfid73h07hsp" path="res://level/progress_bar.gd" id="6_0v1st"]
 [ext_resource type="PackedScene" uid="uid://bd650j5j1m6q6" path="res://3dmodels/simple_grass_ground_free_low_model/scene.gltf" id="10_cw150"]
-[ext_resource type="PackedScene" uid="uid://71nsc8f80meq" path="res://3dmodels/withe_fence/scene.gltf" id="11_xii2b"]
 [ext_resource type="PackedScene" uid="uid://dut531e4l8t7e" path="res://3dmodels/low_poly_pine_tree/scene.gltf" id="23_xl7j7"]
 [ext_resource type="PackedScene" uid="uid://5p2ug3j2anly" path="res://3dmodels/low_poly_pine_tree/low_poly_tree/scene.gltf" id="24_kdsbj"]
 [ext_resource type="PackedScene" uid="uid://dnf6xfjbrt837" path="res://3dmodels/stylized_pine/scene.gltf" id="25_ml0fe"]
@@ -9496,8 +9495,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.701004, 0, -109.02507)
 
 [node name="Sketchfab_Scene1440" parent="MAIN GRASS GROUND/MAIN GRASS GROUND2" unique_id=324055553 instance=ExtResource("10_cw150")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.66282, 0.0018259883, -109.02507)
-
-[node name="Sketchfab_Scene" parent="." unique_id=78835597 instance=ExtResource("11_xii2b")]
-transform = Transform3D(2.5395088, 0, 0, 0, 7.4749694, 0, 0, 0, 7.4486127, -23.991598, 1.5549431, -8.124905)
 
 [editable path="player"]
