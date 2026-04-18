@@ -166,27 +166,6 @@ adjustment_brightness = 1.3
 transform = Transform3D(638.8381, 0, 0, 0, 1, 0, 0, 0, 477.36703, -72.44162, -0.27830124, -22.346222)
 shape = SubResource("ConcavePolygonShape3D_qohg2")
 
-[node name="player" parent="." unique_id=1365062769 instance=ExtResource("2_qohg2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7675166, 0)
-
-[node name="playerCollision" parent="player" index="0" unique_id=1687770173]
-transform = Transform3D(2.2003965, 0, 0, 0, 1, 0, 0, 0, 2.88195, 33.57192, 0.00024414063, -3.4327388)
-
-[node name="playerBody" parent="player" index="1" unique_id=1288182644]
-transform = Transform3D(2.194084, 0, 0, 0, 0.8997947, 0, 0, 0, 2.88195, 33.57192, 0, -3.4327388)
-
-[node name="Camera3D" parent="player/head" parent_id_path=PackedInt32Array(1365062769, 1953823444) index="0" unique_id=1767537742]
-transform = Transform3D(1.8170614, 0, 0, 0, 1, 0, 0, 0, 1, 33.57192, -0.052657604, -3.9992201)
-
-[node name="playerRay" parent="player/head/Camera3D" index="0" unique_id=1523906058]
-transform = Transform3D(1, 0, 0, 0, -0.045072872, -0.9772544, 0, 2.4155223, -0.018235253, 0, -0.058211327, -0.009181261)
-collide_with_bodies = false
-
-[node name="playerFlashlight" type="SpotLight3D" parent="player/head/Camera3D" index="1" unique_id=128108720]
-spot_range = 100.0
-spot_attenuation = -0.1
-spot_angle_attenuation = 3.0
-
 [node name="Interactables" type="Node3D" parent="." unique_id=1060645970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.500552, 0)
 
@@ -238,6 +217,7 @@ text = "Stamina: "
 script = ExtResource("4_vkbyq")
 
 [node name="staminaBar" type="ProgressBar" parent="Interactables/UserInterface" unique_id=1203224325]
+z_index = -1
 offset_left = 56.0
 offset_top = 61.0
 offset_right = 456.0
@@ -250,6 +230,7 @@ value = 100.0
 script = ExtResource("6_0v1st")
 
 [node name="healthBar" type="ProgressBar" parent="Interactables/UserInterface" unique_id=307776980]
+z_index = -1
 offset_left = 56.0
 offset_top = 119.0
 offset_right = 456.0
@@ -9631,5 +9612,16 @@ transform = Transform3D(-4.522968e-08, 0, 2.274305, 0, 3.1356943, 0, -1.0347345,
 
 [node name="Sketchfab_Scene24" parent="." unique_id=1992932463 instance=ExtResource("11_xii2b")]
 transform = Transform3D(0.31171614, 0, -1.3497418, 0, 3.7250795, 0, 0.54611987, 0, 0.7704101, -24.109295, 0.019677162, 60.63976)
+
+[node name="player" parent="." unique_id=559793081 instance=ExtResource("2_qohg2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3406835, 0)
+
+[node name="playerRay" parent="player/head/Camera3D" parent_id_path=PackedInt32Array(559793081, 1767537742) index="0" unique_id=1523906058]
+visible = false
+
+[node name="playerFlashlight" type="SpotLight3D" parent="player/head/Camera3D" parent_id_path=PackedInt32Array(559793081, 1767537742) index="1" unique_id=468503817]
+spot_range = 100.0
+spot_attenuation = -0.1
+spot_angle_attenuation = 3.0
 
 [editable path="player"]
