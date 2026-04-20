@@ -1,13 +1,14 @@
 extends ProgressBar
 
-var player
+var g
 
 func _ready() -> void:
-	player = get_node("/root/playerGlobals")
-	min_value = 1
-	max_value = player.maxStamina
-	value = player.stamina
+	g = get_node("/root/GlobalVariables")
+
+	min_value = 0
+	max_value = g.maxStamina
+	value = g.stamina
 
 func _process(_delta: float) -> void:
-	if player:
-		value = player.stamina
+	if g:
+		value = g.stamina

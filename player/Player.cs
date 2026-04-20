@@ -3,26 +3,6 @@ using System;
 
 public partial class Player : CharacterBody3D
 {
-	// ============= MOVEMENT =============
-	public const float Speed = 5.0f;
-	public const float JumpVelocity = 4.5f;
-	public const float RunSpeed = 8.0f;
-	public const float CrouchSpeed = 2.5f; 
-
-	// ============= STAMINA SYSTEM =============
-	public float maxStamina = 100.0f;
-	public float stamina = 100.0f;
-	private float regenDelayTimer = 0f;
-	private const float RegenDelay = 3f; 
-	private const float StaminaDrainRate = 15f; 
-	private const float StaminaRegenRate = 12f; 
-
-	// ============= PLAYER STATE =============
-	public bool isRunning = false;
-	public bool isCrouching = false;
-	public bool isFlashlightOn = true;
-	public bool canMove = true; // For cutscenes/scares
-
 	// ============= CACHE REFERENCES =============
 	private CollisionShape3D playerCollision;
 	private MeshInstance3D playerMesh;
@@ -30,12 +10,13 @@ public partial class Player : CharacterBody3D
 	private SpotLight3D playerFlashlight;
 	private Camera3D playerCamera;
 	private Node3D headBone;
+	private Button interactBtn;
 
 	// ============= CAMERA BOB & EFFECTS =============
 	private float bobTime = 0f;
 	private float bobAmount = 0.05f;
 	private float bobSpeed = 8f;
-	private float crouchBobSpeed = 5f; 
+	private float crouchBobSpeed = 5f;
 
 	// ============= FLASHLIGHT =============
 	private float flashlightSwayAmount = 0.02f;
@@ -46,17 +27,18 @@ public partial class Player : CharacterBody3D
 	private bool needsCollisionUpdate = false;
 	private Vector3 cachedVelocity = Vector3.Zero;
 	private double lastFrameDelta = 0f;
-	
 
 	public override void _Ready()
 	{
-		// Cache node references - validate they exist
 		playerCollision = GetNode<CollisionShape3D>("playerCollision");
 		playerMesh = GetNode<MeshInstance3D>("playerBody");
 		playerRay = GetNode<RayCast3D>("head/Camera3D/playerRay");
 		playerFlashlight = GetNode<SpotLight3D>("head/Camera3D/playerFlashlight");
 		playerCamera = GetNode<Camera3D>("head/Camera3D");
 		headBone = GetNode<Node3D>("head");
+		interactBtn = GetNode<Button>("%interactButton");
+
+		var g = GlobalVariables.Instance;
 
 		if (playerCollision == null) GD.PrintErr("Player: Missing playerCollision node!");
 		if (playerMesh == null) GD.PrintErr("Player: Missing playerBody node!");
@@ -64,18 +46,19 @@ public partial class Player : CharacterBody3D
 		if (playerFlashlight == null) GD.PrintErr("Player: Missing playerFlashlight node!");
 		if (playerCamera == null) GD.PrintErr("Player: Missing Camera3D node!");
 
-		stamina = maxStamina;
+		g.stamina = g.maxStamina;
 		baseFlashlightPos = playerFlashlight?.Position ?? Vector3.Zero;
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
+		var g = GlobalVariables.Instance;
+
 		lastFrameDelta = delta;
 		float deltaF = (float)delta;
 
-		if (!canMove)
+		if (!g.canMove)
 		{
-			// Stop movement during cutscenes/scares
 			Velocity = Vector3.Zero;
 			MoveAndSlide();
 			return;
@@ -83,46 +66,51 @@ public partial class Player : CharacterBody3D
 
 		Vector3 velocity = Velocity;
 
-		// ============= FLASHLIGHT TOGGLE =============
+		// FLASHLIGHT
 		if (Input.IsActionJustPressed("toggleFlashlight"))
 		{
-			isFlashlightOn = !isFlashlightOn;
-			playerFlashlight.Visible = isFlashlightOn;
-			playerFlashlight.LightEnergy = isFlashlightOn ? 1f : 0f;
+			g.isFlashlightOn = !g.isFlashlightOn;
+			playerFlashlight.Visible = g.isFlashlightOn;
+			playerFlashlight.LightEnergy = g.isFlashlightOn ? 1f : 0f;
 		}
 
-		// ============= FLASHLIGHT SWAY (Optimized) =============
-		// Only update if flashlight is on (cheap check)
-		if (isFlashlightOn && playerFlashlight != null)
+		if (g.isFlashlightOn && playerFlashlight != null)
 		{
 			float time = (float)Time.GetTicksMsec() * flashlightSwaySpeed;
+
 			Vector3 sway = new Vector3(
 				Mathf.Sin(time) * flashlightSwayAmount,
-				Mathf.Cos(time * 0.7f) * flashlightSwayAmount * 0.5f, // Varied frequency
+				Mathf.Cos(time * 0.7f) * flashlightSwayAmount * 0.5f,
 				0
 			);
+
 			playerFlashlight.Position = baseFlashlightPos + sway;
 		}
 
-		// ============= INTERACTION RAYCAST (Simple) =============
+		// INTERACTION
+		Node target = null;
+
 		if (playerRay != null && playerRay.IsColliding())
+			target = playerRay.GetCollider() as Node;
+
+		if (target != null && target.IsInGroup("interactables"))
 		{
-			var target = playerRay.GetCollider() as Node;
-			
-			if(target != null) {
-				if(Input.IsActionJustPressed("interact")) {
-					GD.Print("interacted");
-				}
-			}
+			interactBtn.Visible = true;
+			if (Input.IsActionJustPressed("interact"))
+				GD.Print("interacted with: " + target.Name);
+		}
+		else
+		{
+			interactBtn.Visible = false;
 		}
 
-		// ============= CROUCH TOGGLE =============
+		// CROUCH
 		if (Input.IsActionJustPressed("crouch"))
 		{
-			isCrouching = !isCrouching;
+			g.isCrouching = !g.isCrouching;
 			needsCollisionUpdate = true;
 
-			if (isCrouching)
+			if (g.isCrouching)
 			{
 				playerCollision.Scale = new Vector3(1f, 0.5f, 1f);
 				playerMesh.Scale = new Vector3(playerMesh.Scale.X, 0.5f, playerMesh.Scale.Z);
@@ -136,52 +124,53 @@ public partial class Player : CharacterBody3D
 			}
 		}
 
-		// ============= GRAVITY =============
+		// GRAVITY
 		if (!IsOnFloor())
 			velocity += GetGravity() * deltaF;
 
-		// ============= JUMP (can't jump while crouching) =============
-		if (Input.IsActionJustPressed("jump") && IsOnFloor() && !isCrouching)
-		{
-			velocity.Y = JumpVelocity;
-		}
+		// JUMP
+		if (Input.IsActionJustPressed("jump") && IsOnFloor() && !g.isCrouching)
+			velocity.Y = GlobalVariables.JumpVelocity;
 
-		// ============= MOVEMENT INPUT =============
+		// MOVEMENT
 		Vector2 inputDir = Input.GetVector("left", "right", "forward", "backward");
 		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
 
-		float currentSpeed = isCrouching ? CrouchSpeed : Speed;
+		float currentSpeed = g.isCrouching ? GlobalVariables.CrouchSpeed : GlobalVariables.Speed;
 
-		// ============= RUNNING + STAMINA SYSTEM =============
 		bool isInputMoving = direction != Vector3.Zero;
-		bool tryingToRun = Input.IsActionPressed("run") && !isCrouching;
+		bool tryingToRun = Input.IsActionPressed("run") && !g.isCrouching;
 
-		if (tryingToRun && stamina > 0f && isInputMoving)
+		// RUN + STAMINA
+		if (tryingToRun && g.stamina > 0f && isInputMoving)
 		{
-			isRunning = true;
-			currentSpeed = RunSpeed;
+			g.isRunning = true;
+			currentSpeed = GlobalVariables.RunSpeed;
 
-			stamina -= StaminaDrainRate * deltaF;
-			regenDelayTimer = RegenDelay;
+			g.stamina -= GlobalVariables.StaminaDrainRate * deltaF;
+			g.regenDelayTimer = GlobalVariables.RegenDelay;
 		}
 		else
 		{
-			isRunning = false;
+			g.isRunning = false;
 
-			if (regenDelayTimer > 0f)
-				regenDelayTimer -= deltaF;
-			else if (stamina < maxStamina)
-				stamina += StaminaRegenRate * deltaF;
+			if (g.regenDelayTimer > 0f)
+				g.regenDelayTimer -= deltaF;
+			else if (g.stamina < g.maxStamina)
+				g.stamina += GlobalVariables.StaminaRegenRate * deltaF;
 		}
 
-		stamina = Mathf.Clamp(stamina, 0f, maxStamina);
+		g.stamina = Mathf.Clamp(g.stamina, 0f, g.maxStamina);
 
-		// ============= CAMERA BOB (Conditional for optimization) =============
+		// CAMERA BOB
 		if (playerCamera != null && IsOnFloor())
 		{
 			if (isInputMoving)
 			{
-				float activeBobSpeed = isCrouching ? crouchBobSpeed : (isRunning ? bobSpeed * 1.3f : bobSpeed);
+				float activeBobSpeed =
+					g.isCrouching ? crouchBobSpeed :
+					(g.isRunning ? bobSpeed * 1.3f : bobSpeed);
+
 				bobTime += deltaF * activeBobSpeed;
 
 				Vector3 camPos = playerCamera.Position;
@@ -191,16 +180,15 @@ public partial class Player : CharacterBody3D
 			}
 			else
 			{
-				// Smooth return to center when idle
 				Vector3 camPos = playerCamera.Position;
 				camPos.Y = Mathf.Lerp(camPos.Y, 0, 10f * deltaF);
 				camPos.X = Mathf.Lerp(camPos.X, 0, 10f * deltaF);
 				playerCamera.Position = camPos;
-				bobTime = 0f; // Reset bob
+				bobTime = 0f;
 			}
 		}
 
-		// ============= APPLY MOVEMENT =============
+		// APPLY MOVEMENT
 		if (isInputMoving)
 		{
 			velocity.X = direction.X * currentSpeed;
@@ -214,24 +202,5 @@ public partial class Player : CharacterBody3D
 
 		Velocity = velocity;
 		MoveAndSlide();
-	}
-
-	// ============= PLAYER API FUNCTIONS =============
-
-	/// <summary>
-	/// Freeze player during a cutscene/event
-	/// </summary>
-	public void FreezePlayer(bool freeze = true)
-	{
-		canMove = !freeze;
-		isRunning = false;
-	}
-
-	/// <summary>
-	/// Get current stamina percentage (0-1)
-	/// </summary>
-	public float GetStaminaPercent()
-	{
-		return stamina / maxStamina;
 	}
 }

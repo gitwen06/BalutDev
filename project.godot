@@ -21,7 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-playerGlobals="*uid://wdt6v216tbjf"
+GlobalVariables="*uid://cbsvjqf5ymy3j"
 
 [display]
 
