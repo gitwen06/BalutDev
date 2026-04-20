@@ -1,0 +1,242 @@
+[gd_scene format=3 uid="uid://8tmob6qxga4"]
+
+[ext_resource type="Shader" uid="uid://4r7ouyuealen" path="res://shaders/crt.gdshader" id="1_e78v2"]
+[ext_resource type="Script" uid="uid://c4gs0fs3bppeo" path="res://level/DisplayStamina.cs" id="2_adumv"]
+[ext_resource type="FontFile" uid="uid://ddnog8td2em4q" path="res://fonts/Fascinate/Fascinate-Regular.ttf" id="3_85tku"]
+[ext_resource type="Script" uid="uid://dcfid73h07hsp" path="res://level/progress_bar.gd" id="4_2h7ai"]
+[ext_resource type="Texture2D" uid="uid://cy5yie2rttsh0" path="res://Textures/interface-user/crosshair.png" id="5_ygsry"]
+[ext_resource type="Script" uid="uid://ucxoguddbghl" path="res://level/flashlight.gd" id="6_5syxp"]
+[ext_resource type="Texture2D" uid="uid://ddpg1o4wgs0r" path="res://Textures/interface-user/emptyFlashligh.png" id="7_qs3s8"]
+[ext_resource type="Texture2D" uid="uid://laah4rqtbue5" path="res://Textures/interface-user/fullFlashlight.png" id="8_tg3wo"]
+[ext_resource type="Texture2D" uid="uid://doc3g02yl0vuf" path="res://Textures/interface-user/testHotbar.png" id="9_v3tjp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d8wl1"]
+shader = ExtResource("1_e78v2")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(1080, 920)
+shader_parameter/pixelate = true
+shader_parameter/roll = false
+shader_parameter/roll_speed = 0.0
+shader_parameter/roll_size = 6.8610003258975
+shader_parameter/roll_variation = 0.10000000149012
+shader_parameter/distort_intensity = 0.0470000022325
+shader_parameter/noise_opacity = 0.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.0950000045125
+shader_parameter/aberration = 0.00100004754750004
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.070000003325
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.442000020995
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_luydb"]
+bg_color = Color(0.34374875, 0.30050412, 0.048988424, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 30
+corner_detail = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bou60"]
+bg_color = Color(0.9999998, 0.6811703, 0.08784237, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 30
+corner_detail = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqus8"]
+bg_color = Color(0.5294118, 0, 0, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 30
+corner_detail = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3wpe"]
+bg_color = Color(1, 0, 0.08627451, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 30
+corner_detail = 3
+
+[node name="Control" type="Control" unique_id=1933538217]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UserInterface" type="CanvasLayer" parent="." unique_id=1665170229]
+
+[node name="Button" type="Button" parent="UserInterface" unique_id=1787290766]
+visible = false
+offset_left = 10.0
+offset_top = 17.0
+offset_right = 490.0
+offset_bottom = 182.0
+
+[node name="TextEdit" type="TextEdit" parent="UserInterface/Button" unique_id=505007271]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 453.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 50
+text = "Press E to interact"
+
+[node name="ColorRect" type="ColorRect" parent="UserInterface" unique_id=758422305]
+material = SubResource("ShaderMaterial_d8wl1")
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="displayStam" type="Label" parent="UserInterface" unique_id=1864753547]
+visible = false
+self_modulate = Color(0.98234254, 0.9823423, 0.9823424, 1)
+offset_left = 35.0
+offset_top = 204.0
+offset_right = 328.0
+offset_bottom = 306.0
+theme_override_font_sizes/font_size = 50
+text = "Stamina: "
+script = ExtResource("2_adumv")
+
+[node name="staminaBar" type="ProgressBar" parent="UserInterface" unique_id=471820102]
+z_index = -1
+offset_left = 56.0
+offset_top = 61.0
+offset_right = 456.0
+offset_bottom = 101.0
+theme_override_fonts/font = ExtResource("3_85tku")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/background = SubResource("StyleBoxFlat_luydb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bou60")
+value = 100.0
+script = ExtResource("4_2h7ai")
+
+[node name="healthBar" type="ProgressBar" parent="UserInterface" unique_id=280773716]
+visible = false
+z_index = -1
+offset_left = 56.0
+offset_top = 119.0
+offset_right = 456.0
+offset_bottom = 159.0
+theme_override_fonts/font = ExtResource("3_85tku")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/background = SubResource("StyleBoxFlat_yqus8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_g3wpe")
+value = 100.0
+
+[node name="Crosshair" type="TextureRect" parent="UserInterface" unique_id=1431735448]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+texture = ExtResource("5_ygsry")
+
+[node name="Flashlight" type="Panel" parent="UserInterface" unique_id=1340396208]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_5syxp")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UserInterface/Flashlight" unique_id=83918469]
+layout_mode = 1
+offset_left = 41.999996
+offset_top = 772.99994
+offset_right = 810.0
+offset_bottom = 1541.0
+scale = Vector2(0.4, 0.4)
+value = 100.0
+texture_under = ExtResource("7_qs3s8")
+texture_progress = ExtResource("8_tg3wo")
+
+[node name="drain" type="Button" parent="UserInterface/Flashlight" unique_id=1761931512]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 949.0
+offset_right = 382.0
+offset_bottom = 980.0
+text = "Drain (.)"
+
+[node name="fill" type="Button" parent="UserInterface/Flashlight" unique_id=1819222582]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 911.0
+offset_right = 382.0
+offset_bottom = 942.0
+text = "Full (/)"
+
+[node name="Hotbar" type="Panel" parent="UserInterface" unique_id=923429233]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="hotbarIcon-1" type="TextureRect" parent="UserInterface/Hotbar" unique_id=900501948]
+layout_mode = 0
+offset_left = 1700.0
+offset_top = 871.0
+offset_right = 2468.0
+offset_bottom = 1639.0
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("9_v3tjp")
+
+[node name="hotbarIcon-2" type="TextureRect" parent="UserInterface/Hotbar" unique_id=1197237693]
+layout_mode = 0
+offset_left = 1580.0
+offset_top = 871.0
+offset_right = 2348.0
+offset_bottom = 1639.0
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("9_v3tjp")
+
+[node name="hotbarIcon-3" type="TextureRect" parent="UserInterface/Hotbar" unique_id=1735727009]
+layout_mode = 0
+offset_left = 1460.0
+offset_top = 871.0
+offset_right = 2228.0
+offset_bottom = 1639.0
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("9_v3tjp")
+
+[node name="hotbarIcon-4" type="TextureRect" parent="UserInterface/Hotbar" unique_id=1569989179]
+layout_mode = 0
+offset_left = 1340.0
+offset_top = 871.0
+offset_right = 2108.0
+offset_bottom = 1639.0
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("9_v3tjp")
+
+[node name="hotbarIcon-5" type="TextureRect" parent="UserInterface/Hotbar" unique_id=1541436315]
+layout_mode = 0
+offset_left = 1220.0
+offset_top = 871.0
+offset_right = 1988.0
+offset_bottom = 1639.0
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("9_v3tjp")
