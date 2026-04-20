@@ -7,7 +7,8 @@
 [ext_resource type="Script" uid="uid://c4gs0fs3bppeo" path="res://level/DisplayStamina.cs" id="4_vkbyq"]
 [ext_resource type="Script" uid="uid://dcfid73h07hsp" path="res://level/progress_bar.gd" id="6_0v1st"]
 [ext_resource type="PackedScene" uid="uid://bd650j5j1m6q6" path="res://3dmodels/simple_grass_ground_free_low_model/scene.gltf" id="10_cw150"]
-[ext_resource type="PackedScene" uid="uid://dksv506qpe4hl" path="res://3dmodels/JM HS/HOUSE 2/lp_americans_house_mobile.glb" id="11_xii2b"]
+[ext_resource type="PackedScene" uid="uid://c82ig3w4tjpdk" path="res://3dmodels/EXTRA/ChixNiJM/scene.gltf" id="12_l5lfc"]
+[ext_resource type="PackedScene" uid="uid://dksv506qpe4hl" path="res://3dmodels/JM HS/HOUSE 2/lp_americans_house_mobile.glb" id="12_rhqlf"]
 [ext_resource type="PackedScene" uid="uid://dut531e4l8t7e" path="res://3dmodels/low_poly_pine_tree/scene.gltf" id="23_xl7j7"]
 [ext_resource type="PackedScene" uid="uid://5p2ug3j2anly" path="res://3dmodels/low_poly_pine_tree/low_poly_tree/scene.gltf" id="24_kdsbj"]
 [ext_resource type="PackedScene" uid="uid://dnf6xfjbrt837" path="res://3dmodels/stylized_pine/scene.gltf" id="25_ml0fe"]
@@ -170,7 +171,7 @@ shape = SubResource("ConcavePolygonShape3D_qohg2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.500552, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Interactables" unique_id=906530645 groups=["interactables"]]
-transform = Transform3D(0.3545945, 0, 0, 0, 4.4033933, 0, 0, 0, 2.6836002, 877.54346, -2.6937697, 2.3526502)
+transform = Transform3D(0.3545945, 0, 0, 0, 4.4033933, 0, 0, 0, 2.6836002, 102.51062, -2.6937697, 2.3526502)
 mesh = SubResource("BoxMesh_vkbyq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Interactables/MeshInstance3D" unique_id=39045653]
@@ -180,7 +181,7 @@ libraries/ = SubResource("AnimationLibrary_ktfr2")
 transform = Transform3D(1.4740598, 0, 0, 0, 3.875746, 0, 0, 0, 1.5654532, 1.8752401, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Area3D" unique_id=882255369]
-transform = Transform3D(3.045039, 0, 0, 0, 7.2680817, 0, 0, 0, 6.3490186, 594.0531, -1.269279, 1.7873565)
+transform = Transform3D(3.045039, 0, 0, 0, 7.268082, 0, 0, 0, 6.3490186, 68.271965, -1.269279, 1.7873565)
 shape = SubResource("BoxShape3D_qohg2")
 
 [node name="UserInterface" type="CanvasLayer" parent="Interactables" unique_id=1912512684]
@@ -262,7 +263,7 @@ texture = ExtResource("4_ivpvi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6512375, -3.7856154, -3.453764)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Interactables/Node3D2" unique_id=1354723103]
-transform = Transform3D(3.04504, 0, 0, 0, 1, 0, 0, 0, 2.88195, 875.85803, -0.75868034, -9.932547)
+transform = Transform3D(3.04504, 0, 0, 0, 1, 0, 0, 0, 2.88195, 100.82519, -0.75868034, -9.932547)
 mesh = SubResource("BoxMesh_ktfr2")
 
 [node name="Area3D" type="Area3D" parent="Interactables/Node3D2/MeshInstance3D" unique_id=922773413]
@@ -277,47 +278,8 @@ environment = SubResource("Environment_ktfr2")
 [node name="forest" parent="." unique_id=66159136 instance=ExtResource("23_xl7j7")]
 transform = Transform3D(-0.019145077, 0, -0.9998167, 0, 1, 0, 0.9998167, 0, -0.019145077, -614.14124, -0.48517978, 50.106007)
 
-[node name="Sketchfab_Scene5" parent="forest" unique_id=638954381 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(-0.019145077, 0, 0.9998167, 0, 1, 0, -0.9998167, 0, -0.019145077, 39.02731, 0.21113884, -2.5667343)
-
-[node name="Sketchfab_Scene3" parent="forest" unique_id=261102197 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.99961156, 11.739666, 0, -5.0039063)
-
-[node name="Sketchfab_Scene4" parent="forest" unique_id=1173612208 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.396244, 0, -0.46715546)
-
-[node name="forest2" parent="forest" unique_id=1384902965 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.06424, 0, 0.7097244)
-
-[node name="Sketchfab_Scene3" parent="forest/forest2" unique_id=521158457 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.99961156, 11.739666, 0, -5.0039063)
-
-[node name="Sketchfab_Scene4" parent="forest/forest2" unique_id=1058861482 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.396244, 0, -0.46715546)
-
-[node name="forest3" parent="forest" unique_id=238858863 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.08085, 0, 1.3802414)
-
-[node name="Sketchfab_Scene3" parent="forest/forest3" unique_id=1916246852 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.99961156, 11.739666, 0, -5.0039063)
-
-[node name="Sketchfab_Scene4" parent="forest/forest3" unique_id=567665706 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.396244, 0, -0.46715546)
-
-[node name="forest4" parent="forest" unique_id=1954973861 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.12802, -0.035971284, 1.9747543)
-
-[node name="Sketchfab_Scene3" parent="forest/forest4" unique_id=784748508 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.99961156, 11.739666, 0, -5.0039063)
-
-[node name="Sketchfab_Scene4" parent="forest/forest4" unique_id=906008986 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.396244, 0, -0.46715546)
-
-[node name="Sketchfab_Scene2" parent="forest" unique_id=2070187243 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(-0.019145077, 0, 0.9998167, 0, 1, 0, -0.9998167, 0, -0.019145077, 39.71574, 0.21113884, 6.4608917)
-
 [node name="forest5" parent="forest" unique_id=1454933555 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(0.019145165, 0, -0.9998167, 0, 1, 0, 0.9998167, 0, 0.019145165, 38.821957, 0, 133.44098)
+transform = Transform3D(0.019145165, 0, -0.9998167, 0, 1, 0, 0.9998167, 0, 0.019145165, 45.54368, 0, -661.16077)
 
 [node name="Sketchfab_Scene3" parent="forest/forest5" unique_id=192150090 instance=ExtResource("23_xl7j7")]
 transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.99961156, 11.739666, 0, -5.0039063)
@@ -353,7 +315,7 @@ transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.396244, 0, -0.46715546)
 
 [node name="forest6" parent="forest" unique_id=1835282039 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(0.019145165, 0, -0.9998167, 0, 1, 0, 0.9998167, 0, 0.019145165, 38.893093, 0, 200.71823)
+transform = Transform3D(0.019145165, 0, -0.9998167, 0, 1, 0, 0.9998167, 0, 0.019145165, 45.614822, 0, -593.8836)
 
 [node name="Sketchfab_Scene3" parent="forest/forest6" unique_id=944264581 instance=ExtResource("23_xl7j7")]
 transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.99961156, 11.739666, 0, -5.0039063)
@@ -389,7 +351,7 @@ transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.396244, 0, -0.46715546)
 
 [node name="forest7" parent="forest" unique_id=1553945235 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(-0.9998167, 0, -0.01914512, 0, 1, 0, 0.01914512, 0, -0.9998167, -64.724594, 0, 253.69913)
+transform = Transform3D(-0.9998167, 0, -0.01914512, 0, 1, 0, 0.01914512, 0, -0.9998167, -40.605995, 0, -556.74615)
 
 [node name="Sketchfab_Scene3" parent="forest/forest7" unique_id=193973937 instance=ExtResource("23_xl7j7")]
 transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.99961156, 11.739666, 0, -5.0039063)
@@ -416,7 +378,7 @@ transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.396244, 0, -0.46715546)
 
 [node name="forest4" parent="forest/forest7" unique_id=348179893 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.12802, 0, 1.9747543)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.29991, 0, 1.9747543)
 
 [node name="Sketchfab_Scene3" parent="forest/forest7/forest4" unique_id=1637027308 instance=ExtResource("23_xl7j7")]
 transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.99961156, 11.739666, 0, -5.0039063)
@@ -425,7 +387,7 @@ transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.396244, 0, -0.46715546)
 
 [node name="forest8" parent="forest" unique_id=1915344913 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(-0.9998167, 0, -0.01914512, 0, 1, 0, 0.01914512, 0, -0.9998167, -130.72311, 0, 254.96289)
+transform = Transform3D(-0.9998167, 0, -0.01914512, 0, 1, 0, 0.01914512, 0, -0.9998167, -106.60454, 0, -555.48236)
 
 [node name="Sketchfab_Scene3" parent="forest/forest8" unique_id=919407362 instance=ExtResource("23_xl7j7")]
 transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.99961156, 11.739666, 0, -5.0039063)
@@ -461,7 +423,7 @@ transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.396244, 0, -0.46715546)
 
 [node name="forest9" parent="forest" unique_id=1185053751 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(-0.027869284, 0, 0.99961156, 0, 1, 0, -0.99961156, 0, -0.027869284, -161.31097, 0, 122.18029)
+transform = Transform3D(-0.027869295, 0, 0.99961156, 0, 1, 0, -0.99961156, 0, -0.027869295, -129.4108, 0, -641.8831)
 
 [node name="Sketchfab_Scene3" parent="forest/forest9" unique_id=43039434 instance=ExtResource("23_xl7j7")]
 transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.99961156, 11.739666, 0, -5.0039063)
@@ -488,7 +450,7 @@ transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.396244, 0, -0.46715546)
 
 [node name="forest4" parent="forest/forest9" unique_id=1017626225 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.12802, 0, 1.9747543)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.11428, 0, 2.1145096)
 
 [node name="Sketchfab_Scene3" parent="forest/forest9/forest4" unique_id=1259873975 instance=ExtResource("23_xl7j7")]
 transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.99961156, 11.739666, 0, -5.0039063)
@@ -497,7 +459,7 @@ transform = Transform3D(-0.99961156, 0, -0.02786928, 0, 1, 0, 0.02786928, 0, -0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.396244, 0, -0.46715546)
 
 [node name="forest10" parent="forest" unique_id=1639421311 instance=ExtResource("23_xl7j7")]
-transform = Transform3D(-0.027869284, 0, 0.99961156, 0, 1, 0, -0.99961156, 0, -0.027869284, -162.91795, 0.40256596, 38.258297)
+transform = Transform3D(-0.027869295, 0, 0.99961156, 0, 1, 0, -0.99961156, 0, -0.027869295, -131.01778, 0.40256596, -725.8051)
 
 [node name="Sketchfab_Scene6" parent="forest/forest10" unique_id=928930269 instance=ExtResource("23_xl7j7")]
 transform = Transform3D(0.9999619, 0, -0.008726535, 0, 1, 0, 0.008726535, 0, 0.9999619, 35.70051, 0.055041075, -1.1075058)
@@ -541,62 +503,8 @@ transform = Transform3D(0.9999619, 0, -0.008726535, 0, 1, 0, 0.008726535, 0, 0.9
 [node name="Sketchfab_Scene2" parent="forest/forest10" unique_id=1369321212 instance=ExtResource("23_xl7j7")]
 transform = Transform3D(0.9999619, 0, -0.008726535, 0, 1, 0, 0.008726535, 0, 0.9999619, 35.53781, 0.055041075, 17.534996)
 
-[node name="extra trees" parent="forest" unique_id=1918458957 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(-0.00017230569, 0, 0.00899835, 0, 0.009, 0, -0.00899835, 0, -0.00017230569, -5.4206963, -0.2537421, -6.3732758)
-
-[node name="Sketchfab_Scene9" parent="forest/extra trees" unique_id=643657071 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -550.7256, 106.74228, -1805.525)
-
-[node name="Sketchfab_Scene6" parent="forest/extra trees" unique_id=932214778 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -49.03076, -51.781136, 4464.143)
-
-[node name="Sketchfab_Scene7" parent="forest/extra trees" unique_id=1451354646 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -442.58154, 2.3647537, 2923.8687)
-
-[node name="Sketchfab_Scene2" parent="forest/extra trees" unique_id=1634088990 instance=ExtResource("25_ml0fe")]
-transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -191.28857, -0.15608978, 3840.3784)
-
-[node name="Sketchfab_Scene3" parent="forest/extra trees" unique_id=745538536 instance=ExtResource("25_ml0fe")]
-transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -556.77734, -15.833992, 4425.608)
-
-[node name="Sketchfab_Scene4" parent="forest/extra trees" unique_id=1211511254 instance=ExtResource("25_ml0fe")]
-transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -423.90137, -30.807526, 2031.1094)
-
-[node name="Sketchfab_Scene8" parent="forest/extra trees" unique_id=1996572726 instance=ExtResource("25_ml0fe")]
-transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -36.37793, 9.214851, 679.32715)
-
-[node name="Sketchfab_Scene10" parent="forest/extra trees" unique_id=1493424489 instance=ExtResource("25_ml0fe")]
-transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -90.90283, -5.907463, -501.72168)
-
-[node name="extra trees2" parent="forest" unique_id=1635544790 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(-0.00017230569, 0, 0.00899835, 0, 0.009, 0, -0.00899835, 0, -0.00017230569, -76.01733, -0.2537421, -5.021454)
-
-[node name="Sketchfab_Scene9" parent="forest/extra trees2" unique_id=401306448 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -550.7256, 106.74228, -1805.525)
-
-[node name="Sketchfab_Scene6" parent="forest/extra trees2" unique_id=153585928 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -49.03076, -51.781136, 4464.143)
-
-[node name="Sketchfab_Scene7" parent="forest/extra trees2" unique_id=1013527358 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -442.58154, 2.3647537, 2923.8687)
-
-[node name="Sketchfab_Scene2" parent="forest/extra trees2" unique_id=1700395424 instance=ExtResource("25_ml0fe")]
-transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -191.28857, -0.15608978, 3840.3784)
-
-[node name="Sketchfab_Scene3" parent="forest/extra trees2" unique_id=1885500361 instance=ExtResource("25_ml0fe")]
-transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -556.77734, -15.833992, 4425.608)
-
-[node name="Sketchfab_Scene4" parent="forest/extra trees2" unique_id=1309475942 instance=ExtResource("25_ml0fe")]
-transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -423.90137, -30.807526, 2031.1094)
-
-[node name="Sketchfab_Scene8" parent="forest/extra trees2" unique_id=940293752 instance=ExtResource("25_ml0fe")]
-transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -36.37793, 9.214851, 679.32715)
-
-[node name="Sketchfab_Scene10" parent="forest/extra trees2" unique_id=1215267799 instance=ExtResource("25_ml0fe")]
-transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -90.90283, -5.907463, -501.72168)
-
 [node name="extra trees3" parent="forest" unique_id=319603047 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(-0.008998349, 0, -0.00017230606, 0, 0.008999999, 0, 0.00017230606, 0, -0.008998349, -169.5522, -0.2537421, 45.732025)
+transform = Transform3D(-0.008998349, 0, -0.00017230606, 0, 0.008999999, 0, 0.00017230606, 0, -0.008998349, -137.65201, -0.2537421, -718.3314)
 
 [node name="Sketchfab_Scene9" parent="forest/extra trees3" unique_id=1073564851 instance=ExtResource("24_kdsbj")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -550.7256, 106.74228, -1805.525)
@@ -623,7 +531,7 @@ transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -36.3
 transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -90.90283, -5.907463, -501.72168)
 
 [node name="extra trees4" parent="forest" unique_id=998633560 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(-0.008998349, 0, -0.00017230606, 0, 0.008999999, 0, 0.00017230606, 0, -0.008998349, -168.15567, -0.2537421, 118.66354)
+transform = Transform3D(-0.008998349, 0, -0.00017230606, 0, 0.008999999, 0, 0.00017230606, 0, -0.008998349, -136.25548, -0.2537421, -645.3999)
 
 [node name="Sketchfab_Scene9" parent="forest/extra trees4" unique_id=1791703698 instance=ExtResource("24_kdsbj")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -550.7256, 106.74228, -1805.525)
@@ -650,7 +558,7 @@ transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -36.3
 transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -90.90283, -5.907463, -501.72168)
 
 [node name="extra trees5" parent="forest" unique_id=1606709464 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(-0.008998349, 0, -0.00017230606, 0, 0.008999999, 0, 0.00017230606, 0, -0.008998349, -167.01462, -0.2537421, 178.25282)
+transform = Transform3D(-0.008998349, 0, -0.00017230606, 0, 0.008999999, 0, 0.00017230606, 0, -0.008998349, -135.11441, -0.2537421, -585.8106)
 
 [node name="Sketchfab_Scene9" parent="forest/extra trees5" unique_id=1267443951 instance=ExtResource("24_kdsbj")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -550.7256, 106.74228, -1805.525)
@@ -677,7 +585,7 @@ transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -36.3
 transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -90.90283, -5.907463, -501.72168)
 
 [node name="extra trees6" parent="forest" unique_id=2128571593 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(0.00017230645, 0, -0.008998349, 0, 0.009, 0, 0.008998349, 0, 0.00017230645, -118.89148, -0.2537421, 259.13364)
+transform = Transform3D(0.00017230645, 0, -0.008998349, 0, 0.009, 0, 0.008998349, 0, 0.00017230645, -94.7729, -0.2537421, -551.31165)
 
 [node name="Sketchfab_Scene9" parent="forest/extra trees6" unique_id=716726830 instance=ExtResource("24_kdsbj")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -550.7256, 106.74228, -1805.525)
@@ -704,7 +612,7 @@ transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -36.3
 transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -90.90283, -5.907463, -501.72168)
 
 [node name="extra trees7" parent="forest" unique_id=957157234 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(0.00017230645, 0, -0.008998349, 0, 0.009, 0, 0.008998349, 0, 0.00017230645, -48.18698, -0.2537421, 257.77972)
+transform = Transform3D(0.00017230645, 0, -0.008998349, 0, 0.009, 0, 0.008998349, 0, 0.00017230645, -24.068382, -0.2537421, -552.6655)
 
 [node name="Sketchfab_Scene9" parent="forest/extra trees7" unique_id=2076411227 instance=ExtResource("24_kdsbj")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -550.7256, 106.74228, -1805.525)
@@ -731,7 +639,7 @@ transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -36.3
 transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -90.90283, -5.907463, -501.72168)
 
 [node name="extra trees8" parent="forest" unique_id=2030197389 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(0.00017230645, 0, -0.008998349, 0, 0.009, 0, 0.008998349, 0, 0.00017230645, 14.500507, -0.2537421, 256.57935)
+transform = Transform3D(0.00017230645, 0, -0.008998349, 0, 0.009, 0, 0.008998349, 0, 0.00017230645, 38.619102, -0.2537421, -553.8659)
 
 [node name="Sketchfab_Scene9" parent="forest/extra trees8" unique_id=1955123333 instance=ExtResource("24_kdsbj")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -550.7256, 106.74228, -1805.525)
@@ -758,7 +666,7 @@ transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -36.3
 transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -90.90283, -5.907463, -501.72168)
 
 [node name="extra trees9" parent="forest" unique_id=381185390 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(-0.008998349, 0, -0.00017230606, 0, 0.009, 0, 0.00017230606, 0, -0.008998349, 40.102406, -0.2537421, 210.23843)
+transform = Transform3D(-0.008998349, 0, -0.00017230606, 0, 0.009, 0, 0.00017230606, 0, -0.008998349, 46.824127, -0.2537421, -584.36334)
 
 [node name="Sketchfab_Scene9" parent="forest/extra trees9" unique_id=496989114 instance=ExtResource("24_kdsbj")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -550.7256, 106.74228, -1805.525)
@@ -785,7 +693,7 @@ transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -36.3
 transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -90.90283, -5.907463, -501.72168)
 
 [node name="extra trees10" parent="forest" unique_id=573854885 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(-0.008998349, 0, -0.00017230606, 0, 0.009, 0, 0.00017230606, 0, -0.008998349, 38.813145, -0.2537421, 142.90915)
+transform = Transform3D(-0.008998349, 0, -0.00017230606, 0, 0.009, 0, 0.00017230606, 0, -0.008998349, 45.53486, -0.2537421, -651.6926)
 
 [node name="Sketchfab_Scene9" parent="forest/extra trees10" unique_id=1822057918 instance=ExtResource("24_kdsbj")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -550.7256, 106.74228, -1805.525)
@@ -812,7 +720,7 @@ transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -36.3
 transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -90.90283, -5.907463, -501.72168)
 
 [node name="extra trees11" parent="forest" unique_id=1774703127 instance=ExtResource("24_kdsbj")]
-transform = Transform3D(-0.008998349, 0, -0.00017230606, 0, 0.009, 0, 0.00017230606, 0, -0.008998349, 37.70817, -0.2537421, 85.204056)
+transform = Transform3D(-0.008998349, 0, -0.00017230606, 0, 0.009, 0, 0.00017230606, 0, -0.008998349, 44.4299, -0.2537421, -709.39777)
 
 [node name="Sketchfab_Scene9" parent="forest/extra trees11" unique_id=1148728390 instance=ExtResource("24_kdsbj")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -550.7256, 106.74228, -1805.525)
@@ -839,7 +747,7 @@ transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -36.3
 transform = Transform3D(111.11111, 0, 0, 0, 111.11111, 0, 0, 0, 111.11111, -90.90283, -5.907463, -501.72168)
 
 [node name="MAIN GRASS GROUND" parent="." unique_id=1535334299 instance=ExtResource("10_cw150")]
-transform = Transform3D(3.04504, 0, 0, 0, 1, 0, 0, 0, 2.88195, 610.2678, 0.22169876, 45.51998)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.475464, 0.22169876, 45.51998)
 
 [node name="Sketchfab_Scene2" parent="MAIN GRASS GROUND" unique_id=1163473877 instance=ExtResource("10_cw150")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9352875, 0, 0)
@@ -9485,13 +9393,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.66282, 0.0018259883, -109
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3406835, 0)
 
 [node name="playerCollision" parent="player" index="0" unique_id=1687770173]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 853.84314, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.8103, 0, 0)
 
 [node name="playerBody" parent="player" index="1" unique_id=1288182644]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 853.84314, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.8103, 0, 0)
 
 [node name="Camera3D" parent="player/head" parent_id_path=PackedInt32Array(559793081, 1953823444) index="0" unique_id=1767537742]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 853.84314, -0.052657604, -0.19656166)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.8103, -0.052657604, -0.19656166)
 
 [node name="playerRay" parent="player/head/Camera3D" index="0" unique_id=1523906058]
 visible = false
@@ -9501,7 +9409,112 @@ spot_range = 100.0
 spot_attenuation = -0.1
 spot_angle_attenuation = 3.0
 
-[node name="Sketchfab_Scene" parent="." unique_id=1346676122 instance=ExtResource("11_xii2b")]
-transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, 855.5413, -0.15493393, 15.15805)
+[node name="Sketchfab_Scene" parent="." unique_id=1346676122 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 137.0265, -0.15493393, 54.927887)
+
+[node name="Sketchfab_Scene2" parent="." unique_id=1417824626 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 114.744385, -0.15493393, 54.927887)
+
+[node name="Sketchfab_Scene3" parent="." unique_id=512012128 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 93.95682, -0.15493393, 55.186127)
+
+[node name="Sketchfab_Scene6" parent="." unique_id=1674832388 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 52.52748, -0.15493393, 54.927887)
+
+[node name="Sketchfab_Scene7" parent="." unique_id=363204024 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 34.96438, -0.15493393, 54.927887)
+
+[node name="Sketchfab_Scene8" parent="." unique_id=1719466271 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 15.988842, -0.15493393, 55.186127)
+
+[node name="Sketchfab_Scene9" parent="." unique_id=1620192559 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, -3.3594666, -0.15493393, 54.927887)
+
+[node name="Sketchfab_Scene10" parent="." unique_id=503590676 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, -25.641586, -0.15493393, 54.927887)
+
+[node name="Sketchfab_Scene11" parent="." unique_id=407732739 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, -46.429153, -0.15493393, 55.186127)
+
+[node name="Sketchfab_Scene13" parent="." unique_id=335262089 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 143.65913, -0.15493393, -49.979378)
+
+[node name="Sketchfab_Scene26" parent="." unique_id=2143229000 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 126.09603, -0.15493393, -49.979378)
+
+[node name="Sketchfab_Scene27" parent="." unique_id=1621438699 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 107.1205, -0.15493393, -49.721138)
+
+[node name="Sketchfab_Scene28" parent="." unique_id=2002235740 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 87.77219, -0.15493393, -49.979378)
+
+[node name="Sketchfab_Scene29" parent="." unique_id=1382542826 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 67.0923, -0.15493393, -49.979378)
+
+[node name="Sketchfab_Scene30" parent="." unique_id=1482291404 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 46.945633, -0.15493393, -49.721138)
+
+[node name="Sketchfab_Scene31" parent="." unique_id=1578873628 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 29.649399, -0.15493393, -49.979378)
+
+[node name="Sketchfab_Scene32" parent="." unique_id=1761864560 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 12.086296, -0.15493393, -49.979378)
+
+[node name="Sketchfab_Scene33" parent="." unique_id=1521766804 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, -6.8892365, -0.15493393, -49.721138)
+
+[node name="Sketchfab_Scene34" parent="." unique_id=641028019 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, -26.237549, -0.15493393, -49.979378)
+
+[node name="Sketchfab_Scene35" parent="." unique_id=1632115543 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, -45.897472, -0.15493393, -49.979378)
+
+[node name="Sketchfab_Scene4" parent="." unique_id=502495137 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-0.018325534, 0, -1.499888, 0, 1.5000005, 0, 1.499888, 0, -0.018325534, 95.75006, -0.15493393, 79.6617)
+
+[node name="Sketchfab_Scene12" parent="." unique_id=339872377 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-0.018325534, 0, -1.499888, 0, 1.5000005, 0, 1.499888, 0, -0.018325534, 95.75006, -0.15493393, 79.6617)
+
+[node name="Sketchfab_Scene14" parent="." unique_id=799203670 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-0.018325534, 0, -1.499888, 0, 1.5000005, 0, 1.499888, 0, -0.018325534, 95.75006, -0.15493393, 15.127584)
+
+[node name="Sketchfab_Scene15" parent="." unique_id=1314008 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-0.018325534, 0, -1.499888, 0, 1.5000005, 0, 1.499888, 0, -0.018325534, 96.39441, -0.15493393, -6.3989964)
+
+[node name="Sketchfab_Scene16" parent="." unique_id=72522913 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-0.018325534, 0, -1.499888, 0, 1.5000005, 0, 1.499888, 0, -0.018325534, 124.0979, -0.15493393, 15.127584)
+
+[node name="Sketchfab_Scene17" parent="." unique_id=2129364867 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-0.018325534, 0, -1.499888, 0, 1.5000005, 0, 1.499888, 0, -0.018325534, 124.74225, -0.15493393, -6.3989964)
+
+[node name="Sketchfab_Scene18" parent="." unique_id=619017288 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-0.018325534, 0, -1.499888, 0, 1.5000005, 0, 1.499888, 0, -0.018325534, 21.95813, -0.15493393, 15.127584)
+
+[node name="Sketchfab_Scene19" parent="." unique_id=1464239298 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-0.018325534, 0, -1.499888, 0, 1.5000005, 0, 1.499888, 0, -0.018325534, 22.602478, -0.15493393, -6.3989964)
+
+[node name="Sketchfab_Scene20" parent="." unique_id=603517119 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-0.018325534, 0, -1.499888, 0, 1.5000005, 0, 1.499888, 0, -0.018325534, 50.30597, -0.15493393, 15.127584)
+
+[node name="Sketchfab_Scene21" parent="." unique_id=438575504 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-0.018325534, 0, -1.499888, 0, 1.5000005, 0, 1.499888, 0, -0.018325534, 50.950317, -0.15493393, -6.3989964)
+
+[node name="Sketchfab_Scene22" parent="." unique_id=1098210915 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-0.018325534, 0, -1.499888, 0, 1.5000005, 0, 1.499888, 0, -0.018325534, -23.418594, -0.15493393, 15.127584)
+
+[node name="Sketchfab_Scene23" parent="." unique_id=1405656700 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-0.018325534, 0, -1.499888, 0, 1.5000005, 0, 1.499888, 0, -0.018325534, -22.774246, -0.15493393, -6.3989964)
+
+[node name="Sketchfab_Scene24" parent="." unique_id=1668029195 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-0.018325534, 0, -1.499888, 0, 1.5000005, 0, 1.499888, 0, -0.018325534, 4.929245, -0.15493393, 15.127584)
+
+[node name="Sketchfab_Scene25" parent="." unique_id=1237759230 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-0.018325534, 0, -1.499888, 0, 1.5000005, 0, 1.499888, 0, -0.018325534, 5.573593, -0.15493393, -6.3989964)
+
+[node name="Sketchfab_Scene5" parent="." unique_id=1024250003 instance=ExtResource("12_rhqlf")]
+transform = Transform3D(-1.4999999, 0, -1.3113416e-07, 0, 1.5000005, 0, 1.3113416e-07, 0, -1.4999999, 67.80201, -0.15493393, 92.20045)
+
+[node name="Sketchfab_Scene37" parent="." unique_id=750822547 instance=ExtResource("12_l5lfc")]
+transform = Transform3D(27.3767, 0, 41.839172, 0, 50, 0, -41.839172, 0, 27.3767, 48.305897, -14.645491, 56.22682)
 
 [editable path="player"]
