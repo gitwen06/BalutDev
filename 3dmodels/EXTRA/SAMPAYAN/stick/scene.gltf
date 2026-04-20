@@ -1,0 +1,237 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 189,
+      "max": [
+        0.6845170259475708,
+        1.74822199344635,
+        39.70916748046875
+      ],
+      "min": [
+        -0.6812970042228699,
+        -1.24264395236969,
+        0.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 2268,
+      "componentType": 5126,
+      "count": 189,
+      "max": [
+        0.9999529719352722,
+        0.9999516606330872,
+        1.0
+      ],
+      "min": [
+        -0.9999529719352722,
+        -0.9999804496765137,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 189,
+      "max": [
+        1.0,
+        0.9585961699485779,
+        0.879180371761322,
+        1.0
+      ],
+      "min": [
+        -0.7708266377449036,
+        -0.7512941956520081,
+        -0.0066605014726519585,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 189,
+      "max": [
+        0.9962109923362732,
+        0.9998030066490173
+      ],
+      "min": [
+        0.0010029999539256096,
+        0.007524999789893627
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 600,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "kayra23 (https://sketchfab.com/kayra23)",
+      "license": "CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)",
+      "source": "https://sketchfab.com/3d-models/stick-d93365fe0cf54bac95b60027df67f179",
+      "title": "Stick"
+    },
+    "generator": "Sketchfab-12.66.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 2400,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1512,
+      "byteOffset": 2400,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4536,
+      "byteOffset": 3912,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 3024,
+      "byteOffset": 8448,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 11472,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/initialShadingGroup_baseColor.png"
+    },
+    {
+      "uri": "textures/initialShadingGroup_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/initialShadingGroup_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "initialShadingGroup",
+      "normalTexture": {
+        "index": 2,
+        "scale": 0.7592424334901752
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Object_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "61df88d8978a41a59b7ce7b3c717da20.obj.cleaner.materialmerger.gles"
+    },
+    {
+      "mesh": 0,
+      "name": "Object_2"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ]
+}
