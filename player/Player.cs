@@ -11,6 +11,8 @@ public partial class Player : CharacterBody3D
 	private Camera3D playerCamera;
 	private Node3D headBone;
 	private Button interactBtn;
+	private Node3D hand;
+	private Node3D currentItem;
 
 	// ============= CAMERA BOB & EFFECTS =============
 	private float bobTime = 0f;
@@ -37,6 +39,7 @@ public partial class Player : CharacterBody3D
 		playerCamera = GetNode<Camera3D>("head/Camera3D");
 		headBone = GetNode<Node3D>("head");
 		interactBtn = GetNode<Button>("%interactButton");
+		hand = GetNode<Node3D>("head/Camera3D/Hand");
 
 		var g = GlobalVariables.Instance;
 
@@ -48,6 +51,18 @@ public partial class Player : CharacterBody3D
 
 		g.stamina = g.maxStamina;
 		baseFlashlightPos = playerFlashlight?.Position ?? Vector3.Zero;
+	}
+
+	// ================= HOTBAR FUNCTION =================
+	private void EquipItem(int index)
+	{
+		var g = GlobalVariables.Instance;
+		string item = g.GetItem(index);
+
+		if (item == null)
+			GD.Print("Unequipped");
+
+		g.equippedIndex = index;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -91,13 +106,23 @@ public partial class Player : CharacterBody3D
 		Node target = null;
 
 		if (playerRay != null && playerRay.IsColliding())
+		{
 			target = playerRay.GetCollider() as Node;
+		}
 
 		if (target != null && target.IsInGroup("interactables"))
 		{
 			interactBtn.Visible = true;
+
 			if (Input.IsActionJustPressed("interact"))
-				GD.Print("interacted with: " + target.Name);
+			{
+				string itemId = target.Name;
+
+				if (GlobalVariables.Instance.AddItem(itemId))
+				{
+					target.GetParent().QueueFree();
+				}
+			}
 		}
 		else
 		{
@@ -202,5 +227,31 @@ public partial class Player : CharacterBody3D
 
 		Velocity = velocity;
 		MoveAndSlide();
+	}
+
+	// ================= INPUT (FIXED LOCATION) =================
+	public override void _Input(InputEvent @event)
+	{
+		var g = GlobalVariables.Instance;
+
+		if (@event is InputEventKey keyEvent && keyEvent.Pressed && !keyEvent.Echo)
+		{
+			for (int i = 0; i < 5; i++)
+			{
+				if (keyEvent.Keycode == Key.Key1 + i)
+				{
+					if (g.equippedIndex == i)
+					{
+						EquipItem(-1);
+						g.equippedIndex = -1;
+					}
+					else
+					{
+						EquipItem(i);
+						g.equippedIndex = i;
+					}
+				}
+			}
+		}
 	}
 }
