@@ -34,7 +34,12 @@ public partial class DisplayINV : Control
 	}
 
 	private Texture2D LoadIcon(string itemId) {
-		string path = "res://Images/" + itemId + ".jpg";
-		return GD.Load<Texture2D>(path);
+		if(itemId != "batteries" && !itemId.Contains("batteries")){
+			string path = "res://Images/" + itemId + ".jpg";
+			return GD.Load<Texture2D>(path);
+		}
+		else {
+			return null;
+		}
 	}
 }

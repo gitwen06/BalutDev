@@ -34,6 +34,7 @@ public partial class GlobalVariables : Node
 	public bool canMove = true;
 	
 	// ============= PLAYER INVENTORY =============
+	public Node target = null;
 	public const int MaxSlots = 5;
 	public List<string> inventory = new List<string>();
 	public int equippedIndex = -1;
@@ -66,5 +67,6 @@ public partial class GlobalVariables : Node
 	// (IMPORTANT NOTE BELOW)
 	
 	// ============= FLASHLIGHT =============
+	public Node playerFlashlight = null;
 	public float FlashlightBattery = 100.0f;
 }

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c3y1pyi8yl3c4"
+path="res://.godot/imported/mang jason.dialogue-c1d35cde117e4d629daf8f54cd8fe124.tres"
+
+[deps]
+
+source_file="res://Dialogues/mang jason.dialogue"
+dest_files=["res://.godot/imported/mang jason.dialogue-c1d35cde117e4d629daf8f54cd8fe124.tres"]
+
+[params]
+
+defaults=true

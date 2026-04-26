@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using DialogueManagerRuntime;
 
 public partial class Player : CharacterBody3D
 {
@@ -35,18 +36,19 @@ public partial class Player : CharacterBody3D
 		playerCollision = GetNode<CollisionShape3D>("playerCollision");
 		playerMesh = GetNode<MeshInstance3D>("playerBody");
 		playerRay = GetNode<RayCast3D>("head/Camera3D/playerRay");
-		playerFlashlight = GetNode<SpotLight3D>("head/Camera3D/playerFlashlight");
 		playerCamera = GetNode<Camera3D>("head/Camera3D");
+		playerFlashlight = GetNode<SpotLight3D>("head/Camera3D/playerFlashlight");
 		headBone = GetNode<Node3D>("head");
 		interactBtn = GetNode<Button>("%interactButton");
 		hand = GetNode<Node3D>("head/Camera3D/Hand");
 
 		var g = GlobalVariables.Instance;
+		
+		g.playerFlashlight = playerFlashlight;
 
 		if (playerCollision == null) GD.PrintErr("Player: Missing playerCollision node!");
 		if (playerMesh == null) GD.PrintErr("Player: Missing playerBody node!");
 		if (playerRay == null) GD.PrintErr("Player: Missing playerRay node!");
-		if (playerFlashlight == null) GD.PrintErr("Player: Missing playerFlashlight node!");
 		if (playerCamera == null) GD.PrintErr("Player: Missing Camera3D node!");
 
 		g.stamina = g.maxStamina;
@@ -54,58 +56,62 @@ public partial class Player : CharacterBody3D
 	}
 
 	// ================= HOTBAR FUNCTION =================
-	private void EquipItem(int index)
-	{
-		// my ass is too lazy to call it gvi mb
-		var g = GlobalVariables.Instance;
-		string itemName = g.GetItem(index);
-		
-		//remoive any item on hand (i think)
-		if (currentItem != null) {
-			currentItem.QueueFree();
-			currentItem = null;
+private void EquipItem(int index)
+{
+	// my ass is too lazy to call it gvi mb
+	var g = GlobalVariables.Instance;
+	string itemName = g.GetItem(index);
+	
+	//remoive any item on hand (i think)
+	if (currentItem != null) {
+		// Turn off flashlight before deleting if it's a flashlight
+		if (currentItem.Name.ToString().Contains("flashlight")) {
+			currentItem.Call("shutOffFlashlight");
 		}
-		g.equippedIndex = index;
-		
-		if (string.IsNullOrEmpty(itemName)) {
-			GD.Print("Unequipped Item");
-			return; //double check
-		}
-		
-		// for loading the item and such
-		// Shell/JM make sure the added "pickable item" is named the same as the .tscn file like
-		// RigidBody3D = flashlight
-		// Items folder = flashlight.tscn
-		
-		string itemPath = $"res://items/{itemName}.tscn";
-		if(ResourceLoader.Exists(itemPath)) {
-			var scene = GD.Load<PackedScene>(itemPath);
-			currentItem = (Node3D)scene.Instantiate();
-			
-			//attached to the hand node 3d
-			hand.AddChild(currentItem);
-			currentItem.Visible = true;
-			currentItem.TopLevel = false;
-			currentItem.GlobalTransform = hand.GlobalTransform;
-			
-			if (currentItem is CollisionObject3D physicsItem) {
-				physicsItem.CollisionLayer = 0;
-				physicsItem.CollisionMask = 0;
-			}
-			// so rigidbody3d DOESN'T SPIN WHAT THE FUCK
-			if (currentItem is RigidBody3D rb) {
-				rb.Freeze = true;
-				rb.LinearVelocity = Vector3.Zero;
-				rb.AngularVelocity = Vector3.Zero;
-			}
-			currentItem.Position = Vector3.Zero;
-			currentItem.Rotation = Vector3.Zero;
-			currentItem.Scale = Vector3.One;
-		}
-		else {
-			GD.PrintErr($"EquipItem: Could not find scene at {itemPath}");
-		}
+		currentItem.QueueFree();
+		currentItem = null;
 	}
+	g.equippedIndex = index;
+	
+	if (string.IsNullOrEmpty(itemName)) {
+		GD.Print("Unequipped Item");
+		return; //double check
+	}
+	
+	// for loading the item and such
+	// Shell/JM make sure the added "pickable item" is named the same as the .tscn file like
+	// RigidBody3D = flashlight
+	// Items folder = flashlight.tscn
+	
+	string itemPath = $"res://items/{itemName}.tscn";
+	if(ResourceLoader.Exists(itemPath)) {
+		var scene = GD.Load<PackedScene>(itemPath);
+		currentItem = (Node3D)scene.Instantiate();
+		
+		//attached to the hand node 3d
+		hand.AddChild(currentItem);
+		currentItem.Visible = true;
+		currentItem.TopLevel = false;
+		currentItem.GlobalTransform = hand.GlobalTransform;
+		
+		if (currentItem is CollisionObject3D physicsItem) {
+			physicsItem.CollisionLayer = 0;
+			physicsItem.CollisionMask = 0;
+		}
+		// so rigidbody3d DOESN'T SPIN WHAT THE FUCK
+		if (currentItem is RigidBody3D rb) {
+			rb.Freeze = true;
+			rb.LinearVelocity = Vector3.Zero;
+			rb.AngularVelocity = Vector3.Zero;
+		}
+		currentItem.Position = Vector3.Zero;
+		currentItem.Rotation = Vector3.Zero;
+		currentItem.Scale = Vector3.One;
+	}
+	else {
+		GD.PrintErr($"EquipItem: Could not find scene at {itemPath}");
+	}
+}
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -113,7 +119,7 @@ public partial class Player : CharacterBody3D
 
 		lastFrameDelta = delta;
 		float deltaF = (float)delta;
-
+		
 		if (!g.canMove)
 		{
 			Velocity = Vector3.Zero;
@@ -123,39 +129,68 @@ public partial class Player : CharacterBody3D
 		Vector3 velocity = Velocity;
 		
 		//Interact and Pick-up
-		Node target = null;
 		if(playerRay != null && playerRay.IsColliding()) {
-			target = playerRay.GetCollider() as Node;
+			Node collider = playerRay.GetCollider() as Node;
+			if(collider != null) {
+				GlobalVariables.Instance.target = collider;
+			} else {
+				GlobalVariables.Instance.target = null;
+			}
+		} else {
+			GlobalVariables.Instance.target = null;
 		}
-		
-		if (target != null && (target.IsInGroup("interactables") || target.IsInGroup("pickables"))) {
+
+		if (GlobalVariables.Instance != null && GlobalVariables.Instance.target != null && (GlobalVariables.Instance.target.IsInGroup("interactables") || GlobalVariables.Instance.target.IsInGroup("pickables") || GlobalVariables.Instance.target.IsInGroup("batteries") || GlobalVariables.Instance.target.IsInGroup("Characters"))) {
 			interactBtn.Visible = true;
 			
+			if(GlobalVariables.Instance.target.IsInGroup("batteries")) {
+				interactBtn.Text = "Press E to Pick Up Battery";
+			}
+			else if(GlobalVariables.Instance.target.IsInGroup("Characters")) {
+				interactBtn.Text = "Press E to Talk";
+			}
+			else if(GlobalVariables.Instance.target.IsInGroup("pickables")) {
+				interactBtn.Text = "Press E to Pick Up";
+			}
+			else {
+				interactBtn.Text = "Press E to Interact";
+			}
+			
 			if (Input.IsActionJustPressed("interact")) {
-				if (GlobalVariables.Instance.AddItem(target.Name)) {
-					
-					//Node parent = target.GetParent();
-					//if (parent != null && parent.Name != "pickables") {
-						//parent.QueueFree();
-					//} else {
-						//target.QueueFree();
-					//}
-					
-					Node parent = target.GetParent();
-					// i gave up on this logic
+				if(GlobalVariables.Instance.target.IsInGroup("batteries")) {
+					GlobalVariables.Instance.FlashlightBattery += 25.0f;
+					GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
+					Node parent = GlobalVariables.Instance.target.GetParent();
 					if (parent != null && parent is Node3D && parent.Name != "Interactables") {
-						// this deleted an item after picked up
 						parent.QueueFree();
 					} else {
-						target.QueueFree();
+						GlobalVariables.Instance.target.QueueFree();
 					}
+					GlobalVariables.Instance.target = null;
 					interactBtn.Visible = false;
-					GD.Print($"Picked up: {target.Name}");
+				}
+				else if(GlobalVariables.Instance.target.IsInGroup("Characters")) {
+					var dialogueResource = GD.Load<Resource>("res://Dialogues/mang jason.dialogue");
+					DialogueManager.ShowDialogueBalloon(dialogueResource, "start");
+					GlobalVariables.Instance.target = null;
+					interactBtn.Visible = false;
+				}
+				else if (GlobalVariables.Instance.AddItem(GlobalVariables.Instance.target.Name)) {
+					GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
+					Node parent = GlobalVariables.Instance.target.GetParent();
+					if (parent != null && parent is Node3D && parent.Name != "Interactables") {
+						parent.QueueFree();
+					} else {
+						GlobalVariables.Instance.target.QueueFree();
+					}
+					GlobalVariables.Instance.target = null;
+					interactBtn.Visible = false;
 				}
 			}
 		}
 		else {
 			interactBtn.Visible = false;
+			interactBtn.Text = "Press E to Interact";
 		}
 		
 		// CROUCH

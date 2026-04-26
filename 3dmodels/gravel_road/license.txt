@@ -1,0 +1,11 @@
+Model Information:
+* title:	gravel road
+* source:	https://sketchfab.com/3d-models/gravel-road-5c29774fd35f4c85a531d6abd7ceef34
+* author:	SPLEEN VISION (https://sketchfab.com/spleen.vision)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "gravel road" (https://sketchfab.com/3d-models/gravel-road-5c29774fd35f4c85a531d6abd7ceef34) by SPLEEN VISION (https://sketchfab.com/spleen.vision) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

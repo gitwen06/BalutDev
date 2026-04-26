@@ -1,0 +1,11 @@
+~ start
+Mang Jason: [[Hi|Hello|Howdy]], bading si rafael.
+Mang Jason: Do you agree with this one?.
+- Very true
+	Nathan: correct.
+- Negative
+	Nathan: wrong.
+- Start again => start
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END
