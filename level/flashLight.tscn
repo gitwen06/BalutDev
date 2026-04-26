@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://prxawdrb24tg"]
+
+[ext_resource type="PackedScene" uid="uid://dfoj0soaf562o" path="res://AssetPacks/Flashlight/flashlight.fbx" id="1_40ts0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_40ts0"]
+size = Vector3(1.126709, 1.7612076, 1.5184631)
+
+[node name="RigidBody3D" type="StaticBody3D" unique_id=1529302787 groups=["pickables"]]
+
+[node name="flashlight" parent="." unique_id=497906841 instance=ExtResource("1_40ts0")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.41135168, 0.010267973, -0.015466213)
+
+[node name="flashlight" parent="flashlight" index="0" unique_id=2055364726 groups=["pickables"]]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="flashlight" unique_id=1038018859]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.732047, -0.17933139, 0)
+light_energy = 10.0
+
+[node name="flashlight2" type="Area3D" parent="flashlight" unique_id=1062265823 groups=["pickables"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03224945, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1316722070 groups=["pickables"]]
+transform = Transform3D(10.856556, -2.842171e-14, 0, -5.684342e-14, 2.2885895, 0, 0, 0, 2.5780132, -0.36503053, -0.35440463, -0.111882105)
+shape = SubResource("BoxShape3D_40ts0")
+
+[editable path="flashlight"]

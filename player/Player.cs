@@ -56,13 +56,55 @@ public partial class Player : CharacterBody3D
 	// ================= HOTBAR FUNCTION =================
 	private void EquipItem(int index)
 	{
+		// my ass is too lazy to call it gvi mb
 		var g = GlobalVariables.Instance;
-		string item = g.GetItem(index);
-
-		if (item == null)
-			GD.Print("Unequipped");
-
+		string itemName = g.GetItem(index);
+		
+		//remoive any item on hand (i think)
+		if (currentItem != null) {
+			currentItem.QueueFree();
+			currentItem = null;
+		}
 		g.equippedIndex = index;
+		
+		if (string.IsNullOrEmpty(itemName)) {
+			GD.Print("Unequipped Item");
+			return; //double check
+		}
+		
+		// for loading the item and such
+		// Shell/JM make sure the added "pickable item" is named the same as the .tscn file like
+		// RigidBody3D = flashlight
+		// Items folder = flashlight.tscn
+		
+		string itemPath = $"res://items/{itemName}.tscn";
+		if(ResourceLoader.Exists(itemPath)) {
+			var scene = GD.Load<PackedScene>(itemPath);
+			currentItem = (Node3D)scene.Instantiate();
+			
+			//attached to the hand node 3d
+			hand.AddChild(currentItem);
+			currentItem.Visible = true;
+			currentItem.TopLevel = false;
+			currentItem.GlobalTransform = hand.GlobalTransform;
+			
+			if (currentItem is CollisionObject3D physicsItem) {
+				physicsItem.CollisionLayer = 0;
+				physicsItem.CollisionMask = 0;
+			}
+			// so rigidbody3d DOESN'T SPIN WHAT THE FUCK
+			if (currentItem is RigidBody3D rb) {
+				rb.Freeze = true;
+				rb.LinearVelocity = Vector3.Zero;
+				rb.AngularVelocity = Vector3.Zero;
+			}
+			currentItem.Position = Vector3.Zero;
+			currentItem.Rotation = Vector3.Zero;
+			currentItem.Scale = Vector3.One;
+		}
+		else {
+			GD.PrintErr($"EquipItem: Could not find scene at {itemPath}");
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -78,57 +120,44 @@ public partial class Player : CharacterBody3D
 			MoveAndSlide();
 			return;
 		}
-
 		Vector3 velocity = Velocity;
-
-		// FLASHLIGHT
-		if (Input.IsActionJustPressed("toggleFlashlight"))
-		{
-			g.isFlashlightOn = !g.isFlashlightOn;
-			playerFlashlight.Visible = g.isFlashlightOn;
-			playerFlashlight.LightEnergy = g.isFlashlightOn ? 1f : 0f;
-		}
-
-		if (g.isFlashlightOn && playerFlashlight != null)
-		{
-			float time = (float)Time.GetTicksMsec() * flashlightSwaySpeed;
-
-			Vector3 sway = new Vector3(
-				Mathf.Sin(time) * flashlightSwayAmount,
-				Mathf.Cos(time * 0.7f) * flashlightSwayAmount * 0.5f,
-				0
-			);
-
-			playerFlashlight.Position = baseFlashlightPos + sway;
-		}
-
-		// INTERACTION
+		
+		//Interact and Pick-up
 		Node target = null;
-
-		if (playerRay != null && playerRay.IsColliding())
-		{
+		if(playerRay != null && playerRay.IsColliding()) {
 			target = playerRay.GetCollider() as Node;
 		}
-
-		if (target != null && target.IsInGroup("interactables"))
-		{
+		
+		if (target != null && (target.IsInGroup("interactables") || target.IsInGroup("pickables"))) {
 			interactBtn.Visible = true;
-
-			if (Input.IsActionJustPressed("interact"))
-			{
-				string itemId = target.Name;
-
-				if (GlobalVariables.Instance.AddItem(itemId))
-				{
-					target.GetParent().QueueFree();
+			
+			if (Input.IsActionJustPressed("interact")) {
+				if (GlobalVariables.Instance.AddItem(target.Name)) {
+					
+					//Node parent = target.GetParent();
+					//if (parent != null && parent.Name != "pickables") {
+						//parent.QueueFree();
+					//} else {
+						//target.QueueFree();
+					//}
+					
+					Node parent = target.GetParent();
+					// i gave up on this logic
+					if (parent != null && parent is Node3D && parent.Name != "Interactables") {
+						// this deleted an item after picked up
+						parent.QueueFree();
+					} else {
+						target.QueueFree();
+					}
+					interactBtn.Visible = false;
+					GD.Print($"Picked up: {target.Name}");
 				}
 			}
 		}
-		else
-		{
+		else {
 			interactBtn.Visible = false;
 		}
-
+		
 		// CROUCH
 		if (Input.IsActionJustPressed("crouch"))
 		{

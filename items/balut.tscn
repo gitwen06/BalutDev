@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dam6i4idl8sut"]
+
+[ext_resource type="PackedScene" uid="uid://y42bemddddif" path="res://AssetPacks/Knives/Fbx/knife_001.glb" id="1_85gy7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_85gy7"]
+radius = 0.09667969
+height = 1.0
+
+[node name="Node3D" type="RigidBody3D" unique_id=1962881631]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0, 0, 0)
+
+[node name="knife_001" parent="." unique_id=370951876 groups=["pickables"] instance=ExtResource("1_85gy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9617599, 0, -5.440267)
+
+[node name="Cube_001" parent="knife_001" index="0" unique_id=833675745 groups=["pickables"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=337750991 groups=["pickables"]]
+transform = Transform3D(0.9999999, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 0.9999999, -0.085323766, 0.5283744, 0.03539963)
+shape = SubResource("CapsuleShape3D_85gy7")
+
+[editable path="knife_001"]

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c0ochthnqquvu"]
+
+[ext_resource type="Script" uid="uid://wdt6v216tbjf" path="res://player/Player.cs" id="1_i3pqv"]
+[ext_resource type="Script" uid="uid://bk2uhlgr4vt5" path="res://player/head.gd" id="2_hqtel"]
+[ext_resource type="PackedScene" uid="uid://bni2vy04ujnt4" path="res://interaction/player_ray.tscn" id="3_sweqy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2hs0m"]
+height = 1.7670898
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1jxqw"]
+
+[node name="Node3D" type="Node3D" unique_id=789847215]
+
+[node name="player" type="CharacterBody3D" parent="." unique_id=800078989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.30476, 2.3125048, 0)
+script = ExtResource("1_i3pqv")
+
+[node name="playerCollision" type="CollisionShape3D" parent="player" unique_id=1162977259]
+shape = SubResource("CapsuleShape3D_2hs0m")
+
+[node name="playerBody" type="MeshInstance3D" parent="player" unique_id=1475052066]
+mesh = SubResource("CapsuleMesh_1jxqw")
+
+[node name="head" type="Node3D" parent="player" unique_id=261746451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72849214, 0)
+script = ExtResource("2_hqtel")
+
+[node name="Camera3D" type="Camera3D" parent="player/head" unique_id=916162503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.052657723, -0.19656166)
+
+[node name="playerRay" parent="player/head/Camera3D" unique_id=1523906058 instance=ExtResource("3_sweqy")]
+
+[node name="playerFlashlight" type="SpotLight3D" parent="player/head/Camera3D" unique_id=1148671148 groups=["pickables"]]
+spot_range = 60.0
+spot_attenuation = -0.1
+spot_angle_attenuation = 3.0
+
+[node name="Hand" type="Node3D" parent="player/head/Camera3D" unique_id=1219354810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.43494415, -0.9177811, -0.31733707)

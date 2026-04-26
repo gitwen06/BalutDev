@@ -11,6 +11,9 @@ var fov_lerp_speed: float = 6.0
 
 var g
 
+@onready var raycast = $Camera3D/playerRay
+@onready var hand = $Camera3D/Hand
+
 func _ready():
 	camera = $Camera3D
 	camera.fov = normal_fov
@@ -42,6 +45,15 @@ func _process(delta):
 
 	var pitch = rotation.x - (joystickY * contSensitivity * delta * 60)
 	rotation.x = clamp(pitch, deg_to_rad(-90), deg_to_rad(90))
+	
+	# ============= Pickable Item Test =============
+	#var item = raycast.get_collider()
+	#if raycast.is_colliding():
+		#if item.is_in_group("pickable"):
+			#if Input.is_action_pressed("interact"):
+				#item.global_position = hand.global_position
+				#item.global_rotation = hand.global_rotation
+				#item.collision_layer = 2
 
 
 func _input(event: InputEvent):

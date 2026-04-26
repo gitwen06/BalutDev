@@ -64,4 +64,7 @@ public partial class GlobalVariables : Node
 	public double lastFrameDelta = 0f;
 
 	// (IMPORTANT NOTE BELOW)
+	
+	// ============= FLASHLIGHT =============
+	public float FlashlightBattery = 100.0f;
 }

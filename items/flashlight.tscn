@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://s34d2b4hnqdb"]
+
+[ext_resource type="PackedScene" uid="uid://dfoj0soaf562o" path="res://AssetPacks/Flashlight/flashlight.fbx" id="1_i7vgc"]
+[ext_resource type="Script" uid="uid://dw8hgcw2ivl7v" path="res://items/flashlight.gd" id="1_pgoip"]
+[ext_resource type="Texture2D" uid="uid://ddpg1o4wgs0r" path="res://Textures/interface-user/emptyFlashligh.png" id="3_diqj2"]
+[ext_resource type="Texture2D" uid="uid://laah4rqtbue5" path="res://Textures/interface-user/fullFlashlight.png" id="4_to5ns"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i7vgc"]
+size = Vector3(1, 1.4067993, 1.2573242)
+
+[sub_resource type="Theme" id="Theme_dpxt2"]
+
+[node name="flashlight" type="RigidBody3D" unique_id=1344721042 groups=["pickables"]]
+script = ExtResource("1_pgoip")
+
+[node name="flashlight" parent="." unique_id=497906841 instance=ExtResource("1_i7vgc")]
+
+[node name="flashlight" parent="flashlight" index="0" unique_id=2055364726 groups=["pickables"]]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1038018859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016721725, -0.3883186)
+light_energy = 0.0
+
+[node name="flashlight2" type="Area3D" parent="." unique_id=1370363885 groups=["pickables"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1316722070 groups=["pickables"]]
+transform = Transform3D(-4.371139e-08, 0, 0.237, 0, 0.211, 0, -1, 0, -1.0359599e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_i7vgc")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="batteryBar" type="TextureProgressBar" parent="." unique_id=1512686196]
+offset_left = 42.0
+offset_top = 816.0
+offset_right = 1322.0
+offset_bottom = 2096.0
+scale = Vector2(0.2, 0.2)
+theme = SubResource("Theme_dpxt2")
+step = 0.0
+value = 100.0
+texture_under = ExtResource("3_diqj2")
+texture_progress = ExtResource("4_to5ns")
+
+[editable path="flashlight"]
