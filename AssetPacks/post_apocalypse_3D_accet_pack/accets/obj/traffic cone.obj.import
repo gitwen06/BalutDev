@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c4h27nhkrvw45"
+path="res://.godot/imported/traffic cone.obj-92fcda888ca0dc698bf83b68e165708b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/traffic cone.obj-92fcda888ca0dc698bf83b68e165708b.mesh"]
+
+source_file="res://AssetPacks/post_apocalypse_3D_accet_pack/accets/obj/traffic cone.obj"
+dest_files=["res://.godot/imported/traffic cone.obj-92fcda888ca0dc698bf83b68e165708b.mesh", "res://.godot/imported/traffic cone.obj-92fcda888ca0dc698bf83b68e165708b.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

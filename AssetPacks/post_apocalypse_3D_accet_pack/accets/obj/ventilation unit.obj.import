@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dt2xotm4a65hh"
+path="res://.godot/imported/ventilation unit.obj-fd2ee8a47c5e260b55c74eeab311090f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ventilation unit.obj-fd2ee8a47c5e260b55c74eeab311090f.mesh"]
+
+source_file="res://AssetPacks/post_apocalypse_3D_accet_pack/accets/obj/ventilation unit.obj"
+dest_files=["res://.godot/imported/ventilation unit.obj-fd2ee8a47c5e260b55c74eeab311090f.mesh", "res://.godot/imported/ventilation unit.obj-fd2ee8a47c5e260b55c74eeab311090f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

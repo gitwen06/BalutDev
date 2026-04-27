@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://deebe2cutkdv1"
+path="res://.godot/imported/fence 2.obj-e4cedf004f18868f70d79f5fbaa84c34.mesh"
+
+[deps]
+
+files=["res://.godot/imported/fence 2.obj-e4cedf004f18868f70d79f5fbaa84c34.mesh"]
+
+source_file="res://AssetPacks/RetroModelPack/post_apocalypse_3D_accet_pack/accets/obj/fence 2.obj"
+dest_files=["res://.godot/imported/fence 2.obj-e4cedf004f18868f70d79f5fbaa84c34.mesh", "res://.godot/imported/fence 2.obj-e4cedf004f18868f70d79f5fbaa84c34.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dfdpsc3t5w1h5"
+path="res://.godot/imported/desk.obj-62b27131614f3406d00f842e63a97051.mesh"
+
+[deps]
+
+files=["res://.godot/imported/desk.obj-62b27131614f3406d00f842e63a97051.mesh"]
+
+source_file="res://AssetPacks/RetroModelPack/post_apocalypse_3D_accet_pack/accets/obj/desk.obj"
+dest_files=["res://.godot/imported/desk.obj-62b27131614f3406d00f842e63a97051.mesh", "res://.godot/imported/desk.obj-62b27131614f3406d00f842e63a97051.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b65utvhtcqvto"
+path="res://.godot/imported/fire extinguisher.obj-892968bb240adf9b553699aba4288e6c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/fire extinguisher.obj-892968bb240adf9b553699aba4288e6c.mesh"]
+
+source_file="res://AssetPacks/post_apocalypse_3D_accet_pack/accets/obj/fire extinguisher.obj"
+dest_files=["res://.godot/imported/fire extinguisher.obj-892968bb240adf9b553699aba4288e6c.mesh", "res://.godot/imported/fire extinguisher.obj-892968bb240adf9b553699aba4288e6c.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b5o7cfhlbs71l"
+path="res://.godot/imported/gun.obj-5d14e0aa99aa56d09f9358a3d9f395d8.mesh"
+
+[deps]
+
+files=["res://.godot/imported/gun.obj-5d14e0aa99aa56d09f9358a3d9f395d8.mesh"]
+
+source_file="res://AssetPacks/post_apocalypse_3D_accet_pack/accets/obj/gun.obj"
+dest_files=["res://.godot/imported/gun.obj-5d14e0aa99aa56d09f9358a3d9f395d8.mesh", "res://.godot/imported/gun.obj-5d14e0aa99aa56d09f9358a3d9f395d8.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

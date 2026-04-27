@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://csdiamjcqk2mk"
+path="res://.godot/imported/barbed wire.obj-1a7a0c3715514ae93a416fbf9a89beec.mesh"
+
+[deps]
+
+files=["res://.godot/imported/barbed wire.obj-1a7a0c3715514ae93a416fbf9a89beec.mesh"]
+
+source_file="res://AssetPacks/RetroModelPack/post_apocalypse_3D_accet_pack/accets/obj/barbed wire.obj"
+dest_files=["res://.godot/imported/barbed wire.obj-1a7a0c3715514ae93a416fbf9a89beec.mesh", "res://.godot/imported/barbed wire.obj-1a7a0c3715514ae93a416fbf9a89beec.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
