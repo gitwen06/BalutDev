@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://doc3g02yl0vuf" path="res://Textures/interface-user/testHotbar.png" id="19_v4yay"]
 [ext_resource type="Texture2D" uid="uid://b3do72xeiwf6s" path="res://AssetPacks/Models pack psx/Models/Metal_08.jpg" id="21_4a0dd"]
 [ext_resource type="Texture2D" uid="uid://btgjghaytkxu0" path="res://AssetPacks/Models pack psx/Models/Metal_06.jpg" id="22_3yjtl"]
-[ext_resource type="Script" uid="uid://bj7vvpel3tfpa" path="res://level/DisplayINV.cs" id="22_53vbi"]
+[ext_resource type="Script" path="res://level/DisplayINV.cs" id="22_53vbi"]
 [ext_resource type="Texture2D" uid="uid://5ljqg8bvwwfu" path="res://AssetPacks/Models pack psx/Models/Door.jpg" id="23_0u661"]
 [ext_resource type="PackedScene" uid="uid://c7l0hcd6ac5u5" path="res://3dmodels/low_poly_pine_tree/scene.gltf" id="23_xl7j7"]
 [ext_resource type="Texture2D" uid="uid://sip33v22ue3e" path="res://AssetPacks/Models pack psx/Models/Mesh.png" id="24_d5sjf"]
@@ -206,7 +206,6 @@
 [ext_resource type="PackedScene" uid="uid://sb6lu4xu1cho" path="res://3dmodels/EXTRA/Trees/oak_trees/scene.gltf" id="203_s4ih8"]
 [ext_resource type="PackedScene" uid="uid://dbat8jcj2jbbd" path="res://3dmodels/JM HS/HS 3/scene.gltf" id="204_d5sjf"]
 [ext_resource type="PackedScene" uid="uid://d12uurpaw8d1j" path="res://3dmodels/vehicles/tricycle/source/Tricycle.fbx" id="205_npnsq"]
-[ext_resource type="PackedScene" uid="uid://d2uocex658hf0" path="res://3dmodels/gravel_road/scene.gltf" id="206_pweyc"]
 [ext_resource type="Texture2D" uid="uid://dv54d2av2tfrl" path="res://3dmodels/Grass/source/sketchfab_mygrass_color-mygrass_alpha.png" id="207_pweyc"]
 [ext_resource type="Texture2D" uid="uid://kivuhab6q4s0" path="res://3dmodels/Grass/source/sketchfab_mygrass_normal.png" id="208_qy1hn"]
 [ext_resource type="Texture2D" uid="uid://bh0o85i0w8rck" path="res://AssetPacks/Characters/Characters_psx/Textures/Character_02.png" id="210_rb7l4"]
@@ -31211,7 +31210,7 @@ script = ExtResource("11_5sooq")
 
 [node name="flashlight" parent="Interactables/flashlight" unique_id=497906841 instance=ExtResource("12_xr58e")]
 
-[node name="flashlight" parent="Interactables/flashlight/flashlight" index="0" unique_id=1061368436 groups=["pickables"]]
+[node name="flashlight" parent="Interactables/flashlight/flashlight" index="0" unique_id=2005574793 groups=["pickables"]]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="flashlight2" type="Area3D" parent="Interactables/flashlight" unique_id=1370363885 groups=["pickables"]]
@@ -43205,38 +43204,26 @@ transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1
 [node name="Sketchfab_Scene11" parent="." unique_id=407732739 instance=ExtResource("12_rhqlf")]
 transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, -46.429153, -0.15493393, 55.186127)
 
-[node name="Sketchfab_Scene13" parent="." unique_id=335262089 instance=ExtResource("12_rhqlf")]
-transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 143.65913, -0.15493393, -49.979378)
-
-[node name="Sketchfab_Scene26" parent="." unique_id=2143229000 instance=ExtResource("12_rhqlf")]
-transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 126.09603, -0.15493393, -49.979378)
-
-[node name="Sketchfab_Scene27" parent="." unique_id=1621438699 instance=ExtResource("12_rhqlf")]
-transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 107.1205, -0.15493393, -49.721138)
-
-[node name="Sketchfab_Scene28" parent="." unique_id=2002235740 instance=ExtResource("12_rhqlf")]
-transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 87.77219, -0.15493393, -49.979378)
-
 [node name="Sketchfab_Scene29" parent="." unique_id=1382542826 instance=ExtResource("12_rhqlf")]
-transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 67.0923, -0.15493393, -49.979378)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -9.877731, -0.15493393, -52.28993)
 
 [node name="Sketchfab_Scene30" parent="." unique_id=1482291404 instance=ExtResource("12_rhqlf")]
-transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 46.945633, -0.15493393, -49.721138)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 10.260918, -0.15493393, -51.665623)
 
 [node name="Sketchfab_Scene31" parent="." unique_id=1578873628 instance=ExtResource("12_rhqlf")]
-transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 29.649399, -0.15493393, -49.979378)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 27.52925, -0.15493393, -50.650166)
 
 [node name="Sketchfab_Scene32" parent="." unique_id=1761864560 instance=ExtResource("12_rhqlf")]
-transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 12.086296, -0.15493393, -49.979378)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 45.0755, -0.15493393, -49.881016)
 
 [node name="Sketchfab_Scene33" parent="." unique_id=1521766804 instance=ExtResource("12_rhqlf")]
-transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, -6.8892365, -0.15493393, -49.721138)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 64.044136, -0.15493393, -49.308)
 
 [node name="Sketchfab_Scene34" parent="." unique_id=641028019 instance=ExtResource("12_rhqlf")]
-transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, -26.237549, -0.15493393, -49.979378)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 83.36258, -0.15493393, -48.202675)
 
 [node name="Sketchfab_Scene35" parent="." unique_id=1632115543 instance=ExtResource("12_rhqlf")]
-transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, -45.897472, -0.15493393, -49.979378)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 103.00365, -0.15493393, -47.341694)
 
 [node name="Sketchfab_Scene4" parent="." unique_id=502495137 instance=ExtResource("12_rhqlf")]
 transform = Transform3D(-0.018325534, 0, -1.499888, 0, 1.5000005, 0, 1.499888, 0, -0.018325534, 95.75006, -0.15493393, 79.6617)
@@ -44203,16 +44190,10 @@ transform = Transform3D(-0.06516279, 0, 3.104825e-05, 0, 0.124503046, 0, -4.4352
 transform = Transform3D(-3.559844, 0, 0.0028215712, 0, 6.0140085, 0, -0.0024230052, 0, -4.145419, 242.76913, 0.47256947, 110.43102)
 
 [node name="Sketchfab_Scene20" parent="." unique_id=842334560 instance=ExtResource("204_d5sjf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.75345, 0.31809038, 12.316795)
+transform = Transform3D(-0.4878596, 0, -0.8729221, 0, 1, 0, 0.8729221, 0, -0.4878596, 214.36392, 0.31809038, -40.671707)
 
 [node name="Tricycle" parent="." unique_id=692015330 instance=ExtResource("205_npnsq")]
 transform = Transform3D(68.35326, 0, 0, 0, 59.383663, 0, 0, 0, 98.319016, 175.80746, 0.0825758, 60.140465)
-
-[node name="Sketchfab_Scene144" parent="." unique_id=876523647 instance=ExtResource("206_pweyc")]
-transform = Transform3D(-0.022078998, 0, 11.6781845, 0, 0.89776397, 0, -4.980479, 0, -0.051770665, 181.37654, 0.6569052, 30.888752)
-
-[node name="Sketchfab_Scene145" parent="." unique_id=916818337 instance=ExtResource("206_pweyc")]
-transform = Transform3D(-7.486848, 0, -0.19333734, 0, 0.89776397, 0, 0.073830776, 0, -19.605469, 208.80374, 0.6569052, 16.214142)
 
 [node name="Sketchfab_Scene146" parent="." unique_id=1729904811 instance=ExtResource("13_sui6v")]
 transform = Transform3D(19.654093, 0, 0, 0, 8.163156, 0, 0, 0, 9.191131, 156.79398, 1.3882861, 38.275818)
@@ -45118,7 +45099,7 @@ shape = SubResource("BoxShape3D_ikd2b")
 [node name="Character_14" parent="." unique_id=952666185 instance=ExtResource("211_06cxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.10619, 0.34271598, -8.161805)
 
-[node name="Skeleton3D" parent="Character_14" index="0" unique_id=745421934]
+[node name="Skeleton3D" parent="Character_14" index="0" unique_id=49669667]
 bones/0/position = Vector3(0.0002898462, 2.5557408, 0.010918175)
 bones/0/rotation = Quaternion(-0.00067716715, -0.7070869, -0.0006615738, 0.707126)
 bones/1/rotation = Quaternion(0.0009442422, -8.108206e-05, 0.056378055, 0.9984091)
