@@ -210,6 +210,9 @@
 [ext_resource type="Texture2D" uid="uid://kivuhab6q4s0" path="res://3dmodels/Grass/source/sketchfab_mygrass_normal.png" id="208_qy1hn"]
 [ext_resource type="Texture2D" uid="uid://bh0o85i0w8rck" path="res://AssetPacks/Characters/Characters_psx/Textures/Character_02.png" id="210_rb7l4"]
 [ext_resource type="PackedScene" uid="uid://cnyof6lpvsni7" path="res://AssetPacks/Characters/Characters_psx/Models/Male/Character_14.fbx" id="211_06cxo"]
+[ext_resource type="ArrayMesh" uid="uid://be0kdfxt6lxh8" path="res://3dmodels/bahay kubo ppack/1/1.obj" id="211_t3aeu"]
+[ext_resource type="ArrayMesh" uid="uid://dckmrheuawjgt" path="res://3dmodels/bahay kubo ppack/batsya/batsya.obj" id="212_bqbjv"]
+[ext_resource type="ArrayMesh" uid="uid://dso7il11svnut" path="res://3dmodels/bahay kubo ppack/grass road/gr.obj" id="213_kcl4k"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qohg2"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
@@ -45123,6 +45126,18 @@ bones/25/rotation = Quaternion(0.34850958, -0.63385177, 0.38310212, 0.5744613)
 bones/28/rotation = Quaternion(-0.0002181561, 0.0007733956, 0.9999831, -0.005760934)
 bones/29/rotation = Quaternion(-0.0037071283, -0.00018984509, -0.046758734, 0.9988994)
 bones/30/rotation = Quaternion(0.38522416, -0.574364, 0.35051668, 0.63154286)
+
+[node name="1" type="MeshInstance3D" parent="." unique_id=1802685676]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 231.95432, 0.22170258, -168.5917)
+mesh = ExtResource("211_t3aeu")
+
+[node name="Batsya" type="MeshInstance3D" parent="." unique_id=1311325819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240.89056, 0.36666977, -190.95392)
+mesh = ExtResource("212_bqbjv")
+
+[node name="Gr" type="MeshInstance3D" parent="." unique_id=1669756791]
+transform = Transform3D(0.35204488, 0, 0, 0, -0.3374304, 0, 0, 0, 0.49744865, 198.82202, 0.45332146, -45.945972)
+mesh = ExtResource("213_kcl4k")
 
 [editable path="Interactables/flashlight/flashlight"]
 [editable path="Character_14"]

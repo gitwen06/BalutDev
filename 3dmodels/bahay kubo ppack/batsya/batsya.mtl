@@ -1,0 +1,36 @@
+newmtl Meshesbowl1Mtl
+Material Color
+Ka 0.176774 0.242796 0.344026
+Kd 0.176774 0.242796 0.344026
+Ks 0.0256496 0.0352293 0.0499175 
+
+d 0.603922
+
+Ns 0
+
+map_Ka Meshesbowl1_diff.png
+map_Kd Meshesbowl1_diff.png
+map_d Meshesbowl1_diff.png
+
+map_Bump Meshesbowl1_nmap.png
+
+map_Ns Meshesbowl1_spec.png
+
+newmtl Meshesbowl2Mtl
+Material Color
+Ka 0.151058 0.0962661 0.0677246
+Kd 0.151058 0.0962661 0.0677246
+Ks 0.0112553 0.00717277 0.00504615 
+
+d 1
+
+Ns 0
+
+map_Ka Meshesbowl2_diff.png
+map_Kd Meshesbowl2_diff.png
+map_d Meshesbowl2_diff.png
+
+map_Bump Meshesbowl2_nmap.png
+
+map_Ns Meshesbowl2_spec.png
+

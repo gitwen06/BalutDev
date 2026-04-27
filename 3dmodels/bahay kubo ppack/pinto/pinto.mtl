@@ -1,0 +1,68 @@
+newmtl Knob1Mtl
+Material Color
+Ka 0.2468 0.2468 0.2468
+Kd 0.2468 0.2468 0.2468
+Ks 0.164534 0.164534 0.164534 
+
+d 1
+
+Ns 255
+
+map_Ka Knob1_diff.png
+map_Kd Knob1_diff.png
+map_d Knob1_diff.png
+
+map_Bump Knob1_nmap.png
+
+map_Ns Knob1_spec.png
+
+newmtl Suporte1Mtl
+Material Color
+Ka 0.193972 0.193972 0.193972
+Kd 0.193972 0.193972 0.193972
+Ks 0.0106495 0.0106495 0.0106495 
+
+d 1
+
+Ns 0
+
+map_Ka Suporte1_diff.png
+map_Kd Suporte1_diff.png
+map_d Suporte1_diff.png
+
+map_Bump Suporte1_nmap.png
+
+map_Ns Suporte1_spec.png
+
+newmtl Doorframe1Mtl
+Material Color
+Ka 0.329729 0.329729 0.329729
+Kd 0.329729 0.329729 0.329729
+Ks 0.0181028 0.0181028 0.0181028 
+
+d 1
+
+Ns 0
+
+map_Ka Suporte1_diff.png
+map_Kd Suporte1_diff.png
+map_d Suporte1_diff.png
+
+map_Bump Suporte1_nmap.png
+
+map_Ns Suporte1_spec.png
+
+newmtl Doorframe2Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.054902 0.054902 0.054902 
+
+d 0.752941
+
+Ns 0
+
+map_Ka Doorframe2_diff.png
+map_Kd Doorframe2_diff.png
+map_d Doorframe2_diff.png
+

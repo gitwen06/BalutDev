@@ -1,0 +1,18 @@
+newmtl GrassRoad1Mtl
+Material Color
+Ka 0.101145 0.0697271 0.0511221
+Kd 0.101145 0.0697271 0.0511221
+Ks 0.00277653 0.00191408 0.00140335 
+
+d 1
+
+Ns 0
+
+map_Ka GrassRoad1_diff.png
+map_Kd GrassRoad1_diff.png
+map_d GrassRoad1_diff.png
+
+map_Bump GrassRoad1_nmap.png
+
+map_Ns GrassRoad1_spec.png
+
