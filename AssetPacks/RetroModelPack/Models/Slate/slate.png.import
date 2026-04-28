@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cp7sth0jtitwo"
-path.s3tc="res://.godot/imported/slate.png-6d9eac20db82d6e3e24456c35a952745.s3tc.ctex"
+path.s3tc="res://.godot/imported/Slate.png-abc02fedf361335d3ea7e268a10eb2e4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://AssetPacks/RetroModelPack/Models/Slate/slate.png"
-dest_files=["res://.godot/imported/slate.png-6d9eac20db82d6e3e24456c35a952745.s3tc.ctex"]
+source_file="res://AssetPacks/RetroModelPack/Models/Slate/Slate.png"
+dest_files=["res://.godot/imported/Slate.png-abc02fedf361335d3ea7e268a10eb2e4.s3tc.ctex"]
 
 [params]
 
