@@ -32,6 +32,7 @@ public partial class GlobalVariables : Node
 	public bool isCrouching = false;
 	public bool isFlashlightOn = true;
 	public bool canMove = true;
+	public bool isTalking = false;
 	
 	// ============= PLAYER INVENTORY =============
 	public Node target = null;

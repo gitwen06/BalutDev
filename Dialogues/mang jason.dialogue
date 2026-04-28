@@ -1,11 +1,12 @@
 ~ start
-Mang Jason: [[Hi|Hello|Howdy]], bading si rafael.
-Mang Jason: Do you agree with this one?.
+set GlobalVariables.Instance.isTalking = true
+Tatay: [[Hi|Hello|Howdy]], bading si rafael.
+Tatay: Do you agree with this one?.
 - Very true
-	Nathan: correct.
+	Tatay: correct.
 - Negative
-	Nathan: wrong.
+	Tatay: wrong.
 - Start again => start
 - End the conversation => END
-Nathan: For more information see the online documentation.
+set GlobalVariables.Instance.isTalking = false
 => END

@@ -141,20 +141,9 @@ private void EquipItem(int index)
 		}
 
 		if (GlobalVariables.Instance != null && GlobalVariables.Instance.target != null && (GlobalVariables.Instance.target.IsInGroup("interactables") || GlobalVariables.Instance.target.IsInGroup("pickables") || GlobalVariables.Instance.target.IsInGroup("batteries") || GlobalVariables.Instance.target.IsInGroup("Characters"))) {
-			interactBtn.Visible = true;
 			
-			if(GlobalVariables.Instance.target.IsInGroup("batteries")) {
-				interactBtn.Text = "Press E to Pick Up Battery";
-			}
-			else if(GlobalVariables.Instance.target.IsInGroup("Characters")) {
-				interactBtn.Text = "Press E to Talk";
-			}
-			else if(GlobalVariables.Instance.target.IsInGroup("pickables")) {
-				interactBtn.Text = "Press E to Pick Up";
-			}
-			else {
-				interactBtn.Text = "Press E to Interact";
-			}
+		if(!GlobalVariables.Instance.isTalking) {
+			interactBtn.Visible = true;
 			
 			if (Input.IsActionJustPressed("interact")) {
 				if(GlobalVariables.Instance.target.IsInGroup("batteries")) {
@@ -170,10 +159,27 @@ private void EquipItem(int index)
 					interactBtn.Visible = false;
 				}
 				else if(GlobalVariables.Instance.target.IsInGroup("Characters")) {
-					var dialogueResource = GD.Load<Resource>("res://Dialogues/mang jason.dialogue");
-					DialogueManager.ShowDialogueBalloon(dialogueResource, "start");
-					GlobalVariables.Instance.target = null;
+					GlobalVariables.Instance.isTalking = true;
+					Input.MouseMode = Input.MouseModeEnum.Visible;
 					interactBtn.Visible = false;
+					
+					//variable for character name(AREA3D NAME MUST BE THE SAME AS "file.dialogue" you're a dumbass if u dont follo wthis
+					string characterName = GlobalVariables.Instance.target.Name.ToString().ToLower();
+					string dialoguePath = $"res://Dialogues/{characterName}.dialogue";
+					
+					var dialogueResource = GD.Load<Resource>(dialoguePath);
+					if(dialogueResource != null) {
+						DialogueManager.ShowDialogueBalloon(dialogueResource, "start");
+						DialogueManager.DialogueEnded += OnDialogueEnded;
+					} else {
+						GD.PrintErr($"Dialogue file not found: {dialoguePath}");
+						GlobalVariables.Instance.isTalking = false;
+					}
+					
+					// Listen for dialogue finish
+					DialogueManager.DialogueEnded += OnDialogueEnded;
+					
+					GlobalVariables.Instance.target = null;
 				}
 				else if (GlobalVariables.Instance.AddItem(GlobalVariables.Instance.target.Name)) {
 					GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
@@ -188,10 +194,13 @@ private void EquipItem(int index)
 				}
 			}
 		}
-		else {
+	}
+	else {
+		if(!GlobalVariables.Instance.isTalking) {
 			interactBtn.Visible = false;
 			interactBtn.Text = "Press E to Interact";
 		}
+	}
 		
 		// CROUCH
 		if (Input.IsActionJustPressed("crouch"))
@@ -292,8 +301,15 @@ private void EquipItem(int index)
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+	
+	// ================= UNLOCK MOUSE WHEN DIALOGUE ENDS ================
+	private void OnDialogueEnded(Resource resource) {
+		GlobalVariables.Instance.isTalking = false;
+		Input.MouseMode = Input.MouseModeEnum.Captured;
+		DialogueManager.DialogueEnded -= OnDialogueEnded;
+	}
 
-	// ================= INPUT (FIXED LOCATION) =================
+	// ================= INPUT =================
 	public override void _Input(InputEvent @event)
 	{
 		var g = GlobalVariables.Instance;

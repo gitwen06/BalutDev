@@ -46,6 +46,7 @@ func _process(delta):
 	var pitch = rotation.x - (joystickY * contSensitivity * delta * 60)
 	rotation.x = clamp(pitch, deg_to_rad(-90), deg_to_rad(90))
 	
+	
 	# ============= Pickable Item Test =============
 	#var item = raycast.get_collider()
 	#if raycast.is_colliding():
