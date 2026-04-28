@@ -213,7 +213,6 @@
 [ext_resource type="Texture2D" uid="uid://cu14y7rd6kxsr" path="res://3dmodels/bahay kubo ppack/1/Part1_nmap.png" id="212_axkbc"]
 [ext_resource type="ArrayMesh" uid="uid://dckmrheuawjgt" path="res://3dmodels/bahay kubo ppack/batsya/batsya.obj" id="212_bqbjv"]
 [ext_resource type="Texture2D" uid="uid://cjhoywiyck80x" path="res://3dmodels/bahay kubo ppack/1/Part1_spec.png" id="213_383ol"]
-[ext_resource type="ArrayMesh" uid="uid://dso7il11svnut" path="res://3dmodels/bahay kubo ppack/grass road/gr.obj" id="213_kcl4k"]
 [ext_resource type="Texture2D" uid="uid://wpi774iu6brl" path="res://3dmodels/bahay kubo ppack/1/Meshpart2_diff.png" id="214_viqv0"]
 [ext_resource type="Texture2D" uid="uid://olyyticrox2p" path="res://3dmodels/bahay kubo ppack/1/Meshpart2_nmap.png" id="215_vw0og"]
 [ext_resource type="Texture2D" uid="uid://bdni1weghkfp5" path="res://3dmodels/bahay kubo ppack/1/Meshpart2_spec.png" id="216_ik0ce"]
@@ -31805,7 +31804,7 @@ script = ExtResource("11_5sooq")
 
 [node name="flashlight" parent="Interactables/flashlight" unique_id=497906841 instance=ExtResource("12_xr58e")]
 
-[node name="flashlight" parent="Interactables/flashlight/flashlight" index="0" unique_id=1061368436 groups=["pickables"]]
+[node name="flashlight" parent="Interactables/flashlight/flashlight" index="0" unique_id=2005574793 groups=["pickables"]]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="flashlight2" type="Area3D" parent="Interactables/flashlight" unique_id=1370363885 groups=["pickables"]]
@@ -44109,7 +44108,7 @@ transform = Transform3D(0.028276367, 0, -11.999966, 0, 12.000002, 0, 11.999966, 
 transform = Transform3D(0.028276367, 0, -11.999966, 0, 12.000002, 0, 11.999966, 0, 0.028276367, 89.97584, 0.9075747, 68.95489)
 
 [node name="LABADA SET" parent="." unique_id=632303255 instance=ExtResource("15_kp5pi")]
-transform = Transform3D(0.0021495798, 0, -0.09969082, 0, 0.07825326, 0, 0.08846113, 0, 0.002422458, 141.40474, 0.30324835, 59.069256)
+transform = Transform3D(0.0021495798, 0, -0.09969082, 0, 0.07825326, 0, 0.08846113, 0, 0.002422458, 150.13963, 0.30324835, 54.313564)
 
 [node name="Batsya3" type="MeshInstance3D" parent="LABADA SET" unique_id=1335919652]
 transform = Transform3D(0.054906305, 0, 2.2595458, 0, 2.5558038, 0, -2.005019, 0, 0.048721373, -80.39783, -1.5931766, -75.89136)
@@ -45917,7 +45916,7 @@ shape = SubResource("BoxShape3D_ikd2b")
 [node name="Character_14" parent="." unique_id=952666185 instance=ExtResource("211_06cxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.10619, 0.34271598, -8.161805)
 
-[node name="Skeleton3D" parent="Character_14" index="0" unique_id=745421934]
+[node name="Skeleton3D" parent="Character_14" index="0" unique_id=49669667]
 bones/0/position = Vector3(0.0002898462, 2.5557408, 0.010918175)
 bones/0/rotation = Quaternion(-0.00067716715, -0.7070869, -0.0006615738, 0.707126)
 bones/1/rotation = Quaternion(0.0009442422, -8.108206e-05, 0.056378055, 0.9984091)
@@ -45955,16 +45954,12 @@ mesh = ExtResource("212_bqbjv")
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 72.4785, 0.17857707, 84.757034)
 mesh = ExtResource("212_bqbjv")
 
-[node name="Gr" type="MeshInstance3D" parent="." unique_id=1669756791]
-transform = Transform3D(0.35204488, 0, 0, 0, -0.3374304, 0, 0, 0, 0.49744865, 198.82202, 0.45332146, -45.945972)
-mesh = ExtResource("213_kcl4k")
-
 [node name="7" type="MeshInstance3D" parent="." unique_id=1440739641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.49695, 0.22169971, -119.29665)
 mesh = ExtResource("222_axkbc")
 
 [node name="3" type="MeshInstance3D" parent="." unique_id=932839894]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.30088, 0.22169876, 53.024742)
+transform = Transform3D(-2.1855692e-08, 0, -0.49999994, 0, 0.5, 0, 0.49999994, 0, -2.1855692e-08, 106.53636, -1.824336, 57.54972)
 mesh = ExtResource("222_ik0ce")
 
 [node name="2" type="MeshInstance3D" parent="." unique_id=1997055584]
@@ -45980,7 +45975,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.050518, 0.22169876, 39.41
 mesh = ExtResource("225_88dj5")
 
 [node name="8" type="MeshInstance3D" parent="." unique_id=985616776]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.430786, 2.954297, 182.64255)
+transform = Transform3D(-0.5, 0, 4.371139e-08, 0, 0.5, 0, -4.371139e-08, 0, -0.5, 71.822, 0.22319353, -41.239)
 mesh = ExtResource("222_axkbc")
 
 [node name="9" type="MeshInstance3D" parent="." unique_id=991196017]
