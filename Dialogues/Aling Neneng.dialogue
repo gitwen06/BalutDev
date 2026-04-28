@@ -1,11 +1,23 @@
 ~ start
-Nathan: [[Hi|Hello|Howdy]] 'nak, penge naman ako niyang balut.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+Aling Neneng: [[Hi|Hello|Howdy]] 'nak, penge naman ako niyang balut.
+
+- Sige
+	Aling Neneng: Salamat naman iho...
+	Aling Neneng: Ang baho naman nito iho.
+
+- Ayaw ko po
+	Aling Neneng: Kaya ginawa kang ampon.
+	- Sorry po
+		Aling Neneng: Mabuti nagpaumanhin ka saaking apo, mabuti yun. => start
+	- ...
+		Aling Neneng: O ano, wala ka ng masagot => END
+	
+- Ano po ulit sabi niyo? => start
+
+- tangina mo 
+	Aling Neneng: putangina mo.
+	Aling Neneng: Alam moba ampon ka.
+	Aling Neneng: Kaya nga iniwan ka ng mama mo. => END
+
+Aling Neneng: Magdadala ka ng
 => END

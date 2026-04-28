@@ -32080,7 +32080,7 @@ script = ExtResource("11_5sooq")
 
 [node name="flashlight" parent="Interactables/flashlight" unique_id=497906841 instance=ExtResource("12_xr58e")]
 
-[node name="flashlight" parent="Interactables/flashlight/flashlight" index="0" unique_id=1061368436 groups=["pickables"]]
+[node name="flashlight" parent="Interactables/flashlight/flashlight" index="0" unique_id=2055364726 groups=["pickables"]]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="flashlight2" type="Area3D" parent="Interactables/flashlight" unique_id=1370363885 groups=["pickables"]]
@@ -46438,7 +46438,7 @@ shape = SubResource("BoxShape3D_ikd2b")
 [node name="Character_14" parent="." unique_id=952666185 instance=ExtResource("211_06cxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.10619, 0.34271598, -8.161805)
 
-[node name="Skeleton3D" parent="Character_14" index="0" unique_id=745421934]
+[node name="Skeleton3D" parent="Character_14" index="0" unique_id=223527606]
 bones/0/position = Vector3(0.0002898462, 2.5557408, 0.010918175)
 bones/0/rotation = Quaternion(-0.00067716715, -0.7070869, -0.0006615738, 0.707126)
 bones/1/rotation = Quaternion(0.0009442422, -8.108206e-05, 0.056378055, 0.9984091)
