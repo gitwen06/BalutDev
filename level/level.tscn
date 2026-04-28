@@ -221,6 +221,11 @@
 [ext_resource type="Texture2D" uid="uid://cet1r7ug4pw32" path="res://3dmodels/bahay kubo ppack/1/Part4_nmap.png" id="218_lw4ic"]
 [ext_resource type="Texture2D" uid="uid://cpxj2unc04qrd" path="res://3dmodels/bahay kubo ppack/1/Part4_spec.png" id="219_88dj5"]
 [ext_resource type="ArrayMesh" uid="uid://drbmun28s4m52" path="res://3dmodels/bahay kubo ppack/7/7.obj" id="222_axkbc"]
+[ext_resource type="ArrayMesh" uid="uid://bt6xodvbe2c7a" path="res://3dmodels/bahay kubo ppack/3/3.obj" id="222_ik0ce"]
+[ext_resource type="ArrayMesh" uid="uid://bw8rkeoa8r2no" path="res://3dmodels/bahay kubo ppack/2/2.obj" id="223_l7mms"]
+[ext_resource type="ArrayMesh" uid="uid://d00glqijtpd83" path="res://3dmodels/bahay kubo ppack/4/4.obj" id="224_lw4ic"]
+[ext_resource type="ArrayMesh" uid="uid://jr7rvdc3c2si" path="res://3dmodels/bahay kubo ppack/5/5.obj" id="225_88dj5"]
+[ext_resource type="ArrayMesh" uid="uid://bhvi63tqwjgee" path="res://3dmodels/bahay kubo ppack/8/8.obj" id="226_rek7t"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qohg2"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
@@ -31800,7 +31805,7 @@ script = ExtResource("11_5sooq")
 
 [node name="flashlight" parent="Interactables/flashlight" unique_id=497906841 instance=ExtResource("12_xr58e")]
 
-[node name="flashlight" parent="Interactables/flashlight/flashlight" index="0" unique_id=2005574793 groups=["pickables"]]
+[node name="flashlight" parent="Interactables/flashlight/flashlight" index="0" unique_id=1061368436 groups=["pickables"]]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="flashlight2" type="Area3D" parent="Interactables/flashlight" unique_id=1370363885 groups=["pickables"]]
@@ -45912,7 +45917,7 @@ shape = SubResource("BoxShape3D_ikd2b")
 [node name="Character_14" parent="." unique_id=952666185 instance=ExtResource("211_06cxo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.10619, 0.34271598, -8.161805)
 
-[node name="Skeleton3D" parent="Character_14" index="0" unique_id=49669667]
+[node name="Skeleton3D" parent="Character_14" index="0" unique_id=745421934]
 bones/0/position = Vector3(0.0002898462, 2.5557408, 0.010918175)
 bones/0/rotation = Quaternion(-0.00067716715, -0.7070869, -0.0006615738, 0.707126)
 bones/1/rotation = Quaternion(0.0009442422, -8.108206e-05, 0.056378055, 0.9984091)
@@ -45957,6 +45962,30 @@ mesh = ExtResource("213_kcl4k")
 [node name="7" type="MeshInstance3D" parent="." unique_id=1440739641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.49695, 0.22169971, -119.29665)
 mesh = ExtResource("222_axkbc")
+
+[node name="3" type="MeshInstance3D" parent="." unique_id=932839894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.30088, 0.22169876, 53.024742)
+mesh = ExtResource("222_ik0ce")
+
+[node name="2" type="MeshInstance3D" parent="." unique_id=1997055584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.29159, -1.072937, 78.505554)
+mesh = ExtResource("223_l7mms")
+
+[node name="4" type="MeshInstance3D" parent="." unique_id=958407225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.13063, 0.22169495, 41.141018)
+mesh = ExtResource("224_lw4ic")
+
+[node name="5" type="MeshInstance3D" parent="." unique_id=1170990911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.050518, 0.22169876, 39.41882)
+mesh = ExtResource("225_88dj5")
+
+[node name="8" type="MeshInstance3D" parent="." unique_id=985616776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.430786, 2.954297, 182.64255)
+mesh = ExtResource("222_axkbc")
+
+[node name="9" type="MeshInstance3D" parent="." unique_id=991196017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132.21034, 0.22169876, 115.05163)
+mesh = ExtResource("226_rek7t")
 
 [editable path="Interactables/flashlight/flashlight"]
 [editable path="Character_14"]
