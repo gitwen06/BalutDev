@@ -1,26 +1,8 @@
-newmtl Frame1Mtl
-Material Color
-Ka 0.124741 0.113921 0.121986
-Kd 0.124741 0.113921 0.121986
-Ks 0.0831606 0.0759473 0.0813238 
-
-d 1
-
-Ns 255
-
-map_Ka Frame1_diff.png
-map_Kd Frame1_diff.png
-map_d Frame1_diff.png
-
-map_Bump Frame1_nmap.png
-
-map_Ns Frame1_spec.png
-
 newmtl Part1Mtl
 Material Color
-Ka 0.358654 0.234895 0.0759261
-Kd 0.358654 0.234895 0.0759261
-Ks 0.0098454 0.00644811 0.00208425 
+Ka 0.151058 0.0962661 0.0677246
+Kd 0.151058 0.0962661 0.0677246
+Ks 0.0112553 0.00717277 0.00504615 
 
 d 1
 
@@ -34,25 +16,25 @@ map_Bump Part1_nmap.png
 
 map_Ns Part1_spec.png
 
-newmtl Glass1Mtl
+newmtl Part2Mtl
 Material Color
-Ka 0.612066 0.275833 0.14198
-Kd 0.612066 0.275833 0.14198
-Ks 0.0888095 0.0400228 0.0206011 
+Ka 0.0915184 0.0511221 0.0328759
+Kd 0.0915184 0.0511221 0.0328759
+Ks 0.00681902 0.00380909 0.00244958 
 
-d 0.501961
+d 1
 
 Ns 0
 
-map_Ka Glass1_diff.png
-map_Kd Glass1_diff.png
-map_d Glass1_diff.png
+map_Ka Part1_diff.png
+map_Kd Part1_diff.png
+map_d Part1_diff.png
 
-map_Bump Glass1_nmap.png
+map_Bump Part1_nmap.png
 
-map_Ns Glass1_spec.png
+map_Ns Part1_spec.png
 
-newmtl Part2Mtl
+newmtl Part8Mtl
 Material Color
 Ka 0.487765 0.383775 0.186989
 Kd 0.487765 0.383775 0.186989
@@ -62,45 +44,45 @@ d 0.501961
 
 Ns 0
 
-map_Ka Part2_diff.png
-map_Kd Part2_diff.png
-map_d Part2_diff.png
-
-newmtl Part8Mtl
-Material Color
-Ka 0.151058 0.0962661 0.0677246
-Kd 0.151058 0.0962661 0.0677246
-Ks 0.0112553 0.00717277 0.00504615 
-
-d 1
-
-Ns 0
-
 map_Ka Part8_diff.png
 map_Kd Part8_diff.png
 map_d Part8_diff.png
 
-map_Bump Part8_nmap.png
-
-map_Ns Part8_spec.png
-
-newmtl Wick1Mtl
+newmtl Part7Mtl
 Material Color
-Ka 0.00715504 0.018913 0.0315514
-Kd 0.00715504 0.018913 0.0315514
-Ks 0.00028059 0.000741686 0.00123731 
+Ka 0.358654 0.234895 0.0759261
+Kd 0.358654 0.234895 0.0759261
+Ks 0.0098454 0.00644811 0.00208425 
 
 d 1
 
 Ns 0
 
-map_Ka Wick1_diff.png
-map_Kd Wick1_diff.png
-map_d Wick1_diff.png
+map_Ka Part7_diff.png
+map_Kd Part7_diff.png
+map_d Part7_diff.png
 
-map_Bump Wick1_nmap.png
+map_Bump Part7_nmap.png
 
-map_Ns Wick1_spec.png
+map_Ns Part7_spec.png
+
+newmtl Union1Mtl
+Material Color
+Ka 0.176774 0.0962661 0.0638149
+Kd 0.176774 0.0962661 0.0638149
+Ks 0.0131714 0.00717277 0.00475483 
+
+d 1
+
+Ns 0
+
+map_Ka Part1_diff.png
+map_Kd Part1_diff.png
+map_d Part1_diff.png
+
+map_Bump Part1_nmap.png
+
+map_Ns Part1_spec.png
 
 newmtl Meshpart1Mtl
 Material Color
@@ -112,29 +94,11 @@ d 1
 
 Ns 0
 
-map_Ka Part1_diff.png
-map_Kd Part1_diff.png
-map_d Part1_diff.png
+map_Ka Part7_diff.png
+map_Kd Part7_diff.png
+map_d Part7_diff.png
 
-map_Bump Part1_nmap.png
+map_Bump Part7_nmap.png
 
-map_Ns Part1_spec.png
-
-newmtl Part9Mtl
-Material Color
-Ka 0.0915184 0.0511221 0.0328759
-Kd 0.0915184 0.0511221 0.0328759
-Ks 0.00681902 0.00380909 0.00244958 
-
-d 1
-
-Ns 0
-
-map_Ka Part8_diff.png
-map_Kd Part8_diff.png
-map_d Part8_diff.png
-
-map_Bump Part8_nmap.png
-
-map_Ns Part8_spec.png
+map_Ns Part7_spec.png
 

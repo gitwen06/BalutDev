@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj78bqcfv8eo2"
-path.s3tc="res://.godot/imported/Part1_spec.png-0e8e880d9302a43489bf5ab2581531bf.s3tc.ctex"
+uid="uid://cgq18yp66us7p"
+path="res://.godot/imported/Part1_spec.png-0e8e880d9302a43489bf5ab2581531bf.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://3dmodels/bahay kubo ppack/8/Part1_spec.png"
-dest_files=["res://.godot/imported/Part1_spec.png-0e8e880d9302a43489bf5ab2581531bf.s3tc.ctex"]
+dest_files=["res://.godot/imported/Part1_spec.png-0e8e880d9302a43489bf5ab2581531bf.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

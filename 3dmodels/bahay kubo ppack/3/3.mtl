@@ -1,21 +1,3 @@
-newmtl Glass1Mtl
-Material Color
-Ka 0.612066 0.275833 0.14198
-Kd 0.612066 0.275833 0.14198
-Ks 0.0888095 0.0400228 0.0206011 
-
-d 0.501961
-
-Ns 0
-
-map_Ka Glass1_diff.png
-map_Kd Glass1_diff.png
-map_d Glass1_diff.png
-
-map_Bump Glass1_nmap.png
-
-map_Ns Glass1_spec.png
-
 newmtl Part1Mtl
 Material Color
 Ka 0.0915184 0.0511221 0.0328759
@@ -34,7 +16,25 @@ map_Bump Part1_nmap.png
 
 map_Ns Part1_spec.png
 
-newmtl Part8Mtl
+newmtl Part2Mtl
+Material Color
+Ka 0.358654 0.234895 0.0759261
+Kd 0.358654 0.234895 0.0759261
+Ks 0.0098454 0.00644811 0.00208425 
+
+d 1
+
+Ns 0
+
+map_Ka Part2_diff.png
+map_Kd Part2_diff.png
+map_d Part2_diff.png
+
+map_Bump Part2_nmap.png
+
+map_Ns Part2_spec.png
+
+newmtl Part83Mtl
 Material Color
 Ka 0.151058 0.0962661 0.0677246
 Kd 0.151058 0.0962661 0.0677246
@@ -52,79 +52,7 @@ map_Bump Part1_nmap.png
 
 map_Ns Part1_spec.png
 
-newmtl Wick1Mtl
-Material Color
-Ka 0.00715504 0.018913 0.0315514
-Kd 0.00715504 0.018913 0.0315514
-Ks 0.00028059 0.000741686 0.00123731 
-
-d 1
-
-Ns 0
-
-map_Ka Wick1_diff.png
-map_Kd Wick1_diff.png
-map_d Wick1_diff.png
-
-map_Bump Wick1_nmap.png
-
-map_Ns Wick1_spec.png
-
-newmtl Wedge1Mtl
-Material Color
-Ka 0.598942 0.529523 0.373615
-Kd 0.598942 0.529523 0.373615
-Ks 0.0164415 0.0145359 0.0102561 
-
-d 1
-
-Ns 0
-
-map_Ka Part17_diff.png
-map_Kd Part17_diff.png
-map_d Part17_diff.png
-
-map_Bump Part17_nmap.png
-
-map_Ns Part17_spec.png
-
-newmtl Part17Mtl
-Material Color
-Ka 0.358654 0.234895 0.0759261
-Kd 0.358654 0.234895 0.0759261
-Ks 0.0098454 0.00644811 0.00208425 
-
-d 1
-
-Ns 0
-
-map_Ka Part17_diff.png
-map_Kd Part17_diff.png
-map_d Part17_diff.png
-
-map_Bump Part17_nmap.png
-
-map_Ns Part17_spec.png
-
-newmtl Frame1Mtl
-Material Color
-Ka 0.124741 0.113921 0.121986
-Kd 0.124741 0.113921 0.121986
-Ks 0.0831606 0.0759473 0.0813238 
-
-d 1
-
-Ns 255
-
-map_Ka Frame1_diff.png
-map_Kd Frame1_diff.png
-map_d Frame1_diff.png
-
-map_Bump Frame1_nmap.png
-
-map_Ns Frame1_spec.png
-
-newmtl Part18Mtl
+newmtl Part3Mtl
 Material Color
 Ka 0.487765 0.383775 0.186989
 Kd 0.487765 0.383775 0.186989
@@ -134,7 +62,25 @@ d 0.501961
 
 Ns 0
 
-map_Ka Part18_diff.png
-map_Kd Part18_diff.png
-map_d Part18_diff.png
+map_Ka Part3_diff.png
+map_Kd Part3_diff.png
+map_d Part3_diff.png
+
+newmtl Meshpart1Mtl
+Material Color
+Ka 0.598942 0.529523 0.373615
+Kd 0.598942 0.529523 0.373615
+Ks 0.0164415 0.0145359 0.0102561 
+
+d 1
+
+Ns 0
+
+map_Ka Part2_diff.png
+map_Kd Part2_diff.png
+map_d Part2_diff.png
+
+map_Bump Part2_nmap.png
+
+map_Ns Part2_spec.png
 
