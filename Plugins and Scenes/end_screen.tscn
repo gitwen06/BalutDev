@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b3yo2jtike1t7"]
+
+[node name="EndScreen" type="Control" unique_id=593274010]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=659441791]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(48.014004, 27.043415)
+color = Color(0.15127608, 0.15127608, 0.15127608, 1)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=556919528]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.23355682, 1)
+text = "YOU BEAT THEA GAME"

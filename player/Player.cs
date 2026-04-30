@@ -140,12 +140,13 @@ private void EquipItem(int index)
 			GlobalVariables.Instance.target = null;
 		}
 
-		if (GlobalVariables.Instance != null && GlobalVariables.Instance.target != null && (GlobalVariables.Instance.target.IsInGroup("interactables") || GlobalVariables.Instance.target.IsInGroup("pickables") || GlobalVariables.Instance.target.IsInGroup("batteries") || GlobalVariables.Instance.target.IsInGroup("Characters"))) {
+		if (GlobalVariables.Instance != null && GlobalVariables.Instance.target != null && (GlobalVariables.Instance.target.IsInGroup("interactables") || GlobalVariables.Instance.target.IsInGroup("pickables") || GlobalVariables.Instance.target.IsInGroup("batteries") || GlobalVariables.Instance.target.IsInGroup("Characters") || GlobalVariables.Instance.target.IsInGroup("drinks"))) {
 			
 		if(!GlobalVariables.Instance.isTalking) {
 			interactBtn.Visible = true;
 			
 			if (Input.IsActionJustPressed("interact")) {
+				//interact system for batteries
 				if(GlobalVariables.Instance.target.IsInGroup("batteries")) {
 					GlobalVariables.Instance.FlashlightBattery += 25.0f;
 					GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
@@ -158,6 +159,7 @@ private void EquipItem(int index)
 					GlobalVariables.Instance.target = null;
 					interactBtn.Visible = false;
 				}
+				//interact system for characters
 				else if(GlobalVariables.Instance.target.IsInGroup("Characters")) {
 					GlobalVariables.Instance.isTalking = true;
 					Input.MouseMode = Input.MouseModeEnum.Visible;
@@ -181,6 +183,21 @@ private void EquipItem(int index)
 					
 					GlobalVariables.Instance.target = null;
 				}
+				//interact system for drinks
+				else if(GlobalVariables.Instance.target.IsInGroup("drinks")) {
+					GlobalVariables.Instance.stamina += 50.0f;
+					GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
+					Node parent = GlobalVariables.Instance.target.GetParent();
+					if (parent != null && parent is Node3D && parent.Name != "Interactables") {
+						parent.QueueFree();
+					} else {
+						GlobalVariables.Instance.target.QueueFree();
+					}
+					GlobalVariables.Instance.target = null;
+					interactBtn.Visible = false;
+					
+				}
+				//pick up system
 				else if (GlobalVariables.Instance.AddItem(GlobalVariables.Instance.target.Name)) {
 					GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
 					Node parent = GlobalVariables.Instance.target.GetParent();
@@ -198,7 +215,6 @@ private void EquipItem(int index)
 	else {
 		if(!GlobalVariables.Instance.isTalking) {
 			interactBtn.Visible = false;
-			interactBtn.Text = "Press E to Interact";
 		}
 	}
 		

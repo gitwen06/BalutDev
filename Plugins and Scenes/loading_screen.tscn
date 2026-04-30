@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b77iebptc6fkj"]
+
+[ext_resource type="Script" uid="uid://4bnuxqb343qp" path="res://LoadingScreen.cs" id="1_xhlvw"]
+
+[node name="LoadingScreen" type="Control" unique_id=82129219]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xhlvw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1859706782]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(47.960003, 26.880003)
+color = Color(0.16924527, 0.1692453, 0.16924527, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1720244104]
+layout_mode = 0
+offset_left = 926.0
+offset_top = 716.00006
+offset_right = 930.0
+offset_bottom = 743.00006
+scale = Vector2(20, 7.24)
+
+[node name="Label" type="Label" parent="." unique_id=327251356]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(26.256306, 20.118979)
+text = "LOADING"
+autowrap_trim_flags = 0

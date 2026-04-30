@@ -1,0 +1,196 @@
+newmtl Part1Mtl
+Material Color
+Ka 0.0915184 0.0511221 0.0328759
+Kd 0.0915184 0.0511221 0.0328759
+Ks 0.00681902 0.00380909 0.00244958 
+
+d 1
+
+Ns 0
+
+map_Ka Part1_diff.png
+map_Kd Part1_diff.png
+map_d Part1_diff.png
+
+map_Bump Part1_nmap.png
+
+map_Ns Part1_spec.png
+
+newmtl MidTile1Mtl
+Material Color
+Ka 0.358654 0.234895 0.0759261
+Kd 0.358654 0.234895 0.0759261
+Ks 0.0098454 0.00644811 0.00208425 
+
+d 1
+
+Ns 0
+
+map_Ka MidTile1_diff.png
+map_Kd MidTile1_diff.png
+map_d MidTile1_diff.png
+
+map_Bump MidTile1_nmap.png
+
+map_Ns MidTile1_spec.png
+
+newmtl MidTile2Mtl
+Material Color
+Ka 0.487765 0.383775 0.186989
+Kd 0.487765 0.383775 0.186989
+Ks 0.0133896 0.010535 0.00513302 
+
+d 0.501961
+
+Ns 0
+
+map_Ka MidTile2_diff.png
+map_Kd MidTile2_diff.png
+map_d MidTile2_diff.png
+
+newmtl KursiTradisionalGroup1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka KursiTradisionalGroup1_diff.png
+map_Kd KursiTradisionalGroup1_diff.png
+map_d KursiTradisionalGroup1_diff.png
+
+newmtl Bush1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0666667 0.0666667 0.0666667 
+
+d 0.803922
+
+Ns 0
+
+map_Ka Bush1_diff.png
+map_Kd Bush1_diff.png
+map_d Bush1_diff.png
+
+newmtl Part8Mtl
+Material Color
+Ka 0.151058 0.0962661 0.0677246
+Kd 0.151058 0.0962661 0.0677246
+Ks 0.0112553 0.00717277 0.00504615 
+
+d 1
+
+Ns 0
+
+map_Ka Part1_diff.png
+map_Kd Part1_diff.png
+map_d Part1_diff.png
+
+map_Bump Part1_nmap.png
+
+map_Ns Part1_spec.png
+
+newmtl Trunk1Mtl
+Material Color
+Ka 0.151058 0.0938759 0.0563741
+Kd 0.151058 0.0938759 0.0563741
+Ks 0.0100705 0.00625839 0.00375827 
+
+d 1
+
+Ns 0
+
+map_Ka Trunk1_diff.png
+map_Kd Trunk1_diff.png
+map_d Trunk1_diff.png
+
+map_Bump Trunk1_nmap.png
+
+map_Ns Trunk1_spec.png
+
+newmtl Doorframe1Mtl
+Material Color
+Ka 0.329729 0.329729 0.329729
+Kd 0.329729 0.329729 0.329729
+Ks 0.0181028 0.0181028 0.0181028 
+
+d 1
+
+Ns 0
+
+map_Ka Doorframe1_diff.png
+map_Kd Doorframe1_diff.png
+map_d Doorframe1_diff.png
+
+map_Bump Doorframe1_nmap.png
+
+map_Ns Doorframe1_spec.png
+
+newmtl Doorframe2Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.054902 0.054902 0.054902 
+
+d 0.752941
+
+Ns 0
+
+map_Ka Doorframe2_diff.png
+map_Kd Doorframe2_diff.png
+map_d Doorframe2_diff.png
+
+newmtl Knob1Mtl
+Material Color
+Ka 0.2468 0.2468 0.2468
+Kd 0.2468 0.2468 0.2468
+Ks 0.164534 0.164534 0.164534 
+
+d 1
+
+Ns 255
+
+map_Ka Knob1_diff.png
+map_Kd Knob1_diff.png
+map_d Knob1_diff.png
+
+map_Bump Knob1_nmap.png
+
+map_Ns Knob1_spec.png
+
+newmtl Leaves1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.027451 0.027451 0.027451 
+
+d 0.901961
+
+Ns 0
+
+map_Ka Leaves1_diff.png
+map_Kd Leaves1_diff.png
+map_d Leaves1_diff.png
+
+newmtl Wedge1Mtl
+Material Color
+Ka 0.598942 0.529523 0.373615
+Kd 0.598942 0.529523 0.373615
+Ks 0.0164415 0.0145359 0.0102561 
+
+d 1
+
+Ns 0
+
+map_Ka MidTile1_diff.png
+map_Kd MidTile1_diff.png
+map_d MidTile1_diff.png
+
+map_Bump MidTile1_nmap.png
+
+map_Ns MidTile1_spec.png
+

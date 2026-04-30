@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dgiv6nq0x316w"]
+
+[ext_resource type="Script" uid="uid://b2uenkuq1seej" path="res://MainMenu.cs" id="1_0gmou"]
+[ext_resource type="ArrayMesh" uid="uid://jm6slbm7uxto" path="res://3dmodels/bahay kubo ppack/FORESTBAHAYFINAL/fwefaw.obj" id="2_eod7h"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_frqjx"]
+sky_top_color = Color(0.11274598, 0.14308149, 0.18352753, 1)
+sky_horizon_color = Color(0.23733175, 0.12120686, 0.036928944, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_rpkni"]
+sky_material = SubResource("ProceduralSkyMaterial_frqjx")
+
+[sub_resource type="Environment" id="Environment_ir80r"]
+background_mode = 2
+background_energy_multiplier = 5.0
+sky = SubResource("Sky_rpkni")
+ambient_light_color = Color(0.5497007, 0.21307522, 0.05480285, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.4
+reflected_light_source = 2
+tonemap_mode = 3
+sdfgi_read_sky_light = false
+glow_enabled = true
+fog_sky_affect = 0.0
+fog_depth_curve = 0.353553
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0283
+volumetric_fog_albedo = Color(0.25900555, 0.14404058, 0.06834433, 1)
+volumetric_fog_emission = Color(0.2457405, 0.15314594, 0.066423416, 1)
+volumetric_fog_emission_energy = 0.1
+adjustment_enabled = true
+adjustment_brightness = 0.75
+
+[node name="MainMenu" type="Node3D" unique_id=1343846555]
+script = ExtResource("1_0gmou")
+
+[node name="Fwefaw" type="MeshInstance3D" parent="." unique_id=1051966608]
+transform = Transform3D(-0.021867245, 0, 0.99976087, 0, 1, 0, -0.99976087, 0, -0.021867245, 1.9769089, 9.839755, -20.157259)
+mesh = ExtResource("2_eod7h")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1414377087]
+environment = SubResource("Environment_ir80r")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=646257926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.109042, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=849044783]
+transform = Transform3D(-0.6406325, 0, -0.76784766, 0, 1, 0, 0.76784766, 0, -0.6406325, -17.612263, 5.109042, -21.476973)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=264531253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.838247, 7.4873667)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=283512465]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -33.0
+offset_right = 41.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.0719616, 2.694986)
+size_flags_horizontal = 0
+
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=801594919]
+layout_mode = 2
+text = "PLAY"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=543176552]
+layout_mode = 2
+text = "SETTINGS"
