@@ -1,23 +1,23 @@
 ~ start
 Aling Neneng: [[Hi|Hello|Howdy]] 'nak, penge naman ako niyang balut.
-
 - Sige
 	Aling Neneng: Salamat naman iho...
 	Aling Neneng: Ang baho naman nito iho.
-
+	=> END
 - Ayaw ko po
 	Aling Neneng: Kaya ginawa kang ampon.
 	- Sorry po
-		Aling Neneng: Mabuti nagpaumanhin ka saaking apo, mabuti yun. => start
+		Aling Neneng: Mabuti nagpaumanhin ka saaking apo, mabuti yun.
+		=> END
 	- ...
-		Aling Neneng: O ano, wala ka ng masagot => END
-	
-- Ano po ulit sabi niyo? => start
+		Aling Neneng: O ano, wala ka ng masagot
+		=> END
+- Give Balut
+	do GlobalVariables.Instance.GiveBalut(1)
+	Aling Neneng: salamats hey
+	=> END
 
-- tangina mo 
-	Aling Neneng: putangina mo.
-	Aling Neneng: Alam moba ampon ka.
-	Aling Neneng: Kaya nga iniwan ka ng mama mo. => END
 
-Aling Neneng: Magdadala ka ng
+~ no_balut
+Aling Neneng: walang balut hey
 => END

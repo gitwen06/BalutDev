@@ -13,7 +13,6 @@ public partial class Player : CharacterBody3D
 	private Node3D headBone;
 	private Button interactBtn;
 	private Node3D hand;
-	private Node3D currentItem;
 
 	// ============= CAMERA BOB & EFFECTS =============
 	private float bobTime = 0f;
@@ -56,62 +55,100 @@ public partial class Player : CharacterBody3D
 	}
 
 	// ================= HOTBAR FUNCTION =================
-private void EquipItem(int index)
-{
-	// my ass is too lazy to call it gvi mb
-	var g = GlobalVariables.Instance;
-	string itemName = g.GetItem(index);
-	
-	//remoive any item on hand (i think)
-	if (currentItem != null) {
-		// Turn off flashlight before deleting if it's a flashlight
-		if (currentItem.Name.ToString().Contains("flashlight")) {
-			currentItem.Call("shutOffFlashlight");
+	private void EquipItem(int index)
+	{
+		// hi im currently coding the logic for this balut system and its been 2 hours and its been 2 hours and its been 2 hours and its been 2 hours and its been 2 hours
+		var g = GlobalVariables.Instance;
+		if (index < 0)
+		{
+			if (g.currentItem != null)
+			{
+				if (g.currentItem.Name.ToString().Contains("flashlight"))
+				{
+					g.currentItem.Call("shutOffFlashlight");
+				}
+				else
+				{
+					g.currentItem.QueueFree();
+				}
+				g.currentItem = null;
+			}
+			GD.Print("Unequipped Item");
+			return;
 		}
-		currentItem.QueueFree();
-		currentItem = null;
-	}
-	g.equippedIndex = index;
-	
-	if (string.IsNullOrEmpty(itemName)) {
-		GD.Print("Unequipped Item");
-		return; //double check
-	}
-	
-	// for loading the item and such
-	// Shell/JM make sure the added "pickable item" is named the same as the .tscn file like
-	// RigidBody3D = flashlight
-	// Items folder = flashlight.tscn
-	
-	string itemPath = $"res://items/{itemName}.tscn";
-	if(ResourceLoader.Exists(itemPath)) {
-		var scene = GD.Load<PackedScene>(itemPath);
-		currentItem = (Node3D)scene.Instantiate();
+
+		string itemName = g.GetItem(index);
+		GD.Print($"Equipping item: {itemName}");
 		
-		//attached to the hand node 3d
-		hand.AddChild(currentItem);
-		currentItem.Visible = true;
-		currentItem.TopLevel = false;
-		currentItem.GlobalTransform = hand.GlobalTransform;
+		if (g.currentItem != null) {
+			if (g.currentItem.Name.ToString().Contains("flashlight")) {
+				g.currentItem.Call("shutOffFlashlight");
+			}
+
+			// FIX: removed incorrect balut world-move logic that caused instant unequip loop
+			g.currentItem.QueueFree();
+			g.currentItem = null;
+		}
+
+		g.equippedIndex = index;
 		
-		if (currentItem is CollisionObject3D physicsItem) {
-			physicsItem.CollisionLayer = 0;
-			physicsItem.CollisionMask = 0;
+		if (string.IsNullOrEmpty(itemName)) {
+			GD.Print("Unequipped Item");
+			return;
 		}
-		// so rigidbody3d DOESN'T SPIN WHAT THE FUCK
-		if (currentItem is RigidBody3D rb) {
-			rb.Freeze = true;
-			rb.LinearVelocity = Vector3.Zero;
-			rb.AngularVelocity = Vector3.Zero;
+		// for loading the item and such
+		// Shell/JM make sure the added "pickable item" is named the same as the .tscn file like
+		// RigidBody3D = flashlight
+		// Items folder = flashlight.tscn
+
+		string itemPath = $"res://items/{itemName}.tscn";
+		if(ResourceLoader.Exists(itemPath)) {
+			var scene = GD.Load<PackedScene>(itemPath);
+			g.currentItem = (Node3D)scene.Instantiate();
+			GD.Print($"Instantiated item: {g.currentItem.Name}");
+			
+			hand.AddChild(g.currentItem);
+			GD.Print($"Added to hand. Current parent: {g.currentItem.GetParent().Name}");
+			
+			g.currentItem.Visible = true;
+			g.currentItem.TopLevel = false;
+			g.currentItem.GlobalTransform = hand.GlobalTransform;
+			
+			if (g.currentItem is CollisionObject3D physicsItem) {
+				physicsItem.CollisionLayer = 0;
+				physicsItem.CollisionMask = 0;
+			}
+			if (g.currentItem is RigidBody3D rb) {
+				rb.Freeze = true;
+				rb.LinearVelocity = Vector3.Zero;
+				rb.AngularVelocity = Vector3.Zero;
+			}
+			g.currentItem.Position = Vector3.Zero;
+			g.currentItem.Rotation = Vector3.Zero;
+			g.currentItem.Scale = Vector3.One;
+			
+			if(g.currentItem.Name.ToString().Contains("balut")) {
+				g.balutModel = g.currentItem;
+				GD.Print($"✓ Balut assigned to GlobalVariables");
+				GD.Print($"  Item name: {g.currentItem.Name}");
+				GD.Print($"  Parent: {g.currentItem.GetParent().Name}");
+			}
 		}
-		currentItem.Position = Vector3.Zero;
-		currentItem.Rotation = Vector3.Zero;
-		currentItem.Scale = Vector3.One;
+		else {
+			GD.PrintErr($"EquipItem: Could not find scene at {itemPath}");
+		}
 	}
-	else {
-		GD.PrintErr($"EquipItem: Could not find scene at {itemPath}");
+
+	//REMOVE TARGET SO YOU DONT HAVE TO REPEAT THIS LINE EVERY TIME!!!!!!!!!!!!!!!!!!!!!!
+	private void RemoveTarget(Node target)
+	{
+		Node parent = target.GetParent();
+		if (parent != null && parent is Node3D && parent.Name != "Interactables") {
+			parent.QueueFree();
+		} else {
+			target.QueueFree();
+		}
 	}
-}
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -141,30 +178,23 @@ private void EquipItem(int index)
 		}
 
 		if (GlobalVariables.Instance != null && GlobalVariables.Instance.target != null && (GlobalVariables.Instance.target.IsInGroup("interactables") || GlobalVariables.Instance.target.IsInGroup("pickables") || GlobalVariables.Instance.target.IsInGroup("batteries") || GlobalVariables.Instance.target.IsInGroup("Characters") || GlobalVariables.Instance.target.IsInGroup("drinks"))) {
-			
 		if(!GlobalVariables.Instance.isTalking) {
 			interactBtn.Visible = true;
 			
+			//Interact system for batteries
 			if (Input.IsActionJustPressed("interact")) {
-				//interact system for batteries
 				if(GlobalVariables.Instance.target.IsInGroup("batteries")) {
 					GlobalVariables.Instance.FlashlightBattery += 25.0f;
 					GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
-					Node parent = GlobalVariables.Instance.target.GetParent();
-					if (parent != null && parent is Node3D && parent.Name != "Interactables") {
-						parent.QueueFree();
-					} else {
-						GlobalVariables.Instance.target.QueueFree();
-					}
+					RemoveTarget(GlobalVariables.Instance.target);
 					GlobalVariables.Instance.target = null;
 					interactBtn.Visible = false;
 				}
-				//interact system for characters
+				//interact system for character
 				else if(GlobalVariables.Instance.target.IsInGroup("Characters")) {
 					GlobalVariables.Instance.isTalking = true;
 					Input.MouseMode = Input.MouseModeEnum.Visible;
 					interactBtn.Visible = false;
-					
 					//variable for character name(AREA3D NAME MUST BE THE SAME AS "file.dialogue" you're a dumbass if u dont follo wthis
 					string characterName = GlobalVariables.Instance.target.Name.ToString().ToLower();
 					string dialoguePath = $"res://Dialogues/{characterName}.dialogue";
@@ -178,34 +208,20 @@ private void EquipItem(int index)
 						GlobalVariables.Instance.isTalking = false;
 					}
 					
-					// Listen for dialogue finish
-					DialogueManager.DialogueEnded += OnDialogueEnded;
-					
 					GlobalVariables.Instance.target = null;
 				}
-				//interact system for drinks
+				//Interact system for drinks
 				else if(GlobalVariables.Instance.target.IsInGroup("drinks")) {
 					GlobalVariables.Instance.stamina += 50.0f;
 					GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
-					Node parent = GlobalVariables.Instance.target.GetParent();
-					if (parent != null && parent is Node3D && parent.Name != "Interactables") {
-						parent.QueueFree();
-					} else {
-						GlobalVariables.Instance.target.QueueFree();
-					}
+					RemoveTarget(GlobalVariables.Instance.target);
 					GlobalVariables.Instance.target = null;
 					interactBtn.Visible = false;
-					
 				}
-				//pick up system
+				//Interact system for pickups
 				else if (GlobalVariables.Instance.AddItem(GlobalVariables.Instance.target.Name)) {
 					GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
-					Node parent = GlobalVariables.Instance.target.GetParent();
-					if (parent != null && parent is Node3D && parent.Name != "Interactables") {
-						parent.QueueFree();
-					} else {
-						GlobalVariables.Instance.target.QueueFree();
-					}
+					RemoveTarget(GlobalVariables.Instance.target);
 					GlobalVariables.Instance.target = null;
 					interactBtn.Visible = false;
 				}
@@ -217,7 +233,6 @@ private void EquipItem(int index)
 			interactBtn.Visible = false;
 		}
 	}
-		
 		// CROUCH
 		if (Input.IsActionJustPressed("crouch"))
 		{
@@ -237,15 +252,12 @@ private void EquipItem(int index)
 				playerCamera.Position = playerCamera.Position with { Y = playerCamera.Position.Y * 2f };
 			}
 		}
-
 		// GRAVITY
 		if (!IsOnFloor())
 			velocity += GetGravity() * deltaF;
-
 		// JUMP
 		if (Input.IsActionJustPressed("jump") && IsOnFloor() && !g.isCrouching)
 			velocity.Y = GlobalVariables.JumpVelocity;
-
 		// MOVEMENT
 		Vector2 inputDir = Input.GetVector("left", "right", "forward", "backward");
 		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
@@ -254,7 +266,6 @@ private void EquipItem(int index)
 
 		bool isInputMoving = direction != Vector3.Zero;
 		bool tryingToRun = Input.IsActionPressed("run") && !g.isCrouching;
-
 		// RUN + STAMINA
 		if (tryingToRun && g.stamina > 0f && isInputMoving)
 		{
@@ -275,7 +286,6 @@ private void EquipItem(int index)
 		}
 
 		g.stamina = Mathf.Clamp(g.stamina, 0f, g.maxStamina);
-
 		// CAMERA BOB
 		if (playerCamera != null && IsOnFloor())
 		{
@@ -301,7 +311,6 @@ private void EquipItem(int index)
 				bobTime = 0f;
 			}
 		}
-
 		// APPLY MOVEMENT
 		if (isInputMoving)
 		{
@@ -317,14 +326,12 @@ private void EquipItem(int index)
 		Velocity = velocity;
 		MoveAndSlide();
 	}
-	
 	// ================= UNLOCK MOUSE WHEN DIALOGUE ENDS ================
 	private void OnDialogueEnded(Resource resource) {
 		GlobalVariables.Instance.isTalking = false;
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		DialogueManager.DialogueEnded -= OnDialogueEnded;
 	}
-
 	// ================= INPUT =================
 	public override void _Input(InputEvent @event)
 	{
