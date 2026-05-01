@@ -7,7 +7,7 @@ public partial class CharacterMonster : CharacterBody3D
 	private AnimationPlayer animPlayer;
 	private Skeleton3D skeleton;
 	private Area3D jumpscareArea;
-	private float hearingRange = 15.0f;
+	private float hearingRange = 0.000001f;
 	private float chaseSpeed = 5.0f;
 	private float patrolSpeed = 2.0f;
 	private Vector3 velocity = Vector3.Zero;

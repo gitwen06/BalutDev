@@ -81,7 +81,7 @@ func _physics_process(delta: float) -> void:
 	# IF the flsahlight is turned on, the battery's capacity will drain
 	if isOn:
 		# Indicator how fast the flashlight drains its battery
-		batteryPower.value -= 1 * delta
+		batteryPower.value -= 0.2 * delta
 		GlobalVariables.FlashlightBattery = batteryPower.value
 		# If battery capacity ran out, it'll shutopff the flashlight
 		if batteryPower.value <= 0:

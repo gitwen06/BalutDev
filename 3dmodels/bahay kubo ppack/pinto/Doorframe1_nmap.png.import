@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdnxd2ccupbl8"
-path.s3tc="res://.godot/imported/Knob1_diff.png-ab1d5c43c09c44ef380af101ecd8362e.s3tc.ctex"
+uid="uid://cbepwkvqk3mjs"
+path.s3tc="res://.godot/imported/Doorframe1_nmap.png-0c432b11564579bce67ab8287093632a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://3dmodels/bahay kubo ppack/pinto/Knob1_diff.png"
-dest_files=["res://.godot/imported/Knob1_diff.png-ab1d5c43c09c44ef380af101ecd8362e.s3tc.ctex"]
+source_file="res://3dmodels/bahay kubo ppack/pinto/Doorframe1_nmap.png"
+dest_files=["res://.godot/imported/Doorframe1_nmap.png-0c432b11564579bce67ab8287093632a.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +22,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://3dmodels/bahay kubo ppack/pinto/Doorframe1_nmap.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

@@ -65,6 +65,16 @@ public partial class GlobalVariables : Node
 	public Node playerFlashlight = null;
 	public float FlashlightBattery = 100.0f;
 	
+	// NPC DESPAWN
+	public Node3D spawnedNPC = null; // Track spawned NPC
+	public void RemoveNPC()
+	{
+		if (spawnedNPC != null && IsInstanceValid(spawnedNPC))
+		{
+			spawnedNPC.QueueFree();
+			spawnedNPC = null;
+		}
+	}
 	// ============= BALUT VARIABLES =============
 	public int balutAmount = 5;
 	public Node balutModel = null;

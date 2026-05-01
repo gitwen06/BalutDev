@@ -31,7 +31,5 @@ public partial class Balut : RigidBody3D
 				displayAmount.Text = $"{g.balutAmount} / 5 Balut";
 			}
 		}
-
-		GD.Print($"Parent: {parent?.Name}, InHand: {inHand}, Amount: {g.balutAmount}");
 	}
 }

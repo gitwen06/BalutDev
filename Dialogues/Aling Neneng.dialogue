@@ -1,8 +1,9 @@
 ~ start
 Aling Neneng: [[Hi|Hello|Howdy]] 'nak, penge naman ako niyang balut.
 - Sige
+	do GlobalVariables.Instance.GiveBalut(1)
 	Aling Neneng: Salamat naman iho...
-	Aling Neneng: Ang baho naman nito iho.
+	do GlobalVariables.Instance.RemoveNPC()
 	=> END
 - Ayaw ko po
 	Aling Neneng: Kaya ginawa kang ampon.
@@ -12,12 +13,7 @@ Aling Neneng: [[Hi|Hello|Howdy]] 'nak, penge naman ako niyang balut.
 	- ...
 		Aling Neneng: O ano, wala ka ng masagot
 		=> END
-- Give Balut
-	do GlobalVariables.Instance.GiveBalut(1)
-	Aling Neneng: salamats hey
-	=> END
-
 
 ~ no_balut
-Aling Neneng: walang balut hey
+Aling Neneng: Wala ka namang balut na dala! Inuuto mo ba ako!?
 => END
