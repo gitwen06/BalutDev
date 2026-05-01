@@ -67,10 +67,8 @@ public partial class Player : CharacterBody3D
 				{
 					g.currentItem.Call("shutOffFlashlight");
 				}
-				else
-				{
-					g.currentItem.QueueFree();
-				}
+				//dont ever modify this this single line will crash the whole game if removed
+				g.currentItem.QueueFree();
 				g.currentItem = null;
 			}
 			GD.Print("Unequipped Item");
@@ -84,8 +82,6 @@ public partial class Player : CharacterBody3D
 			if (g.currentItem.Name.ToString().Contains("flashlight")) {
 				g.currentItem.Call("shutOffFlashlight");
 			}
-
-			// FIX: removed incorrect balut world-move logic that caused instant unequip loop
 			g.currentItem.QueueFree();
 			g.currentItem = null;
 		}

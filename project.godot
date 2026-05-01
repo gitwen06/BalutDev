@@ -52,6 +52,7 @@ pickables=""
 batteries=""
 Characters=""
 drinks=""
+player=""
 
 [input]
 

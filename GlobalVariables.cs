@@ -22,7 +22,7 @@ public partial class GlobalVariables : Node
 	public float stamina = 100.0f;
 	public float regenDelayTimer = 0f;
 	public const float RegenDelay = 2.25f; 
-	public const float StaminaDrainRate = 10f; 
+	public const float StaminaDrainRate = 5f; 
 	public const float StaminaRegenRate = 10f; 
 	
 	// ============= PLAYER STATE =============
