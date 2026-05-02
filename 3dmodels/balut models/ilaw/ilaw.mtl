@@ -1,0 +1,52 @@
+newmtl Part1Mtl
+Material Color
+Ka 0.14198 0.0477758 0.0169881
+Kd 0.14198 0.0477758 0.0169881
+Ks 0.007795 0.00262298 0.000932677 
+
+d 1
+
+Ns 0
+
+map_Ka Part1_diff.png
+map_Kd Part1_diff.png
+map_d Part1_diff.png
+
+map_Bump Part1_nmap.png
+
+map_Ns Part1_spec.png
+
+newmtl Meshpart1Mtl
+Material Color
+Ka 0.812241 1 0.932277
+Kd 0.812241 1 0.932277
+Ks 0.812241 1 0.932277 
+
+d 0.701961
+
+Ns 0
+
+map_Ka Meshpart1_diff.png
+map_Kd Meshpart1_diff.png
+map_d Meshpart1_diff.png
+
+map_Bump Meshpart1_nmap.png
+
+map_Ns Meshpart1_spec.png
+
+newmtl Yero1Mtl
+Material Color
+Ka 0.124741 0.113921 0.121986
+Kd 0.124741 0.113921 0.121986
+Ks 0.0494072 0.0451216 0.0483159 
+
+d 1
+
+Ns 0
+
+map_Ka Yero1_diff.png
+map_Kd Yero1_diff.png
+map_d Yero1_diff.png
+
+map_Bump Yero1_nmap.png
+

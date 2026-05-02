@@ -1,0 +1,11 @@
+Model Information:
+* title:	Mapped Bottle Media Resolution
+* source:	https://sketchfab.com/3d-models/mapped-bottle-media-resolution-33dedbfe99e24379a422db4d5c809752
+* author:	Francesco Coldesina (https://sketchfab.com/topfrank2013)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Mapped Bottle Media Resolution" (https://sketchfab.com/3d-models/mapped-bottle-media-resolution-33dedbfe99e24379a422db4d5c809752) by Francesco Coldesina (https://sketchfab.com/topfrank2013) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,124 @@
+newmtl Part1Mtl
+Material Color
+Ka 0.320382 0.547994 0.715465
+Kd 0.320382 0.547994 0.715465
+Ks 0.320382 0.547994 0.715465 
+
+d 0.65098
+
+Ns 0
+
+map_Ka Part1_diff.png
+map_Kd Part1_diff.png
+map_d Part1_diff.png
+
+map_Bump Part1_nmap.png
+
+map_Ns Part1_spec.png
+
+newmtl Meshpart1Mtl
+Material Color
+Ka 0.0302565 0.275833 0.0477758
+Kd 0.0302565 0.275833 0.0477758
+Ks 0.011984 0.109251 0.0189229 
+
+d 1
+
+Ns 0
+
+map_Ka Meshpart1_diff.png
+map_Kd Meshpart1_diff.png
+map_d Meshpart1_diff.png
+
+map_Bump Meshpart1_nmap.png
+
+newmtl Egg1Mtl
+Material Color
+Ka 0.505432 0.45908 0.394083
+Kd 0.505432 0.45908 0.394083
+Ks 0.0336955 0.0306053 0.0262722 
+
+d 1
+
+Ns 0
+
+map_Ka Egg1_diff.png
+map_Kd Egg1_diff.png
+map_d Egg1_diff.png
+
+map_Bump Egg1_nmap.png
+
+map_Ns Egg1_spec.png
+
+newmtl SawSawan1Mtl
+Material Color
+Ka 0.708298 0.238828 0.0494335
+Kd 0.708298 0.238828 0.0494335
+Ks 0.0388869 0.0131121 0.00271399 
+
+d 1
+
+Ns 0
+
+map_Ka SawSawan1_diff.png
+map_Kd SawSawan1_diff.png
+map_d SawSawan1_diff.png
+
+map_Bump SawSawan1_nmap.png
+
+map_Ns SawSawan1_spec.png
+
+newmtl Handle1Mtl
+Material Color
+Ka 0.358654 0.234895 0.0759261
+Kd 0.358654 0.234895 0.0759261
+Ks 0.142055 0.093037 0.0300727 
+
+d 1
+
+Ns 0
+
+map_Ka Meshpart1_diff.png
+map_Kd Meshpart1_diff.png
+map_d Meshpart1_diff.png
+
+map_Bump Meshpart1_nmap.png
+
+newmtl Asin1Mtl
+Material Color
+Ka 0.940601 0.940601 0.940601
+Kd 0.940601 0.940601 0.940601
+Ks 0.0516408 0.0516408 0.0516408 
+
+d 1
+
+Ns 0
+
+map_Ka SawSawan1_diff.png
+map_Kd SawSawan1_diff.png
+map_d SawSawan1_diff.png
+
+map_Bump SawSawan1_nmap.png
+
+map_Ns SawSawan1_spec.png
+
+newmtl Basket1Mtl
+Material Color
+Ka 0.447871 0.230998 0.12753
+Kd 0.447871 0.230998 0.12753
+Ks 0.024589 0.0126823 0.00700164 
+
+d 1
+
+Ns 0
+
+map_Ka Basket1_diff.png
+map_Kd Basket1_diff.png
+map_d Basket1_diff.png
+
+map_Bump Basket1_nmap.png
+
+map_Ns Basket1_spec.png
+
+rbx_doublesided 1
+
