@@ -2,23 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3iskuau8x72c"
-path="res://.godot/imported/Untitled_Wall1_nmap.png-8a618611080609cc8a17198c2cfbad48.ctex"
+uid="uid://ccu24hvrxb3md"
+path.s3tc="res://.godot/imported/Untitled_Wall1_nmap.png-8a618611080609cc8a17198c2cfbad48.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "1c6d6c234451fa3fc35ab0ac4cbc5e04"
+"md5": "2ff1f40c5b4eac6e94ff6021e2d48847"
 }
 
 [deps]
 
 source_file="res://3dmodels/bahay kubo ppack/1/Untitled_Wall1_nmap.png"
-dest_files=["res://.godot/imported/Untitled_Wall1_nmap.png-8a618611080609cc8a17198c2cfbad48.ctex"]
+dest_files=["res://.godot/imported/Untitled_Wall1_nmap.png-8a618611080609cc8a17198c2cfbad48.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

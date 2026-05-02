@@ -2,23 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://druwvi5q70f3c"
-path="res://.godot/imported/Untitled_Wall1_diff.png-ac83b7af98bbe944d601ebc9d2ffcdc1.ctex"
+uid="uid://y6ed0fdvvm2l"
+path.s3tc="res://.godot/imported/Untitled_Wall1_diff.png-ac83b7af98bbe944d601ebc9d2ffcdc1.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "bf8a7b327b3e56338d87c000d125fc34"
+"md5": "744a8e1efbf1693da2f27cb5d551936b"
 }
 
 [deps]
 
 source_file="res://3dmodels/bahay kubo ppack/1/Untitled_Wall1_diff.png"
-dest_files=["res://.godot/imported/Untitled_Wall1_diff.png-ac83b7af98bbe944d601ebc9d2ffcdc1.ctex"]
+dest_files=["res://.godot/imported/Untitled_Wall1_diff.png-ac83b7af98bbe944d601ebc9d2ffcdc1.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

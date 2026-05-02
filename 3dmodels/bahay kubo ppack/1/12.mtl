@@ -1,0 +1,36 @@
+newmtl Frame1Mtl
+Material Color
+Ka 0.151058 0.0962661 0.0677246
+Kd 0.151058 0.0962661 0.0677246
+Ks 0.00829338 0.0052852 0.00371821 
+
+d 1
+
+Ns 0
+
+map_Ka Frame1_diff.png
+map_Kd Frame1_diff.png
+map_d Frame1_diff.png
+
+map_Bump Frame1_nmap.png
+
+map_Ns Frame1_spec.png
+
+newmtl Wall1Mtl
+Material Color
+Ka 0.659224 0.523443 0.311181
+Kd 0.659224 0.523443 0.311181
+Ks 0.0180963 0.014369 0.00854221 
+
+d 1
+
+Ns 0
+
+map_Ka Wall1_diff.png
+map_Kd Wall1_diff.png
+map_d Wall1_diff.png
+
+map_Bump Wall1_nmap.png
+
+map_Ns Wall1_spec.png
+

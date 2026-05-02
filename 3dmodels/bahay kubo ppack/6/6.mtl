@@ -1,22 +1,4 @@
-newmtl Part1Mtl
-Material Color
-Ka 0.0915184 0.0511221 0.0328759
-Kd 0.0915184 0.0511221 0.0328759
-Ks 0.00681902 0.00380909 0.00244958 
-
-d 1
-
-Ns 0
-
-map_Ka Part1_diff.png
-map_Kd Part1_diff.png
-map_d Part1_diff.png
-
-map_Bump Part1_nmap.png
-
-map_Ns Part1_spec.png
-
-newmtl Part106Mtl
+newmtl Part113Mtl
 Material Color
 Ka 0.151058 0.0962661 0.0677246
 Kd 0.151058 0.0962661 0.0677246
@@ -26,6 +8,24 @@ d 1
 
 Ns 0
 
+map_Ka Part8_diff.png
+map_Kd Part8_diff.png
+map_d Part8_diff.png
+
+map_Bump Part8_nmap.png
+
+map_Ns Part8_spec.png
+
+newmtl Part1Mtl
+Material Color
+Ka 0.358654 0.234895 0.0759261
+Kd 0.358654 0.234895 0.0759261
+Ks 0.0098454 0.00644811 0.00208425 
+
+d 1
+
+Ns 0
+
 map_Ka Part1_diff.png
 map_Kd Part1_diff.png
 map_d Part1_diff.png
@@ -33,6 +33,38 @@ map_d Part1_diff.png
 map_Bump Part1_nmap.png
 
 map_Ns Part1_spec.png
+
+newmtl Part2Mtl
+Material Color
+Ka 0.487765 0.383775 0.186989
+Kd 0.487765 0.383775 0.186989
+Ks 0.0133896 0.010535 0.00513302 
+
+d 0.501961
+
+Ns 0
+
+map_Ka Part2_diff.png
+map_Kd Part2_diff.png
+map_d Part2_diff.png
+
+newmtl Part8Mtl
+Material Color
+Ka 0.0915184 0.0511221 0.0328759
+Kd 0.0915184 0.0511221 0.0328759
+Ks 0.00681902 0.00380909 0.00244958 
+
+d 1
+
+Ns 0
+
+map_Ka Part8_diff.png
+map_Kd Part8_diff.png
+map_d Part8_diff.png
+
+map_Bump Part8_nmap.png
+
+map_Ns Part8_spec.png
 
 newmtl Wedge1Mtl
 Material Color
@@ -44,43 +76,11 @@ d 1
 
 Ns 0
 
-map_Ka Part4_diff.png
-map_Kd Part4_diff.png
-map_d Part4_diff.png
+map_Ka Part1_diff.png
+map_Kd Part1_diff.png
+map_d Part1_diff.png
 
-map_Bump Part4_nmap.png
+map_Bump Part1_nmap.png
 
-map_Ns Part4_spec.png
-
-newmtl Part4Mtl
-Material Color
-Ka 0.358654 0.234895 0.0759261
-Kd 0.358654 0.234895 0.0759261
-Ks 0.0098454 0.00644811 0.00208425 
-
-d 1
-
-Ns 0
-
-map_Ka Part4_diff.png
-map_Kd Part4_diff.png
-map_d Part4_diff.png
-
-map_Bump Part4_nmap.png
-
-map_Ns Part4_spec.png
-
-newmtl Part5Mtl
-Material Color
-Ka 0.487765 0.383775 0.186989
-Kd 0.487765 0.383775 0.186989
-Ks 0.0133896 0.010535 0.00513302 
-
-d 0.501961
-
-Ns 0
-
-map_Ka Part5_diff.png
-map_Kd Part5_diff.png
-map_d Part5_diff.png
+map_Ns Part1_spec.png
 

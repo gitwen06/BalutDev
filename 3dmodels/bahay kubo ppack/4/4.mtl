@@ -16,6 +16,24 @@ map_Bump Part1_nmap.png
 
 map_Ns Part1_spec.png
 
+newmtl Union1Mtl
+Material Color
+Ka 0.176774 0.0962661 0.0638149
+Kd 0.176774 0.0962661 0.0638149
+Ks 0.0131714 0.00717277 0.00475483 
+
+d 1
+
+Ns 0
+
+map_Ka Part1_diff.png
+map_Kd Part1_diff.png
+map_d Part1_diff.png
+
+map_Bump Part1_nmap.png
+
+map_Ns Part1_spec.png
+
 newmtl Part2Mtl
 Material Color
 Ka 0.0915184 0.0511221 0.0328759
@@ -33,20 +51,6 @@ map_d Part1_diff.png
 map_Bump Part1_nmap.png
 
 map_Ns Part1_spec.png
-
-newmtl Part8Mtl
-Material Color
-Ka 0.487765 0.383775 0.186989
-Kd 0.487765 0.383775 0.186989
-Ks 0.0133896 0.010535 0.00513302 
-
-d 0.501961
-
-Ns 0
-
-map_Ka Part8_diff.png
-map_Kd Part8_diff.png
-map_d Part8_diff.png
 
 newmtl Part7Mtl
 Material Color
@@ -66,23 +70,19 @@ map_Bump Part7_nmap.png
 
 map_Ns Part7_spec.png
 
-newmtl Union1Mtl
+newmtl Part8Mtl
 Material Color
-Ka 0.176774 0.0962661 0.0638149
-Kd 0.176774 0.0962661 0.0638149
-Ks 0.0131714 0.00717277 0.00475483 
+Ka 0.487765 0.383775 0.186989
+Kd 0.487765 0.383775 0.186989
+Ks 0.0133896 0.010535 0.00513302 
 
-d 1
+d 0.501961
 
 Ns 0
 
-map_Ka Part1_diff.png
-map_Kd Part1_diff.png
-map_d Part1_diff.png
-
-map_Bump Part1_nmap.png
-
-map_Ns Part1_spec.png
+map_Ka Part8_diff.png
+map_Kd Part8_diff.png
+map_d Part8_diff.png
 
 newmtl Meshpart1Mtl
 Material Color

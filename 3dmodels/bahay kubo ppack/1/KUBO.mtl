@@ -1,0 +1,24 @@
+# Blender 5.1.1 MTL File: 'None'
+# www.blender.org
+
+newmtl Frame1Mtl
+Ka 1.000000 1.000000 1.000000
+Ks 0.005766 0.005766 0.005766
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd Frame1_diff.png
+map_Ns Frame1_spec.png
+map_d Frame1_diff.png
+map_Bump Frame1_nmap.png
+
+newmtl Wall1Mtl
+Ka 1.000000 1.000000 1.000000
+Ks 0.013669 0.013669 0.013669
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd Wall1_diff.png
+map_Ns Wall1_spec.png
+map_d Wall1_diff.png
+map_Bump Wall1_nmap.png
