@@ -53,7 +53,7 @@ public partial class Player : CharacterBody3D
 		g.stamina = g.maxStamina;
 		baseFlashlightPos = playerFlashlight?.Position ?? Vector3.Zero;
 	}
-
+	//imgonnacrashoutonthismotherfuckingsystemohmygodthisshitissoirritatingimlitteralyabouttocrashout
 	// ================= HOTBAR FUNCTION =================
 	private void EquipItem(int index)
 	{
@@ -188,31 +188,37 @@ public partial class Player : CharacterBody3D
 				}
 				//interact system for character
 				else if(GlobalVariables.Instance.target.IsInGroup("Characters")) {
-					GlobalVariables.Instance.isTalking = true;
-					Input.MouseMode = Input.MouseModeEnum.Visible;
-					interactBtn.Visible = false;
-					
-					// Check if player has balut equipped
-					bool hasBalut = g.equippedIndex >= 0 && g.currentItem != null && g.currentItem.Name.ToString().Contains("balut");
-					
-					//variable for character name
-					string characterName = GlobalVariables.Instance.target.Name.ToString().ToLower();
-					string dialoguePath = $"res://Dialogues/{characterName}.dialogue";
-					
-					// Determine which dialogue to start
-					string startDialogue = hasBalut ? "start" : "no_balut";
-					
-					var dialogueResource = GD.Load<Resource>(dialoguePath);
-					if(dialogueResource != null) {
-						DialogueManager.ShowDialogueBalloon(dialogueResource, startDialogue);
-						DialogueManager.DialogueEnded += OnDialogueEnded;
-					} else {
-						GD.PrintErr($"Dialogue file not found: {dialoguePath}");
-						GlobalVariables.Instance.isTalking = false;
-					}
-					
-					GlobalVariables.Instance.target = null;
+				GlobalVariables.Instance.isTalking = true;
+				Input.MouseMode = Input.MouseModeEnum.Visible;
+				interactBtn.Visible = false;
+				
+				//variable for character name
+				string characterName = GlobalVariables.Instance.target.Name.ToString().ToLower();
+				string dialoguePath = $"res://Dialogues/{characterName}.dialogue";
+				
+				// Check if player has balut equipped
+				bool hasBalut = g.equippedIndex >= 0 && g.currentItem != null && g.currentItem.Name.ToString().Contains("balut");
+				
+				// Determine which dialogue to start
+				// mang_jason always starts with "start", others need balut
+				string startDialogue = "start";
+				if (characterName != "mang jason" && !hasBalut)
+				{
+					startDialogue = "no_balut";
 				}
+				
+				var dialogueResource = GD.Load<Resource>(dialoguePath);
+				if(dialogueResource != null) {
+					DialogueManager.ShowDialogueBalloon(dialogueResource, startDialogue);
+					DialogueManager.DialogueEnded -= OnDialogueEnded;
+					DialogueManager.DialogueEnded += OnDialogueEnded;
+				} else {
+					GD.PrintErr($"Dialogue file not found: {dialoguePath}");
+					GlobalVariables.Instance.isTalking = false;
+				}
+				
+				GlobalVariables.Instance.target = null;
+}
 				//Interact system for drinks
 				else if(GlobalVariables.Instance.target.IsInGroup("drinks")) {
 					GlobalVariables.Instance.stamina += 50.0f;
@@ -221,6 +227,7 @@ public partial class Player : CharacterBody3D
 					GlobalVariables.Instance.target = null;
 					interactBtn.Visible = false;
 				}
+				//Interact system for doors
 				//Interact system for doors
 				else if(GlobalVariables.Instance.target.IsInGroup("doors")) {
 					Node doorNode = GlobalVariables.Instance.target.GetParent();
@@ -233,47 +240,40 @@ public partial class Player : CharacterBody3D
 					}
 					
 					GD.Print($"Door detected: {doorNode.Name}");
-					string doorName = doorNode.Name.ToString().ToLower();
+					GD.Print($"Door node type: {doorNode.GetType().Name}");
 					
-					if(doorName.Contains("knock")) {
-						var pintoKnock = doorNode as PintoInteractionKnock;
-						if (pintoKnock != null)
+					var pintoOpen = doorNode as PintoOpen;
+					if (pintoOpen != null)
+					{
+						GD.Print("PintoOpen cast successful!");
+						if (pintoOpen.IsOpen)
 						{
-							pintoKnock.KnockOnDoor();
-							GD.Print("Knocked on door - NPC should appear");
+							pintoOpen.CloseDoor();
 						}
-					}
-					else if (doorName.Contains("open")) {
-						var pintoOpen = doorNode as PintoOpen;
-						if (pintoOpen != null)
+						else
 						{
-							// Toggle door open/close
-							if (pintoOpen.IsOpen)
+							if (pintoOpen.RequiresKey())
 							{
-								pintoOpen.CloseDoor();
-								GD.Print("Closed door");
-							}
-							else
-							{
-								if (pintoOpen.RequiresKey())
+								if (pintoOpen.HasKey())
 								{
-									if (pintoOpen.HasKey())
-									{
-										pintoOpen.OpenDoor();
-										GD.Print("Opened door with key");
-									}
-									else
-									{
-										GD.Print("Need key to open this door!");
-									}
+									pintoOpen.OpenDoor();
+									GD.Print("Opened door with key");
 								}
 								else
 								{
-									pintoOpen.OpenDoor();
-									GD.Print("Opened door");
+									GD.Print("Need key to open this door!");
 								}
 							}
+							else
+							{
+								pintoOpen.OpenDoor();
+								GD.Print("Opened door");
+							}
 						}
+					}
+					else
+					{
+						GD.PrintErr($"Failed to cast {doorNode.Name} to PintoOpen!");
 					}
 					GlobalVariables.Instance.target = null;
 					interactBtn.Visible = false;
@@ -391,6 +391,7 @@ public partial class Player : CharacterBody3D
 		GlobalVariables.Instance.isTalking = false;
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		DialogueManager.DialogueEnded -= OnDialogueEnded;
+		DialogueManager.DialogueEnded += OnDialogueEnded;
 	}
 	// ================= INPUT =================
 	public override void _Input(InputEvent @event)

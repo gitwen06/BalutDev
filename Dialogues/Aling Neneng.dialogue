@@ -1,8 +1,13 @@
 ~ start
+do GlobalVariables.Instance.OpenAnim()
 Aling Neneng: [[Hi|Hello|Howdy]] 'nak, penge naman ako niyang balut.
+if GlobalVariables.Instance.gaveAlingNeneng == true:
+    => gave_already
 - Sige
 	do GlobalVariables.Instance.GiveBalut(1)
 	Aling Neneng: Salamat naman iho...
+	set GlobalVariables.Instance.gaveAlingNeneng = true
+	do GlobalVariables.Instance.CloseAnim()
 	do GlobalVariables.Instance.RemoveNPC()
 	=> END
 - Ayaw ko po
@@ -13,6 +18,10 @@ Aling Neneng: [[Hi|Hello|Howdy]] 'nak, penge naman ako niyang balut.
 	- ...
 		Aling Neneng: O ano, wala ka ng masagot
 		=> END
+
+~ gave_already
+Aling Neneng: Sapat na ito iho.... Bukas nalang ulit ako bibili ha...
+=> END
 
 ~ no_balut
 Aling Neneng: Wala ka namang balut na dala! Inuuto mo ba ako!?

@@ -28,7 +28,7 @@ public partial class Balut : RigidBody3D
 
 			if (inHand)
 			{
-				displayAmount.Text = $"{g.balutAmount} / 5 Balut";
+				displayAmount.Text = $"{g.balutAmount} / 6 Balut";
 			}
 		}
 	}

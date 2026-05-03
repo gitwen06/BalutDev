@@ -1,0 +1,11 @@
+Model Information:
+* title:	Small wooden table
+* source:	https://sketchfab.com/3d-models/small-wooden-table-44640f150fcb40e295ad160466666a4a
+* author:	Viktor™ (https://sketchfab.com/ViktorTM)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Small wooden table" (https://sketchfab.com/3d-models/small-wooden-table-44640f150fcb40e295ad160466666a4a) by Viktor™ (https://sketchfab.com/ViktorTM) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

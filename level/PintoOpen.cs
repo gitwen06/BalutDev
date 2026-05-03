@@ -1,23 +1,42 @@
 using Godot;
 using System;
-
 public partial class PintoOpen : MeshInstance3D
 {
 	private AnimationPlayer animPlayer;
 	private bool isOpen = false;
-	private string requiredKey = ""; // Leave empty if no key needed
+	private string requiredKey = "";
 	
-	public bool IsOpen => isOpen; // Add this line
+	[Export]
+	public string openAnimation = "open_door";
+	[Export]
+	public string closeAnimation = "close_door";
+	[Export]
+	public string npcToSpawn = ""; // Set NPC name in Inspector (e.g., "aling_neneng")
+	[Export]
+	public float spawnDistance = 1.0f;
+	[Export]
+	public float spawnHeight = 0.633f;
+	
+	public bool IsOpen => isOpen;
 	
 	public override void _Ready()
 	{
 		animPlayer = FindChild("AnimationPlayer") as AnimationPlayer;
 		if (animPlayer == null)
-			GD.PrintErr("PintoOpen: AnimationPlayer not found!");
+		{
+			GD.PrintErr($"PintoOpen ({Name}): AnimationPlayer not found!");
+			return;
+		}
+		GD.Print($"PintoOpen ({Name}): AnimationPlayer found!");
 	}
-
 	public void OpenDoor()
 	{
+		if (animPlayer == null)
+		{
+			GD.PrintErr($"PintoOpen ({Name}): AnimationPlayer is null!");
+			return;
+		}
+		
 		if (isOpen)
 		{
 			GD.Print("Door already open");
@@ -25,37 +44,32 @@ public partial class PintoOpen : MeshInstance3D
 		}
 		
 		isOpen = true;
-		if (animPlayer != null)
-		{
-			animPlayer.Play("open_door");
-			GD.Print("Opening door");
-		}
+		animPlayer.Play(openAnimation);
+		GD.Print($"Opening door with animation: {openAnimation}");
+		
 	}
-
-	public void ResetDoor()
-	{
-		isOpen = false;
-		GD.Print("Door reset");
-	}
-
 	public void CloseDoor()
 	{
+		if (animPlayer == null)
+		{
+			GD.PrintErr($"PintoOpen ({Name}): AnimationPlayer is null!");
+			return;
+		}
+		
 		if (!isOpen)
 			return;
 		
 		isOpen = false;
-		if (animPlayer != null)
-		{
-			animPlayer.Play("close_door");
-			GD.Print("Closing door");
-		}
+		animPlayer.Play(closeAnimation);
+		GD.Print($"Closing door with animation: {closeAnimation}");
+		
+		// Remove NPC when door closes
+		GlobalVariables.Instance.RemoveNPC();
 	}
-
 	public bool RequiresKey()
 	{
 		return !string.IsNullOrEmpty(requiredKey);
 	}
-
 	public bool HasKey()
 	{
 		return GlobalVariables.Instance.inventory.Contains(requiredKey);

@@ -76,7 +76,7 @@ public partial class GlobalVariables : Node
 		}
 	}
 	// ============= BALUT VARIABLES =============
-	public int balutAmount = 5;
+	public int balutAmount = 6;
 	public Node balutModel = null;
 	public void GiveBalut(int amount)
 	{
@@ -96,5 +96,39 @@ public partial class GlobalVariables : Node
 				GD.Print("Not enough balut!");
 			}
 		}
+	}
+	
+	// ==== NPC VARIABLES ==== my ehad feels like its going to explode any moment. ive been coding for 9 hours 9 hours 9 hours 0h ours  hpisr= ssigpj
+	public bool gaveAlingNeneng = false;
+	public bool GaveAlingMarin = false;
+	public bool gaveAlingMarites = false;
+	public bool gaveKuyaJames = false;
+	public bool gaveKuyaRafael = false;
+	public bool gaveAlingShoneng = false;
+	public bool gaveKuyaGeorge = false;
+	
+	// ==== ANIMATION CONTROLLERS ==== my head faking hurts
+	public AnimationForCharacters animationController;
+	// ==== ANIMATION WRAPPERS ====
+	public void OpenAnim()
+	{
+		if (animationController == null)
+		{
+			GD.Print("AnimationController is NULL!");
+			return;
+		}
+
+		animationController.OpenThenWaitThenClose();
+	}
+
+	public void CloseAnim()
+	{
+		if (animationController == null)
+		{
+			GD.Print("AnimationController is NULL!");
+			return;
+		}
+
+		animationController.AllowClose();
 	}
 }
