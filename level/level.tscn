@@ -53743,5 +53743,35 @@ shape = SubResource("BoxShape3D_8liwx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Aling_Neneng/StaticBody3D" unique_id=1138591301]
 shape = SubResource("ConcavePolygonShape3D_8liwx")
 
+[node name="ilaw5" parent="." unique_id=281573305 instance=ExtResource("222_88dj5")]
+transform = Transform3D(-0.39993823, 0, 0.0070298268, 0, 0.4, 0, -0.0070298268, 0, -0.39993823, 219.42004, 0.194098, 25.372562)
+
+[node name="Sketchfab_Scene" parent="ilaw5" unique_id=936359722 instance=ExtResource("223_rek7t")]
+transform = Transform3D(0.29108363, -0.04839793, 1.0961827e-08, -0.07259689, -0.19405578, 4.395241e-08, -5.721023e-16, -3.0199157e-08, -0.29999998, 5.888213, 15.997444, -0.5756855)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="ilaw5" unique_id=1124390085]
+transform = Transform3D(1, 0, 0, 0, 0.027764648, 0.9996144, 0, -0.9996144, 0.027764648, 5.9026966, 14.024542, -0.48347473)
+light_color = Color(0.9529412, 0.9843137, 0.60784316, 1)
+light_energy = 16.0
+light_size = 1.0
+spot_range = 23.245
+spot_attenuation = 1.05
+spot_angle = 70.0
+
+[node name="ilaw6" parent="." unique_id=693088101 instance=ExtResource("222_88dj5")]
+transform = Transform3D(-0.0046843356, 0, 0.39997256, 0, 0.39999998, 0, -0.39997256, 0, -0.0046843356, 176.19493, 0.194098, 38.921017)
+
+[node name="Sketchfab_Scene" parent="ilaw6" unique_id=952672845 instance=ExtResource("223_rek7t")]
+transform = Transform3D(0.29108363, -0.04839793, 1.0961827e-08, -0.07259689, -0.19405578, 4.395241e-08, -5.721023e-16, -3.0199157e-08, -0.29999998, 5.888213, 15.997444, -0.5756855)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="ilaw6" unique_id=1175113263]
+transform = Transform3D(1, 0, 0, 0, 0.027764648, 0.9996144, 0, -0.9996144, 0.027764648, 5.9026966, 14.024542, -0.48347473)
+light_color = Color(0.9529412, 0.9843137, 0.60784316, 1)
+light_energy = 16.0
+light_size = 1.0
+spot_range = 23.245
+spot_attenuation = 1.05
+spot_angle = 70.0
+
 [editable path="Interactables/flashlight/flashlight"]
 [editable path="Character_14"]

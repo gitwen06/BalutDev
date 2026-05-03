@@ -1,8 +1,8 @@
 ~ start
-do GlobalVariables.Instance.OpenAnim()
-Aling Neneng: [[Hi|Hello|Howdy]] 'nak, penge naman ako niyang balut.
 if GlobalVariables.Instance.gaveAlingNeneng == true:
     => gave_already
+do GlobalVariables.Instance.OpenAnim()
+Aling Neneng: [[Hi|Hello|Howdy]] 'nak, penge naman ako niyang balut.
 - Sige
 	do GlobalVariables.Instance.GiveBalut(1)
 	Aling Neneng: Salamat naman iho...
