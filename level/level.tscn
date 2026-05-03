@@ -246,6 +246,7 @@
 [ext_resource type="Texture2D" uid="uid://bwxhraouicbnu" path="res://3dmodels/table/textures/STable_M_baseColor.png" id="244_mf3bg"]
 [ext_resource type="Texture2D" uid="uid://cseaje1rwdhgq" path="res://3dmodels/table/textures/STable_M_metallicRoughness.png" id="245_nrcf1"]
 [ext_resource type="Texture2D" uid="uid://dsqalma78ulod" path="res://3dmodels/table/textures/STable_M_normal.png" id="246_mpats"]
+[ext_resource type="Script" uid="uid://cqoamav33asbg" path="res://level/Trigger.cs" id="247_pfath"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qohg2"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
@@ -322,6 +323,9 @@ shader_parameter/vignette_opacity = 0.314000014915
 height = 1.7670898
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4flbx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wwblm"]
+height = 2.0153809
 
 [sub_resource type="BoxMesh" id="BoxMesh_ktfr2"]
 
@@ -32623,6 +32627,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vadxs")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gubo7"]
+
 [node name="Node3D" type="Node3D" unique_id=602292512]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=557697972]
@@ -32902,8 +32908,8 @@ theme_override_fonts/normal_font = ExtResource("9_viqv0")
 theme_override_font_sizes/normal_font_size = 18
 text = "Bigyan mo siya ng 1 Balot."
 
-[node name="player" type="CharacterBody3D" parent="." unique_id=769465607]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 214.08893, 1.3917205, 73.89811)
+[node name="player" type="CharacterBody3D" parent="." unique_id=769465607 groups=["player", "selfDialogue"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 214.08893, 1.3917205, 75.83115)
 script = ExtResource("6_v4yay")
 
 [node name="playerCollision" type="CollisionShape3D" parent="player" unique_id=300763949 groups=["player"]]
@@ -32935,6 +32941,12 @@ spot_angle_attenuation = 1.1341184
 [node name="OmniLight3D" type="OmniLight3D" parent="player/head/Camera3D" unique_id=1051549836]
 omni_range = 2.126
 omni_attenuation = -0.05
+
+[node name="Area3D" type="Area3D" parent="player" unique_id=228760906 groups=["player"]]
+
+[node name="collisionDetector" type="CollisionShape3D" parent="player/Area3D" unique_id=88391383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0076904297, 0)
+shape = SubResource("CapsuleShape3D_wwblm")
 
 [node name="Interactables" type="Node3D" parent="." unique_id=1060645970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.500552, 0)
@@ -52921,7 +52933,7 @@ mesh = ExtResource("211_rb7l4")
 transform = Transform3D(-0.45, 0, 3.934025e-08, 0, 0.45, 0, -3.934025e-08, 0, -0.45, 63.818146, 0.221941, -91.58414)
 
 [node name="PintoKnock" type="MeshInstance3D" parent="." unique_id=678000721 groups=["doors"]]
-transform = Transform3D(0.6120925, 0, 0.21555792, 0, 0.49367157, 0, -0.34791487, 0, 0.3792347, 44.131443, 2.7067752, 11.358352)
+transform = Transform3D(0.61209244, 0, 0.21555792, 0, 0.49367157, 0, -0.34791484, 0, 0.3792347, 44.131443, 2.7067752, 11.358352)
 mesh = ExtResource("211_rb7l4")
 script = SubResource("CSharpScript_cbrgi")
 
@@ -53772,6 +53784,16 @@ light_size = 1.0
 spot_range = 23.245
 spot_attenuation = 1.05
 spot_angle = 70.0
+
+[node name="TriggerSelfDialogue" type="Node3D" parent="." unique_id=919250960]
+transform = Transform3D(5.96615, 0, 0, 0, 1, 0, 0, 0, 1, 215.6571, 0, 55.18342)
+script = ExtResource("247_pfath")
+
+[node name="Area3D" type="Area3D" parent="TriggerSelfDialogue" unique_id=1839482777]
+transform = Transform3D(8.658136, 0, 0, 0, 4.103521, 0, 0, 0, 3.6821606, 0, 1.4283755, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerSelfDialogue/Area3D" unique_id=611078933]
+shape = SubResource("BoxShape3D_gubo7")
 
 [editable path="Interactables/flashlight/flashlight"]
 [editable path="Character_14"]

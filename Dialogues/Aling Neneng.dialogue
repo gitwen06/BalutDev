@@ -1,4 +1,5 @@
 ~ start
+set GlobalVariables.Instance.isTalking = true
 if GlobalVariables.Instance.gaveAlingNeneng == true:
     => gave_already
 do GlobalVariables.Instance.OpenAnim()
@@ -21,8 +22,10 @@ Aling Neneng: [[Hi|Hello|Howdy]] 'nak, penge naman ako niyang balut.
 
 ~ gave_already
 Aling Neneng: Sapat na ito iho.... Bukas nalang ulit ako bibili ha...
+set GlobalVariables.Instance.isTalking = false
 => END
 
 ~ no_balut
 Aling Neneng: Wala ka namang balut na dala! Inuuto mo ba ako!?
+set GlobalVariables.Instance.isTalking = false
 => END

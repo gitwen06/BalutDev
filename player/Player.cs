@@ -13,6 +13,7 @@ public partial class Player : CharacterBody3D
 	private Node3D headBone;
 	private Button interactBtn;
 	private Node3D hand;
+	private Area3D collisionDetector;
 
 	// ============= CAMERA BOB & EFFECTS =============
 	private float bobTime = 0f;
@@ -40,6 +41,7 @@ public partial class Player : CharacterBody3D
 		headBone = GetNode<Node3D>("head");
 		interactBtn = GetNode<Button>("%interactButton");
 		hand = GetNode<Node3D>("head/Camera3D/Hand");
+		collisionDetector = GetNode<Area3D>("Area3D");
 
 		var g = GlobalVariables.Instance;
 		
@@ -160,6 +162,10 @@ public partial class Player : CharacterBody3D
 			return;
 		}
 		Vector3 velocity = Velocity;
+		
+		//Trigger system for when player touches a trigger area
+		
+		
 		
 		//Interact and Pick-up
 		if(playerRay != null && playerRay.IsColliding()) {
