@@ -1,0 +1,11 @@
+Model Information:
+* title:	Battery Low Poly
+* source:	https://sketchfab.com/3d-models/battery-low-poly-c726f8e634f14a7b9bcde2b96b3f7ba4
+* author:	unrealengine432 (https://sketchfab.com/unrealengine432)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Battery Low Poly" (https://sketchfab.com/3d-models/battery-low-poly-c726f8e634f14a7b9bcde2b96b3f7ba4) by unrealengine432 (https://sketchfab.com/unrealengine432) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

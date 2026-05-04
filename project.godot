@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 GlobalVariables="*uid://cbsvjqf5ymy3j"
 DialogueManager="*uid://c3rodes2l3gxb"
+QuestSystem="*uid://6ticqj2sdbyh"
 
 [dialogue_manager]
 
@@ -155,7 +156,7 @@ questPanel={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogues/mang jason.dialogue", "res://Dialogues/selfDialogue.dialogue", "res://Dialogues/Aling Neneng.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogues/mang jason.dialogue", "res://Dialogues/selfDialogue.dialogue", "res://Dialogues/aling neneng.dialogue", "res://monsterWalkByDialogue.dialogue", "res://Dialogues/monsterWalkByDialogue.dialogue")
 
 [layer_names]
 

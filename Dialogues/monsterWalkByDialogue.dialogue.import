@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://6npaplun5eu3"
+path="res://.godot/imported/monsterWalkByDialogue.dialogue-1dcc29f18bb36bd0ef2891d9041e1ef5.tres"
+
+[deps]
+
+source_file="res://Dialogues/monsterWalkByDialogue.dialogue"
+dest_files=["res://.godot/imported/monsterWalkByDialogue.dialogue-1dcc29f18bb36bd0ef2891d9041e1ef5.tres"]
+
+[params]
+
+defaults=true

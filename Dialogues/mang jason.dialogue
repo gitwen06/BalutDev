@@ -8,5 +8,6 @@ Tatay: Kunin mo na iyong balut na nasa lamesa, magdala ka na rin ng flashlight, 
 Tatay: Oo nga pala, lakuan mo rin pala si Aling Neneng 'dyaan sa may dulo, sabi niya ay bibili raw siya.
 - Sige Itay, ako na bahala sa paglalako. pangakong mauubos ko 'tong kakarampot na balut.
 	Tatay: Sige magingat ka 'Nak.
+	do QuestSystem.TriggerQuestAdvance("mang_jason_talk")
 set GlobalVariables.Instance.isTalking = false
 => END

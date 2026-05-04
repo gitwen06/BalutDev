@@ -163,10 +163,6 @@ public partial class Player : CharacterBody3D
 		}
 		Vector3 velocity = Velocity;
 		
-		//Trigger system for when player touches a trigger area
-		
-		
-		
 		//Interact and Pick-up
 		if(playerRay != null && playerRay.IsColliding()) {
 			Node collider = playerRay.GetCollider() as Node;
@@ -180,125 +176,130 @@ public partial class Player : CharacterBody3D
 		}
 
 		if (GlobalVariables.Instance != null && GlobalVariables.Instance.target != null && (GlobalVariables.Instance.target.IsInGroup("interactables") || GlobalVariables.Instance.target.IsInGroup("pickables") || GlobalVariables.Instance.target.IsInGroup("batteries") || GlobalVariables.Instance.target.IsInGroup("Characters") || GlobalVariables.Instance.target.IsInGroup("drinks") || GlobalVariables.Instance.target.IsInGroup("doors"))) {
-		if(!GlobalVariables.Instance.isTalking) {
-			interactBtn.Visible = true;
-			
-			//Interact system for batteries
-			if (Input.IsActionJustPressed("interact")) {
-				if(GlobalVariables.Instance.target.IsInGroup("batteries")) {
-					GlobalVariables.Instance.FlashlightBattery += 25.0f;
-					GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
-					RemoveTarget(GlobalVariables.Instance.target);
-					GlobalVariables.Instance.target = null;
-					interactBtn.Visible = false;
-				}
-				//interact system for character
-				else if(GlobalVariables.Instance.target.IsInGroup("Characters")) {
-				GlobalVariables.Instance.isTalking = true;
-				Input.MouseMode = Input.MouseModeEnum.Visible;
-				interactBtn.Visible = false;
+			if(!GlobalVariables.Instance.isTalking) {
+				interactBtn.Visible = true;
 				
-				//variable for character name
-				string characterName = GlobalVariables.Instance.target.Name.ToString().ToLower();
-				string dialoguePath = $"res://Dialogues/{characterName}.dialogue";
-				
-				// Check if player has balut equipped
-				bool hasBalut = g.equippedIndex >= 0 && g.currentItem != null && g.currentItem.Name.ToString().Contains("balut");
-				
-				// Determine which dialogue to start
-				// mang_jason always starts with "start", others need balut
-				string startDialogue = "start";
-				if (characterName != "mang jason" && !hasBalut)
-				{
-					startDialogue = "no_balut";
-				}
-				
-				var dialogueResource = GD.Load<Resource>(dialoguePath);
-				if(dialogueResource != null) {
-					DialogueManager.ShowDialogueBalloon(dialogueResource, startDialogue);
-					DialogueManager.DialogueEnded -= OnDialogueEnded;
-					DialogueManager.DialogueEnded += OnDialogueEnded;
-				} else {
-					GD.PrintErr($"Dialogue file not found: {dialoguePath}");
-					GlobalVariables.Instance.isTalking = false;
-				}
-				
-				GlobalVariables.Instance.target = null;
-}
-				//Interact system for drinks
-				else if(GlobalVariables.Instance.target.IsInGroup("drinks")) {
-					GlobalVariables.Instance.stamina += 50.0f;
-					GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
-					RemoveTarget(GlobalVariables.Instance.target);
-					GlobalVariables.Instance.target = null;
-					interactBtn.Visible = false;
-				}
-				//Interact system for doors
-				//Interact system for doors
-				else if(GlobalVariables.Instance.target.IsInGroup("doors")) {
-					Node doorNode = GlobalVariables.Instance.target.GetParent();
-					
-					if (doorNode == null)
-					{
-						GD.PrintErr("Could not find door mesh!");
-						GlobalVariables.Instance.target = null;
-						return;
-					}
-					
-					GD.Print($"Door detected: {doorNode.Name}");
-					GD.Print($"Door node type: {doorNode.GetType().Name}");
-					
-					var pintoOpen = doorNode as PintoOpen;
-					if (pintoOpen != null)
-					{
-						GD.Print("PintoOpen cast successful!");
-						if (pintoOpen.IsOpen)
-						{
-							pintoOpen.CloseDoor();
+				if (Input.IsActionJustPressed("interact")) {
+					//Interact system for batteries
+					if(GlobalVariables.Instance.target.IsInGroup("batteries")) {
+						if (GlobalVariables.Instance.AddItem(GlobalVariables.Instance.target.Name)) {
+							GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
+
+							QuestSystem.Instance.OnItemPicked(GlobalVariables.Instance.target.Name);
+
+							RemoveTarget(GlobalVariables.Instance.target);
+							GlobalVariables.Instance.target = null;
+							interactBtn.Visible = false;
 						}
-						else
+					}
+					//Interact system for characters
+					else if(GlobalVariables.Instance.target.IsInGroup("Characters")) {
+						GlobalVariables.Instance.isTalking = true;
+						Input.MouseMode = Input.MouseModeEnum.Visible;
+						interactBtn.Visible = false;
+						
+						string characterName = GlobalVariables.Instance.target.Name.ToString().ToLower();
+						string dialoguePath = $"res://Dialogues/{characterName}.dialogue";
+						
+						bool hasBalut = g.equippedIndex >= 0 && g.currentItem != null && g.currentItem.Name.ToString().Contains("balut");
+						
+						string startDialogue = "start";
+						if (characterName != "mang jason" && !hasBalut)
 						{
-							if (pintoOpen.RequiresKey())
+							startDialogue = "no_balut";
+						}
+						
+						var dialogueResource = GD.Load<Resource>(dialoguePath);
+						if(dialogueResource != null) {
+							DialogueManager.ShowDialogueBalloon(dialogueResource, startDialogue);
+							DialogueManager.DialogueEnded += OnDialogueEnded;
+						} else {
+							GD.PrintErr($"Dialogue file not found: {dialoguePath}");
+							GlobalVariables.Instance.isTalking = false;
+						}
+						
+						GlobalVariables.Instance.target = null;
+					}
+					//Interact system for drinks
+					else if(GlobalVariables.Instance.target.IsInGroup("drinks")) {
+						if (GlobalVariables.Instance.AddItem(GlobalVariables.Instance.target.Name)) {
+							GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
+
+							QuestSystem.Instance.OnItemPicked(GlobalVariables.Instance.target.Name);
+
+							RemoveTarget(GlobalVariables.Instance.target);
+							GlobalVariables.Instance.target = null;
+							interactBtn.Visible = false;
+						}
+					}
+					//Interact system for doors
+					else if(GlobalVariables.Instance.target.IsInGroup("doors")) {
+						Node doorNode = GlobalVariables.Instance.target.GetParent();
+						
+						if (doorNode == null)
+						{
+							GD.PrintErr("Could not find door mesh!");
+							GlobalVariables.Instance.target = null;
+							return;
+						}
+						
+						GD.Print($"Door detected: {doorNode.Name}");
+						GD.Print($"Door node type: {doorNode.GetType().Name}");
+						GD.Print($"Door script: {doorNode.GetScript()}");
+						
+						var pintoOpen = doorNode as PintoOpen;
+						if (pintoOpen != null)
+						{
+							GD.Print("PintoOpen cast successful!");
+							if (pintoOpen.IsOpen)
 							{
-								if (pintoOpen.HasKey())
-								{
-									pintoOpen.OpenDoor();
-									GD.Print("Opened door with key");
-								}
-								else
-								{
-									GD.Print("Need key to open this door!");
-								}
+								pintoOpen.CloseDoor();
 							}
 							else
 							{
-								pintoOpen.OpenDoor();
-								GD.Print("Opened door");
+								if (pintoOpen.RequiresKey())
+								{
+									if (pintoOpen.HasKey())
+									{
+										pintoOpen.OpenDoor();
+										GD.Print("Opened door with key");
+									}
+									else
+									{
+										GD.Print("Need key to open this door!");
+									}
+								}
+								else
+								{
+									pintoOpen.OpenDoor();
+									GD.Print("Opened door");
+								}
 							}
 						}
+						else
+						{
+							GD.PrintErr($"Failed to cast {doorNode.Name} to PintoOpen! Type: {doorNode.GetType().Name}");
+						}
+						GlobalVariables.Instance.target = null;
+						interactBtn.Visible = false;
 					}
-					else
-					{
-						GD.PrintErr($"Failed to cast {doorNode.Name} to PintoOpen!");
-					}
-					GlobalVariables.Instance.target = null;
-					interactBtn.Visible = false;
-				}
-				//Interact system for pickups
-				else if (GlobalVariables.Instance.AddItem(GlobalVariables.Instance.target.Name)) {
+					//Interact system for pickups
+					else if (GlobalVariables.Instance.AddItem(GlobalVariables.Instance.target.Name)) {
 					GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
+
+					QuestSystem.Instance.OnItemPicked(GlobalVariables.Instance.target.Name);
+
 					RemoveTarget(GlobalVariables.Instance.target);
 					GlobalVariables.Instance.target = null;
 					interactBtn.Visible = false;
 				}
+				}
+			}
+		} else {
+			if(!GlobalVariables.Instance.isTalking) {
+				interactBtn.Visible = false;
 			}
 		}
-	}
-	else {
-		if(!GlobalVariables.Instance.isTalking) {
-			interactBtn.Visible = false;
-		}
-	}
 		// CROUCH
 		if (Input.IsActionJustPressed("crouch"))
 		{
@@ -397,15 +398,14 @@ public partial class Player : CharacterBody3D
 		GlobalVariables.Instance.isTalking = false;
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		DialogueManager.DialogueEnded -= OnDialogueEnded;
-		DialogueManager.DialogueEnded += OnDialogueEnded;
 	}
 	// ================= INPUT =================
-	public override void _Input(InputEvent @event)
-	{
+	public override void _Input(InputEvent @event) {
 		var g = GlobalVariables.Instance;
 
 		if (@event is InputEventKey keyEvent && keyEvent.Pressed && !keyEvent.Echo)
 		{
+			// Hotbar selection (1-5)
 			for (int i = 0; i < 5; i++)
 			{
 				if (keyEvent.Keycode == Key.Key1 + i)
@@ -420,6 +420,29 @@ public partial class Player : CharacterBody3D
 						EquipItem(i);
 						g.equippedIndex = i;
 					}
+				}
+			}
+			// Consume equipped item (R key)
+			if (keyEvent.Keycode == Key.R && g.equippedIndex >= 0 && g.currentItem != null)
+			{
+				string itemName = g.currentItem.Name.ToString().ToLower();
+				int consumedIndex = g.equippedIndex; // Save the index before changing it
+				
+				if (itemName.Contains("battery"))
+				{
+					g.FlashlightBattery += 25.0f;
+					GD.Print($"Consumed battery! Battery now at: {g.FlashlightBattery}");
+					EquipItem(-1); // Unequip and remove from hand
+					g.RemoveItem(consumedIndex); // Remove from inventory
+					g.equippedIndex = -1;
+				}
+				else if (itemName.Contains("energydrink"))
+				{
+					g.stamina += 50.0f;
+					GD.Print($"Consumed energy drink! Stamina now at: {g.stamina}");
+					EquipItem(-1); // Unequip and remove from hand
+					g.RemoveItem(consumedIndex); // Remove from inventory
+					g.equippedIndex = -1;
 				}
 			}
 		}

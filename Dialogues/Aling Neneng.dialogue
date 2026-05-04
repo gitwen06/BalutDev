@@ -3,10 +3,12 @@ set GlobalVariables.Instance.isTalking = true
 if GlobalVariables.Instance.gaveAlingNeneng == true:
     => gave_already
 do GlobalVariables.Instance.OpenAnim()
-Aling Neneng: [[Hi|Hello|Howdy]] 'nak, penge naman ako niyang balut.
-- Sige
+Aling Neneng: Uy, 'nak, pabili naman ako niyang balut.
+- Eto po isa.
 	do GlobalVariables.Instance.GiveBalut(1)
 	Aling Neneng: Salamat naman iho...
+	Aling Neneng: Sabi sakin ng tatay mo na matatagalan ka sa paglalako, kumuha ka nalang dyan sa tindahan ko ng battery chaka pepsi para hindi ka maubusan ng baterya at enerhiya 'nak. Mag-ingay ka ha...
+	do QuestSystem.TriggerQuestAdvance("aling_neneng_has_balut")
 	set GlobalVariables.Instance.gaveAlingNeneng = true
 	do GlobalVariables.Instance.CloseAnim()
 	do GlobalVariables.Instance.RemoveNPC()
