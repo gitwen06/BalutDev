@@ -1,0 +1,11 @@
+Model Information:
+* title:	Nissin Cup Noodles - Chicken Flavour
+* source:	https://sketchfab.com/3d-models/nissin-cup-noodles-chicken-flavour-9a3484de337a4028b2d49140e9f1fdfb
+* author:	Mr. Mushi (https://sketchfab.com/mr.mushi)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Nissin Cup Noodles - Chicken Flavour" (https://sketchfab.com/3d-models/nissin-cup-noodles-chicken-flavour-9a3484de337a4028b2d49140e9f1fdfb) by Mr. Mushi (https://sketchfab.com/mr.mushi) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)

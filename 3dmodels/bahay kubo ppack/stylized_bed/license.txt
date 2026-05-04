@@ -1,0 +1,11 @@
+Model Information:
+* title:	Stylized Bed
+* source:	https://sketchfab.com/3d-models/stylized-bed-ba00f49e31bc4a1eb7bed3bff8fd715f
+* author:	uosew (https://sketchfab.com/uosew)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Stylized Bed" (https://sketchfab.com/3d-models/stylized-bed-ba00f49e31bc4a1eb7bed3bff8fd715f) by uosew (https://sketchfab.com/uosew) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

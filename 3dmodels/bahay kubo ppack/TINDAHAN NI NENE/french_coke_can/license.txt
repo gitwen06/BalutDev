@@ -1,0 +1,11 @@
+Model Information:
+* title:	French Coke can
+* source:	https://sketchfab.com/3d-models/french-coke-can-6a35d2c1bfe143e4b7e27a9e5324a905
+* author:	Robukan (https://sketchfab.com/robukan)
+
+Model License:
+* license type:	CC-BY-NC-ND-4.0 (http://creativecommons.org/licenses/by-nc-nd/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions can not be distributed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "French Coke can" (https://sketchfab.com/3d-models/french-coke-can-6a35d2c1bfe143e4b7e27a9e5324a905) by Robukan (https://sketchfab.com/robukan) licensed under CC-BY-NC-ND-4.0 (http://creativecommons.org/licenses/by-nc-nd/4.0/)

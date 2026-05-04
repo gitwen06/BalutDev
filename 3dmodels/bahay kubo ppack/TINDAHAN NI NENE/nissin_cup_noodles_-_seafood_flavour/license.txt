@@ -1,0 +1,11 @@
+Model Information:
+* title:	Nissin Cup Noodles - Seafood Flavour
+* source:	https://sketchfab.com/3d-models/nissin-cup-noodles-seafood-flavour-44c0e4bb667f4403819723cfbe7a6a9b
+* author:	Mr. Mushi (https://sketchfab.com/mr.mushi)
+
+Model License:
+* license type:	CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions must have the same license.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Nissin Cup Noodles - Seafood Flavour" (https://sketchfab.com/3d-models/nissin-cup-noodles-seafood-flavour-44c0e4bb667f4403819723cfbe7a6a9b) by Mr. Mushi (https://sketchfab.com/mr.mushi) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)

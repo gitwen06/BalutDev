@@ -1,0 +1,11 @@
+Model Information:
+* title:	Pepsi Soda Can
+* source:	https://sketchfab.com/3d-models/pepsi-soda-can-f1a606f81ed14343832653cc937c5708
+* author:	ohezza (https://sketchfab.com/ohezza)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Pepsi Soda Can" (https://sketchfab.com/3d-models/pepsi-soda-can-f1a606f81ed14343832653cc937c5708) by ohezza (https://sketchfab.com/ohezza) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
