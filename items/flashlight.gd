@@ -23,6 +23,7 @@ func _ready() -> void:
 
 	call_deferred("_connect_to_player")
 
+# for hihglight system in the future
 func _connect_to_player():
 	var player = get_tree().get_first_node_in_group("player")
 	if player:

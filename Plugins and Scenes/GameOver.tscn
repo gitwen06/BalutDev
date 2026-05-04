@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://bohjv5pha56yu"]
 
 [ext_resource type="Script" uid="uid://bhjya510wu5s4" path="res://GameOver.cs" id="1_ft1t7"]
+[ext_resource type="FontFile" uid="uid://bego6u5b6j364" path="res://fonts/TradeWinds-Regular.ttf" id="2_4fkd5"]
+
+[sub_resource type="Theme" id="Theme_44cei"]
+Label/font_sizes/font_size = 16
+TextEdit/font_sizes/font_size = 16
+
+[sub_resource type="Theme" id="Theme_2r21x"]
+Label/colors/font_color = Color(8.764, 0, 0, 1)
+Label/font_sizes/font_size = 164
+Label/fonts/font = ExtResource("2_4fkd5")
 
 [node name="GameOver" type="Control" unique_id=1967103956]
 layout_mode = 3
@@ -12,6 +22,7 @@ grow_vertical = 2
 script = ExtResource("1_ft1t7")
 
 [node name="Label" type="Label" parent="." unique_id=1738437646]
+visible = false
 layout_mode = 0
 offset_right = 1921.0
 offset_bottom = 377.0
@@ -21,6 +32,7 @@ PA EDIT NALANG THANKS"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="." unique_id=879215395]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
@@ -37,3 +49,39 @@ grow_vertical = 2
 scale = Vector2(14.380558, 9.99122)
 theme_override_font_sizes/font_size = 15
 text = "RETRY"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1915538606]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1865674606]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -150.0
+offset_right = 960.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_44cei")
+color = Color(0, 0, 0, 0.49019608)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ColorRect" unique_id=1992833641]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=477553158]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 309.0
+offset_bottom = 514.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_2r21x")
+text = "PATAY GUTOM"
+horizontal_alignment = 1
