@@ -8,7 +8,9 @@ public partial class CharacterMonster : CharacterBody3D
 	private AnimationPlayer animPlayer;
 	private Skeleton3D skeleton;
 	private Area3D jumpscareArea;
-	private AudioStreamPlayer audioPlayer;
+
+	private AudioStreamPlayer audioPlayer;   
+	private AudioStreamPlayer chasePlayer;  
 
 	private bool eventLocked = false;
 
@@ -39,6 +41,18 @@ public partial class CharacterMonster : CharacterBody3D
 		AddChild(audioPlayer);
 		audioPlayer.Bus = "Master";
 
+		chasePlayer = new AudioStreamPlayer();
+		AddChild(chasePlayer);
+		chasePlayer.Bus = "Master";
+		chasePlayer.Stream = GD.Load<AudioStream>("res://Sounds/Chase.mp3");
+		var stream = GD.Load<AudioStream>("res://Sounds/Chase.mp3");
+		if (stream is AudioStreamMP3 mp3)
+			mp3.Loop = true;
+		else if (stream is AudioStreamOggVorbis ogg)
+			ogg.Loop = true;
+
+chasePlayer.Stream = stream;
+
 		player = GetTree().Root.FindChild("player", true, false) as Node3D;
 
 		animPlayer = GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
@@ -62,7 +76,7 @@ public partial class CharacterMonster : CharacterBody3D
 
 		float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
 
-		// 🔥 FIX: REMOVE isChasing requirement
+		// ================= JUMPSCARE =================
 		if (!jumpscareTriggered && distance <= 2.0f)
 		{
 			Debug($"JUMPSCARE DIST HIT: {distance}");
@@ -70,10 +84,18 @@ public partial class CharacterMonster : CharacterBody3D
 			return;
 		}
 
-		// CHASE LOGIC
+		// ================= CHASE =================
 		if (!isEventPlaying && distance <= hearingRange)
 		{
-			isChasing = true;
+			if (!isChasing)
+			{
+				Debug("CHASE START");
+				isChasing = true;
+
+				// 🔊 START CHASE MUSIC
+				if (!chasePlayer.Playing)
+					chasePlayer.Play();
+			}
 
 			Vector3 dir = (player.GlobalPosition - GlobalPosition).Normalized();
 
@@ -85,11 +107,20 @@ public partial class CharacterMonster : CharacterBody3D
 		}
 		else
 		{
-			isChasing = false;
+			if (isChasing)
+			{
+				Debug("CHASE END");
+				isChasing = false;
+
+				if (chasePlayer.Playing)
+					chasePlayer.Stop();
+			}
+
 			velocity.X = 0;
 			velocity.Z = 0;
 		}
 
+		// ================= GRAVITY =================
 		if (!IsOnFloor())
 			velocity.Y -= gravity * (float)delta;
 		else
@@ -119,6 +150,7 @@ public partial class CharacterMonster : CharacterBody3D
 		Velocity = Vector3.Zero;
 
 		audioPlayer.Stop();
+		chasePlayer.Stop(); 
 
 		Hide();
 		Visible = false;
@@ -137,6 +169,7 @@ public partial class CharacterMonster : CharacterBody3D
 		Velocity = Vector3.Zero;
 
 		audioPlayer.Stop();
+		chasePlayer.Stop(); 
 	}
 
 	// ================= ROTATION =================
@@ -166,7 +199,7 @@ public partial class CharacterMonster : CharacterBody3D
 		}
 	}
 
-	// ================= JUMPSCARE FIXED =================
+	// ================= JUMPSCARE =================
 	private void TriggerJumpscare()
 	{
 		if (jumpscareTriggered || isDestroyed)
@@ -179,15 +212,18 @@ public partial class CharacterMonster : CharacterBody3D
 
 		isEventPlaying = true;
 		isChasing = false;
+
 		velocity = Vector3.Zero;
 		Velocity = Vector3.Zero;
 
-		// sound
+		if (chasePlayer.Playing)
+			chasePlayer.Stop();
+
+		// 🔊 PLAY JUMPSCARE SOUND
 		audioPlayer.Stream = GD.Load<AudioStream>("res://Sounds/jumpscare1.mp3");
 		audioPlayer.VolumeDb = 6f;
 		audioPlayer.Play();
 
-		// WAIT FULL 2 SECONDS BEFORE GAMEOVER
 		GetTree().CreateTimer(2.0).Timeout += () =>
 		{
 			ShowGameOver();
@@ -246,7 +282,7 @@ public partial class CharacterMonster : CharacterBody3D
 		}
 	}
 
-	// ================= SPAWN FIX =================
+	// ================= SPAWN =================
 	private void SpawnMonster()
 	{
 		Debug("SPAWN MODE");
