@@ -1,0 +1,16 @@
+newmtl Grass1Mtl
+Material Color
+Ka 0.103634 0.329729 0.0697271
+Kd 0.103634 0.329729 0.0697271
+Ks 0.0410472 0.130599 0.0276174 
+
+d 0.552941
+
+Ns 0
+
+map_Ka Grass1_diff.png
+map_Kd Grass1_diff.png
+map_d Grass1_diff.png
+
+map_Bump Grass1_nmap.png
+
