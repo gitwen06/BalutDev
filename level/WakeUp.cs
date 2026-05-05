@@ -6,6 +6,8 @@ public partial class WakeUp : Control
 	private ColorRect fade;
 	private ColorRect blur;
 	private Control ui;
+	private Color fadeColor = new Color(0, 0, 0, 1);
+	private Color blurColor = new Color(1, 1, 1, 1);
 
 	public override void _Ready()
 	{
@@ -13,11 +15,9 @@ public partial class WakeUp : Control
 		fade = GetNodeOrNull<ColorRect>("WakeUpFade");
 		blur = GetNodeOrNull<ColorRect>("BlurRect");
 		ui = GetNodeOrNull<Control>("UserInterface");
-
 		// Start state: UI hidden
 		if (ui != null)
 			ui.Visible = false;
-
 		StartWakeUp();
 	}
 
@@ -25,29 +25,23 @@ public partial class WakeUp : Control
 	{
 		// INITIAL STATE: black screen + blur
 		if (fade != null)
-			fade.Modulate = new Color(0, 0, 0, 1);
-
+			fade.SelfModulate = new Color(0, 0, 0, 1);
 		if (blur != null)
-			blur.Modulate = new Color(1, 1, 1, 0.6f);
-
+			blur.SelfModulate = new Color(1, 1, 1, 0.6f);
 		// BLINKING EFFECT (eyes adjusting)
 		for (int i = 0; i < 3; i++)
 		{
 			await FadeBlack(1f, 0.85f, 0.2f);
 			await FadeBlack(0.85f, 1f, 0.2f);
 		}
-
 		// GRADUAL VISION RETURN
 		await FadeBlack(1f, 0f, 2.5f);
-
 		// REMOVE BLUR
 		if (blur != null)
 			await FadeBlur(0.6f, 0f, 2.5f);
-
 		// FINAL CLEANUP
 		if (fade != null)
-			fade.Modulate = new Color(0, 0, 0, 0);
-
+			fade.SelfModulate = new Color(0, 0, 0, 0);
 		// SHOW UI AFTER WAKE-UP
 		if (ui != null)
 			ui.Visible = true;
@@ -56,18 +50,17 @@ public partial class WakeUp : Control
 	private async Task FadeBlack(float from, float to, float duration)
 	{
 		if (fade == null) return;
-
 		float t = 0;
-
+		float deltaTime;
+		Color currentColor = fadeColor;
+		
 		while (t < duration)
 		{
-			t += (float)GetProcessDeltaTime();
-			float lerp = t / duration;
-
-			float value = Mathf.Lerp(from, to, lerp);
-
-			fade.Modulate = new Color(0, 0, 0, value);
-
+			deltaTime = (float)GetProcessDeltaTime();
+			t += deltaTime;
+			float lerp = Mathf.Min(t / duration, 1f);
+			currentColor.A = Mathf.Lerp(from, to, lerp);
+			fade.SelfModulate = currentColor;
 			await ToSignal(GetTree(), "process_frame");
 		}
 	}
@@ -75,18 +68,17 @@ public partial class WakeUp : Control
 	private async Task FadeBlur(float from, float to, float duration)
 	{
 		if (blur == null) return;
-
 		float t = 0;
-
+		float deltaTime;
+		Color currentColor = blurColor;
+		
 		while (t < duration)
 		{
-			t += (float)GetProcessDeltaTime();
-			float lerp = t / duration;
-
-			float value = Mathf.Lerp(from, to, lerp);
-
-			blur.Modulate = new Color(1, 1, 1, value);
-
+			deltaTime = (float)GetProcessDeltaTime();
+			t += deltaTime;
+			float lerp = Mathf.Min(t / duration, 1f);
+			currentColor.A = Mathf.Lerp(from, to, lerp);
+			blur.SelfModulate = currentColor;
 			await ToSignal(GetTree(), "process_frame");
 		}
 	}

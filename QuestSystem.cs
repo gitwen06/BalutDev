@@ -1,11 +1,11 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class QuestSystem : Node
 {
 	public static QuestSystem Instance;
 
-	private Node3D outlinedObject;
 	private Label displayQuest;
 
 	private bool uiBound = false;
@@ -16,6 +16,11 @@ public partial class QuestSystem : Node
 	private bool gotDrink = false;
 
 	private bool canAdvance = true;
+	private SceneTreeTimer advanceTimer;
+	private SceneTreeTimer uiBindTimer;
+
+	// Arrow caching
+	private Dictionary<string, Sprite3D> arrowCache = new Dictionary<string, Sprite3D>();
 
 	public override void _Ready()
 	{
@@ -32,8 +37,49 @@ public partial class QuestSystem : Node
 
 		GD.Print($"[QUEST SYSTEM READY] ID: {GetInstanceId()}");
 
-		// 🔥 auto try bind UI after scene loads
 		CallDeferred(nameof(TryAutoBindUI));
+		CallDeferred(nameof(CacheQuestArrows));
+	}
+
+	// ================= ARROW CACHING =================
+	private void CacheQuestArrows()
+	{
+		// Get the main scene (not root)
+		var mainScene = GetTree().CurrentScene;
+
+		// Cache all quest item arrows using unique names
+		CacheArrow("flashlight", mainScene);
+		CacheArrow("balut", mainScene);
+		CacheArrow("energydrink", mainScene);
+
+		GD.Print($"[QUEST] Cached {arrowCache.Count} arrows");
+	}
+
+	private void CacheArrow(string itemName, Node root)
+	{
+		// Use GetNodeOrNull with % prefix for unique names
+		var item = root.GetNodeOrNull<Node>($"%{itemName}");
+
+		if (item != null)
+		{
+			var arrow = item.FindChild("arrow", false, false) as Sprite3D;
+
+			if (arrow != null)
+			{
+				arrowCache[itemName] = arrow;
+				// Make arrow visible through walls
+				arrow.CastShadow = GeometryInstance3D.ShadowCastingSetting.Off;
+				arrow.Transparency = 0.7f;
+				arrow.Visible = false;
+				GD.Print($"[QUEST] Arrow cached for: {itemName}");
+			}
+		}
+	}
+
+	public override void _Process(double delta)
+	{
+		// Ensure current quest arrow stays visible
+		UpdateQuestArrows();
 	}
 
 	// ================= AUTO UI BIND =================
@@ -55,7 +101,10 @@ public partial class QuestSystem : Node
 		else
 		{
 			// retry next frame until UI exists
-			GetTree().CreateTimer(0.2).Timeout += TryAutoBindUI;
+			if (uiBindTimer != null)
+				uiBindTimer.TimeLeft = 0;
+			uiBindTimer = GetTree().CreateTimer(0.2);
+			uiBindTimer.Timeout += TryAutoBindUI;
 		}
 	}
 
@@ -91,7 +140,10 @@ public partial class QuestSystem : Node
 
 		OnQuestChanged(currentQuest);
 
-		GetTree().CreateTimer(0.15).Timeout += () =>
+		if (advanceTimer != null)
+			advanceTimer.TimeLeft = 0;
+		advanceTimer = GetTree().CreateTimer(0.15);
+		advanceTimer.Timeout += () =>
 		{
 			canAdvance = true;
 		};
@@ -125,36 +177,39 @@ public partial class QuestSystem : Node
 
 		GD.Print($"[QUEST] Item detected: {itemName} | Quest: {currentQuest}");
 
-		if (itemName.Contains("flashlight") && currentQuest == 1)
-			ProceedQuest("item:flashlight");
-
-		else if (itemName.Contains("balut") && currentQuest == 2)
-			ProceedQuest("item:balut");
-
-		else if (itemName.Contains("battery") && currentQuest == 4)
+		switch (currentQuest)
 		{
-			gotBattery = true;
-			CheckStore();
+			case 1:
+				if (itemName.Contains("flashlight") || itemName.Contains("balut") || itemName.Contains("battery") || itemName.Contains("drink"))
+					ProceedQuest("item:picked");
+				break;
+			case 2:
+				if (itemName.Contains("balut") || itemName.Contains("flashlight") || itemName.Contains("battery") || itemName.Contains("drink"))
+					ProceedQuest("item:picked");
+				break;
+			case 4:
+				if (itemName.Contains("battery"))
+				{
+					gotBattery = true;
+					if (gotDrink)
+						ProceedQuest("store:complete");
+				}
+				else if (itemName.Contains("drink"))
+				{
+					gotDrink = true;
+					if (gotBattery)
+						ProceedQuest("store:complete");
+				}
+				break;
 		}
-		else if (itemName.Contains("drink") && currentQuest == 4)
-		{
-			gotDrink = true;
-			CheckStore();
-		}
-	}
-
-	private void CheckStore()
-	{
-		if (gotBattery && gotDrink)
-			ProceedQuest("store:complete");
 	}
 
 	// ================= QUEST UPDATE =================
 	private void OnQuestChanged(int quest)
 	{
-		RemoveOutline();
 		ResetStageFlagsIfNeeded();
 		UpdateUI();
+		UpdateQuestArrows();
 
 		GD.Print($"[QUEST UPDATED] → {GetCurrentObjective()}");
 	}
@@ -165,6 +220,39 @@ public partial class QuestSystem : Node
 		{
 			gotBattery = false;
 			gotDrink = false;
+		}
+	}
+
+	// ================= QUEST ARROWS =================
+	private void UpdateQuestArrows()
+	{
+		// Hide all arrows first
+		foreach (var arrow in arrowCache.Values)
+		{
+			if (arrow != null && IsInstanceValid(arrow))
+				arrow.Visible = false;
+		}
+
+		// Show arrow for current quest
+		switch (currentQuest)
+		{
+			case 1:
+				ShowArrow("flashlight");
+				break;
+			case 2:
+				ShowArrow("balut");
+				break;
+			case 4:
+				ShowArrow("energydrink");
+				break;
+		}
+	}
+
+	private void ShowArrow(string itemName)
+	{
+		if (arrowCache.TryGetValue(itemName, out var arrow) && arrow != null && IsInstanceValid(arrow))
+		{
+			arrow.Visible = true;
 		}
 	}
 
@@ -188,16 +276,5 @@ public partial class QuestSystem : Node
 			4 => "Get battery and drink from store",
 			_ => "Objective complete"
 		};
-	}
-
-	// ================= OUTLINE =================
-	public void ApplyOutline(Node3D obj)
-	{
-		outlinedObject = obj;
-	}
-
-	public void RemoveOutline()
-	{
-		outlinedObject = null;
 	}
 }

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c1t52kqp5mspt"
+path="res://.godot/imported/selfDialogueAlingNeneng.dialogue-03d274ade4319760e1620ba23cdba003.tres"
+
+[deps]
+
+source_file="res://Dialogues/selfDialogueAlingNeneng.dialogue"
+dest_files=["res://.godot/imported/selfDialogueAlingNeneng.dialogue-03d274ade4319760e1620ba23cdba003.tres"]
+
+[params]
+
+defaults=true

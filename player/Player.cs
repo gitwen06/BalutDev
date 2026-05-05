@@ -14,6 +14,7 @@ public partial class Player : CharacterBody3D
 	private Button interactBtn;
 	private Node3D hand;
 	private Area3D collisionDetector;
+	private AudioStreamPlayer footstepPlayer;
 
 	// ============= CAMERA BOB & EFFECTS =============
 	private float bobTime = 0f;
@@ -30,6 +31,9 @@ public partial class Player : CharacterBody3D
 	private bool needsCollisionUpdate = false;
 	private Vector3 cachedVelocity = Vector3.Zero;
 	private double lastFrameDelta = 0f;
+	private bool lastInteractButtonState = false;
+	private string lastCharacterNameCache = "";
+	private string lastDialoguePathCache = "";
 
 	public override void _Ready()
 	{
@@ -54,6 +58,16 @@ public partial class Player : CharacterBody3D
 
 		g.stamina = g.maxStamina;
 		baseFlashlightPos = playerFlashlight?.Position ?? Vector3.Zero;
+		interactBtn.Visible = false;
+		lastInteractButtonState = false;
+		
+		footstepPlayer = new AudioStreamPlayer();
+		AddChild(footstepPlayer);
+		footstepPlayer.Bus = "Master";
+
+		footstepPlayer.Stream = GD.Load<AudioStream>("res://Sounds/grass_walk.mp3");
+		footstepPlayer.VolumeDb = -10f;
+		footstepPlayer.Autoplay = false;
 	}
 	//imgonnacrashoutonthismotherfuckingsystemohmygodthisshitissoirritatingimlitteralyabouttocrashout
 	// ================= HOTBAR FUNCTION =================
@@ -150,6 +164,7 @@ public partial class Player : CharacterBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		
 		var g = GlobalVariables.Instance;
 
 		lastFrameDelta = delta;
@@ -166,40 +181,39 @@ public partial class Player : CharacterBody3D
 		//Interact and Pick-up
 		if(playerRay != null && playerRay.IsColliding()) {
 			Node collider = playerRay.GetCollider() as Node;
-			if(collider != null) {
-				GlobalVariables.Instance.target = collider;
-			} else {
-				GlobalVariables.Instance.target = null;
-			}
+			GlobalVariables.Instance.target = collider;
 		} else {
 			GlobalVariables.Instance.target = null;
 		}
 
-		if (GlobalVariables.Instance != null && GlobalVariables.Instance.target != null && (GlobalVariables.Instance.target.IsInGroup("interactables") || GlobalVariables.Instance.target.IsInGroup("pickables") || GlobalVariables.Instance.target.IsInGroup("batteries") || GlobalVariables.Instance.target.IsInGroup("Characters") || GlobalVariables.Instance.target.IsInGroup("drinks") || GlobalVariables.Instance.target.IsInGroup("doors"))) {
-			if(!GlobalVariables.Instance.isTalking) {
-				interactBtn.Visible = true;
+		Node target = GlobalVariables.Instance.target;
+		bool isTalking = GlobalVariables.Instance.isTalking;
+		bool shouldShowButton = false;
+
+		if (target != null && (target.IsInGroup("interactables") || target.IsInGroup("pickables") || target.IsInGroup("batteries") || target.IsInGroup("Characters") || target.IsInGroup("drinks") || target.IsInGroup("doors"))) {
+			if(!isTalking) {
+				shouldShowButton = true;
 				
 				if (Input.IsActionJustPressed("interact")) {
 					//Interact system for batteries
-					if(GlobalVariables.Instance.target.IsInGroup("batteries")) {
-						if (GlobalVariables.Instance.AddItem(GlobalVariables.Instance.target.Name)) {
-							GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
+					if(target.IsInGroup("batteries")) {
+						if (GlobalVariables.Instance.AddItem(target.Name)) {
+							GD.Print($"Picked up: {target.Name}");
 
-							QuestSystem.Instance.OnItemPicked(GlobalVariables.Instance.target.Name);
+							QuestSystem.Instance.OnItemPicked(target.Name);
 
-							RemoveTarget(GlobalVariables.Instance.target);
+							RemoveTarget(target);
 							GlobalVariables.Instance.target = null;
-							interactBtn.Visible = false;
+							shouldShowButton = false;
 						}
 					}
 					//Interact system for characters
-					else if(GlobalVariables.Instance.target.IsInGroup("Characters")) {
+					else if(target.IsInGroup("Characters")) {
 						GlobalVariables.Instance.isTalking = true;
 						Input.MouseMode = Input.MouseModeEnum.Visible;
-						interactBtn.Visible = false;
+						shouldShowButton = false;
 						
-						string characterName = GlobalVariables.Instance.target.Name.ToString().ToLower();
-						string dialoguePath = $"res://Dialogues/{characterName}.dialogue";
+						string characterName = target.Name.ToString().ToLower();
 						
 						bool hasBalut = g.equippedIndex >= 0 && g.currentItem != null && g.currentItem.Name.ToString().Contains("balut");
 						
@@ -209,6 +223,7 @@ public partial class Player : CharacterBody3D
 							startDialogue = "no_balut";
 						}
 						
+						string dialoguePath = $"res://Dialogues/{characterName}.dialogue";
 						var dialogueResource = GD.Load<Resource>(dialoguePath);
 						if(dialogueResource != null) {
 							DialogueManager.ShowDialogueBalloon(dialogueResource, startDialogue);
@@ -221,20 +236,20 @@ public partial class Player : CharacterBody3D
 						GlobalVariables.Instance.target = null;
 					}
 					//Interact system for drinks
-					else if(GlobalVariables.Instance.target.IsInGroup("drinks")) {
-						if (GlobalVariables.Instance.AddItem(GlobalVariables.Instance.target.Name)) {
-							GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
+					else if(target.IsInGroup("drinks")) {
+						if (GlobalVariables.Instance.AddItem(target.Name)) {
+							GD.Print($"Picked up: {target.Name}");
 
-							QuestSystem.Instance.OnItemPicked(GlobalVariables.Instance.target.Name);
+							QuestSystem.Instance.OnItemPicked(target.Name);
 
-							RemoveTarget(GlobalVariables.Instance.target);
+							RemoveTarget(target);
 							GlobalVariables.Instance.target = null;
-							interactBtn.Visible = false;
+							shouldShowButton = false;
 						}
 					}
 					//Interact system for doors
-					else if(GlobalVariables.Instance.target.IsInGroup("doors")) {
-						Node doorNode = GlobalVariables.Instance.target.GetParent();
+					else if(target.IsInGroup("doors")) {
+						Node doorNode = target.GetParent();
 						
 						if (doorNode == null)
 						{
@@ -281,25 +296,30 @@ public partial class Player : CharacterBody3D
 							GD.PrintErr($"Failed to cast {doorNode.Name} to PintoOpen! Type: {doorNode.GetType().Name}");
 						}
 						GlobalVariables.Instance.target = null;
-						interactBtn.Visible = false;
+						shouldShowButton = false;
 					}
 					//Interact system for pickups
-					else if (GlobalVariables.Instance.AddItem(GlobalVariables.Instance.target.Name)) {
-					GD.Print($"Picked up: {GlobalVariables.Instance.target.Name}");
+					else if (GlobalVariables.Instance.AddItem(target.Name)) {
+						GD.Print($"Picked up: {target.Name}");
 
-					QuestSystem.Instance.OnItemPicked(GlobalVariables.Instance.target.Name);
+						QuestSystem.Instance.OnItemPicked(target.Name);
 
-					RemoveTarget(GlobalVariables.Instance.target);
-					GlobalVariables.Instance.target = null;
-					interactBtn.Visible = false;
-				}
+						RemoveTarget(target);
+						GlobalVariables.Instance.target = null;
+						shouldShowButton = false;
+					}
 				}
 			}
-		} else {
-			if(!GlobalVariables.Instance.isTalking) {
-				interactBtn.Visible = false;
-			}
+		} else if(!isTalking) {
+			shouldShowButton = false;
 		}
+
+		// Only update UI if state changed
+		if (lastInteractButtonState != shouldShowButton) {
+			interactBtn.Visible = shouldShowButton;
+			lastInteractButtonState = shouldShowButton;
+		}
+
 		// CROUCH
 		if (Input.IsActionJustPressed("crouch"))
 		{
@@ -332,6 +352,22 @@ public partial class Player : CharacterBody3D
 		float currentSpeed = g.isCrouching ? GlobalVariables.CrouchSpeed : GlobalVariables.Speed;
 
 		bool isInputMoving = direction != Vector3.Zero;
+		
+		if (IsOnFloor() && isInputMoving && !g.isCrouching)
+		{
+			if (!footstepPlayer.Playing)
+			{
+				footstepPlayer.Play();
+			}
+		}
+		else
+		{
+			if (footstepPlayer.Playing)
+			{
+				footstepPlayer.Stop();
+				footstepPlayer.Seek(0); // reset sound
+			}
+		}	
 		bool tryingToRun = Input.IsActionPressed("run") && !g.isCrouching;
 		// RUN + STAMINA
 		if (tryingToRun && g.stamina > 0f && isInputMoving)

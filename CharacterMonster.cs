@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using DialogueManagerRuntime;
 
 public partial class CharacterMonster : CharacterBody3D
 {
@@ -7,59 +8,70 @@ public partial class CharacterMonster : CharacterBody3D
 	private AnimationPlayer animPlayer;
 	private Skeleton3D skeleton;
 	private Area3D jumpscareArea;
+	private AudioStreamPlayer audioPlayer;
 
-	private float hearingRange = 0.000001f;
+	private bool eventLocked = false;
+
+	private float hearingRange = 15.0f;
 	private float chaseSpeed = 5.0f;
-	private float patrolSpeed = 2.0f;
 	private float gravity = 9.8f;
 
 	private Vector3 velocity = Vector3.Zero;
 
 	private bool isChasing = false;
 	private bool jumpscareTriggered = false;
-
-	// IMPORTANT: locks AI during scripted events
 	private bool isEventPlaying = false;
+	private bool isVisible = false;
 
-	// Patrol system
-	private Vector3[] patrolPoints = new Vector3[4];
-	private int currentPatrolIndex = 0;
-	private float patrolWaitTime = 2.0f;
-	private float patrolWaitCounter = 0f;
+	private bool dialogueStarted = false;
+	private string currentAnimation = "";
+
+	private bool isDestroyed = false;
+
+	private void Debug(string msg)
+	{
+		GD.Print($"[MONSTER DEBUG] {msg}");
+	}
 
 	public override void _Ready()
 	{
-		player = GetTree().Root.FindChild("player", owned: false, recursive: true) as Node3D;
+		audioPlayer = new AudioStreamPlayer();
+		AddChild(audioPlayer);
+		audioPlayer.Bus = "Master";
 
-		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		skeleton = GetNode<Skeleton3D>("Skeleton3D");
+		player = GetTree().Root.FindChild("player", true, false) as Node3D;
+
+		animPlayer = GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
+		skeleton = GetNodeOrNull<Skeleton3D>("Skeleton3D");
 
 		jumpscareArea = GetNodeOrNull<Area3D>("Area3D");
 		if (jumpscareArea != null)
 			jumpscareArea.AreaEntered += OnJumpscareAreaEntered;
 
-		SetupPatrolPoints();
+		GlobalPosition = GetPointA();
 
-		// Monster starts hidden until event or spawn logic
-		Hide();
+		DisableMonster();
+
+		Debug("READY (START DISABLED)");
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (player == null || isEventPlaying)
+		if (isDestroyed || !isVisible || player == null)
 			return;
 
-		float distanceToPlayer = GlobalPosition.DistanceTo(player.GlobalPosition);
+		float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
 
-		// JUMPSCARE
-		if (distanceToPlayer < 1.5f && isChasing && !jumpscareTriggered)
+		// 🔥 FIX: REMOVE isChasing requirement
+		if (!jumpscareTriggered && distance <= 2.0f)
 		{
+			Debug($"JUMPSCARE DIST HIT: {distance}");
 			TriggerJumpscare();
 			return;
 		}
 
-		// CHASE
-		if (distanceToPlayer <= hearingRange)
+		// CHASE LOGIC
+		if (!isEventPlaying && distance <= hearingRange)
 		{
 			isChasing = true;
 
@@ -68,18 +80,16 @@ public partial class CharacterMonster : CharacterBody3D
 			velocity.X = dir.X * chaseSpeed;
 			velocity.Z = dir.Z * chaseSpeed;
 
-			RotateSkeletonToward(dir);
-
-			if (!animPlayer.IsPlaying() || animPlayer.CurrentAnimation != "walk")
-				animPlayer.Play("walk");
+			FaceDirection(dir);
+			PlayAnimationSafe("walk");
 		}
 		else
 		{
 			isChasing = false;
-			Patrol(delta);
+			velocity.X = 0;
+			velocity.Z = 0;
 		}
 
-		// GRAVITY
 		if (!IsOnFloor())
 			velocity.Y -= gravity * (float)delta;
 		else
@@ -89,78 +99,112 @@ public partial class CharacterMonster : CharacterBody3D
 		MoveAndSlide();
 	}
 
-	// ---------------- PATROL ----------------
-	private void Patrol(double delta)
+	// ================= ENABLE / DISABLE =================
+	private void EnableMonster()
 	{
-		Vector3 target = patrolPoints[currentPatrolIndex];
-		Vector3 dir = (target - GlobalPosition).Normalized();
-		float dist = GlobalPosition.DistanceTo(target);
+		isVisible = true;
+		Show();
+		Visible = true;
 
-		if (dist < 1.0f)
-		{
-			patrolWaitCounter += (float)delta;
-
-			if (patrolWaitCounter >= patrolWaitTime)
-			{
-				currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
-				patrolWaitCounter = 0f;
-			}
-
-			velocity.X = 0;
-			velocity.Z = 0;
-
-			if (!animPlayer.IsPlaying() || animPlayer.CurrentAnimation != "idle")
-				animPlayer.Play("idle");
-		}
-		else
-		{
-			velocity.X = dir.X * patrolSpeed;
-			velocity.Z = dir.Z * patrolSpeed;
-
-			RotateSkeletonToward(dir);
-
-			if (!animPlayer.IsPlaying() || animPlayer.CurrentAnimation != "walk")
-				animPlayer.Play("walk");
-		}
+		Debug("ENABLED");
 	}
 
-	private void SetupPatrolPoints()
+	private void DisableMonster()
 	{
-		Vector3 start = GlobalPosition;
-		float distance = 10.0f;
+		isVisible = false;
+		isEventPlaying = false;
+		isChasing = false;
 
-		patrolPoints[0] = start + new Vector3(distance, 0, distance);
-		patrolPoints[1] = start + new Vector3(-distance, 0, distance);
-		patrolPoints[2] = start + new Vector3(-distance, 0, -distance);
-		patrolPoints[3] = start + new Vector3(distance, 0, -distance);
+		velocity = Vector3.Zero;
+		Velocity = Vector3.Zero;
+
+		audioPlayer.Stop();
+
+		Hide();
+		Visible = false;
+
+		Debug("DISABLED");
 	}
 
-	// ---------------- ROTATION ----------------
-	private void RotateSkeletonToward(Vector3 direction)
+	private void ResetState()
 	{
-		if (direction.Length() == 0)
+		isEventPlaying = false;
+		isChasing = false;
+		jumpscareTriggered = false;
+		dialogueStarted = false;
+
+		velocity = Vector3.Zero;
+		Velocity = Vector3.Zero;
+
+		audioPlayer.Stop();
+	}
+
+	// ================= ROTATION =================
+	private void FaceDirection(Vector3 dir)
+	{
+		if (dir.LengthSquared() < 0.001f) return;
+
+		float angle = Mathf.Atan2(dir.X, dir.Z);
+		Rotation = new Vector3(0, angle, 0);
+	}
+
+	// ================= ANIMATION =================
+	private void PlayAnimationSafe(string animName)
+	{
+		if (animPlayer == null) return;
+
+		if (!animPlayer.HasAnimation(animName))
+		{
+			GD.PrintErr($"[MONSTER] Missing animation: {animName}");
 			return;
+		}
 
-		float angle = Mathf.Atan2(direction.X, direction.Z);
-		skeleton.Rotation = new Vector3(skeleton.Rotation.X, angle, skeleton.Rotation.Z);
+		if (currentAnimation != animName)
+		{
+			animPlayer.Play(animName);
+			currentAnimation = animName;
+		}
 	}
 
-	// ---------------- JUMPSCARE ----------------
+	// ================= JUMPSCARE FIXED =================
 	private void TriggerJumpscare()
 	{
-		GD.Print("JUMPSCARE!");
+		if (jumpscareTriggered || isDestroyed)
+			return;
 
 		jumpscareTriggered = true;
+		isDestroyed = true;
 
-		var gameOverScene = GD.Load<PackedScene>("res://Plugins and Scenes/GameOver.tscn");
+		Debug("JUMPSCARE TRIGGERED");
 
-		if (gameOverScene != null)
+		isEventPlaying = true;
+		isChasing = false;
+		velocity = Vector3.Zero;
+		Velocity = Vector3.Zero;
+
+		// sound
+		audioPlayer.Stream = GD.Load<AudioStream>("res://Sounds/jumpscare1.mp3");
+		audioPlayer.VolumeDb = 6f;
+		audioPlayer.Play();
+
+		// WAIT FULL 2 SECONDS BEFORE GAMEOVER
+		GetTree().CreateTimer(2.0).Timeout += () =>
 		{
-			var ui = gameOverScene.Instantiate();
-			GetTree().Root.AddChild(ui);
+			ShowGameOver();
+		};
+	}
 
+	private void ShowGameOver()
+	{
+		var scene = GD.Load<PackedScene>("res://Plugins and Scenes/GameOver.tscn");
+
+		if (scene != null)
+		{
+			GetTree().Root.AddChild(scene.Instantiate());
 			GetTree().Paused = true;
 		}
+
+		DisableMonster();
 	}
 
 	private void OnJumpscareAreaEntered(Area3D area)
@@ -169,53 +213,126 @@ public partial class CharacterMonster : CharacterBody3D
 			TriggerJumpscare();
 	}
 
-	// ---------------- EVENT SYSTEM ----------------
+	// ================= EVENT SYSTEM =================
 	public void PlayEvent(string eventName)
 	{
-		Show();
+		if (eventLocked || isDestroyed)
+			return;
+
+		eventLocked = true;
+
+		Debug($"EVENT: {eventName}");
+
+		ResetState();
+		EnableMonster();
 
 		isEventPlaying = true;
-		velocity = Vector3.Zero;
-
-		GD.Print($"Monster Event: {eventName}");
 
 		switch (eventName)
 		{
-			case "MonsterWalkByDialogue":
+			case "spawnMonster":
+				SpawnMonster();
+				break;
+
+			case "monsterWalkByDialogue":
+			case "spawnChase":
 				PlayWalkBy();
 				break;
 
-			case "HallwayPeek":
-				PlayPeek();
-				break;
-
 			default:
-				GD.PrintErr($"Unknown event: {eventName}");
-				isEventPlaying = false;
-				break;
+				Debug("UNKNOWN EVENT");
+				eventLocked = false;
+				return;
 		}
 	}
 
-	// ---------------- EVENTS ----------------
-	private async void PlayWalkBy()
+	// ================= SPAWN FIX =================
+	private void SpawnMonster()
 	{
-		GlobalPosition = new Vector3(0, GlobalPosition.Y, 0);
+		Debug("SPAWN MODE");
 
-		animPlayer.Play("walk");
-
-		await ToSignal(GetTree().CreateTimer(3.0f), "timeout");
+		GlobalPosition = new Vector3(117.993f, 0.222f, 32.574f);
 
 		isEventPlaying = false;
-		Hide();
+		eventLocked = false;
+
+		EnableMonster();
+
+		Debug("Monster spawned successfully");
 	}
 
-	private async void PlayPeek()
+	// ================= WALK =================
+	private async void PlayWalkBy()
 	{
-		animPlayer.Play("peek");
+		if (isDestroyed) return;
 
-		await ToSignal(GetTree().CreateTimer(1.5f), "timeout");
+		Debug("WALK START");
+
+		Vector3 startPos = GetPointA();
+		Vector3 endPos = GetPointB();
+
+		GlobalPosition = startPos;
+
+		Vector3 dir = (endPos - startPos).Normalized();
+		FaceDirection(dir);
+
+		PlayAnimationSafe("walk");
+
+		float duration = 2.0f;
+		float elapsed = 0f;
+
+		while (elapsed < duration && !isDestroyed)
+		{
+			elapsed += (float)GetProcessDeltaTime();
+
+			float t = elapsed / duration;
+			GlobalPosition = startPos.Lerp(endPos, t);
+
+			await ToSignal(GetTree(), "process_frame");
+		}
+
+		Debug("WALK END");
 
 		isEventPlaying = false;
-		Hide();
+		eventLocked = false;
+
+		DisableMonster();
+
+		StartWalkByDialogue();
+	}
+
+	// ================= POSITIONS =================
+	private Vector3 GetPointA() => new Vector3(153.2f, 0.222f, 45.85f);
+	private Vector3 GetPointB() => new Vector3(153.2f, 0.222f, 4.605f);
+
+	// ================= DIALOGUE =================
+	private void StartWalkByDialogue()
+	{
+		if (dialogueStarted || isDestroyed) return;
+
+		dialogueStarted = true;
+
+		var dialogue = GD.Load<Resource>("res://Dialogues/monsterWalkByDialogue.dialogue");
+
+		if (dialogue != null)
+		{
+			GlobalVariables.Instance.isTalking = true;
+			Input.MouseMode = Input.MouseModeEnum.Visible;
+
+			DialogueManagerRuntime.DialogueManager.DialogueEnded += OnDialogueEnded;
+			DialogueManagerRuntime.DialogueManager.ShowDialogueBalloon(dialogue, "start");
+
+			Debug("DIALOGUE STARTED");
+		}
+	}
+
+	private void OnDialogueEnded(Resource res)
+	{
+		GlobalVariables.Instance.isTalking = false;
+		Input.MouseMode = Input.MouseModeEnum.Captured;
+
+		DialogueManagerRuntime.DialogueManager.DialogueEnded -= OnDialogueEnded;
+
+		Debug("DIALOGUE ENDED");
 	}
 }

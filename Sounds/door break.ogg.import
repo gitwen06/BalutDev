@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bc0r7ehffwlec"
+path="res://.godot/imported/door break.ogg-67145cbddf1c4557fb682fa770c1e671.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/door break.ogg"
+dest_files=["res://.godot/imported/door break.ogg-67145cbddf1c4557fb682fa770c1e671.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
