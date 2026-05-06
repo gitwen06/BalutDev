@@ -7,20 +7,30 @@ public partial class QuestSystem : Node
 	public static QuestSystem Instance;
 
 	private Label displayQuest;
+	private Dictionary<string, Node3D> glowNodes = new Dictionary<string, Node3D>();
 
 	private bool uiBound = false;
-
-	public int currentQuest = 0;
-
-	private bool gotBattery = false;
-	private bool gotDrink = false;
-
 	private bool canAdvance = true;
 	private SceneTreeTimer advanceTimer;
 	private SceneTreeTimer uiBindTimer;
 
-	// Arrow caching
-	private Dictionary<string, Sprite3D> arrowCache = new Dictionary<string, Sprite3D>();
+	public int currentQuest = 0;
+	public bool returnHorrorActive = false;
+
+	private bool gotBattery = false;
+	private bool gotDrink = false;
+
+	private const float ADVANCE_COOLDOWN = 0.15f;
+	private const float UI_BIND_RETRY_DELAY = 0.2f;
+
+	private static readonly Dictionary<int, string[]> QuestItems = new()
+	{
+		{ 0, new[] { "mang jason" } },
+		{ 1, new[] { "flashlight" } },
+		{ 2, new[] { "balut" } },
+		{ 3, new[] { "aling neneng" } },
+		{ 4, new[] { "energydrink", "battery" } },
+	};
 
 	public override void _Ready()
 	{
@@ -32,54 +42,48 @@ public partial class QuestSystem : Node
 		}
 
 		Instance = this;
-
 		ResetState();
 
 		GD.Print($"[QUEST SYSTEM READY] ID: {GetInstanceId()}");
 
 		CallDeferred(nameof(TryAutoBindUI));
-		CallDeferred(nameof(CacheQuestArrows));
+		CallDeferred(nameof(CacheGlowNodes));
 	}
 
-	// ================= ARROW CACHING =================
-	private void CacheQuestArrows()
+	// ================= GLOW CACHING =================
+	private void CacheGlowNodes()
 	{
-		// Get the main scene (not root)
 		var mainScene = GetTree().CurrentScene;
 
-		// Cache all quest item arrows using unique names
-		CacheArrow("flashlight", mainScene);
-		CacheArrow("balut", mainScene);
-		CacheArrow("energydrink", mainScene);
-
-		GD.Print($"[QUEST] Cached {arrowCache.Count} arrows");
-	}
-
-	private void CacheArrow(string itemName, Node root)
-	{
-		// Use GetNodeOrNull with % prefix for unique names
-		var item = root.GetNodeOrNull<Node>($"%{itemName}");
-
-		if (item != null)
+		// If main scene is null or is the QuestSystem itself, retry next frame
+		if (mainScene == null || mainScene == this)
 		{
-			var arrow = item.FindChild("arrow", false, false) as Sprite3D;
-
-			if (arrow != null)
-			{
-				arrowCache[itemName] = arrow;
-				// Make arrow visible through walls
-				arrow.CastShadow = GeometryInstance3D.ShadowCastingSetting.Off;
-				arrow.Transparency = 0.7f;
-				arrow.Visible = false;
-				GD.Print($"[QUEST] Arrow cached for: {itemName}");
-			}
+			CallDeferred(nameof(CacheGlowNodes));
+			return;
 		}
-	}
 
-	public override void _Process(double delta)
-	{
-		// Ensure current quest arrow stays visible
-		UpdateQuestArrows();
+		foreach (var itemName in new[] { "flashlight", "balut", "battery", "energydrink", "mang jason", "aling neneng" })
+		{
+			var item = mainScene.GetNodeOrNull<Node>($"%{itemName}");
+			if (item == null)
+			{
+				GD.PrintErr($"[QUEST] Item not found: %{itemName}");
+				continue;
+			}
+
+			var glow = item.FindChild("Glow", false, false) as Node3D;
+			if (glow == null)
+			{
+				GD.PrintErr($"[QUEST] Glow node not found for: {itemName}");
+				continue;
+			}
+
+			glowNodes[itemName] = glow;
+			glow.Visible = false;
+			GD.Print($"[QUEST] ✓ Cached glow for: {itemName}");
+		}
+
+		GD.Print($"[QUEST] Cached {glowNodes.Count} glow nodes");
 	}
 
 	// ================= AUTO UI BIND =================
@@ -87,10 +91,7 @@ public partial class QuestSystem : Node
 	{
 		if (uiBound) return;
 
-		// try find UI anywhere in scene tree
-		var root = GetTree().Root;
-
-		displayQuest = root.FindChild("questDisplay", true, false) as Label;
+		displayQuest = GetTree().Root.FindChild("questDisplay", true, false) as Label;
 
 		if (displayQuest != null)
 		{
@@ -100,20 +101,18 @@ public partial class QuestSystem : Node
 		}
 		else
 		{
-			// retry next frame until UI exists
 			if (uiBindTimer != null)
 				uiBindTimer.TimeLeft = 0;
-			uiBindTimer = GetTree().CreateTimer(0.2);
+
+			uiBindTimer = GetTree().CreateTimer(UI_BIND_RETRY_DELAY);
 			uiBindTimer.Timeout += TryAutoBindUI;
 		}
 	}
 
-	// ================= OPTIONAL MANUAL BIND =================
 	public void BindUI(Label label)
 	{
 		displayQuest = label;
 		uiBound = true;
-
 		GD.Print("[QUEST] UI manually bound");
 		UpdateUI();
 	}
@@ -132,21 +131,17 @@ public partial class QuestSystem : Node
 		if (!canAdvance) return;
 
 		canAdvance = false;
-
 		currentQuest++;
 
 		GD.Print($"[QUEST] Advanced → {GetCurrentObjective()} ({reason})");
-		GD.Print($"[QUEST STATE] Now at: {currentQuest}");
 
 		OnQuestChanged(currentQuest);
 
 		if (advanceTimer != null)
 			advanceTimer.TimeLeft = 0;
-		advanceTimer = GetTree().CreateTimer(0.15);
-		advanceTimer.Timeout += () =>
-		{
-			canAdvance = true;
-		};
+
+		advanceTimer = GetTree().CreateTimer(ADVANCE_COOLDOWN);
+		advanceTimer.Timeout += () => { canAdvance = true; };
 	}
 
 	// ================= TRIGGERS =================
@@ -165,6 +160,12 @@ public partial class QuestSystem : Node
 				if (currentQuest == 3)
 					ProceedQuest("dialogue:aling_neneng");
 				break;
+
+			case "aling_marites_has_balut":
+				if (currentQuest == 6)
+					ProceedQuest("dialogue:aling_marites");
+					
+				break;
 		}
 	}
 
@@ -174,19 +175,16 @@ public partial class QuestSystem : Node
 		if (string.IsNullOrEmpty(itemName)) return;
 
 		itemName = itemName.ToLower();
-
 		GD.Print($"[QUEST] Item detected: {itemName} | Quest: {currentQuest}");
 
 		switch (currentQuest)
 		{
 			case 1:
-				if (itemName.Contains("flashlight") || itemName.Contains("balut") || itemName.Contains("battery") || itemName.Contains("drink"))
-					ProceedQuest("item:picked");
-				break;
 			case 2:
-				if (itemName.Contains("balut") || itemName.Contains("flashlight") || itemName.Contains("battery") || itemName.Contains("drink"))
+				if (IsRelevantItem(itemName))
 					ProceedQuest("item:picked");
 				break;
+
 			case 4:
 				if (itemName.Contains("battery"))
 				{
@@ -194,7 +192,7 @@ public partial class QuestSystem : Node
 					if (gotDrink)
 						ProceedQuest("store:complete");
 				}
-				else if (itemName.Contains("drink"))
+				else if (itemName.Contains("drink") || itemName.Contains("energydrink"))
 				{
 					gotDrink = true;
 					if (gotBattery)
@@ -204,12 +202,24 @@ public partial class QuestSystem : Node
 		}
 	}
 
+	private bool IsRelevantItem(string itemName)
+	{
+		return itemName.Contains("flashlight") || itemName.Contains("balut") 
+			|| itemName.Contains("battery") || itemName.Contains("drink") || itemName.Contains("energydrink");
+	}
+
 	// ================= QUEST UPDATE =================
 	private void OnQuestChanged(int quest)
 	{
 		ResetStageFlagsIfNeeded();
 		UpdateUI();
-		UpdateQuestArrows();
+		UpdateQuestGlow();
+
+		if (quest == 4)
+		{
+			returnHorrorActive = true;
+			GD.Print("[QUEST] HORROR MODE ACTIVATED (return path enabled)");
+		}
 
 		GD.Print($"[QUEST UPDATED] → {GetCurrentObjective()}");
 	}
@@ -223,36 +233,35 @@ public partial class QuestSystem : Node
 		}
 	}
 
-	// ================= QUEST ARROWS =================
-	private void UpdateQuestArrows()
+	// ================= QUEST GLOW =================
+	private void UpdateQuestGlow()
 	{
-		// Hide all arrows first
-		foreach (var arrow in arrowCache.Values)
+		// Hide all glows first
+		foreach (var glow in glowNodes.Values)
 		{
-			if (arrow != null && IsInstanceValid(arrow))
-				arrow.Visible = false;
+			if (glow != null && IsInstanceValid(glow))
+				glow.Visible = false;
 		}
 
-		// Show arrow for current quest
-		switch (currentQuest)
+		// SAFETY: if quest has no mapping, do nothing
+		if (!QuestItems.ContainsKey(currentQuest))
 		{
-			case 1:
-				ShowArrow("flashlight");
-				break;
-			case 2:
-				ShowArrow("balut");
-				break;
-			case 4:
-				ShowArrow("energydrink");
-				break;
+			GD.Print($"[QUEST] No glow mapping for quest {currentQuest}");
+			return;
 		}
-	}
 
-	private void ShowArrow(string itemName)
-	{
-		if (arrowCache.TryGetValue(itemName, out var arrow) && arrow != null && IsInstanceValid(arrow))
+		// Show ONLY current quest items
+		foreach (var name in QuestItems[currentQuest])
 		{
-			arrow.Visible = true;
+			if (glowNodes.TryGetValue(name, out var glow))
+			{
+				if (glow != null && IsInstanceValid(glow))
+					glow.Visible = true;
+			}
+			else
+			{
+				GD.PrintErr($"[QUEST] Glow missing: {name}");
+			}
 		}
 	}
 
@@ -260,7 +269,6 @@ public partial class QuestSystem : Node
 	private void UpdateUI()
 	{
 		if (!uiBound || displayQuest == null) return;
-
 		displayQuest.Text = GetCurrentObjective();
 	}
 
@@ -269,12 +277,17 @@ public partial class QuestSystem : Node
 	{
 		return currentQuest switch
 		{
-			0 => "Talk to Tatay",
-			1 => "Get the flashlight",
-			2 => "Get the balut",
-			3 => "Give balut to Aling Neneng",
-			4 => "Get battery and drink from store",
+			0 => "Kausapin si tatay",
+			1 => "Kunin ang flashlight",
+			2 => "Kunin ang balut",
+			3 => "Bigyan ng balut si Aling Neneng",
+			4 => "Kunin ang baterya at inumin sa tindahan ni Aling Neneng",
+			5 => "Pumunta sa Baranggay Piti Piw Wiw Wiw at maglako ng balut.",
+			6 => "Bentahan ng balut si Aling Marites sa likod ng kaniyang bahay.",
+			7 => "Maglako ng balut",
 			_ => "Objective complete"
 		};
 	}
+
+	public bool IsReturnHorrorActive() => returnHorrorActive;
 }

@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://b0aag6lt1l1p1" path="res://3dmodels/battery/textures/Scene_-_Root_metallicRoughness.png" id="2_6yjuq"]
 [ext_resource type="Texture2D" uid="uid://3f1xpgbrdoa3" path="res://3dmodels/battery/textures/Scene_-_Root_normal.png" id="3_m58mi"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qy1hn"]
+size = Vector3(0.24893725, 0.26953125, 0.24171859)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jqws3"]
 resource_name = "Scene_-_Root"
 cull_mode = 2
@@ -52,33 +55,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_73c8u")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qy1hn"]
-size = Vector3(0.24893725, 0.26953125, 0.24171859)
-
 [node name="battery" type="Node3D" unique_id=176440763]
 transform = Transform3D(-0.7336468, 0, -0.679531, 0, 1, 0, 0.679531, 0, -0.7336468, -0.17597479, -0.105427265, -0.35469073)
-
-[node name="Sketchfab_Scene" type="Node3D" parent="." unique_id=1287813145]
-transform = Transform3D(-0.013378561, 0, 0.007813116, 0, 0.013448705, 0, -0.012391721, 0, -0.0084353285, -0.08251953, -0.5172272, -2.620407)
-
-[node name="Sketchfab_model" type="Node3D" parent="Sketchfab_Scene" unique_id=923514714]
-transform = Transform3D(0.9976884, -0.06791974, -0.002165831, -0.067954265, -0.9971816, -0.031798217, -2.2027772e-17, 0.031871893, -0.999492, 0.043875396, 20.902212, 20.247753)
-
-[node name="e4414f8f62f84ff5bcb75be667c7778e_fbx" type="Node3D" parent="Sketchfab_Scene/Sketchfab_model" unique_id=1386327859]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
-
-[node name="RootNode" type="Node3D" parent="Sketchfab_Scene/Sketchfab_model/e4414f8f62f84ff5bcb75be667c7778e_fbx" unique_id=1783442252]
-
-[node name="Cylinder006" type="Node3D" parent="Sketchfab_Scene/Sketchfab_model/e4414f8f62f84ff5bcb75be667c7778e_fbx/RootNode" unique_id=1603154745]
-transform = Transform3D(1, 0, 0, 0, 2.220446e-16, 1, 0, -1, 2.220446e-16, 0, 0, 0)
-
-[node name="Cylinder006__0" type="MeshInstance3D" parent="Sketchfab_Scene/Sketchfab_model/e4414f8f62f84ff5bcb75be667c7778e_fbx/RootNode/Cylinder006" unique_id=502578094]
-transform = Transform3D(0.39113206, 5.6234743e-08, -1.7364243e-10, -5.779226e-08, 0.4413585, -3.5390258e-08, -1.7003299e-10, 3.1664968e-08, 0.514007, -102.31641, -25.950806, 156.80688)
-mesh = SubResource("ArrayMesh_8j0kx")
-skeleton = NodePath("")
 
 [node name="Battery" type="Area3D" parent="." unique_id=1699377848 groups=["batteries"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Battery" unique_id=1174932381]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11013794, 0.1328125, -0.12237549)
 shape = SubResource("BoxShape3D_qy1hn")
+
+[node name="Cylinder006__0" type="MeshInstance3D" parent="." unique_id=502578094]
+transform = Transform3D(-0.005220688, 0.000510954, -0.0039990614, -0.00035745357, -0.0059189713, -0.00021981195, -0.0048355954, 0.0002528064, 0.0043474096, 0.19074638, 0.13835058, -0.21541223)
+mesh = SubResource("ArrayMesh_8j0kx")
+skeleton = NodePath("")

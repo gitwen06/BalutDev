@@ -23,7 +23,7 @@ public partial class LoadingScreen : Control
 
 		// Once "loaded", switch to game scene
 		if(loadingProgress >= 100) {
-			GetTree().ChangeSceneToFile("res://level/level.tscn"); 
+			GetTree().ChangeSceneToFile("res://level/level.scn"); 
 		}
 	}
 }

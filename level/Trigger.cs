@@ -50,7 +50,6 @@ public partial class Trigger : Node3D
 		else if (isJumpscareTrigger)
 		{
 			GD.Print("triggered jumpscare");
-
 			JumpscareManager.Instance.PlayJumpscare(eventName);
 		}
 	}
@@ -69,8 +68,7 @@ public partial class Trigger : Node3D
 				GD.PrintErr("Monster scene not found!");
 				return;
 			}
-
-			// ✅ SPAWN IN CURRENT SCENE (NOT ROOT)
+			
 			Node currentScene = GetTree().CurrentScene;
 
 			if (currentScene == null)

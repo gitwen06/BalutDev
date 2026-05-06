@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bsyp2girkf43h"
+path="res://.godot/imported/aling marites.dialogue-ed8a2507df519ebfa4d09c93620e61eb.tres"
+
+[deps]
+
+source_file="res://Dialogues/aling marites.dialogue"
+dest_files=["res://.godot/imported/aling marites.dialogue-ed8a2507df519ebfa4d09c93620e61eb.tres"]
+
+[params]
+
+defaults=true

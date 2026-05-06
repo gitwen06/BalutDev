@@ -4,12 +4,12 @@ importer="dialogue_manager"
 importer_version=15
 type="Resource"
 uid="uid://mgg52e1s75kn"
-path="res://.godot/imported/Aling Neneng.dialogue-590023407aacb02631a4b27bee953a84.tres"
+path="res://.godot/imported/aling neneng.dialogue-7c32ac59f44fcf6cfbc91a85068ca73e.tres"
 
 [deps]
 
-source_file="res://Dialogues/Aling Neneng.dialogue"
-dest_files=["res://.godot/imported/Aling Neneng.dialogue-590023407aacb02631a4b27bee953a84.tres"]
+source_file="res://Dialogues/aling neneng.dialogue"
+dest_files=["res://.godot/imported/aling neneng.dialogue-7c32ac59f44fcf6cfbc91a85068ca73e.tres"]
 
 [params]
 

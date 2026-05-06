@@ -1,0 +1,32 @@
+~ start
+set GlobalVariables.Instance.isTalking = true
+
+if GlobalVariables.Instance.gaveAlingMarites == true:
+    => gave_already
+
+do GlobalVariables.Instance.OpenAnim()
+
+Aling Marites: Pabili ako niyang balut, magkano?
+- 15₱ po isa
+	do GlobalVariables.Instance.GiveBalut(1)
+	Aling Marites: Sige pabili ako isa lang.
+	Aling Marites: Mag-ingat ka, gabi na at maraming kababalaghan sa barangay na 'to.
+	do QuestSystem.Instance.TriggerQuestAdvance("aling_marites_has_balut")
+	set GlobalVariables.Instance.gaveAlingMarites = true
+	do GlobalVariables.Instance.CloseAnim()
+	=> END
+
+~ gave_already
+Aling Marites: Sapat na ito iho.... Bukas nalang ulit ako bibili ha...
+set GlobalVariables.Instance.isTalking = false
+=> END
+
+
+~ no_balut
+Aling Marites: Anong ginagawa mo rito sa likod ng bahay ko?
+- Naglalako po ng balut.
+Aling Marites: Eh bat wala ka namang dala? Umalis ka na rito.
+set GlobalVariables.Instance.isTalking = false
+=> END
+
+do GlobalVariables.Instance.alingMarites.OnDialogueEnded()

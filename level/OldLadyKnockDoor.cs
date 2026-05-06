@@ -26,7 +26,7 @@ public partial class OldLadyKnockDoor : Node3D
 	private bool chaseStopped = false;
 
 	// ================= MOVEMENT =================
-	private float chaseSpeed = 7.5f;
+	private float chaseSpeed = 9.0f;
 	private float rotationSpeed = 12f;
 
 	private RandomNumberGenerator rng = new RandomNumberGenerator();
@@ -48,7 +48,7 @@ public partial class OldLadyKnockDoor : Node3D
 		dustBurst = GetNodeOrNull<GpuParticles3D>("DustBurst");
 
 		doorAnim = GetNodeOrNull<AnimationPlayer>("Door/AnimationPlayer");
-		ladyAnim = oldLady.GetNodeOrNull<AnimationPlayer>("Pivot/AnimationPlayer");
+		ladyAnim = oldLady.GetNodeOrNull<AnimationPlayer>("AnimationPlayer");
 
 		triggerArea = GetNode<Area3D>("Door/Area3D");
 		triggerArea.BodyEntered += OnBodyEntered;

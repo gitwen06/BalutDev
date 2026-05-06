@@ -13,14 +13,6 @@ Aling Neneng: Uy, 'nak, pabili naman ako niyang balut.
 	do GlobalVariables.Instance.CloseAnim()
 	do GlobalVariables.Instance.RemoveNPC()
 	=> END
-- Ayaw ko po
-	Aling Neneng: Kaya ginawa kang ampon.
-	- Sorry po
-		Aling Neneng: Mabuti nagpaumanhin ka saaking apo, mabuti yun.
-		=> END
-	- ...
-		Aling Neneng: O ano, wala ka ng masagot
-		=> END
 
 ~ gave_already
 Aling Neneng: Sapat na ito iho.... Bukas nalang ulit ako bibili ha...
@@ -28,6 +20,6 @@ set GlobalVariables.Instance.isTalking = false
 => END
 
 ~ no_balut
-Aling Neneng: Wala ka namang balut na dala! Inuuto mo ba ako!?
+Aling Neneng: Nasaan ang balut 'nak, labas mo na.
 set GlobalVariables.Instance.isTalking = false
 => END

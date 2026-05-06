@@ -53,9 +53,7 @@ transform = Transform3D(-0.7336468, 0, -0.679531, 0, 1, 0, 0.679531, 0, -0.73364
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0077819824, 0.025913239, -0.00049591064)
 shape = SubResource("BoxShape3D_axkbc")
 
-[node name="Layer_1" type="Node3D" parent="." unique_id=2123397540]
-transform = Transform3D(0.3932629, 0.3022526, -0.0065528634, 0.012488157, 0.0005522987, 0.3646322, 0.3633976, -0.3271119, -0.0054392247, 0, 0, 0)
-
-[node name="Layer_1__0" type="MeshInstance3D" parent="Layer_1" unique_id=513477631]
+[node name="Layer_1__0" type="MeshInstance3D" parent="." unique_id=513477631]
+transform = Transform3D(0.3932629, 0.3022526, -0.006552863, 0.012488157, 0.0005522987, 0.3646322, 0.3633976, -0.3271119, -0.0054392247, 0, 0, 0)
 mesh = SubResource("ArrayMesh_wur4c")
 skeleton = NodePath("")

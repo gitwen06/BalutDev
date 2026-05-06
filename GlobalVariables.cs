@@ -107,6 +107,15 @@ public partial class GlobalVariables : Node
 	public bool gaveAlingShoneng = false;
 	public bool gaveKuyaGeorge = false;
 	
+	public AlingMarites alingMarites;
+	
+	// ==== Event controllersererser ====
+	public MonsterPeekTrigger monsterPeekTrigger;
+	public void EnableMonsterPeek()
+	{
+		monsterPeekTrigger?.EnableTrigger();
+	}
+	
 	// ==== ANIMATION CONTROLLERS ==== my head faking hurts
 	public AnimationForCharacters animationController;
 	// ==== ANIMATION WRAPPERS ====

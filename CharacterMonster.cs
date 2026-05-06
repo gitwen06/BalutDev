@@ -51,7 +51,7 @@ public partial class CharacterMonster : CharacterBody3D
 		else if (stream is AudioStreamOggVorbis ogg)
 			ogg.Loop = true;
 
-chasePlayer.Stream = stream;
+		chasePlayer.Stream = stream;
 
 		player = GetTree().Root.FindChild("player", true, false) as Node3D;
 
@@ -314,7 +314,7 @@ chasePlayer.Stream = stream;
 
 		PlayAnimationSafe("walk");
 
-		float duration = 2.0f;
+		float duration = 1.0f;
 		float elapsed = 0f;
 
 		while (elapsed < duration && !isDestroyed)
@@ -335,6 +335,55 @@ chasePlayer.Stream = stream;
 		DisableMonster();
 
 		StartWalkByDialogue();
+	}
+	
+	public async void PlayPeek(Vector3 pos, Vector3 rotDeg)
+	{
+		if (isDestroyed) return;
+
+		PlayAnimationSafe("idle");
+		Debug("PEEK START");
+
+		// Save state
+		bool prevVisible = isVisible;
+		bool prevEvent = isEventPlaying;
+		bool prevChase = isChasing;
+
+		Vector3 prevPos = GlobalPosition;
+		Vector3 prevRot = Rotation;
+
+		// Stop everything
+		isEventPlaying = true;
+		isChasing = false;
+		velocity = Vector3.Zero;
+		Velocity = Vector3.Zero;
+
+		// Force show
+		Show();
+		Visible = true;
+		isVisible = true;
+
+		// Move to peek spot
+		GlobalPosition = pos;
+		RotationDegrees = rotDeg;
+
+		await ToSignal(GetTree().CreateTimer(0.8f), "timeout");
+
+		// Restore previous state
+		GlobalPosition = prevPos;
+		Rotation = prevRot;
+
+		isEventPlaying = prevEvent;
+		isChasing = prevChase;
+		isVisible = prevVisible;
+
+		if (!prevVisible)
+		{
+			Hide();
+			Visible = false;
+		}
+
+		Debug("PEEK END");
 	}
 
 	// ================= POSITIONS =================

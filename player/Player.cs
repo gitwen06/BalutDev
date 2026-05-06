@@ -15,6 +15,7 @@ public partial class Player : CharacterBody3D
 	private Node3D hand;
 	private Area3D collisionDetector;
 	private AudioStreamPlayer footstepPlayer;
+	private Node lastCharacterNode = null;
 
 	// ============= CAMERA BOB & EFFECTS =============
 	private float bobTime = 0f;
@@ -209,32 +210,39 @@ public partial class Player : CharacterBody3D
 					}
 					//Interact system for characters
 					else if(target.IsInGroup("Characters")) {
-						GlobalVariables.Instance.isTalking = true;
-						Input.MouseMode = Input.MouseModeEnum.Visible;
-						shouldShowButton = false;
-						
-						string characterName = target.Name.ToString().ToLower();
-						
-						bool hasBalut = g.equippedIndex >= 0 && g.currentItem != null && g.currentItem.Name.ToString().Contains("balut");
-						
-						string startDialogue = "start";
-						if (characterName != "mang jason" && !hasBalut)
-						{
-							startDialogue = "no_balut";
-						}
-						
-						string dialoguePath = $"res://Dialogues/{characterName}.dialogue";
-						var dialogueResource = GD.Load<Resource>(dialoguePath);
-						if(dialogueResource != null) {
-							DialogueManager.ShowDialogueBalloon(dialogueResource, startDialogue);
-							DialogueManager.DialogueEnded += OnDialogueEnded;
-						} else {
-							GD.PrintErr($"Dialogue file not found: {dialoguePath}");
-							GlobalVariables.Instance.isTalking = false;
-						}
-						
-						GlobalVariables.Instance.target = null;
+					GlobalVariables.Instance.isTalking = true;
+					Input.MouseMode = Input.MouseModeEnum.Visible;
+					shouldShowButton = false;
+					
+					Node characterNode = target;
+					if (target is Area3D && target.GetParent() is Node3D parent)
+					{
+						characterNode = parent;
 					}
+					
+					string characterName = characterNode.Name.ToString().ToLower();
+					lastCharacterNode = characterNode;  // Store the actual character node
+					
+					bool hasBalut = g.equippedIndex >= 0 && g.currentItem != null && g.currentItem.Name.ToString().Contains("balut");
+					
+					string startDialogue = "start";
+					if (characterName != "mang jason" && !hasBalut)
+					{
+						startDialogue = "no_balut";
+					}
+					
+					string dialoguePath = $"res://Dialogues/{characterName}.dialogue";
+					var dialogueResource = GD.Load<Resource>(dialoguePath);
+					if(dialogueResource != null) {
+						DialogueManager.ShowDialogueBalloon(dialogueResource, startDialogue);
+						DialogueManager.DialogueEnded += OnDialogueEnded;
+					} else {
+						GD.PrintErr($"Dialogue file not found: {dialoguePath}");
+						GlobalVariables.Instance.isTalking = false;
+					}
+					
+					GlobalVariables.Instance.target = null;
+				}
 					//Interact system for drinks
 					else if(target.IsInGroup("drinks")) {
 						if (GlobalVariables.Instance.AddItem(target.Name)) {
@@ -431,10 +439,33 @@ public partial class Player : CharacterBody3D
 	}
 	// ================= UNLOCK MOUSE WHEN DIALOGUE ENDS ================
 	private void OnDialogueEnded(Resource resource) {
-		GlobalVariables.Instance.isTalking = false;
-		Input.MouseMode = Input.MouseModeEnum.Captured;
-		DialogueManager.DialogueEnded -= OnDialogueEnded;
+	GlobalVariables.Instance.isTalking = false;
+	Input.MouseMode = Input.MouseModeEnum.Captured;
+
+	DialogueManager.DialogueEnded -= OnDialogueEnded;
+
+	// ================= CALL CHARACTER'S DIALOGUE END METHOD =================
+	if (lastCharacterNode != null)
+	{
+		string characterName = lastCharacterNode.Name.ToString().ToLower();
+		
+		if (lastCharacterNode.HasMethod("OnDialogueEnded"))
+		{
+			lastCharacterNode.Call("OnDialogueEnded");
+			GD.Print($"[PLAYER] Called OnDialogueEnded on {characterName}");
+		}
+		else
+		{
+			GD.PrintErr($"[PLAYER] {characterName} has no OnDialogueEnded method!");
+		}
 	}
+	else
+	{
+		GD.Print("[PLAYER] No character node to call");
+	}
+	
+	lastCharacterNode = null;
+}
 	// ================= INPUT =================
 	public override void _Input(InputEvent @event) {
 		var g = GlobalVariables.Instance;
