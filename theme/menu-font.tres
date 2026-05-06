@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://d0v6a7iiaxveg"]
+
+[ext_resource type="FontFile" uid="uid://bego6u5b6j364" path="res://fonts/TradeWinds-Regular.ttf" id="1_emmnk"]
+
+[resource]
+Label/font_sizes/font_size = 78
+Label/fonts/font = ExtResource("1_emmnk")
