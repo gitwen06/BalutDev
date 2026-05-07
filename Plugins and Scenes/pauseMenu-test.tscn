@@ -5,6 +5,8 @@
 [ext_resource type="FontFile" uid="uid://bego6u5b6j364" path="res://fonts/TradeWinds-Regular.ttf" id="3_t8foh"]
 [ext_resource type="AudioStream" uid="uid://bdd8i1wdg6742" path="res://Sounds/ButtonMove.wav" id="4_fafcn"]
 [ext_resource type="AudioStream" uid="uid://dbmixijrh2d5e" path="res://Sounds/ButtonSelect.wav" id="5_ats2r"]
+[ext_resource type="FontFile" uid="uid://bxagr3bjub1tf" path="res://fonts/Montserrat/static/Montserrat-BoldItalic.ttf" id="6_bb581"]
+[ext_resource type="AudioStream" uid="uid://cneiu7jlasa8t" path="res://Sounds/Chase.mp3" id="7_b26qj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5pjqc"]
 
@@ -38,7 +40,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%cursor/../frontlines:size")
+tracks/1/path = NodePath("../frontlines:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -50,7 +52,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%cursor/../frontlines:position")
+tracks/2/path = NodePath("../frontlines:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -62,7 +64,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("%cursor/../frontlines2:size")
+tracks/3/path = NodePath("../frontlines2:size")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -74,7 +76,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("%cursor/../frontlines2:position")
+tracks/4/path = NodePath("../frontlines2:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -86,7 +88,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("%continuePause:position")
+tracks/5/path = NodePath("../continuePause:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -98,7 +100,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("%continuePause:self_modulate")
+tracks/6/path = NodePath("../continuePause:self_modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -110,7 +112,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("%questPause:position")
+tracks/7/path = NodePath("../questPause:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -122,7 +124,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("%questPause:self_modulate")
+tracks/8/path = NodePath("../questPause:self_modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -134,7 +136,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("%keybindsPause:position")
+tracks/9/path = NodePath("../keybindsPause:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -146,7 +148,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("%keybindsPause:self_modulate")
+tracks/10/path = NodePath("../keybindsPause:self_modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -158,7 +160,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("%optionsPause:position")
+tracks/11/path = NodePath("../optionsPause:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -170,7 +172,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("%optionsPause:self_modulate")
+tracks/12/path = NodePath("../optionsPause:self_modulate")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -182,7 +184,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("%leavePause:position")
+tracks/13/path = NodePath("../leavePause:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -194,7 +196,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("%leavePause:self_modulate")
+tracks/14/path = NodePath("../leavePause:self_modulate")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -453,10 +455,224 @@ _data = {
 &"cursorpauseOpen": SubResource("Animation_fafcn")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ats2r"]
+bg_color = Color(0.05799634, 0.057996362, 0.057996295, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhygf"]
+bg_color = Color(0.8416634, 4.6205523e-06, 0.37289667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_boynw"]
+bg_color = Color(0.8416634, 4.6205523e-06, 0.37289667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b26qj"]
+bg_color = Color(0.27450982, 0, 0.101960786, 1)
+border_width_top = 10
+border_width_bottom = 10
+border_color = Color(0.2752236, 0, 0.102585815, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_yo567"]
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_qhygf")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_boynw")
+HSlider/styles/slider = SubResource("StyleBoxFlat_b26qj")
+
+[sub_resource type="Animation" id="Animation_b26qj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cursorBackdrop:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2089, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tabLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(100, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qhygf"]
+resource_name = "optionsTab"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cursorBackdrop:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1.5, 0.3),
+"update": 0,
+"values": [Vector2(0, 100), Vector2(2106, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tabLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03333333, 0.5),
+"transitions": PackedFloat32Array(1.8, 0.2),
+"update": 0,
+"values": [Vector2(-500, 16), Vector2(100, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1.7, 0.35),
+"update": 0,
+"values": [Vector2(150, 0), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_boynw"]
+_data = {
+&"RESET": SubResource("Animation_b26qj"),
+&"optionsTab": SubResource("Animation_qhygf")
+}
+
+[sub_resource type="Animation" id="Animation_boynw"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_yo567"]
+resource_name = "keybindsOpenClose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cursorBackdrop:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1.5, 0.3),
+"update": 0,
+"values": [Vector2(0, 100), Vector2(2106, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tabLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1.8, 0.2),
+"update": 0,
+"values": [Vector2(-500, 16), Vector2(100, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.03333333, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vygw8"]
+_data = {
+&"RESET": SubResource("Animation_boynw"),
+&"keybindsOpenClose": SubResource("Animation_yo567")
+}
+
 [node name="Node3D" type="Node3D" unique_id=1811353540]
+process_mode = 3
 
 [node name="pauseMenu" type="CanvasLayer" parent="." unique_id=1636543188]
 process_mode = 3
+layer = 2
 script = ExtResource("1_5pjqc")
 
 [node name="blur" type="ColorRect" parent="pauseMenu" unique_id=547456672]
@@ -472,7 +688,13 @@ offset_left = 200.0
 offset_right = 240.0
 offset_bottom = 23.0
 
-[node name="Control" type="Control" parent="pauseMenu" unique_id=284126001]
+[node name="buttonMoveSFX" type="AudioStreamPlayer" parent="pauseMenu" unique_id=794183063]
+stream = ExtResource("4_fafcn")
+
+[node name="buttonSelectSFX" type="AudioStreamPlayer" parent="pauseMenu" unique_id=646925012]
+stream = ExtResource("5_ats2r")
+
+[node name="paused" type="Control" parent="pauseMenu" unique_id=284126001]
 layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -480,7 +702,7 @@ offset_left = 200.0
 offset_right = 700.0
 grow_vertical = 2
 
-[node name="outline for" type="ColorRect" parent="pauseMenu/Control" unique_id=968219792]
+[node name="outline for" type="ColorRect" parent="pauseMenu/paused" unique_id=968219792]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -491,7 +713,7 @@ grow_vertical = 2
 size_flags_horizontal = 0
 color = Color(1, 0, 0, 0.11372549)
 
-[node name="backlines" type="ColorRect" parent="pauseMenu/Control" unique_id=1237395255]
+[node name="backlines" type="ColorRect" parent="pauseMenu/paused" unique_id=1237395255]
 layout_mode = 1
 offset_left = 47.0
 offset_top = -140.0
@@ -500,7 +722,7 @@ offset_bottom = 1297.0
 size_flags_horizontal = 0
 color = Color(0.13777792, 0.07213264, 0.00025339035, 1)
 
-[node name="backlines2" type="ColorRect" parent="pauseMenu/Control" unique_id=248981813]
+[node name="backlines2" type="ColorRect" parent="pauseMenu/paused" unique_id=248981813]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -516,7 +738,7 @@ grow_vertical = 2
 size_flags_horizontal = 0
 color = Color(0.16246003, 0.08249263, 0.0013699997, 1)
 
-[node name="cursor" type="ColorRect" parent="pauseMenu/Control" unique_id=441124775]
+[node name="cursor" type="ColorRect" parent="pauseMenu/paused" unique_id=441124775]
 unique_name_in_owner = true
 layout_mode = 1
 offset_left = 60.0
@@ -526,7 +748,7 @@ offset_bottom = 201.0
 size_flags_horizontal = 0
 color = Color(0.54509807, 0, 0.23137255, 1)
 
-[node name="frontlines" type="ColorRect" parent="pauseMenu/Control" unique_id=664869460]
+[node name="frontlines" type="ColorRect" parent="pauseMenu/paused" unique_id=664869460]
 layout_mode = 1
 offset_left = 943.0
 offset_top = -269.0
@@ -535,7 +757,7 @@ offset_bottom = 1350.0
 size_flags_horizontal = 0
 color = Color(0.1744107, 0, 0.008364523, 1)
 
-[node name="frontlines2" type="ColorRect" parent="pauseMenu/Control" unique_id=86359338]
+[node name="frontlines2" type="ColorRect" parent="pauseMenu/paused" unique_id=86359338]
 layout_mode = 1
 offset_left = 1332.0
 offset_top = -236.0
@@ -544,7 +766,7 @@ offset_bottom = 1383.0
 size_flags_horizontal = 0
 color = Color(0.18568844, 0.13722199, 0, 1)
 
-[node name="testCursor" type="Button" parent="pauseMenu/Control" unique_id=118668825]
+[node name="testCursor" type="Button" parent="pauseMenu/paused" unique_id=118668825]
 visible = false
 layout_mode = 0
 offset_left = 250.0
@@ -555,13 +777,13 @@ size_flags_vertical = 0
 theme = ExtResource("1_mr8lp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5pjqc")
 
-[node name="continuePause" type="Button" parent="pauseMenu/Control" unique_id=1992243931]
+[node name="continuePause" type="Button" parent="pauseMenu/paused" unique_id=1992243931]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 450.0
 offset_top = 86.0
-offset_right = 925.0019
+offset_right = 925.00183
 offset_bottom = 201.0
 size_flags_vertical = 0
 focus_neighbor_top = NodePath("../leavePause")
@@ -570,13 +792,13 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_5pjqc")
 text = "CONTINUE"
 alignment = 0
 
-[node name="questPause" type="Button" parent="pauseMenu/Control" unique_id=1103993454]
+[node name="questPause" type="Button" parent="pauseMenu/paused" unique_id=1103993454]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 450.0
 offset_top = 200.0
-offset_right = 925.00116
+offset_right = 925.0012
 offset_bottom = 315.00006
 size_flags_vertical = 0
 focus_neighbor_top = NodePath("../continuePause")
@@ -588,13 +810,13 @@ text = "QUEST
 "
 alignment = 0
 
-[node name="keybindsPause" type="Button" parent="pauseMenu/Control" unique_id=598018933]
+[node name="keybindsPause" type="Button" parent="pauseMenu/paused" unique_id=598018933]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 450.0
 offset_top = 314.0
-offset_right = 925.0008
+offset_right = 925.00085
 offset_bottom = 429.0
 size_flags_vertical = 0
 focus_neighbor_bottom = NodePath("../optionsPause")
@@ -603,13 +825,13 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_5pjqc")
 text = "KEYBINDS"
 alignment = 0
 
-[node name="optionsPause" type="Button" parent="pauseMenu/Control" unique_id=858941011]
+[node name="optionsPause" type="Button" parent="pauseMenu/paused" unique_id=858941011]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 450.0
 offset_top = 428.0
-offset_right = 925.0004
+offset_right = 925.0005
 offset_bottom = 543.0
 size_flags_vertical = 0
 focus_neighbor_top = NodePath("../keybindsPause")
@@ -619,7 +841,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_5pjqc")
 text = "OPTIONS"
 alignment = 0
 
-[node name="leavePause" type="Button" parent="pauseMenu/Control" unique_id=2116111684]
+[node name="leavePause" type="Button" parent="pauseMenu/paused" unique_id=2116111684]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -635,19 +857,151 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_5pjqc")
 text = "LEAVE GAME"
 alignment = 0
 
-[node name="menuOpenClose" type="AnimationPlayer" parent="pauseMenu/Control" unique_id=438179414]
+[node name="menuOpenClose" type="AnimationPlayer" parent="pauseMenu/paused" unique_id=438179414]
 root_node = NodePath("../cursor")
 libraries/ = SubResource("AnimationLibrary_ats2r")
 speed_scale = 2.5
 
-[node name="buttonMoveSFX" type="AudioStreamPlayer" parent="pauseMenu" unique_id=794183063]
-stream = ExtResource("4_fafcn")
+[node name="options" type="Control" parent="pauseMenu" unique_id=1422678697]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="buttonSelectSFX" type="AudioStreamPlayer" parent="pauseMenu" unique_id=646925012]
-stream = ExtResource("5_ats2r")
+[node name="backdrop" type="PanelContainer" parent="pauseMenu/options" unique_id=379385666]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ats2r")
 
-[node name="questMenu" type="CanvasLayer" parent="." unique_id=1095371669]
+[node name="cursorBackdrop" type="ColorRect" parent="pauseMenu/options" unique_id=612877295]
+layout_mode = 1
+offset_left = -17.0
+offset_top = 100.0
+offset_right = 2072.0
+offset_bottom = 200.0
+color = Color(0.54509807, 0, 0.23137255, 1)
 
-[node name="keybindMenu" type="CanvasLayer" parent="." unique_id=1363283824]
+[node name="tabLabel" type="Label" parent="pauseMenu/options" unique_id=1220794250]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 16.0
+offset_right = 688.0
+offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("3_t8foh")
+theme_override_font_sizes/font_size = 126
+text = "OPTIONS"
 
-[node name="optionMenu" type="CanvasLayer" parent="." unique_id=2059052322]
+[node name="tabLabel2" type="Label" parent="pauseMenu/options" unique_id=1522777717]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -339.0
+offset_top = -327.0
+offset_bottom = 110.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.080783345, 0.080783345, 0.080783345, 1)
+theme_override_fonts/font = ExtResource("3_t8foh")
+theme_override_font_sizes/font_size = 300
+text = "01"
+
+[node name="MarginContainer" type="MarginContainer" parent="pauseMenu/options" unique_id=623203911]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 1200
+theme_override_constants/margin_bottom = 50
+
+[node name="audio" type="VBoxContainer" parent="pauseMenu/options/MarginContainer" unique_id=892645724]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="pauseMenu/options/MarginContainer/audio" unique_id=499432780]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t8foh")
+theme_override_font_sizes/font_size = 38
+text = "AUDIO"
+
+[node name="muteButton" type="CheckBox" parent="pauseMenu/options/MarginContainer/audio" unique_id=986132357]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_bb581")
+theme_override_font_sizes/font_size = 24
+text = "Master Volume"
+
+[node name="masterVolume" type="HSlider" parent="pauseMenu/options/MarginContainer/audio" unique_id=1499903139]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_yo567")
+theme_override_styles/slider = SubResource("StyleBoxFlat_b26qj")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_boynw")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhygf")
+value = 50.0
+
+[node name="optionsOpenClose" type="AnimationPlayer" parent="pauseMenu/options" unique_id=202764225]
+libraries/ = SubResource("AnimationLibrary_boynw")
+speed_scale = 2.5
+
+[node name="keybinds" type="Control" parent="pauseMenu" unique_id=1614354210]
+visible = false
+self_modulate = Color(1, 1, 1, 0.0625)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="backdrop" type="PanelContainer" parent="pauseMenu/keybinds" unique_id=1541776818]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ats2r")
+
+[node name="cursorBackdrop" type="ColorRect" parent="pauseMenu/keybinds" unique_id=624572028]
+layout_mode = 0
+offset_left = -17.0
+offset_top = 100.0
+offset_right = -17.0
+offset_bottom = 200.0
+color = Color(0.54509807, 0, 0.23137255, 1)
+
+[node name="tabLabel" type="Label" parent="pauseMenu/keybinds" unique_id=11292765]
+layout_mode = 0
+offset_left = -500.0
+offset_top = 16.0
+offset_right = 217.0
+offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("3_t8foh")
+theme_override_font_sizes/font_size = 126
+text = "KEYBINDS"
+
+[node name="keybindsOpenClose" type="AnimationPlayer" parent="pauseMenu/keybinds" unique_id=1065621085]
+libraries/ = SubResource("AnimationLibrary_vygw8")
+speed_scale = 2.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1935076443]
+stream = ExtResource("7_b26qj")
+autoplay = true
+parameters/looping = false
+
+[connection signal="toggled" from="pauseMenu/options/MarginContainer/audio/muteButton" to="pauseMenu" method="_on_mute_button_toggled"]
+[connection signal="value_changed" from="pauseMenu/options/MarginContainer/audio/masterVolume" to="pauseMenu" method="_on_master_volume_value_changed"]

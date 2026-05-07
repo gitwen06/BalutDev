@@ -57,7 +57,7 @@ public partial class DisplayINV : Control
 			return cached;
 		}
 
-		string path = $"res://Images/{itemId}.jpg";
+		string path = $"res://Images/{itemId}.png";
 		Texture2D texture = GD.Load<Texture2D>(path);
 		textureCache[itemId] = texture;
 		return texture;

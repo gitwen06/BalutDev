@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjj1igoomt3wu"
-path="res://.godot/imported/key.jpg-e40a1cca3790fc3b2a094db48717e39e.ctex"
+uid="uid://cjtkc4ljhohca"
+path="res://.godot/imported/energydrink.png-1f6995ec45ce85ba06747a931c96b7b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/key.jpg"
-dest_files=["res://.godot/imported/key.jpg-e40a1cca3790fc3b2a094db48717e39e.ctex"]
+source_file="res://Images/energydrink.png"
+dest_files=["res://.godot/imported/energydrink.png-1f6995ec45ce85ba06747a931c96b7b7.ctex"]
 
 [params]
 
