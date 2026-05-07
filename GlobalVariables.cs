@@ -22,7 +22,7 @@ public partial class GlobalVariables : Node
 	public float stamina = 100.0f;
 	public float regenDelayTimer = 0f;
 	public const float RegenDelay = 2.25f; 
-	public const float StaminaDrainRate = 5f; 
+	public const float StaminaDrainRate = 8f; 
 	public const float StaminaRegenRate = 10f; 
 	
 	// ============= PLAYER STATE =============
@@ -108,6 +108,7 @@ public partial class GlobalVariables : Node
 	public bool gaveKuyaGeorge = false;
 	
 	public AlingMarites alingMarites;
+	public AlingShoneng alingShoneng;
 	
 	// ==== Event controllersererser ====
 	public MonsterPeekTrigger monsterPeekTrigger;
@@ -128,6 +129,21 @@ public partial class GlobalVariables : Node
 		}
 
 		animationController.OpenThenWaitThenClose();
+	}
+	
+	public void EnableDialogueAboutItems()
+	{
+		var trigger = GetTree().Root.FindChild("DialogueAboutItems", true, false) as Trigger;
+
+		if (trigger != null)
+		{
+			trigger.EnableTrigger();
+			GD.Print("[GLOBAL] DialogueAboutItems re-enabled via GlobalVariables");
+		}
+		else
+		{
+			GD.PrintErr("[GLOBAL] DialogueAboutItems trigger not found in scene");
+		}
 	}
 
 	public void CloseAnim()

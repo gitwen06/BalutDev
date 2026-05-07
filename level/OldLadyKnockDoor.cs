@@ -42,6 +42,10 @@ public partial class OldLadyKnockDoor : Node3D
 		AddChild(chaseSfx);
 		AddChild(impactSfx);
 
+		doorBreakSfx.Bus = "Master";
+		chaseSfx.Bus = "Master";
+		impactSfx.Bus = "Master";
+
 		// NODES
 		oldLady = GetNode<CharacterBody3D>("OldLady");
 		door = GetNode<Node3D>("Door");
@@ -212,6 +216,14 @@ public partial class OldLadyKnockDoor : Node3D
 		DialogueManagerRuntime.DialogueManager.DialogueEnded -= OnDialogueEnd;
 
 		GD.Print("[OLDLADY] Dialogue ended");
+
+		// ✅ Call AlingMarin's OnDialogueEnded
+		var alingMarin = GetNodeOrNull<Node3D>("Aling Marin");
+		if (alingMarin != null && alingMarin.HasMethod("OnDialogueEnded"))
+		{
+			alingMarin.Call("OnDialogueEnded");
+			GD.Print("[OLDLADY] Called AlingMarin.OnDialogueEnded()");
+		}
 
 		// DESPAWN AFTER 30s
 		GetTree().CreateTimer(30.0f).Timeout += () =>

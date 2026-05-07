@@ -11,8 +11,11 @@ public partial class QuestSystem : Node
 
 	private bool uiBound = false;
 	private bool canAdvance = true;
+	private bool levelReady = false;
+
 	private SceneTreeTimer advanceTimer;
 	private SceneTreeTimer uiBindTimer;
+	private SceneTreeTimer levelWaitTimer;
 
 	public int currentQuest = 0;
 	public bool returnHorrorActive = false;
@@ -22,14 +25,19 @@ public partial class QuestSystem : Node
 
 	private const float ADVANCE_COOLDOWN = 0.15f;
 	private const float UI_BIND_RETRY_DELAY = 0.2f;
+	private const float LEVEL_RETRY_DELAY = 0.5f;
 
 	private static readonly Dictionary<int, string[]> QuestItems = new()
 	{
 		{ 0, new[] { "mang jason" } },
-		{ 1, new[] { "flashlight" } },
+		{ 1, new[] { "flashlight", "balut" } },
 		{ 2, new[] { "balut" } },
 		{ 3, new[] { "aling neneng" } },
 		{ 4, new[] { "energydrink", "battery" } },
+		{ 5, new[] { "balut" } },
+		{ 6, new[] { "aling shoneng" } },
+		{ 7, new[] { "aling marites" } },
+		{ 8, new[] { "aling marin" } },
 	};
 
 	public override void _Ready()
@@ -46,32 +54,87 @@ public partial class QuestSystem : Node
 
 		GD.Print($"[QUEST SYSTEM READY] ID: {GetInstanceId()}");
 
-		CallDeferred(nameof(TryAutoBindUI));
-		CallDeferred(nameof(CacheGlowNodes));
+		WaitForLevelScene();
+	}
+
+	// ================= WAIT FOR REAL LEVEL =================
+	private void WaitForLevelScene()
+	{
+		Node currentScene = GetTree().CurrentScene;
+
+		if (currentScene == null)
+		{
+			RetryLevelWait();
+			return;
+		}
+
+		string sceneName = currentScene.Name.ToString().ToLower();
+
+		if (sceneName.Contains("mainmenu") || sceneName.Contains("loading"))
+		{
+			GD.Print($"[QUEST] Waiting for gameplay level... Current scene: {sceneName}");
+			RetryLevelWait();
+			return;
+		}
+
+		levelReady = true;
+		GD.Print($"[QUEST] Gameplay level detected: {sceneName}");
+
+		CacheGlowNodes();
+		TryAutoBindUI();
+		UpdateQuestGlow();
+		UpdateUI();
+	}
+
+	private void RetryLevelWait()
+	{
+		if (levelWaitTimer != null)
+			levelWaitTimer.TimeLeft = 0;
+
+		levelWaitTimer = GetTree().CreateTimer(LEVEL_RETRY_DELAY);
+		levelWaitTimer.Timeout += WaitForLevelScene;
 	}
 
 	// ================= GLOW CACHING =================
 	private void CacheGlowNodes()
 	{
+		if (!levelReady)
+			return;
+
+		glowNodes.Clear();
 		var mainScene = GetTree().CurrentScene;
 
-		// If main scene is null or is the QuestSystem itself, retry next frame
-		if (mainScene == null || mainScene == this)
+		if (mainScene == null)
 		{
-			CallDeferred(nameof(CacheGlowNodes));
+			GD.PrintErr("[QUEST] CurrentScene is null!");
 			return;
 		}
 
-		foreach (var itemName in new[] { "flashlight", "balut", "battery", "energydrink", "mang jason", "aling neneng" })
+		string[] questObjects =
 		{
-			var item = mainScene.GetNodeOrNull<Node>($"%{itemName}");
+			"flashlight",
+			"balut",
+			"battery",
+			"energydrink",
+			"mang jason",
+			"aling neneng",
+			"aling shoneng",
+			"aling marites",
+			"aling marin"
+		};
+
+		foreach (string itemName in questObjects)
+		{
+			Node item = mainScene.FindChild(itemName, true, false);
+
 			if (item == null)
 			{
-				GD.PrintErr($"[QUEST] Item not found: %{itemName}");
+				GD.PrintErr($"[QUEST] Item not found: {itemName}");
 				continue;
 			}
 
-			var glow = item.FindChild("Glow", false, false) as Node3D;
+			Node3D glow = item.FindChild("Glow", true, false) as Node3D;
+
 			if (glow == null)
 			{
 				GD.PrintErr($"[QUEST] Glow node not found for: {itemName}");
@@ -89,7 +152,11 @@ public partial class QuestSystem : Node
 	// ================= AUTO UI BIND =================
 	private void TryAutoBindUI()
 	{
-		if (uiBound) return;
+		if (!levelReady)
+			return;
+
+		if (uiBound)
+			return;
 
 		displayQuest = GetTree().Root.FindChild("questDisplay", true, false) as Label;
 
@@ -128,7 +195,11 @@ public partial class QuestSystem : Node
 	// ================= CORE =================
 	public void ProceedQuest(string reason = "")
 	{
-		if (!canAdvance) return;
+		if (!levelReady)
+			return;
+
+		if (!canAdvance)
+			return;
 
 		canAdvance = false;
 		currentQuest++;
@@ -147,7 +218,11 @@ public partial class QuestSystem : Node
 	// ================= TRIGGERS =================
 	public void TriggerQuestAdvance(string trigger)
 	{
-		if (string.IsNullOrEmpty(trigger)) return;
+		if (!levelReady)
+			return;
+
+		if (string.IsNullOrEmpty(trigger))
+			return;
 
 		switch (trigger)
 		{
@@ -161,10 +236,19 @@ public partial class QuestSystem : Node
 					ProceedQuest("dialogue:aling_neneng");
 				break;
 
-			case "aling_marites_has_balut":
+			case "aling_shoneng_has_balut":
 				if (currentQuest == 6)
+					ProceedQuest("dialogue:aling_shoneng");
+				break;
+
+			case "aling_marites_has_balut":
+				if (currentQuest == 7)
 					ProceedQuest("dialogue:aling_marites");
-					
+				break;
+
+			case "aling_marin_has_balut":
+				if (currentQuest == 8)
+					ProceedQuest("dialogue:aling_marin");
 				break;
 		}
 	}
@@ -172,19 +256,25 @@ public partial class QuestSystem : Node
 	// ================= ITEMS =================
 	public void OnItemPicked(string itemName)
 	{
-		if (string.IsNullOrEmpty(itemName)) return;
+		if (!levelReady)
+			return;
+
+		if (string.IsNullOrEmpty(itemName))
+			return;
 
 		itemName = itemName.ToLower();
 		GD.Print($"[QUEST] Item detected: {itemName} | Quest: {currentQuest}");
 
 		switch (currentQuest)
 		{
+			// Quest 1-2: Get flashlight & balut
 			case 1:
 			case 2:
 				if (IsRelevantItem(itemName))
 					ProceedQuest("item:picked");
 				break;
 
+			// Quest 4: Get battery & coke
 			case 4:
 				if (itemName.Contains("battery"))
 				{
@@ -204,8 +294,11 @@ public partial class QuestSystem : Node
 
 	private bool IsRelevantItem(string itemName)
 	{
-		return itemName.Contains("flashlight") || itemName.Contains("balut") 
-			|| itemName.Contains("battery") || itemName.Contains("drink") || itemName.Contains("energydrink");
+		return itemName.Contains("flashlight")
+			|| itemName.Contains("balut")
+			|| itemName.Contains("battery")
+			|| itemName.Contains("drink")
+			|| itemName.Contains("energydrink");
 	}
 
 	// ================= QUEST UPDATE =================
@@ -215,7 +308,7 @@ public partial class QuestSystem : Node
 		UpdateUI();
 		UpdateQuestGlow();
 
-		if (quest == 4)
+		if (quest == 5)
 		{
 			returnHorrorActive = true;
 			GD.Print("[QUEST] HORROR MODE ACTIVATED (return path enabled)");
@@ -236,22 +329,25 @@ public partial class QuestSystem : Node
 	// ================= QUEST GLOW =================
 	private void UpdateQuestGlow()
 	{
-		// Hide all glows first
+		if (!levelReady)
+			return;
+
+		// Hide all glows
 		foreach (var glow in glowNodes.Values)
 		{
 			if (glow != null && IsInstanceValid(glow))
 				glow.Visible = false;
 		}
 
-		// SAFETY: if quest has no mapping, do nothing
+		// No quest mapping
 		if (!QuestItems.ContainsKey(currentQuest))
 		{
 			GD.Print($"[QUEST] No glow mapping for quest {currentQuest}");
 			return;
 		}
 
-		// Show ONLY current quest items
-		foreach (var name in QuestItems[currentQuest])
+		// Show current quest glow
+		foreach (string name in QuestItems[currentQuest])
 		{
 			if (glowNodes.TryGetValue(name, out var glow))
 			{
@@ -268,7 +364,15 @@ public partial class QuestSystem : Node
 	// ================= UI =================
 	private void UpdateUI()
 	{
-		if (!uiBound || displayQuest == null) return;
+		if (!levelReady)
+			return;
+
+		if (!uiBound)
+			return;
+
+		if (displayQuest == null)
+			return;
+
 		displayQuest.Text = GetCurrentObjective();
 	}
 
@@ -282,12 +386,16 @@ public partial class QuestSystem : Node
 			2 => "Kunin ang balut",
 			3 => "Bigyan ng balut si Aling Neneng",
 			4 => "Kunin ang baterya at inumin sa tindahan ni Aling Neneng",
-			5 => "Pumunta sa Baranggay Piti Piw Wiw Wiw at maglako ng balut.",
-			6 => "Bentahan ng balut si Aling Marites sa likod ng kaniyang bahay.",
-			7 => "Maglako ng balut",
+			5 => "Pumunta sa Baranggay Piti Piw Wiw Wiw at maglako ng balut",
+			6 => "Bigyan ng balut si Aling Shoneng",
+			7 => "Bigyan ng balut si Aling Marites",
+			8 => "Bigyan ng balut si Aling Marin",
 			_ => "Objective complete"
 		};
 	}
 
-	public bool IsReturnHorrorActive() => returnHorrorActive;
+	public bool IsReturnHorrorActive()
+	{
+		return returnHorrorActive;
+	}
 }

@@ -41,8 +41,8 @@ public partial class MainMenu : Node3D
 		//_menuButtons[0].GrabFocus();
 	}
 
-	private void OnPlayPressed() => GetTree().ChangeSceneToFile("res://Plugins and Scenes/loading_screen.tscn");
-	private void OnSettingsPressed() => GetTree().ChangeSceneToFile("res://scenes/Settings.tscn");
+	private void OnPlayPressed() => GetTree().ChangeSceneToFile("res://Plugins and Scenes/loading_screen.scn");
+	private void OnSettingsPressed() => GetTree().ChangeSceneToFile("res://scenes/Settings.scn");
 	private void OnCreditPressed() => GD.Print("it doesnt exist yet shell!");
 	private void LeaveGamePressed() => GetTree().Quit();
 }

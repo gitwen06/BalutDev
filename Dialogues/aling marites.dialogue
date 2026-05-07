@@ -14,11 +14,14 @@ Aling Marites: Pabili ako niyang balut, magkano?
 	do QuestSystem.Instance.TriggerQuestAdvance("aling_marites_has_balut")
 	set GlobalVariables.Instance.gaveAlingMarites = true
 	do GlobalVariables.Instance.CloseAnim()
+	do GlobalVariables.Instance.alingMarites.OnDialogueEnded()
+	set GlobalVariables.Instance.isTalking = false
 	=> END
 
 ~ gave_already
 Aling Marites: Sapat na ito iho.... Bukas nalang ulit ako bibili ha...
 set GlobalVariables.Instance.isTalking = false
+do GlobalVariables.Instance.alingMarites.OnDialogueEnded()
 => END
 
 
@@ -27,6 +30,6 @@ Aling Marites: Anong ginagawa mo rito sa likod ng bahay ko?
 - Naglalako po ng balut.
 Aling Marites: Eh bat wala ka namang dala? Umalis ka na rito.
 set GlobalVariables.Instance.isTalking = false
+do GlobalVariables.Instance.alingMarites.OnDialogueEnded()
 => END
 
-do GlobalVariables.Instance.alingMarites.OnDialogueEnded()

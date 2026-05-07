@@ -114,7 +114,7 @@ public partial class Player : CharacterBody3D
 		// RigidBody3D = flashlight
 		// Items folder = flashlight.tscn
 
-		string itemPath = $"res://items/{itemName}.tscn";
+		string itemPath = $"res://items/{itemName}.scn";
 		if(ResourceLoader.Exists(itemPath)) {
 			var scene = GD.Load<PackedScene>(itemPath);
 			g.currentItem = (Node3D)scene.Instantiate();
@@ -167,10 +167,15 @@ public partial class Player : CharacterBody3D
 	{
 		
 		var g = GlobalVariables.Instance;
-
+		
+		if (g.isTalking)
+		{
+			Velocity = Vector3.Zero;
+			MoveAndSlide();
+			return;
+		}
 		lastFrameDelta = delta;
 		float deltaF = (float)delta;
-		
 		if (!g.canMove)
 		{
 			Velocity = Vector3.Zero;
@@ -437,6 +442,8 @@ public partial class Player : CharacterBody3D
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+	
+	
 	// ================= UNLOCK MOUSE WHEN DIALOGUE ENDS ================
 	private void OnDialogueEnded(Resource resource) {
 	GlobalVariables.Instance.isTalking = false;
@@ -449,14 +456,12 @@ public partial class Player : CharacterBody3D
 	{
 		string characterName = lastCharacterNode.Name.ToString().ToLower();
 		
-		if (lastCharacterNode.HasMethod("OnDialogueEnded"))
+		if (lastCharacterNode != null && lastCharacterNode.IsInGroup("Characters"))
 		{
-			lastCharacterNode.Call("OnDialogueEnded");
-			GD.Print($"[PLAYER] Called OnDialogueEnded on {characterName}");
-		}
-		else
-		{
-			GD.PrintErr($"[PLAYER] {characterName} has no OnDialogueEnded method!");
+			if (lastCharacterNode.HasMethod("OnDialogueEnded"))
+			{
+				lastCharacterNode.Call("OnDialogueEnded");
+			}
 		}
 	}
 	else

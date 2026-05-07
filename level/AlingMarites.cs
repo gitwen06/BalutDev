@@ -15,12 +15,18 @@ public partial class AlingMarites : Node3D
 	{
 		if (triggered) return;
 		triggered = true;
-
 		GD.Print("[MARITES] Dialogue ended → enabling peek");
-		var peek = GetTree().Root.FindChild("MonsterPeekTrigger", true, false) as MonsterPeekTrigger;
+		
+		if (GlobalVariables.Instance.monsterPeekTrigger != null)
+		{
+			GlobalVariables.Instance.monsterPeekTrigger.EnableTrigger();
+			GD.Print("[MARITES] Peek trigger enabled");
+		}
+		else
+		{
+			GD.PrintErr("[MARITES] monsterPeekTrigger is NULL!");
+		}
 
-		if (peek != null)
-			GD.Print("not found");
-			peek.EnableTrigger();
+		QuestSystem.Instance.TriggerQuestAdvance("aling_marites_has_balut");
 	}
 }

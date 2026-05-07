@@ -17,6 +17,7 @@ public partial class MonsterPeekTrigger : Area3D
 		audioPlayer = new AudioStreamPlayer();
 		AddChild(audioPlayer);
 		audioPlayer.Bus = "Master";
+		GlobalVariables.Instance.monsterPeekTrigger = this;
 
 		Monitoring = false;
 		GD.Print("[PEEK] Ready - waiting for EnableTrigger()");
