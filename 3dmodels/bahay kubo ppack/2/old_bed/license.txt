@@ -1,0 +1,11 @@
+Model Information:
+* title:	Old Bed
+* source:	https://sketchfab.com/3d-models/old-bed-197ee2cc8d4241fc911bbd8e7b277721
+* author:	pepper777_ (https://sketchfab.com/pepper777_)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Old Bed" (https://sketchfab.com/3d-models/old-bed-197ee2cc8d4241fc911bbd8e7b277721) by pepper777_ (https://sketchfab.com/pepper777_) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

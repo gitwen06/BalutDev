@@ -1,0 +1,11 @@
+Model Information:
+* title:	Wood Wall
+* source:	https://sketchfab.com/3d-models/wood-wall-5a03ec82ebd9457094ea699e3da8af70
+* author:	Kim Kaurin (https://sketchfab.com/kimkaurin)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Wood Wall" (https://sketchfab.com/3d-models/wood-wall-5a03ec82ebd9457094ea699e3da8af70) by Kim Kaurin (https://sketchfab.com/kimkaurin) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

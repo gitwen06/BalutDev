@@ -1,0 +1,11 @@
+Model Information:
+* title:	Coconut Tree Low poly
+* source:	https://sketchfab.com/3d-models/coconut-tree-low-poly-8c5d6b661b2f4c37834d87cd187eb907
+* author:	Pixel_Monster (https://sketchfab.com/ar.jethin)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Coconut Tree Low poly" (https://sketchfab.com/3d-models/coconut-tree-low-poly-8c5d6b661b2f4c37834d87cd187eb907) by Pixel_Monster (https://sketchfab.com/ar.jethin) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

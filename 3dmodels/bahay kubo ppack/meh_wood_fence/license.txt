@@ -1,0 +1,11 @@
+Model Information:
+* title:	meh wood fence
+* source:	https://sketchfab.com/3d-models/meh-wood-fence-ea153d7d306d47248dd7fcaa06a55998
+* author:	josepholiverdev (https://sketchfab.com/josepholiverdev)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "meh wood fence" (https://sketchfab.com/3d-models/meh-wood-fence-ea153d7d306d47248dd7fcaa06a55998) by josepholiverdev (https://sketchfab.com/josepholiverdev) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Bedside Table
+* source:	https://sketchfab.com/3d-models/bedside-table-b25de0eb97c64a00a538f09fc7072f67
+* author:	Melon Polygons (https://sketchfab.com/Melonpolygons)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Bedside Table" (https://sketchfab.com/3d-models/bedside-table-b25de0eb97c64a00a538f09fc7072f67) by Melon Polygons (https://sketchfab.com/Melonpolygons) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

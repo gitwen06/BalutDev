@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Balut Deliveries (Horror Minigame) EXPO"
-run/main_scene="uid://c7xxajdoh5o2j"
+run/main_scene="uid://f402y24m3skj"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
