@@ -33,6 +33,8 @@ public partial class OldLadyKnockDoor : Node3D
 
 	public override void _Ready()
 	{
+		
+		GlobalVariables.Instance.alingMarin = this;
 		// AUDIO
 		doorBreakSfx = new AudioStreamPlayer();
 		chaseSfx = new AudioStreamPlayer();
@@ -229,8 +231,6 @@ public partial class OldLadyKnockDoor : Node3D
 		DialogueManagerRuntime.DialogueManager.DialogueEnded -= OnDialogueEnd;
 
 		GD.Print("[OLDLADY] Dialogue ended");
-
-		// ✅ Call AlingMarin's OnDialogueEnded
 		var alingMarin = GetNodeOrNull<Node3D>("Aling Marin");
 		if (alingMarin != null && alingMarin.HasMethod("OnDialogueEnded"))
 		{

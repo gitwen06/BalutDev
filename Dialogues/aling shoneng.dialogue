@@ -1,6 +1,6 @@
 ~ start
 set GlobalVariables.Instance.isTalking = true
-if GlobalVariables.Instance.gaveAlingNeneng == true:
+if GlobalVariables.Instance.gaveAlingShoneng == true:
     => gave_already
 Aling Shoneng: Magkano isang balut anak..?
 - 15 Pesos po

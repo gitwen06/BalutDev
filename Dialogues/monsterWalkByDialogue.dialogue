@@ -1,3 +1,5 @@
 ~ start
-WHAT IS DAT
+set GlobalVariables.Instance.isTalking = true
+Ano 'yun?? Namamalikmata lang ata ako.
+set GlobalVariables.Instance.isTalking = false
 => END

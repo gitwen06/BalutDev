@@ -10,7 +10,7 @@ public partial class Trigger : Node3D
 	private bool isHouseEventTrigger = false;
 	private bool isSelfDialogueTrigger = false;
 	private bool isJumpscareTrigger = false;
-	
+	private bool isManongRafaelCall = false;
 
 	// ================= SCREAM AREA =================
 	private bool playerInsideScreamArea = false;
@@ -39,6 +39,7 @@ public partial class Trigger : Node3D
 		isHouseEventTrigger = IsInGroup("houseEventTrigger");
 		isSelfDialogueTrigger = IsInGroup("selfDialogue");
 		isJumpscareTrigger = IsInGroup("jumpscare");
+		isManongRafaelCall = eventName == "manongRafaelCall";
 
 		// ================= HOUSE CACHE =================
 		if (isHouseEventTrigger)
@@ -81,33 +82,57 @@ public partial class Trigger : Node3D
 		)
 		{
 			screamTriggered = true;
-
 			GD.Print("[SCREAM AREA] Scream triggered!");
-
-		StartScreamDialogue();
+			StartScreamDialogue();
 		}
 	}
-	// ================= START DIALOGUE =================
+
+	// ================= START SCREAM DIALOGUE =================
 	private void StartScreamDialogue()
 	{
 		GlobalVariables.Instance.isTalking = true;
-
 		Input.MouseMode = Input.MouseModeEnum.Visible;
 
 		var dialoguePath = "res://Dialogues/aling shoneng.dialogue";
 		var dialogue = GD.Load<Resource>(dialoguePath);
 
 		DialogueManager.ShowDialogueBalloon(dialogue, "call");
-
 		DialogueManager.DialogueEnded += OnDialogueEnded;
 	}
 
-	// ================= RESTORE CAMERA =================
+	// ================= MANONG RAFAEL CALL =================
+	private void HandleManongRafaelCall()
+	{
+		GlobalVariables.Instance.isTalking = true;
+		Input.MouseMode = Input.MouseModeEnum.Visible;
+
+		string dialoguePath = "res://Dialogues/manong rafael.dialogue";
+		var dialogue = GD.Load<Resource>(dialoguePath);
+
+		if (dialogue != null)
+		{
+			DialogueManager.ShowDialogueBalloon(dialogue, "call");
+			DialogueManager.DialogueEnded += OnDialogueEnded;
+		}
+		else
+		{
+			GD.PrintErr($"[MANONG RAFAEL] Dialogue file not found: {dialoguePath}");
+			ResetDialogueState();
+		}
+	}
+	
+	
+
+	// ================= DIALOGUE END =================
 	private void OnDialogueEnded(Resource resource)
 	{
 		ResetDialogueState();
 		DialogueManager.DialogueEnded -= OnDialogueEnded;
-
+		
+		if (eventName == "manongRafaelCall")
+		{
+			QuestSystem.Instance.TriggerQuestAdvance("manong_rafael_has_balut");
+		}
 	}
 
 	// ================= BODY ENTER =================
@@ -134,6 +159,8 @@ public partial class Trigger : Node3D
 			HandleDialogue();
 		else if (isJumpscareTrigger)
 			JumpscareManager.Instance.PlayJumpscare(eventName);
+		else if (isManongRafaelCall)
+			HandleManongRafaelCall();
 	}
 
 	private void OnBodyExited(Node3D body)
@@ -166,11 +193,9 @@ public partial class Trigger : Node3D
 	private void HandleDialogue()
 	{
 		GlobalVariables.Instance.isTalking = true;
-
 		Input.MouseMode = Input.MouseModeEnum.Visible;
 
 		string dialoguePath = $"res://Dialogues/{eventName}.dialogue";
-
 		var dialogue = GD.Load<Resource>(dialoguePath);
 
 		if (dialogue != null)

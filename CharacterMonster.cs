@@ -413,11 +413,22 @@ public partial class CharacterMonster : CharacterBody3D
 
 	private void OnDialogueEnded(Resource res)
 	{
-		GlobalVariables.Instance.isTalking = false;
-		Input.MouseMode = Input.MouseModeEnum.Captured;
+	GlobalVariables.Instance.isTalking = false;
+	Input.MouseMode = Input.MouseModeEnum.Captured;
 
-		DialogueManagerRuntime.DialogueManager.DialogueEnded -= OnDialogueEnded;
+	DialogueManagerRuntime.DialogueManager.DialogueEnded -= OnDialogueEnded;
 
-		Debug("DIALOGUE ENDED");
+	Debug("DIALOGUE ENDED");
+	
+	if (QuestSystem.Instance != null)
+	{
+		GD.Print("[MONSTER] Calling quest advance for monster_walk_by_ended");
+		QuestSystem.Instance.TriggerQuestAdvance("monster_walk_by_ended");
+		GD.Print("[MONSTER] Quest advance called!");
 	}
+	else
+	{
+		GD.PrintErr("[MONSTER] QuestSystem.Instance is NULL!");
+	}
+}
 }

@@ -6,16 +6,13 @@ public partial class QuestSystem : Node
 {
 	public static QuestSystem Instance;
 
-	private Label displayQuest;
-	private Dictionary<string, Node3D> glowNodes = new Dictionary<string, Node3D>();
+	private CanvasLayer waypointCanvas;
+	private Control waypointMarker;
+	private Label waypointLabel;
+	private Label questObjectiveLabel;
 
 	private bool uiBound = false;
-	private bool canAdvance = true;
 	private bool levelReady = false;
-
-	private SceneTreeTimer advanceTimer;
-	private SceneTreeTimer uiBindTimer;
-	private SceneTreeTimer levelWaitTimer;
 
 	public int currentQuest = 0;
 	public bool returnHorrorActive = false;
@@ -27,17 +24,28 @@ public partial class QuestSystem : Node
 	private const float UI_BIND_RETRY_DELAY = 0.2f;
 	private const float LEVEL_RETRY_DELAY = 0.5f;
 
-	private static readonly Dictionary<int, string[]> QuestItems = new()
+	private SceneTreeTimer advanceTimer;
+	private SceneTreeTimer uiBindTimer;
+	private SceneTreeTimer levelWaitTimer;
+
+	private Camera3D playerCamera;
+	private Viewport viewport;
+
+	// ================= QUEST WAYPOINT COORDINATES =================
+	private static readonly Dictionary<int, Vector3> QuestWaypoints = new()
 	{
-		{ 0, new[] { "mang jason" } },
-		{ 1, new[] { "flashlight", "balut" } },
-		{ 2, new[] { "balut" } },
-		{ 3, new[] { "aling neneng" } },
-		{ 4, new[] { "energydrink", "battery" } },
-		{ 5, new[] { "balut" } },
-		{ 6, new[] { "aling shoneng" } },
-		{ 7, new[] { "aling marites" } },
-		{ 8, new[] { "aling marin" } },
+		{ 0, new Vector3(211.843f, 2.5f, 76.982f) },              // Talk to mang jason
+		{ 1, new Vector3(209.42f, 5.185f, 77.739f) },              // Get flashlight (was -3.815, now +6.185)
+		{ 2, new Vector3(209.651f, 4.988f, 77.418f) },             // Get balut (was -4.012, now +5.988)
+		{ 3, new Vector3(212.993f, 11.196f, -25.127f) },           // Aling neneng
+		{ 4, new Vector3(209.742f, 3.874f, -31.135f) },            // Get battery (was -4.126, now +5.874)
+		{ 5, new Vector3(161.067f, 7.529f, 33.426f) },            // Go to baranggay
+		{ 6, new Vector3(5.692f, 11.607f, -18.895f) },             // Aling shoneng
+		{ 7, new Vector3(111.79f, 10.447f, 56.359f) },             // Aling marites
+		{ 8, new Vector3(-15.05f, 5.611f, -5.383f) },              // Aling marin
+		{ 9, new Vector3(161.067f, 10.529f, 33.426f) },            // Maglako ulit
+		{ 10, new Vector3(12.021f, 6.208f, 53.391f) },             // Get key under rag (was -3.792, now +6.208)
+		{ 11, new Vector3(40.903f, 10.0f, 155.785f) },             // Manong rafael
 	};
 
 	public override void _Ready()
@@ -55,6 +63,14 @@ public partial class QuestSystem : Node
 		GD.Print($"[QUEST SYSTEM READY] ID: {GetInstanceId()}");
 
 		WaitForLevelScene();
+	}
+
+	public override void _Process(double delta)
+	{
+		if (!levelReady || waypointMarker == null || playerCamera == null)
+			return;
+
+		UpdateWaypointPosition();
 	}
 
 	// ================= WAIT FOR REAL LEVEL =================
@@ -80,9 +96,18 @@ public partial class QuestSystem : Node
 		levelReady = true;
 		GD.Print($"[QUEST] Gameplay level detected: {sceneName}");
 
-		CacheGlowNodes();
+		viewport = GetViewport();
+		playerCamera = GetTree().Root.FindChild("Camera3D", true, false) as Camera3D;
+
+		if (playerCamera == null)
+		{
+			GD.PrintErr("[QUEST] Camera3D not found!");
+			return;
+		}
+
 		TryAutoBindUI();
-		UpdateQuestGlow();
+		CreateWaypointMarker();
+		UpdateQuestWaypoint();
 		UpdateUI();
 	}
 
@@ -95,58 +120,119 @@ public partial class QuestSystem : Node
 		levelWaitTimer.Timeout += WaitForLevelScene;
 	}
 
-	// ================= GLOW CACHING =================
-	private void CacheGlowNodes()
+	// ================= CREATE 2D WAYPOINT MARKER =================
+	private void CreateWaypointMarker()
 	{
-		if (!levelReady)
+		if (waypointMarker != null)
 			return;
 
-		glowNodes.Clear();
-		var mainScene = GetTree().CurrentScene;
+		// Create canvas layer for UI overlay
+		waypointCanvas = new CanvasLayer();
+		waypointCanvas.Name = "QuestWaypointCanvas";
+		waypointCanvas.Layer = 100;
+		GetTree().Root.AddChild(waypointCanvas);
 
-		if (mainScene == null)
+		// Create marker container
+		waypointMarker = new Control();
+		waypointMarker.Name = "QuestMarker";
+		waypointMarker.CustomMinimumSize = new Vector2(64, 64);
+		waypointMarker.AnchorLeft = 0.5f;
+		waypointMarker.AnchorTop = 0.5f;
+		waypointMarker.OffsetLeft = -32;
+		waypointMarker.OffsetTop = -32;
+		waypointCanvas.AddChild(waypointMarker);
+
+		// Create marker background
+		var panelStyleBox = new StyleBoxFlat();
+		panelStyleBox.BgColor = new Color(0, 1, 1, 0.9f);  // Cyan
+		panelStyleBox.BorderColor = new Color(0, 0.7f, 0.7f, 1);
+		panelStyleBox.BorderWidthLeft = 2;
+		panelStyleBox.BorderWidthRight = 2;
+		panelStyleBox.BorderWidthTop = 2;
+		panelStyleBox.BorderWidthBottom = 2;
+
+		var markerPanel = new Panel();
+		markerPanel.AddThemeStyleboxOverride("panel", panelStyleBox);
+		markerPanel.CustomMinimumSize = new Vector2(64, 64);
+		waypointMarker.AddChild(markerPanel);
+
+		// Create label for marker
+		waypointLabel = new Label();
+		waypointLabel.Text = "►";
+		waypointLabel.AddThemeColorOverride("font_color", Colors.Black);
+		waypointLabel.AddThemeFontSizeOverride("font_size", 32);
+		waypointLabel.HorizontalAlignment = HorizontalAlignment.Center;
+		waypointLabel.VerticalAlignment = VerticalAlignment.Center;
+		waypointLabel.CustomMinimumSize = new Vector2(64, 64);
+		waypointMarker.AddChild(waypointLabel);
+
+		GD.Print("[QUEST] 2D Waypoint marker created");
+	}
+
+	// ================= UPDATE WAYPOINT POSITION =================
+	private void UpdateWaypointPosition()
+	{
+		if (waypointMarker == null || playerCamera == null || viewport == null)
+			return;
+
+		if (!QuestWaypoints.TryGetValue(currentQuest, out var targetWorldPos))
 		{
-			GD.PrintErr("[QUEST] CurrentScene is null!");
+			waypointMarker.Visible = false;
 			return;
 		}
 
-		string[] questObjects =
+		waypointMarker.Visible = true;
+
+		// Convert to camera space to check if behind camera
+		Vector3 targetCameraPos = playerCamera.GlobalTransform.AffineInverse() * targetWorldPos;
+		bool isBehindCamera = targetCameraPos.Z > 0;
+
+		// Project target position to screen space
+		Vector2 screenPos = playerCamera.UnprojectPosition(targetWorldPos);
+
+		// Get viewport size
+		Vector2 viewportSize = viewport.GetVisibleRect().Size;
+		var screenPos2D = screenPos;
+
+		// Add offset if behind camera
+		if (isBehindCamera)
 		{
-			"flashlight",
-			"balut",
-			"battery",
-			"energydrink",
-			"mang jason",
-			"aling neneng",
-			"aling shoneng",
-			"aling marites",
-			"aling marin"
-		};
-
-		foreach (string itemName in questObjects)
-		{
-			Node item = mainScene.FindChild(itemName, true, false);
-
-			if (item == null)
-			{
-				GD.PrintErr($"[QUEST] Item not found: {itemName}");
-				continue;
-			}
-
-			Node3D glow = item.FindChild("Glow", true, false) as Node3D;
-
-			if (glow == null)
-			{
-				GD.PrintErr($"[QUEST] Glow node not found for: {itemName}");
-				continue;
-			}
-
-			glowNodes[itemName] = glow;
-			glow.Visible = false;
-			GD.Print($"[QUEST] ✓ Cached glow for: {itemName}");
+			// Flip position to opposite side of screen
+			screenPos2D.X = viewportSize.X - screenPos2D.X;
+			screenPos2D.Y = viewportSize.Y - screenPos2D.Y;
 		}
 
-		GD.Print($"[QUEST] Cached {glowNodes.Count} glow nodes");
+		// Clamp to screen edges with padding
+		float padding = 80;
+		screenPos2D.X = Mathf.Clamp(screenPos2D.X, padding, viewportSize.X - padding);
+		screenPos2D.Y = Mathf.Clamp(screenPos2D.Y, padding, viewportSize.Y - padding);
+
+		// Set position
+		waypointMarker.Position = screenPos2D;
+
+		// Rotate arrow to point to target
+		if (!isBehindCamera && (targetCameraPos.Z > 0 && targetCameraPos.Z < 1000))
+		{
+			Vector3 dirToTarget = (targetWorldPos - playerCamera.GlobalPosition).Normalized();
+			float angle = Mathf.Atan2(dirToTarget.X, dirToTarget.Z);
+			waypointMarker.Rotation = angle;
+		}
+	}
+
+	// ================= UPDATE QUEST WAYPOINT =================
+	private void UpdateQuestWaypoint()
+	{
+		if (!levelReady || waypointMarker == null)
+			return;
+
+		if (!QuestWaypoints.ContainsKey(currentQuest))
+		{
+			waypointMarker.Visible = false;
+			return;
+		}
+
+		waypointMarker.Visible = true;
+		GD.Print($"[QUEST] Waypoint set to quest {currentQuest}");
 	}
 
 	// ================= AUTO UI BIND =================
@@ -158,9 +244,9 @@ public partial class QuestSystem : Node
 		if (uiBound)
 			return;
 
-		displayQuest = GetTree().Root.FindChild("questDisplay", true, false) as Label;
+		questObjectiveLabel = GetTree().Root.FindChild("questDisplay", true, false) as Label;
 
-		if (displayQuest != null)
+		if (questObjectiveLabel != null)
 		{
 			uiBound = true;
 			GD.Print("[QUEST] UI auto-bound successfully");
@@ -178,7 +264,7 @@ public partial class QuestSystem : Node
 
 	public void BindUI(Label label)
 	{
-		displayQuest = label;
+		questObjectiveLabel = label;
 		uiBound = true;
 		GD.Print("[QUEST] UI manually bound");
 		UpdateUI();
@@ -189,7 +275,6 @@ public partial class QuestSystem : Node
 	{
 		gotBattery = false;
 		gotDrink = false;
-		canAdvance = true;
 	}
 
 	// ================= CORE =================
@@ -198,10 +283,6 @@ public partial class QuestSystem : Node
 		if (!levelReady)
 			return;
 
-		if (!canAdvance)
-			return;
-
-		canAdvance = false;
 		currentQuest++;
 
 		GD.Print($"[QUEST] Advanced → {GetCurrentObjective()} ({reason})");
@@ -212,7 +293,6 @@ public partial class QuestSystem : Node
 			advanceTimer.TimeLeft = 0;
 
 		advanceTimer = GetTree().CreateTimer(ADVANCE_COOLDOWN);
-		advanceTimer.Timeout += () => { canAdvance = true; };
 	}
 
 	// ================= TRIGGERS =================
@@ -235,6 +315,11 @@ public partial class QuestSystem : Node
 				if (currentQuest == 3)
 					ProceedQuest("dialogue:aling_neneng");
 				break;
+			
+			case "monster_walk_by_ended":  
+				if (currentQuest == 4)
+					ProceedQuest("dialogue:monster_walkby");
+			break;
 
 			case "aling_shoneng_has_balut":
 				if (currentQuest == 6)
@@ -249,6 +334,11 @@ public partial class QuestSystem : Node
 			case "aling_marin_has_balut":
 				if (currentQuest == 8)
 					ProceedQuest("dialogue:aling_marin");
+				break;
+
+			case "manong_rafael_has_balut":
+				if (currentQuest == 11)
+					ProceedQuest("dialogue:manong_rafael");
 				break;
 		}
 	}
@@ -289,6 +379,12 @@ public partial class QuestSystem : Node
 						ProceedQuest("store:complete");
 				}
 				break;
+
+			// Quest 10: Get key
+			case 10:
+				if (itemName.Contains("key"))
+					ProceedQuest("item:key_picked");
+				break;
 		}
 	}
 
@@ -306,7 +402,7 @@ public partial class QuestSystem : Node
 	{
 		ResetStageFlagsIfNeeded();
 		UpdateUI();
-		UpdateQuestGlow();
+		UpdateQuestWaypoint();
 
 		if (quest == 5)
 		{
@@ -326,41 +422,6 @@ public partial class QuestSystem : Node
 		}
 	}
 
-	// ================= QUEST GLOW =================
-	private void UpdateQuestGlow()
-	{
-		if (!levelReady)
-			return;
-
-		// Hide all glows
-		foreach (var glow in glowNodes.Values)
-		{
-			if (glow != null && IsInstanceValid(glow))
-				glow.Visible = false;
-		}
-
-		// No quest mapping
-		if (!QuestItems.ContainsKey(currentQuest))
-		{
-			GD.Print($"[QUEST] No glow mapping for quest {currentQuest}");
-			return;
-		}
-
-		// Show current quest glow
-		foreach (string name in QuestItems[currentQuest])
-		{
-			if (glowNodes.TryGetValue(name, out var glow))
-			{
-				if (glow != null && IsInstanceValid(glow))
-					glow.Visible = true;
-			}
-			else
-			{
-				GD.PrintErr($"[QUEST] Glow missing: {name}");
-			}
-		}
-	}
-
 	// ================= UI =================
 	private void UpdateUI()
 	{
@@ -370,10 +431,10 @@ public partial class QuestSystem : Node
 		if (!uiBound)
 			return;
 
-		if (displayQuest == null)
+		if (questObjectiveLabel == null)
 			return;
 
-		displayQuest.Text = GetCurrentObjective();
+		questObjectiveLabel.Text = GetCurrentObjective();
 	}
 
 	// ================= OBJECTIVES =================
@@ -390,6 +451,9 @@ public partial class QuestSystem : Node
 			6 => "Bigyan ng balut si Aling Shoneng",
 			7 => "Bigyan ng balut si Aling Marites",
 			8 => "Bigyan ng balut si Aling Marin",
+			9 => "Maglako ulit ng balut",
+			10 => "Kunin ang susi sa ilalim ng basahan",
+			11 => "Bigyan ng balut si Manong Rafael",
 			_ => "Objective complete"
 		};
 	}

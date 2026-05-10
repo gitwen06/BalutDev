@@ -105,10 +105,10 @@ public partial class GlobalVariables : Node
 	public bool gaveKuyaJames = false;
 	public bool gaveManongRafael = false;
 	public bool gaveAlingShoneng = false;
-	public bool gaveKuyaGeorge = false;
 	
 	public AlingMarites alingMarites;
 	public AlingShoneng alingShoneng;
+	public OldLadyKnockDoor alingMarin;
 	
 	// ==== Event controllersererser ====
 	public MonsterPeekTrigger monsterPeekTrigger;
