@@ -103,7 +103,7 @@ public partial class GlobalVariables : Node
 	public bool GaveAlingMarin = false;
 	public bool gaveAlingMarites = false;
 	public bool gaveKuyaJames = false;
-	public bool gaveKuyaRafael = false;
+	public bool gaveManongRafael = false;
 	public bool gaveAlingShoneng = false;
 	public bool gaveKuyaGeorge = false;
 	

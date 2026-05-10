@@ -196,7 +196,7 @@ public partial class Player : CharacterBody3D
 		bool isTalking = GlobalVariables.Instance.isTalking;
 		bool shouldShowButton = false;
 
-		if (target != null && (target.IsInGroup("interactables") || target.IsInGroup("pickables") || target.IsInGroup("batteries") || target.IsInGroup("Characters") || target.IsInGroup("drinks") || target.IsInGroup("doors"))) {
+		if (target != null && (target.IsInGroup("interactables") || target.IsInGroup("pickables") || target.IsInGroup("batteries") || target.IsInGroup("Characters") || target.IsInGroup("drinks") || target.IsInGroup("doors") || target.IsInGroup("rag"))) {
 			if(!isTalking) {
 				shouldShowButton = true;
 				
@@ -263,53 +263,52 @@ public partial class Player : CharacterBody3D
 					//Interact system for doors
 					else if(target.IsInGroup("doors")) {
 						Node doorNode = target.GetParent();
-						
+
 						if (doorNode == null)
 						{
 							GD.PrintErr("Could not find door mesh!");
 							GlobalVariables.Instance.target = null;
 							return;
 						}
-						
-						GD.Print($"Door detected: {doorNode.Name}");
-						GD.Print($"Door node type: {doorNode.GetType().Name}");
-						GD.Print($"Door script: {doorNode.GetScript()}");
-						
+
 						var pintoOpen = doorNode as PintoOpen;
+
 						if (pintoOpen != null)
 						{
 							GD.Print("PintoOpen cast successful!");
+
 							if (pintoOpen.IsOpen)
 							{
 								pintoOpen.CloseDoor();
 							}
 							else
 							{
-								if (pintoOpen.RequiresKey())
-								{
-									if (pintoOpen.HasKey())
-									{
-										pintoOpen.OpenDoor();
-										GD.Print("Opened door with key");
-									}
-									else
-									{
-										GD.Print("Need key to open this door!");
-									}
-								}
-								else
-								{
-									pintoOpen.OpenDoor();
-									GD.Print("Opened door");
-								}
+								pintoOpen.OpenDoor();
 							}
 						}
 						else
 						{
-							GD.PrintErr($"Failed to cast {doorNode.Name} to PintoOpen! Type: {doorNode.GetType().Name}");
+							GD.PrintErr($"Failed to cast {doorNode.Name} to PintoOpen!");
 						}
+
 						GlobalVariables.Instance.target = null;
 						shouldShowButton = false;
+					}
+					//intearact systems for trags
+					else if (target.IsInGroup("rag"))
+					{
+						Node ragNode = target.GetParent();
+
+						AnimationPlayer open_rag = ragNode.FindChild("open_rag", true, false) as AnimationPlayer;
+
+						if (open_rag != null)
+						{
+							open_rag.Play("open_rag");
+						}
+						else
+						{
+							GD.PrintErr("open_rag AnimationPlayer not found!");
+						}
 					}
 					//Interact system for pickups
 					else if (GlobalVariables.Instance.AddItem(target.Name)) {

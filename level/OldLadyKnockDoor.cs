@@ -130,7 +130,7 @@ public partial class OldLadyKnockDoor : Node3D
 
 		PlayLadyAnimation("run");
 
-		// 🔊 CHASE SOUND STARTS HERE
+
 		chaseSfx.Stream = GD.Load<AudioStream>("res://Sounds/Chase.mp3");
 		chaseSfx.Play();
 
@@ -179,11 +179,10 @@ public partial class OldLadyKnockDoor : Node3D
 
 		dialogueTriggered = true;
 		chaseStopped = true;
-		
+
 		if (chaseSfx != null && chaseSfx.Playing)
-		{
 			chaseSfx.Stop();
-		}
+
 		GD.Print("[OLDLADY] Dialogue triggered");
 
 		SetPhysicsProcess(false);
@@ -202,9 +201,23 @@ public partial class OldLadyKnockDoor : Node3D
 
 		if (dialogue != null)
 		{
-			DialogueManagerRuntime.DialogueManager.ShowDialogueBalloon(dialogue, "start");
+			string startNode = PlayerHasBalutEquipped() ? "start" : "no_balut";
+
+			DialogueManagerRuntime.DialogueManager.ShowDialogueBalloon(dialogue, startNode);
 			DialogueManagerRuntime.DialogueManager.DialogueEnded += OnDialogueEnd;
 		}
+	}
+	private bool PlayerHasBalutEquipped()
+	{
+		var g = GlobalVariables.Instance;
+
+		if (g == null)
+			return false;
+
+		if (g.equippedIndex < 0 || g.currentItem == null)
+			return false;
+
+		return g.currentItem.Name.ToString().ToLower().Contains("balut");
 	}
 
 	// ================= DIALOGUE END =================

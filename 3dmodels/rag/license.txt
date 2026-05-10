@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dirty Rag
+* source:	https://sketchfab.com/3d-models/dirty-rag-0aeaa109e7bd49e19a6bd4963cd08aad
+* author:	bimadwiananto (https://sketchfab.com/bimadwiananto)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dirty Rag" (https://sketchfab.com/3d-models/dirty-rag-0aeaa109e7bd49e19a6bd4963cd08aad) by bimadwiananto (https://sketchfab.com/bimadwiananto) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

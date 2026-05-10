@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cgtsctu8qvt0o"
+path="res://.godot/imported/manong rafael.dialogue-b826a45afaeae9298d05c5bb22178a98.tres"
+
+[deps]
+
+source_file="res://Dialogues/manong rafael.dialogue"
+dest_files=["res://.godot/imported/manong rafael.dialogue-b826a45afaeae9298d05c5bb22178a98.tres"]
+
+[params]
+
+defaults=true
