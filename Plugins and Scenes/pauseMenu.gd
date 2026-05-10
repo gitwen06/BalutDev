@@ -4,10 +4,11 @@ extends CanvasLayer
 @onready var tabs = {
 	"main": $paused,
 	"options": $options, 
-	"keybinds": $keybinds
+	"keybinds": $keybinds,
+	"credits": $credits
 }
 ## -------- Standard References --------
-@onready var pauseOptions = [%continuePause, %questPause, %keybindsPause, %optionsPause, %leavePause]
+@onready var pauseOptions = [%continuePause, %keybindsPause, %optionsPause, %creditsPause, %leavePause]
 @onready var cursor_box = %cursor
 @onready var pausedAnim = $paused/menuOpenClose
 @onready var optionsAnim: AnimationPlayer = $options/optionsOpenClose
@@ -72,6 +73,15 @@ func _input(event: InputEvent) -> void:
 func switch_tab(tab_name: String) -> void:
 	# Play a click sound for the transition
 	buttonSelectSFX.play()
+	
+	if tab_name == "main":
+		if current_tab == "options":
+			optionsAnim.play_backwards("optionsTab")
+			await optionsAnim.animation_finished 
+		elif current_tab == "keybinds":
+			keybindsAnim.play_backwards("keybindsOpenClose")
+			await keybindsAnim.animation_finished
+	
 	for t in tabs.values():
 		t.hide() # hides all containers
 	tabs[tab_name].show()

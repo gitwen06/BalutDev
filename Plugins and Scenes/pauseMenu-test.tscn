@@ -7,6 +7,27 @@
 [ext_resource type="AudioStream" uid="uid://dbmixijrh2d5e" path="res://Sounds/ButtonSelect.wav" id="5_ats2r"]
 [ext_resource type="FontFile" uid="uid://bxagr3bjub1tf" path="res://fonts/Montserrat/static/Montserrat-BoldItalic.ttf" id="6_bb581"]
 [ext_resource type="AudioStream" uid="uid://cneiu7jlasa8t" path="res://Sounds/Chase.mp3" id="7_b26qj"]
+[ext_resource type="Texture2D" uid="uid://ddt4rdi2qbu3j" path="res://Textures/keyboardIcons/W.png" id="8_c7xrj"]
+[ext_resource type="FontFile" uid="uid://fpe68loqmiv3" path="res://fonts/Montserrat/static/Montserrat-SemiBoldItalic.ttf" id="8_yo567"]
+[ext_resource type="Texture2D" uid="uid://2vibcpm22r8q" path="res://Textures/keyboardIcons/A.png" id="9_2ldfs"]
+[ext_resource type="Texture2D" uid="uid://bxfpollp6nmmp" path="res://Textures/keyboardIcons/S.png" id="10_dwe2d"]
+[ext_resource type="Texture2D" uid="uid://ch6q4m0bynl8f" path="res://Textures/keyboardIcons/D.png" id="11_notxq"]
+[ext_resource type="Texture2D" uid="uid://cjxogad7bpgui" path="res://Textures/keyboardIcons/SPACE.png" id="12_msb32"]
+[ext_resource type="Texture2D" uid="uid://c65y2u00haqcw" path="res://Textures/keyboardIcons/SHIFT.png" id="13_gmae6"]
+[ext_resource type="Texture2D" uid="uid://dhpcjgnsgk1ki" path="res://Textures/keyboardIcons/E.png" id="14_tmvib"]
+[ext_resource type="Texture2D" uid="uid://b0bgi53m571db" path="res://Textures/keyboardIcons/F.png" id="15_5m8id"]
+[ext_resource type="Texture2D" uid="uid://bqtb6k6d1mdae" path="res://Textures/keyboardIcons/ESC.png" id="16_2lhia"]
+[ext_resource type="Texture2D" uid="uid://br0o0646fepte" path="res://Textures/keyboardIcons/1.png" id="17_8a1ca"]
+[ext_resource type="Texture2D" uid="uid://c4wf8w6uo86ca" path="res://Textures/keyboardIcons/2.png" id="18_3b6nu"]
+[ext_resource type="Texture2D" uid="uid://cqa0ujukgx0sw" path="res://Textures/keyboardIcons/3.png" id="19_kyvq0"]
+[ext_resource type="Texture2D" uid="uid://ci6oago5vfve" path="res://Textures/keyboardIcons/4.png" id="20_7420s"]
+[ext_resource type="Texture2D" uid="uid://y6b748xcwpkg" path="res://Textures/keyboardIcons/5.png" id="21_p7503"]
+[ext_resource type="Texture2D" uid="uid://dqjqauwo5fjlt" path="res://Textures/keyboardIcons/UP.png" id="22_yp4k8"]
+[ext_resource type="Texture2D" uid="uid://bqxpohp7c8m5e" path="res://Textures/keyboardIcons/DOWN.png" id="23_3tnv6"]
+[ext_resource type="Texture2D" uid="uid://dq54xucc8qq1d" path="res://Textures/keyboardIcons/LEFT.png" id="24_5aek0"]
+[ext_resource type="Texture2D" uid="uid://cqtewqr2cnk51" path="res://Textures/keyboardIcons/RIGHT.png" id="25_py34l"]
+[ext_resource type="Texture2D" uid="uid://cpgr2luih6nlm" path="res://Textures/keyboardIcons/GAY.png" id="26_2ldfs"]
+[ext_resource type="FontFile" uid="uid://h774isgodyos" path="res://fonts/Montserrat/static/Montserrat-BlackItalic.ttf" id="27_dwe2d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5pjqc"]
 
@@ -112,7 +133,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../questPause:position")
+tracks/7/path = NodePath("../keybindsPause:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -124,7 +145,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../questPause:self_modulate")
+tracks/8/path = NodePath("../keybindsPause:self_modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -136,7 +157,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("../keybindsPause:position")
+tracks/9/path = NodePath("../optionsPause:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -148,7 +169,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("../keybindsPause:self_modulate")
+tracks/10/path = NodePath("../optionsPause:self_modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -160,7 +181,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("../optionsPause:position")
+tracks/11/path = NodePath("../creditsPause:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -172,7 +193,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("../optionsPause:self_modulate")
+tracks/12/path = NodePath("../creditsPause:self_modulate")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -343,7 +364,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("../questPause:position")
+tracks/10/path = NodePath("../keybindsPause:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -355,7 +376,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("../questPause:self_modulate")
+tracks/11/path = NodePath("../keybindsPause:self_modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -367,7 +388,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("../keybindsPause:position")
+tracks/12/path = NodePath("../optionsPause:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -379,7 +400,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("../keybindsPause:self_modulate")
+tracks/13/path = NodePath("../optionsPause:self_modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -391,7 +412,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("../optionsPause:position")
+tracks/14/path = NodePath("../creditsPause:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -403,7 +424,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("../optionsPause:self_modulate")
+tracks/15/path = NodePath("../creditsPause:self_modulate")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -456,7 +477,97 @@ _data = {
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ats2r"]
-bg_color = Color(0.05799634, 0.057996362, 0.057996295, 1)
+bg_color = Color(0.058169447, 0.058361225, 0.062506005, 1)
+
+[sub_resource type="Animation" id="Animation_boynw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("keybindDivider:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yo567"]
+resource_name = "keybindsOpenClose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cursorBackdrop:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1.5, 0.3),
+"update": 0,
+"values": [Vector2(0, 100), Vector2(2106, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tabLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1.8, 0.2),
+"update": 0,
+"values": [Vector2(-500, 16), Vector2(100, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.03333333, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("keybindDivider:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(500, 0), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("keybindDivider:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.56666666, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vygw8"]
+_data = {
+&"RESET": SubResource("Animation_boynw"),
+&"keybindsOpenClose": SubResource("Animation_yo567")
+}
+
+[sub_resource type="Theme" id="Theme_2ldfs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dwe2d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_notxq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhygf"]
 bg_color = Color(0.8416634, 4.6205523e-06, 0.37289667, 1)
@@ -619,53 +730,17 @@ _data = {
 &"optionsTab": SubResource("Animation_qhygf")
 }
 
-[sub_resource type="Animation" id="Animation_boynw"]
-length = 0.001
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_msb32"]
 
-[sub_resource type="Animation" id="Animation_yo567"]
-resource_name = "keybindsOpenClose"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("cursorBackdrop:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1.5, 0.3),
-"update": 0,
-"values": [Vector2(0, 100), Vector2(2106, 100)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("tabLabel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1.8, 0.2),
-"update": 0,
-"values": [Vector2(-500, 16), Vector2(100, 16)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(-0.03333333, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmae6"]
+bg_color = Color(0.54509807, 0, 0.23137255, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vygw8"]
-_data = {
-&"RESET": SubResource("Animation_boynw"),
-&"keybindsOpenClose": SubResource("Animation_yo567")
-}
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tmvib"]
+bg_color = Color(0.05882353, 0.05882353, 0.0627451, 1)
 
 [node name="Node3D" type="Node3D" unique_id=1811353540]
 process_mode = 3
@@ -783,7 +858,7 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 450.0
 offset_top = 86.0
-offset_right = 925.00183
+offset_right = 925.0018
 offset_bottom = 201.0
 size_flags_vertical = 0
 focus_neighbor_top = NodePath("../leavePause")
@@ -792,53 +867,53 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_5pjqc")
 text = "CONTINUE"
 alignment = 0
 
-[node name="questPause" type="Button" parent="pauseMenu/paused" unique_id=1103993454]
+[node name="keybindsPause" type="Button" parent="pauseMenu/paused" unique_id=1103993454]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 450.0
 offset_top = 200.0
-offset_right = 925.0012
+offset_right = 925.0013
 offset_bottom = 315.00006
 size_flags_vertical = 0
 focus_neighbor_top = NodePath("../continuePause")
-focus_neighbor_bottom = NodePath("../keybindsPause")
+focus_neighbor_bottom = NodePath("../optionsPause")
 theme = SubResource("Theme_ats2r")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5pjqc")
-text = "QUEST
+text = "KEYBINDS
 
 "
 alignment = 0
 
-[node name="keybindsPause" type="Button" parent="pauseMenu/paused" unique_id=598018933]
+[node name="optionsPause" type="Button" parent="pauseMenu/paused" unique_id=598018933]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 450.0
 offset_top = 314.0
-offset_right = 925.00085
+offset_right = 925.0009
 offset_bottom = 429.0
 size_flags_vertical = 0
-focus_neighbor_bottom = NodePath("../optionsPause")
+focus_neighbor_bottom = NodePath("../creditsPause")
 theme = SubResource("Theme_ats2r")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5pjqc")
-text = "KEYBINDS"
+text = "OPTIONS"
 alignment = 0
 
-[node name="optionsPause" type="Button" parent="pauseMenu/paused" unique_id=858941011]
+[node name="creditsPause" type="Button" parent="pauseMenu/paused" unique_id=858941011]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 450.0
 offset_top = 428.0
-offset_right = 925.0005
+offset_right = 925.00055
 offset_bottom = 543.0
 size_flags_vertical = 0
-focus_neighbor_top = NodePath("../keybindsPause")
+focus_neighbor_top = NodePath("../optionsPause")
 focus_neighbor_bottom = NodePath("../leavePause")
 theme = SubResource("Theme_ats2r")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5pjqc")
-text = "OPTIONS"
+text = "CREDITS"
 alignment = 0
 
 [node name="leavePause" type="Button" parent="pauseMenu/paused" unique_id=2116111684]
@@ -850,7 +925,7 @@ offset_top = 542.0
 offset_right = 1023.0
 offset_bottom = 657.0
 size_flags_vertical = 0
-focus_neighbor_top = NodePath("../optionsPause")
+focus_neighbor_top = NodePath("../creditsPause")
 focus_neighbor_bottom = NodePath("../continuePause")
 theme = SubResource("Theme_ats2r")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5pjqc")
@@ -862,9 +937,317 @@ root_node = NodePath("../cursor")
 libraries/ = SubResource("AnimationLibrary_ats2r")
 speed_scale = 2.5
 
+[node name="keybinds" type="Control" parent="pauseMenu" unique_id=1614354210]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="backdrop" type="PanelContainer" parent="pauseMenu/keybinds" unique_id=1541776818]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ats2r")
+
+[node name="cursorBackdrop" type="ColorRect" parent="pauseMenu/keybinds" unique_id=624572028]
+layout_mode = 0
+offset_left = -17.0
+offset_top = 100.0
+offset_right = 2089.0
+offset_bottom = 200.0
+color = Color(0.54509807, 0, 0.23137255, 1)
+
+[node name="tabPage" type="Label" parent="pauseMenu/keybinds" unique_id=160142515]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -580.0
+offset_top = -454.0
+offset_right = 66.0
+offset_bottom = 273.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.080783345, 0.080783345, 0.080783345, 1)
+theme_override_fonts/font = ExtResource("3_t8foh")
+theme_override_font_sizes/font_size = 500
+text = "02"
+
+[node name="tabLabel" type="Label" parent="pauseMenu/keybinds" unique_id=11292765]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 16.0
+offset_right = 817.0
+offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("3_t8foh")
+theme_override_font_sizes/font_size = 126
+text = "KEYBINDS"
+
+[node name="keybindsOpenClose" type="AnimationPlayer" parent="pauseMenu/keybinds" unique_id=1065621085]
+libraries/ = SubResource("AnimationLibrary_vygw8")
+speed_scale = 2.5
+
+[node name="keybindDivider" type="MarginContainer" parent="pauseMenu/keybinds" unique_id=793662030]
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0.06249994)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0013427734
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 600
+theme_override_constants/margin_bottom = 50
+
+[node name="ScrollContainer" type="ScrollContainer" parent="pauseMenu/keybinds/keybindDivider" unique_id=593785408]
+layout_mode = 2
+theme = SubResource("Theme_2ldfs")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dwe2d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_notxq")
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer" unique_id=1208971789]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="keybind1" type="HBoxContainer" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer" unique_id=412743358]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_stretch_ratio = 16.35
+focus_neighbor_top = NodePath("../keybindCont11")
+focus_neighbor_bottom = NodePath("../keybindCont2")
+focus_mode = 2
+
+[node name="Label" type="Label" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybind1" unique_id=324236542]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 42
+text = "Move Forward"
+
+[node name="TextureRect" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybind1" unique_id=1206055295]
+layout_mode = 2
+texture = ExtResource("8_c7xrj")
+
+[node name="keybindCont3" type="HBoxContainer" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer" unique_id=1661625454]
+layout_mode = 2
+size_flags_stretch_ratio = 16.35
+focus_neighbor_top = NodePath("../keybind1")
+focus_neighbor_bottom = NodePath(".")
+focus_mode = 2
+
+[node name="Label" type="Label" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont3" unique_id=1557535341]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 42
+text = "Move Left"
+
+[node name="TextureRect" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont3" unique_id=1055099056]
+layout_mode = 2
+texture = ExtResource("9_2ldfs")
+
+[node name="keybindCont2" type="HBoxContainer" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer" unique_id=1816880948]
+layout_mode = 2
+size_flags_stretch_ratio = 16.35
+focus_mode = 2
+
+[node name="Label" type="Label" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont2" unique_id=209581014]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 42
+text = "Move Backward"
+
+[node name="TextureRect" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont2" unique_id=1578472433]
+layout_mode = 2
+texture = ExtResource("10_dwe2d")
+
+[node name="keybindCont4" type="HBoxContainer" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer" unique_id=1809221076]
+layout_mode = 2
+size_flags_stretch_ratio = 16.35
+focus_mode = 2
+
+[node name="Label" type="Label" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont4" unique_id=1610241656]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 42
+text = "Move Right"
+
+[node name="TextureRect" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont4" unique_id=1754560825]
+layout_mode = 2
+texture = ExtResource("11_notxq")
+
+[node name="keybindCont5" type="HBoxContainer" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer" unique_id=2058387289]
+layout_mode = 2
+size_flags_stretch_ratio = 16.35
+focus_mode = 2
+
+[node name="Label" type="Label" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont5" unique_id=1160325060]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 42
+text = "Jump"
+
+[node name="TextureRect" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont5" unique_id=1134600909]
+layout_mode = 2
+texture = ExtResource("12_msb32")
+
+[node name="keybindCont6" type="HBoxContainer" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer" unique_id=1315919807]
+layout_mode = 2
+size_flags_stretch_ratio = 16.35
+focus_mode = 2
+
+[node name="Label" type="Label" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont6" unique_id=1833709885]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 42
+text = "Sprint/Run"
+
+[node name="TextureRect" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont6" unique_id=910891721]
+layout_mode = 2
+texture = ExtResource("13_gmae6")
+
+[node name="keybindCont7" type="HBoxContainer" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer" unique_id=363454286]
+layout_mode = 2
+size_flags_stretch_ratio = 16.35
+focus_mode = 2
+
+[node name="Label" type="Label" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont7" unique_id=2055326308]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 42
+text = "Interact"
+
+[node name="TextureRect" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont7" unique_id=1661368244]
+layout_mode = 2
+texture = ExtResource("14_tmvib")
+
+[node name="keybindCont8" type="HBoxContainer" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer" unique_id=2068719752]
+layout_mode = 2
+size_flags_stretch_ratio = 16.35
+focus_mode = 2
+
+[node name="Label" type="Label" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont8" unique_id=2096289190]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 42
+text = "Toggle(Flashlight, Mouse, & Balut)"
+
+[node name="TextureRect" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont8" unique_id=323407494]
+layout_mode = 2
+texture = ExtResource("15_5m8id")
+
+[node name="keybindCont9" type="HBoxContainer" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer" unique_id=239581741]
+layout_mode = 2
+size_flags_stretch_ratio = 16.35
+focus_mode = 2
+
+[node name="Label" type="Label" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont9" unique_id=617616185]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 42
+text = "Pause"
+
+[node name="TextureRect" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont9" unique_id=2071084271]
+layout_mode = 2
+texture = ExtResource("16_2lhia")
+
+[node name="keybindCont10" type="HBoxContainer" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer" unique_id=1987239694]
+layout_mode = 2
+size_flags_stretch_ratio = 16.35
+focus_mode = 2
+
+[node name="Label" type="Label" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont10" unique_id=477609985]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 42
+text = "Inventory Controls"
+
+[node name="TextureRect" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont10" unique_id=1052666891]
+layout_mode = 2
+texture = ExtResource("17_8a1ca")
+
+[node name="TextureRect2" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont10" unique_id=323970974]
+layout_mode = 2
+texture = ExtResource("18_3b6nu")
+
+[node name="TextureRect3" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont10" unique_id=461142200]
+layout_mode = 2
+texture = ExtResource("19_kyvq0")
+
+[node name="TextureRect4" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont10" unique_id=87284005]
+layout_mode = 2
+texture = ExtResource("20_7420s")
+
+[node name="TextureRect5" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont10" unique_id=282793016]
+layout_mode = 2
+texture = ExtResource("21_p7503")
+
+[node name="keybindCont11" type="HBoxContainer" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer" unique_id=2046707227]
+layout_mode = 2
+size_flags_stretch_ratio = 16.35
+focus_mode = 2
+
+[node name="Label" type="Label" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont11" unique_id=725812354]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 42
+text = "Menu Controls"
+
+[node name="TextureRect" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont11" unique_id=1016345354]
+layout_mode = 2
+texture = ExtResource("22_yp4k8")
+
+[node name="TextureRect2" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont11" unique_id=112345298]
+layout_mode = 2
+texture = ExtResource("23_3tnv6")
+
+[node name="TextureRect3" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont11" unique_id=634328786]
+layout_mode = 2
+texture = ExtResource("24_5aek0")
+
+[node name="TextureRect4" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont11" unique_id=1271681726]
+layout_mode = 2
+texture = ExtResource("25_py34l")
+
+[node name="keybindCont12" type="HBoxContainer" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer" unique_id=591376285]
+layout_mode = 2
+size_flags_stretch_ratio = 16.35
+focus_mode = 2
+
+[node name="Label" type="Label" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont12" unique_id=365241294]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 42
+text = "Debug"
+
+[node name="TextureRect" type="TextureRect" parent="pauseMenu/keybinds/keybindDivider/ScrollContainer/VBoxContainer/keybindCont12" unique_id=1600068807]
+layout_mode = 2
+texture = ExtResource("26_2ldfs")
+
 [node name="options" type="Control" parent="pauseMenu" unique_id=1422678697]
 visible = false
-modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -898,23 +1281,6 @@ offset_bottom = 200.0
 theme_override_fonts/font = ExtResource("3_t8foh")
 theme_override_font_sizes/font_size = 126
 text = "OPTIONS"
-
-[node name="tabLabel2" type="Label" parent="pauseMenu/options" unique_id=1522777717]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -339.0
-offset_top = -327.0
-offset_bottom = 110.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_colors/font_color = Color(0.080783345, 0.080783345, 0.080783345, 1)
-theme_override_fonts/font = ExtResource("3_t8foh")
-theme_override_font_sizes/font_size = 300
-text = "01"
 
 [node name="MarginContainer" type="MarginContainer" parent="pauseMenu/options" unique_id=623203911]
 layout_mode = 1
@@ -957,9 +1323,26 @@ value = 50.0
 libraries/ = SubResource("AnimationLibrary_boynw")
 speed_scale = 2.5
 
-[node name="keybinds" type="Control" parent="pauseMenu" unique_id=1614354210]
+[node name="tabPage" type="Label" parent="pauseMenu/options" unique_id=761965560]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -580.0
+offset_top = -454.0
+offset_right = 66.0
+offset_bottom = 273.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.080783345, 0.080783345, 0.080783345, 1)
+theme_override_fonts/font = ExtResource("3_t8foh")
+theme_override_font_sizes/font_size = 500
+text = "03"
+
+[node name="credits" type="Control" parent="pauseMenu" unique_id=1660122301]
 visible = false
-self_modulate = Color(1, 1, 1, 0.0625)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -967,7 +1350,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="backdrop" type="PanelContainer" parent="pauseMenu/keybinds" unique_id=1541776818]
+[node name="backdrop" type="PanelContainer" parent="pauseMenu/credits" unique_id=793891126]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -976,32 +1359,417 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ats2r")
 
-[node name="cursorBackdrop" type="ColorRect" parent="pauseMenu/keybinds" unique_id=624572028]
+[node name="cursorBackdrop" type="ColorRect" parent="pauseMenu/credits" unique_id=613416416]
 layout_mode = 0
 offset_left = -17.0
 offset_top = 100.0
-offset_right = -17.0
+offset_right = 2089.0
 offset_bottom = 200.0
 color = Color(0.54509807, 0, 0.23137255, 1)
 
-[node name="tabLabel" type="Label" parent="pauseMenu/keybinds" unique_id=11292765]
+[node name="tabLabel" type="Label" parent="pauseMenu/credits" unique_id=1116540876]
 layout_mode = 0
-offset_left = -500.0
+offset_left = 100.0
 offset_top = 16.0
-offset_right = 217.0
+offset_right = 688.0
 offset_bottom = 200.0
 theme_override_fonts/font = ExtResource("3_t8foh")
 theme_override_font_sizes/font_size = 126
-text = "KEYBINDS"
+text = "CREDITS"
 
-[node name="keybindsOpenClose" type="AnimationPlayer" parent="pauseMenu/keybinds" unique_id=1065621085]
-libraries/ = SubResource("AnimationLibrary_vygw8")
-speed_scale = 2.5
+[node name="Panel" type="Panel" parent="pauseMenu/credits" unique_id=1185027471]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 250.0
+offset_right = 1820.0
+offset_bottom = 980.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_msb32")
+
+[node name="role&Name" type="Panel" parent="pauseMenu/credits/Panel" unique_id=1196944266]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -972.0
+offset_bottom = -650.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="back" type="Panel" parent="pauseMenu/credits/Panel/role&Name" unique_id=836239533]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gmae6")
+
+[node name="front" type="Panel" parent="pauseMenu/credits/Panel/role&Name" unique_id=875640451]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tmvib")
+
+[node name="MarginContainer" type="MarginContainer" parent="pauseMenu/credits/Panel/role&Name/front" unique_id=2075978765]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="titleLable" type="Label" parent="pauseMenu/credits/Panel/role&Name/front/MarginContainer" unique_id=1690512548]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("27_dwe2d")
+theme_override_font_sizes/font_size = 42
+text = "Lead Developer"
+horizontal_alignment = 1
+
+[node name="nameLabel" type="Label" parent="pauseMenu/credits/Panel/role&Name/front/MarginContainer" unique_id=44175068]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 28
+text = "Shellwin Escorial"
+horizontal_alignment = 1
+
+[node name="role&Name2" type="Panel" parent="pauseMenu/credits/Panel" unique_id=1579194637]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 100.0
+offset_right = -972.0
+offset_bottom = -530.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="back" type="Panel" parent="pauseMenu/credits/Panel/role&Name2" unique_id=739800450]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gmae6")
+
+[node name="front" type="Panel" parent="pauseMenu/credits/Panel/role&Name2" unique_id=805994970]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tmvib")
+
+[node name="MarginContainer" type="MarginContainer" parent="pauseMenu/credits/Panel/role&Name2/front" unique_id=468172712]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="titleLable" type="Label" parent="pauseMenu/credits/Panel/role&Name2/front/MarginContainer" unique_id=595737334]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("27_dwe2d")
+theme_override_font_sizes/font_size = 42
+text = "Developer"
+horizontal_alignment = 1
+
+[node name="nameLabel" type="Label" parent="pauseMenu/credits/Panel/role&Name2/front/MarginContainer" unique_id=461062141]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 28
+text = "John Micheal Generalao"
+horizontal_alignment = 1
+
+[node name="nameLabel2" type="Label" parent="pauseMenu/credits/Panel/role&Name2/front/MarginContainer" unique_id=1028642312]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 28
+text = "Rafael Ellis M. Del Rosario"
+horizontal_alignment = 1
+
+[node name="role&Name3" type="Panel" parent="pauseMenu/credits/Panel" unique_id=1444934362]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 220.0
+offset_right = -972.0
+offset_bottom = -430.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="back" type="Panel" parent="pauseMenu/credits/Panel/role&Name3" unique_id=1738751254]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gmae6")
+
+[node name="front" type="Panel" parent="pauseMenu/credits/Panel/role&Name3" unique_id=1785674544]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tmvib")
+
+[node name="MarginContainer" type="MarginContainer" parent="pauseMenu/credits/Panel/role&Name3/front" unique_id=1956721904]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="titleLable" type="Label" parent="pauseMenu/credits/Panel/role&Name3/front/MarginContainer" unique_id=300638570]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("27_dwe2d")
+theme_override_font_sizes/font_size = 42
+text = "SFX Director"
+horizontal_alignment = 1
+
+[node name="nameLabel" type="Label" parent="pauseMenu/credits/Panel/role&Name3/front/MarginContainer" unique_id=44325322]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 28
+text = "James Gabriel B. Villados"
+horizontal_alignment = 1
+
+[node name="role&Name4" type="Panel" parent="pauseMenu/credits/Panel" unique_id=518083697]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 320.0
+offset_right = -972.0
+offset_bottom = -330.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="back" type="Panel" parent="pauseMenu/credits/Panel/role&Name4" unique_id=840386735]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gmae6")
+
+[node name="front" type="Panel" parent="pauseMenu/credits/Panel/role&Name4" unique_id=708420807]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tmvib")
+
+[node name="MarginContainer" type="MarginContainer" parent="pauseMenu/credits/Panel/role&Name4/front" unique_id=62323034]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="titleLable" type="Label" parent="pauseMenu/credits/Panel/role&Name4/front/MarginContainer" unique_id=203717814]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("27_dwe2d")
+theme_override_font_sizes/font_size = 42
+text = "Booth Manager"
+horizontal_alignment = 1
+
+[node name="nameLabel" type="Label" parent="pauseMenu/credits/Panel/role&Name4/front/MarginContainer" unique_id=928269259]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 28
+text = "Jan Zeus Rafael Cato"
+horizontal_alignment = 1
+
+[node name="role&Name5" type="Panel" parent="pauseMenu/credits/Panel" unique_id=1384292953]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 420.0
+offset_right = -972.0
+offset_bottom = -230.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="back" type="Panel" parent="pauseMenu/credits/Panel/role&Name5" unique_id=557237528]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gmae6")
+
+[node name="front" type="Panel" parent="pauseMenu/credits/Panel/role&Name5" unique_id=773271644]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tmvib")
+
+[node name="MarginContainer" type="MarginContainer" parent="pauseMenu/credits/Panel/role&Name5/front" unique_id=423499774]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="titleLable" type="Label" parent="pauseMenu/credits/Panel/role&Name5/front/MarginContainer" unique_id=680529696]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("27_dwe2d")
+theme_override_font_sizes/font_size = 42
+text = "Treasurer"
+horizontal_alignment = 1
+
+[node name="nameLabel" type="Label" parent="pauseMenu/credits/Panel/role&Name5/front/MarginContainer" unique_id=694382557]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 28
+text = "Natasha Delos Reyes"
+horizontal_alignment = 1
+
+[node name="role&Name6" type="Panel" parent="pauseMenu/credits/Panel" unique_id=1115542931]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 780.0
+offset_right = -192.0
+offset_bottom = -515.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="back" type="Panel" parent="pauseMenu/credits/Panel/role&Name6" unique_id=1041697824]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gmae6")
+
+[node name="front" type="Panel" parent="pauseMenu/credits/Panel/role&Name6" unique_id=321349252]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tmvib")
+
+[node name="MarginContainer" type="MarginContainer" parent="pauseMenu/credits/Panel/role&Name6/front" unique_id=82830758]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="titleLable" type="Label" parent="pauseMenu/credits/Panel/role&Name6/front/MarginContainer" unique_id=1800229623]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("27_dwe2d")
+theme_override_font_sizes/font_size = 42
+text = "Assistants"
+horizontal_alignment = 1
+
+[node name="nameLabel" type="Label" parent="pauseMenu/credits/Panel/role&Name6/front/MarginContainer" unique_id=179074116]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("8_yo567")
+theme_override_font_sizes/font_size = 28
+text = "Harviey Santiago
+Noah Magcalas
+Renz Carlo Deguzman
+Kean Patac
+Symon Morales"
+horizontal_alignment = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1935076443]
 stream = ExtResource("7_b26qj")
 autoplay = true
-parameters/looping = false
+parameters/looping = true
 
 [connection signal="toggled" from="pauseMenu/options/MarginContainer/audio/muteButton" to="pauseMenu" method="_on_mute_button_toggled"]
 [connection signal="value_changed" from="pauseMenu/options/MarginContainer/audio/masterVolume" to="pauseMenu" method="_on_master_volume_value_changed"]

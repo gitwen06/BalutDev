@@ -1,13 +1,10 @@
 [gd_resource type="Theme" format=3 uid="uid://cbtu52yqo5lic"]
 
 [ext_resource type="FontFile" uid="uid://bego6u5b6j364" path="res://fonts/TradeWinds-Regular.ttf" id="1_yvuvd"]
-[ext_resource type="Texture2D" uid="uid://bbkt35kbuffhy" path="res://Textures/main-menu/highlightText.png" id="2_6tgy3"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yvuvd"]
-texture = ExtResource("2_6tgy3")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_256yl"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sy1yp"]
-texture = ExtResource("2_6tgy3")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yvuvd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xlabo"]
 
@@ -16,7 +13,7 @@ texture = ExtResource("2_6tgy3")
 [resource]
 Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_yvuvd")
-Button/styles/focus = SubResource("StyleBoxTexture_yvuvd")
-Button/styles/hover = SubResource("StyleBoxTexture_sy1yp")
+Button/styles/focus = SubResource("StyleBoxEmpty_256yl")
+Button/styles/hover = SubResource("StyleBoxEmpty_yvuvd")
 Button/styles/normal = SubResource("StyleBoxTexture_xlabo")
 Button/styles/pressed = SubResource("StyleBoxTexture_cqwh3")
