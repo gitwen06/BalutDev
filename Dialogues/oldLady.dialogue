@@ -8,7 +8,6 @@ Aling Marin: Bibili lang sana ako balut, parang ayaw mo pa... Magkano ba 'yan?
 	do GlobalVariables.Instance.GiveBalut(1)
 	do QuestSystem.Instance.TriggerQuestAdvance("aling_marin_has_balut")
 	set GlobalVariables.Instance.gaveAlingMarin = true
-	do GlobalVariables.Instance.CloseAnim()
 	set GlobalVariables.Instance.isTalking = false
 	=> END
 
@@ -25,7 +24,6 @@ Aling Marin: Bibili lang sana ako balut, parang ayaw mo pa... Magkano ba 'yan?
 	do GlobalVariables.Instance.GiveBalut(1)
 	do QuestSystem.Instance.TriggerQuestAdvance("aling_marin_has_balut")
 	set GlobalVariables.Instance.gaveAlingMarin = true
-	do GlobalVariables.Instance.CloseAnim()
 	set GlobalVariables.Instance.isTalking = false
 => END
 

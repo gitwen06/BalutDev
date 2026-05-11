@@ -80,21 +80,14 @@ public partial class GlobalVariables : Node
 	public Node balutModel = null;
 	public void GiveBalut(int amount)
 	{
-		if (balutModel == null || !IsInstanceValid(balutModel))
+		if (balutAmount >= amount)
 		{
-			GD.Print("Balut model not found");
-			return;
+			balutAmount -= amount;
+			GD.Print($"Gave {amount} balut. Remaining: {balutAmount}");
 		}
-		
-		Node parent = balutModel.GetParent();
-		if (parent != null && (parent.Name == "Hand" || parent.Name == "root"))
+		else
 		{
-			if(balutAmount >= amount) {
-				balutAmount -= amount;
-				GD.Print($"Gave {amount} balut. Remaining: {balutAmount}");
-			} else {
-				GD.Print("Not enough balut!");
-			}
+			GD.Print("Not enough balut!");
 		}
 	}
 	

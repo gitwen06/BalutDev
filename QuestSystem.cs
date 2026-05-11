@@ -40,7 +40,7 @@ public partial class QuestSystem : Node
 		{ 3, new Vector3(212.993f, 11.196f, -25.127f) },           // Aling neneng
 		{ 4, new Vector3(209.742f, 3.874f, -31.135f) },            // Get battery (was -4.126, now +5.874)
 		{ 5, new Vector3(161.067f, 7.529f, 33.426f) },            // Go to baranggay
-		{ 6, new Vector3(5.692f, 11.607f, -18.895f) },             // Aling shoneng
+		{ 6, new Vector3(8.596f, 3.068f, -19.498f) },             // Aling shoneng
 		{ 7, new Vector3(111.79f, 10.447f, 56.359f) },             // Aling marites
 		{ 8, new Vector3(-15.05f, 5.611f, -5.383f) },              // Aling marin
 		{ 9, new Vector3(161.067f, 10.529f, 33.426f) },            // Maglako ulit
@@ -298,47 +298,82 @@ public partial class QuestSystem : Node
 	// ================= TRIGGERS =================
 	public void TriggerQuestAdvance(string trigger)
 	{
+		GD.Print($"[QUEST] TriggerQuestAdvance called with trigger: {trigger}");
+		GD.Print($"[QUEST] levelReady: {levelReady}, trigger is null: {string.IsNullOrEmpty(trigger)}");
+		
 		if (!levelReady)
+		{
+			GD.PrintErr($"[QUEST] levelReady is FALSE! Cannot advance quest!");
 			return;
+		}
 
 		if (string.IsNullOrEmpty(trigger))
 			return;
 
+		GD.Print($"[QUEST] Processing trigger: {trigger}");
+
 		switch (trigger)
 		{
 			case "mang_jason_talk":
+				GD.Print("[QUEST] Matched: mang_jason_talk");
 				if (currentQuest == 0)
 					ProceedQuest("dialogue:mang_jason");
 				break;
 
 			case "aling_neneng_has_balut":
+				GD.Print("[QUEST] Matched: aling_neneng_has_balut");
 				if (currentQuest == 3)
 					ProceedQuest("dialogue:aling_neneng");
 				break;
 			
-			case "monster_walk_by_ended":  
-				if (currentQuest == 4)
+			case "monster_walk_by_ended":
+				GD.Print("[QUEST] Matched: monster_walk_by_ended");
+				GD.Print($"[QUEST] Current quest: {currentQuest}");
+				if (currentQuest == 5)
+				{
+					GD.Print("[QUEST] Quest is 4! Proceeding!");
 					ProceedQuest("dialogue:monster_walkby");
-			break;
+				}
+				else
+				{
+					GD.PrintErr($"[QUEST] Expected quest 4, got {currentQuest}!");
+				}
+				break;
 
 			case "aling_shoneng_has_balut":
+				GD.Print("[QUEST] Matched: aling_shoneng_has_balut");
 				if (currentQuest == 6)
 					ProceedQuest("dialogue:aling_shoneng");
 				break;
 
 			case "aling_marites_has_balut":
+				GD.Print("[QUEST] Matched: aling_marites_has_balut");
 				if (currentQuest == 7)
 					ProceedQuest("dialogue:aling_marites");
 				break;
 
 			case "aling_marin_has_balut":
+				GD.Print("[QUEST] Matched: aling_marin_has_balut");
 				if (currentQuest == 8)
 					ProceedQuest("dialogue:aling_marin");
 				break;
 
 			case "manong_rafael_has_balut":
-				if (currentQuest == 11)
-					ProceedQuest("dialogue:manong_rafael");
+			GD.Print("[QUEST] Matched: manong_rafael_has_balut");
+			GD.Print($"[QUEST] Current quest: {currentQuest}");
+			if (currentQuest == 9) 
+			{
+				GD.Print("[QUEST] Quest is 9! Proceeding to get key!");
+				ProceedQuest("dialogue:manong_rafael");
+			}
+			else
+			{
+				GD.PrintErr($"[QUEST] Expected quest 9, got {currentQuest}!");
+			}
+			break;
+
+			default:
+				GD.PrintErr($"[QUEST] No case matched for: {trigger}");
 				break;
 		}
 	}
