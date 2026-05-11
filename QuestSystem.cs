@@ -43,7 +43,7 @@ public partial class QuestSystem : Node
 		{ 6, new Vector3(8.596f, 3.068f, -19.498f) },             // Aling shoneng
 		{ 7, new Vector3(111.79f, 10.447f, 56.359f) },             // Aling marites
 		{ 8, new Vector3(-15.05f, 5.611f, -5.383f) },              // Aling marin
-		{ 9, new Vector3(161.067f, 10.529f, 33.426f) },            // Maglako ulit
+		{ 9, new Vector3(161.067f, 10.529f, 33.426f) },            // Maglako ulit sa bahay ni manong rafael(RAFAEL?????????????)
 		{ 10, new Vector3(12.021f, 6.208f, 53.391f) },             // Get key under rag (was -3.792, now +6.208)
 		{ 11, new Vector3(40.903f, 10.0f, 155.785f) },             // Manong rafael
 	};
