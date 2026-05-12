@@ -75,6 +75,31 @@ public partial class GlobalVariables : Node
 			spawnedNPC = null;
 		}
 	}
+	
+	// ================= ITEM TRACKING ================= (for item tracking wow why did i explain this shit)
+	public bool hasFlashlight = false;
+	public bool hasBalut = false;
+	public bool hasBattery = false;
+	public bool hasDrink = false;
+	public bool hasKey = false;
+
+	public void MarkItemPickedUp(string itemName)
+	{
+		itemName = itemName.ToLower();
+		
+		if (itemName.Contains("flashlight"))
+			hasFlashlight = true;
+		else if (itemName.Contains("balut"))
+			hasBalut = true;
+		else if (itemName.Contains("battery"))
+			hasBattery = true;
+		else if (itemName.Contains("drink") || itemName.Contains("energydrink"))
+			hasDrink = true;
+		else if (itemName.Contains("key"))
+			hasKey = true;
+		
+		GD.Print($"[GLOBAL] Item marked: {itemName}");
+	}
 	// ============= BALUT VARIABLES =============
 	public int balutAmount = 6;
 	public Node balutModel = null;

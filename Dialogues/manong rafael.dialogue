@@ -13,6 +13,10 @@ Manong Rafael: Pasensya na sa abala iho.. Pabili ako isa, bayaran nalang kita ex
 	do GlobalVariables.Instance.RemoveNPC()
 	set GlobalVariables.Instance.isTalking = false
 	=> END
+	
+~ call
+Manong Rafael: Hoy pabili ako niyan... Pasensya na anak ngunit mahina na ang aking paa at tinatamad na ako para tumayo..
+Manong Rafael: Pakikuha nalang ng susi rito sa may ilalim ng basahan sa pinto.. Pasensya na sa abala anak...
 
 ~ gave_already
 Manong Rafael: Ibenta mo nalang iyan kay James iho..

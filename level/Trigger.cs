@@ -123,8 +123,8 @@ public partial class Trigger : Node3D
 		
 		if (eventName == "manongRafaelCall")
 		{
-			GD.Print("[TRIGGER] Calling manong_rafael_has_balut quest trigger");
-			QuestSystem.Instance.TriggerQuestAdvance("manong_rafael_has_balut");
+			GD.Print("[TRIGGER] Calling manong_rafael_call quest trigger");
+			QuestSystem.Instance.TriggerQuestAdvance("manong_rafael_call");
 		}
 	}
 
