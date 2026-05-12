@@ -40,11 +40,11 @@ public partial class QuestSystem : Node
 		{ 3, new Vector3(212.993f, 11.196f, -25.127f) },           // Aling neneng
 		{ 4, new Vector3(209.742f, 3.874f, -31.135f) },            // Get battery (was -4.126, now +5.874)
 		{ 5, new Vector3(161.067f, 7.529f, 33.426f) },            // Go to baranggay
-		{ 6, new Vector3(5.692f, 11.607f, -18.895f) },             // Aling shoneng
-		{ 7, new Vector3(111.79f, 10.447f, 56.359f) },             // Aling marites
-		{ 8, new Vector3(-15.05f, 5.611f, -5.383f) },              // Aling marin
-		{ 9, new Vector3(161.067f, 10.529f, 33.426f) },            // Maglako ulit
-		{ 10, new Vector3(12.021f, 6.208f, 53.391f) },             // Get key under rag (was -3.792, now +6.208)
+		{ 6, new Vector3(8.596f, 3.068f, -19.498f) },             // Aling shoneng
+		{ 7, new Vector3(111.79f, 2.447f, 56.359f) },             // Aling marites
+		{ 8, new Vector3(-15.05f, -4.389f,-5.383f) },              // Aling marin
+		{ 9, new Vector3(27.304f, 7.718f, -15.224f) },            // Maglako ulit sa bahay ni manong rafael(RAFAEL?????????????)
+		{ 10, new Vector3(12.021f, -3.792f, 53.391f) },             // Get key under rag (was -3.792, now +6.208)
 		{ 11, new Vector3(40.903f, 10.0f, 155.785f) },             // Manong rafael
 	};
 
@@ -298,50 +298,95 @@ public partial class QuestSystem : Node
 	// ================= TRIGGERS =================
 	public void TriggerQuestAdvance(string trigger)
 	{
+		GD.Print($"[QUEST] TriggerQuestAdvance called with trigger: {trigger}");
+		GD.Print($"[QUEST] levelReady: {levelReady}, trigger is null: {string.IsNullOrEmpty(trigger)}");
+		
 		if (!levelReady)
+		{
+			GD.PrintErr($"[QUEST] levelReady is FALSE! Cannot advance quest!");
 			return;
+		}
 
 		if (string.IsNullOrEmpty(trigger))
 			return;
 
+		GD.Print($"[QUEST] Processing trigger: {trigger}");
+
 		switch (trigger)
 		{
 			case "mang_jason_talk":
+				GD.Print("[QUEST] Matched: mang_jason_talk");
 				if (currentQuest == 0)
 					ProceedQuest("dialogue:mang_jason");
 				break;
 
 			case "aling_neneng_has_balut":
+				GD.Print("[QUEST] Matched: aling_neneng_has_balut");
 				if (currentQuest == 3)
 					ProceedQuest("dialogue:aling_neneng");
 				break;
 			
-			case "monster_walk_by_ended":  
-				if (currentQuest == 4)
+			case "monster_walk_by_ended":
+				GD.Print("[QUEST] Matched: monster_walk_by_ended");
+				GD.Print($"[QUEST] Current quest: {currentQuest}");
+				if (currentQuest == 5)
+				{
+					GD.Print("[QUEST] Quest is 4! Proceeding!");
 					ProceedQuest("dialogue:monster_walkby");
-			break;
+				}
+				else
+				{
+					GD.PrintErr($"[QUEST] Expected quest 4, got {currentQuest}!");
+				}
+				break;
 
 			case "aling_shoneng_has_balut":
+				GD.Print("[QUEST] Matched: aling_shoneng_has_balut");
 				if (currentQuest == 6)
 					ProceedQuest("dialogue:aling_shoneng");
 				break;
 
 			case "aling_marites_has_balut":
+				GD.Print("[QUEST] Matched: aling_marites_has_balut");
 				if (currentQuest == 7)
 					ProceedQuest("dialogue:aling_marites");
 				break;
 
 			case "aling_marin_has_balut":
+				GD.Print("[QUEST] Matched: aling_marin_has_balut");
 				if (currentQuest == 8)
 					ProceedQuest("dialogue:aling_marin");
 				break;
 
-			case "manong_rafael_has_balut":
-				if (currentQuest == 11)
-					ProceedQuest("dialogue:manong_rafael");
-				break;
-		}
+			case "manong_rafael_call": // call for touching rear 3d ok
+			GD.Print("[QUEST] Matched: manong_rafael_call");
+			GD.Print($"[QUEST] Current quest: {currentQuest}");
+			if (currentQuest == 9)
+			{
+				GD.Print("[QUEST] Quest is 9! Proceeding to quest 10 (get key)!");
+				ProceedQuest("dialogue:manong_rafael_call");
+			}
+			else
+			{
+				GD.PrintErr($"[QUEST] Expected quest 9, got {currentQuest}!");
+			}
+			break;
+
+		case "manong_rafael_has_balut": // rafael del rosario gets balut cool ig
+			GD.Print("[QUEST] Matched: manong_rafael_has_balut");
+			GD.Print($"[QUEST] Current quest: {currentQuest}");
+			if (currentQuest == 11)
+			{
+				GD.Print("[QUEST] Quest is 11! Proceeding!");
+				ProceedQuest("dialogue:manong_rafael_balut");
+			}
+			else
+			{
+				GD.PrintErr($"[QUEST] Expected quest 11, got {currentQuest}!");
+			}
+			break;
 	}
+}
 
 	// ================= ITEMS =================
 	public void OnItemPicked(string itemName)
@@ -355,35 +400,45 @@ public partial class QuestSystem : Node
 		itemName = itemName.ToLower();
 		GD.Print($"[QUEST] Item detected: {itemName} | Quest: {currentQuest}");
 
+		// Mark item as picked in GlobalVariables
+		GlobalVariables.Instance.MarkItemPickedUp(itemName);
+
 		switch (currentQuest)
 		{
-			// Quest 1-2: Get flashlight & balut
+			// Quest 1: Get flashlight
 			case 1:
-			case 2:
-				if (IsRelevantItem(itemName))
+				if (GlobalVariables.Instance.hasFlashlight)
+				{
+					GD.Print("[QUEST] Flashlight obtained!");
 					ProceedQuest("item:picked");
+				}
 				break;
 
-			// Quest 4: Get battery & coke
-			case 4:
-				if (itemName.Contains("battery"))
+			// Quest 2: Get balut
+			case 2:
+				if (GlobalVariables.Instance.hasBalut)
 				{
-					gotBattery = true;
-					if (gotDrink)
-						ProceedQuest("store:complete");
+					GD.Print("[QUEST] Balut obtained!");
+					ProceedQuest("item:picked");
 				}
-				else if (itemName.Contains("drink") || itemName.Contains("energydrink"))
+				break;
+
+			// Quest 4: Get battery & drink (both required)
+			case 4:
+				if (GlobalVariables.Instance.hasBattery && GlobalVariables.Instance.hasDrink)
 				{
-					gotDrink = true;
-					if (gotBattery)
-						ProceedQuest("store:complete");
+					GD.Print("[QUEST] Both battery and drink obtained!");
+					ProceedQuest("store:complete");
 				}
 				break;
 
 			// Quest 10: Get key
 			case 10:
-				if (itemName.Contains("key"))
+				if (GlobalVariables.Instance.hasKey)
+				{
+					GD.Print("[QUEST] Key obtained!");
 					ProceedQuest("item:key_picked");
+				}
 				break;
 		}
 	}
@@ -407,10 +462,50 @@ public partial class QuestSystem : Node
 		if (quest == 5)
 		{
 			returnHorrorActive = true;
-			GD.Print("[QUEST] HORROR MODE ACTIVATED (return path enabled)");
 		}
-
+		
+		CheckForAlreadyPickedItems(quest);
 		GD.Print($"[QUEST UPDATED] → {GetCurrentObjective()}");
+	}
+	
+	private void CheckForAlreadyPickedItems(int quest)
+	{
+		var g = GlobalVariables.Instance;
+
+		switch (quest)
+		{
+			case 1:
+				if (g.hasFlashlight)
+				{
+					GD.Print("[QUEST] Flashlight already picked! Advancing...");
+					ProceedQuest("item:already_picked");
+				}
+				break;
+
+			case 2:
+				if (g.hasBalut)
+				{
+					GD.Print("[QUEST] Balut already picked! Advancing...");
+					ProceedQuest("item:already_picked");
+				}
+				break;
+
+			case 4:
+				if (g.hasBattery && g.hasDrink)
+				{
+					GD.Print("[QUEST] Battery and drink already picked! Advancing...");
+					ProceedQuest("store:complete");
+				}
+				break;
+
+			case 10:
+				if (g.hasKey)
+				{
+					GD.Print("[QUEST] Key already picked! Advancing...");
+					ProceedQuest("item:already_picked");
+				}
+				break;
+		}
 	}
 
 	private void ResetStageFlagsIfNeeded()

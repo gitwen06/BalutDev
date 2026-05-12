@@ -13,6 +13,7 @@ extends CanvasLayer
 @onready var pausedAnim = $paused/menuOpenClose
 @onready var optionsAnim: AnimationPlayer = $options/optionsOpenClose
 @onready var keybindsAnim: AnimationPlayer = $keybinds/keybindsOpenClose
+@onready var creditsAnim: AnimationPlayer = %creditsOpenClose
 @onready var buttonMoveSFX: AudioStreamPlayer = $buttonMoveSFX
 @onready var buttonSelectSFX: AudioStreamPlayer = $buttonSelectSFX
 
@@ -56,7 +57,6 @@ func _input(event: InputEvent) -> void:
 		else:
 			if current_tab != "main":
 				switch_tab("main")
-				
 			else:
 				_close_pause_menu()
 				
@@ -81,6 +81,8 @@ func switch_tab(tab_name: String) -> void:
 		elif current_tab == "keybinds":
 			keybindsAnim.play_backwards("keybindsOpenClose")
 			await keybindsAnim.animation_finished
+		elif current_tab == "credits":
+			creditsAnim.play_backwards("creditsOpenClose")
 	
 	for t in tabs.values():
 		t.hide() # hides all containers
@@ -96,6 +98,9 @@ func switch_tab(tab_name: String) -> void:
 		%muteButton.grab_focus()
 	elif tab_name == "keybinds":
 		keybindsAnim.play("keybindsOpenClose")
+	elif tab_name == "credits":
+		creditsAnim.play("creditsOpenClose")
+
 ## -------- Tab Switching Functions --------
 func _handle_selection(btn: Button) -> void:
 	buttonSelectSFX.play() 
@@ -105,6 +110,8 @@ func _handle_selection(btn: Button) -> void:
 		switch_tab("options")
 	elif btn == %keybindsPause:
 		switch_tab("keybinds")
+	elif  btn == %creditsPause:
+		switch_tab("credits")
 	elif btn == %leavePause:
 		get_tree().quit() 
 	else:

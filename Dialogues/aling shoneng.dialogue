@@ -17,7 +17,7 @@ set GlobalVariables.Instance.isTalking = false
 => END
 
 ~ call
-Hoy dito! Pabili ako niyan!
+Aling Shoneng: Hoy dito! Pabili ako niyan!
 set GlobalVariables.Instance.isTalking = false
 => END
 

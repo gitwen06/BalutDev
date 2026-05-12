@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Balut Deliveries (Horror Minigame) EXPO"
-run/main_scene="uid://f402y24m3skj"
+run/main_scene="uid://bd8tisk3ul0ax"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -202,7 +202,7 @@ Scream={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogues/mang jason.dialogue", "res://Dialogues/selfDialogue.dialogue", "res://Dialogues/monsterWalkByDialogue.dialogue", "res://Dialogues/selfDialogueAlingNeneng.dialogue", "res://Dialogues/oldLady.dialogue", "res://Dialogues/aling marites.dialogue", "res://Dialogues/DialogueAboutItems.dialogue", "res://Dialogues/aling shoneng.dialogue", "res://Dialogues/manong rafael.dialogue", "res://Dialogues/Aling Neneng.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogues/mang jason.dialogue", "res://Dialogues/selfDialogue.dialogue", "res://Dialogues/monsterWalkByDialogue.dialogue", "res://Dialogues/selfDialogueAlingNeneng.dialogue", "res://Dialogues/oldLady.dialogue", "res://Dialogues/aling marites.dialogue", "res://Dialogues/DialogueAboutItems.dialogue", "res://Dialogues/aling shoneng.dialogue", "res://Dialogues/manong rafael.dialogue", "res://Dialogues/aling neneng.dialogue")
 
 [layer_names]
 

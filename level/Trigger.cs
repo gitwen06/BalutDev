@@ -29,10 +29,18 @@ public partial class Trigger : Node3D
 
 	public override void _Ready()
 	{
-		area = GetNode<Area3D>("Area3D");
+		area = GetNodeOrNull<Area3D>("Area3D");
 
-		area.BodyEntered += OnBodyEntered;
-		area.BodyExited += OnBodyExited;
+		if (area != null)
+		{
+			area.BodyEntered += OnBodyEntered;
+			area.BodyExited += OnBodyExited;
+		}
+		else
+		{
+			GD.PrintErr($"[TRIGGER] {Name} has no Area3D child!");
+			return;
+		}
 
 		eventName = Name;
 
@@ -53,7 +61,8 @@ public partial class Trigger : Node3D
 		// ================= DIALOGUEABOUTITEMS =================
 		if (eventName == "DialogueAboutItems")
 		{
-			area.Monitoring = false;
+			if (area != null)
+				area.Monitoring = false;
 			GD.Print("[TRIGGER] DialogueAboutItems DISABLED at start");
 		}
 
@@ -61,7 +70,6 @@ public partial class Trigger : Node3D
 		if (eventName == "ScreamArea")
 		{
 			playerCamera = GetTree().Root.FindChild("Camera3D", true, false) as Camera3D;
-
 			alingShoneng = GetTree().Root.FindChild("Aling Shoneng", true, false) as Node3D;
 
 			if (playerCamera == null)
@@ -69,21 +77,6 @@ public partial class Trigger : Node3D
 
 			if (alingShoneng == null)
 				GD.PrintErr("[SCREAM AREA] Aling Shoneng not found!");
-		}
-	}
-
-	public override void _Process(double delta)
-	{
-		if (
-			eventName == "ScreamArea" &&
-			playerInsideScreamArea &&
-			!screamTriggered &&
-			Input.IsActionJustPressed("Scream")
-		)
-		{
-			screamTriggered = true;
-			GD.Print("[SCREAM AREA] Scream triggered!");
-			StartScreamDialogue();
 		}
 	}
 
@@ -113,6 +106,7 @@ public partial class Trigger : Node3D
 		{
 			DialogueManager.ShowDialogueBalloon(dialogue, "call");
 			DialogueManager.DialogueEnded += OnDialogueEnded;
+			GD.Print("[MANONG RAFAEL] Dialogue started");
 		}
 		else
 		{
@@ -120,8 +114,6 @@ public partial class Trigger : Node3D
 			ResetDialogueState();
 		}
 	}
-	
-	
 
 	// ================= DIALOGUE END =================
 	private void OnDialogueEnded(Resource resource)
@@ -131,13 +123,17 @@ public partial class Trigger : Node3D
 		
 		if (eventName == "manongRafaelCall")
 		{
-			QuestSystem.Instance.TriggerQuestAdvance("manong_rafael_has_balut");
+			GD.Print("[TRIGGER] Calling manong_rafael_call quest trigger");
+			QuestSystem.Instance.TriggerQuestAdvance("manong_rafael_call");
 		}
 	}
 
 	// ================= BODY ENTER =================
 	private void OnBodyEntered(Node3D body)
 	{
+		if (area == null)
+			return;
+
 		if (!body.IsInGroup("player"))
 			return;
 
@@ -178,7 +174,8 @@ public partial class Trigger : Node3D
 	public void EnableTrigger()
 	{
 		triggered = false;
-		area.SetDeferred("monitoring", true);
+		if (area != null)
+			area.SetDeferred("monitoring", true);
 		GD.Print($"[TRIGGER] {eventName} ENABLED");
 	}
 
