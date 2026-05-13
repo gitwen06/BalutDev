@@ -1591,7 +1591,6 @@ theme_override_font_sizes/font_size = 500
 text = "03"
 
 [node name="credits" type="Control" parent="pauseMenu" unique_id=1660122301]
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
@@ -2000,7 +1999,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("27_dwe2d")
 theme_override_font_sizes/font_size = 42
-text = "Treasurer"
+text = "Assistant"
 horizontal_alignment = 1
 
 [node name="nameLabel2" type="Label" parent="pauseMenu/credits/Panel/role&Name6/front/MarginContainer" unique_id=986059373]

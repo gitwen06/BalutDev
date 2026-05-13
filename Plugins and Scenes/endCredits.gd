@@ -3,7 +3,6 @@ extends Control
 @onready var returnToMenu: Button = %returnToMenu
 
 func _ready() -> void:
-	# Connect the button click to our function
 	returnToMenu.pressed.connect(backToMenu)
 
 func backToMenu():
