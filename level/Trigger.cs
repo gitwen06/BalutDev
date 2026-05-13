@@ -80,6 +80,20 @@ public partial class Trigger : Node3D
 		}
 	}
 
+	public override void _Process(double delta)
+	{
+		if (
+			eventName == "ScreamArea" &&
+			playerInsideScreamArea &&
+			!screamTriggered &&
+			Input.IsActionJustPressed("Scream")
+		)
+		{
+			screamTriggered = true;
+			GD.Print("[SCREAM AREA] Scream triggered!");
+			StartScreamDialogue();
+		}
+	}
 	// ================= START SCREAM DIALOGUE =================
 	private void StartScreamDialogue()
 	{
@@ -120,11 +134,16 @@ public partial class Trigger : Node3D
 	{
 		ResetDialogueState();
 		DialogueManager.DialogueEnded -= OnDialogueEnded;
-		
 		if (eventName == "manongRafaelCall")
 		{
 			GD.Print("[TRIGGER] Calling manong_rafael_call quest trigger");
 			QuestSystem.Instance.TriggerQuestAdvance("manong_rafael_call");
+		}
+		
+		else if (eventName == "ScreamArea")
+		{
+			GD.Print("[SCREAM AREA] Dialogue ended");
+			QuestSystem.Instance.TriggerQuestAdvance("aling_shoneng_has_balut");
 		}
 	}
 

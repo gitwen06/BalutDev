@@ -1,0 +1,18 @@
+~ start
+set GlobalVariables.Instance.isTalking = true
+
+Kuya James: Totoo ba ito?? Namamalik mata ba ako?? Totoong tunay nga talaga ito!! Sa wakas, maibibigay ko na ang sarili ko.
+- Kuya James? Anong sinasabi mo?
+	Kuya James: Bata, masyado ka pang bata para maintindihan ito. Pabili nalang ako niyang nag-iisang balut, na para bang inialay sa akin ito.
+	- Sige po... 15 Pesos Isa.
+		Kuya James: Ohhhh diyos ko.. tinatawag kita!! Narito na ang kinakailangan nyo.. Ang iisang balut kasama ang aking katawan bilang sakripisyo.. Tangapin mo ako.
+		SDOKIEJC: ...
+		SDOKIEJC: H.-.;a;2l09i.k';a r:>"i"';t.'][o]	
+	- Panaginip lang 'to, panaginip lang 'to, panaginip lang 'to
+		SDOKIEJC(glitched letters to kaso walang internet habang ginagawa ko to): cmere bro 
+=> END
+	
+~ no_balut
+Manong Rafael: Ano iyun?
+set GlobalVariables.Instance.isTalking = false
+=> END

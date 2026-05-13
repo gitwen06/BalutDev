@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://qnge1sxr5ubf"
+path="res://.godot/imported/kuya james.dialogue-da44d1d595244f99cd17f6a93be93656.tres"
+
+[deps]
+
+source_file="res://Dialogues/kuya james.dialogue"
+dest_files=["res://.godot/imported/kuya james.dialogue-da44d1d595244f99cd17f6a93be93656.tres"]
+
+[params]
+
+defaults=true

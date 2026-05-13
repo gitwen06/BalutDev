@@ -371,8 +371,8 @@ public partial class QuestSystem : Node
 				GD.PrintErr($"[QUEST] Expected quest 9, got {currentQuest}!");
 			}
 			break;
-
-		case "manong_rafael_has_balut": // rafael del rosario gets balut cool ig
+			
+			case "manong_rafael_has_balut": // rafael del rosario gets balut cool ig
 			GD.Print("[QUEST] Matched: manong_rafael_has_balut");
 			GD.Print($"[QUEST] Current quest: {currentQuest}");
 			if (currentQuest == 11)
@@ -385,8 +385,10 @@ public partial class QuestSystem : Node
 				GD.PrintErr($"[QUEST] Expected quest 11, got {currentQuest}!");
 			}
 			break;
+		}
 	}
-}
+
+
 
 	// ================= ITEMS =================
 	public void OnItemPicked(string itemName)
@@ -471,38 +473,41 @@ public partial class QuestSystem : Node
 	private void CheckForAlreadyPickedItems(int quest)
 	{
 		var g = GlobalVariables.Instance;
-
 		switch (quest)
 		{
 			case 1:
 				if (g.hasFlashlight)
 				{
-					GD.Print("[QUEST] Flashlight already picked! Advancing...");
-					ProceedQuest("item:already_picked");
+					GD.Print("[QUEST] Flashlight already picked! Auto-advancing...");
+					currentQuest++;
+					OnQuestChanged(currentQuest);
 				}
 				break;
 
 			case 2:
 				if (g.hasBalut)
 				{
-					GD.Print("[QUEST] Balut already picked! Advancing...");
-					ProceedQuest("item:already_picked");
+					GD.Print("[QUEST] Balut already picked! Auto-advancing...");
+					currentQuest++;
+					OnQuestChanged(currentQuest);
 				}
 				break;
 
 			case 4:
 				if (g.hasBattery && g.hasDrink)
 				{
-					GD.Print("[QUEST] Battery and drink already picked! Advancing...");
-					ProceedQuest("store:complete");
+					GD.Print("[QUEST] Battery and drink already picked! Auto-advancing...");
+					currentQuest++;
+					OnQuestChanged(currentQuest);
 				}
 				break;
 
 			case 10:
 				if (g.hasKey)
 				{
-					GD.Print("[QUEST] Key already picked! Advancing...");
-					ProceedQuest("item:already_picked");
+					GD.Print("[QUEST] Key already picked! Auto-advancing...");
+					currentQuest++;
+					OnQuestChanged(currentQuest);
 				}
 				break;
 		}
