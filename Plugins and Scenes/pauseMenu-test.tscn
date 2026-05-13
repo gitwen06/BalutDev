@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://bdd8i1wdg6742" path="res://Sounds/ButtonMove.wav" id="4_fafcn"]
 [ext_resource type="AudioStream" uid="uid://dbmixijrh2d5e" path="res://Sounds/ButtonSelect.wav" id="5_ats2r"]
 [ext_resource type="FontFile" uid="uid://bxagr3bjub1tf" path="res://fonts/Montserrat/static/Montserrat-BoldItalic.ttf" id="6_bb581"]
-[ext_resource type="AudioStream" uid="uid://cneiu7jlasa8t" path="res://Sounds/Chase.mp3" id="7_b26qj"]
 [ext_resource type="Texture2D" uid="uid://ddt4rdi2qbu3j" path="res://Textures/keyboardIcons/W.png" id="8_c7xrj"]
 [ext_resource type="FontFile" uid="uid://fpe68loqmiv3" path="res://fonts/Montserrat/static/Montserrat-SemiBoldItalic.ttf" id="8_yo567"]
 [ext_resource type="Texture2D" uid="uid://2vibcpm22r8q" path="res://Textures/keyboardIcons/A.png" id="9_2ldfs"]
@@ -229,7 +228,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("%cursor/../../blur:self_modulate")
+tracks/15/path = NodePath("../../blur:self_modulate")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -460,7 +459,7 @@ tracks/17/keys = {
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("%cursor/../../blur:self_modulate")
+tracks/18/path = NodePath("../../blur:self_modulate")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
@@ -983,8 +982,16 @@ _data = {
 &"creditsOpenClose": SubResource("Animation_notxq")
 }
 
-[node name="Node3D" type="Node3D" unique_id=1811353540]
+[node name="pausedUI" type="Control" unique_id=1996398744]
 process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="pauseMenu" type="CanvasLayer" parent="." unique_id=1636543188]
 process_mode = 3
@@ -2030,11 +2037,6 @@ theme_override_colors/font_color = Color(0.080783345, 0.080783345, 0.080783345, 
 theme_override_fonts/font = ExtResource("3_t8foh")
 theme_override_font_sizes/font_size = 500
 text = "04"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1935076443]
-stream = ExtResource("7_b26qj")
-autoplay = true
-parameters/looping = true
 
 [connection signal="toggled" from="pauseMenu/options/MarginContainer/audio/muteButton" to="pauseMenu" method="_on_mute_button_toggled"]
 [connection signal="value_changed" from="pauseMenu/options/MarginContainer/audio/masterVolume" to="pauseMenu" method="_on_master_volume_value_changed"]

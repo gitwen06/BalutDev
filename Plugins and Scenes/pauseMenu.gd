@@ -17,6 +17,7 @@ extends CanvasLayer
 @onready var buttonMoveSFX: AudioStreamPlayer = $buttonMoveSFX
 @onready var buttonSelectSFX: AudioStreamPlayer = $buttonSelectSFX
 
+var isPaused = false
 var isAnimated = false
 var current_tab = "main"
 
@@ -58,7 +59,10 @@ func _input(event: InputEvent) -> void:
 			if current_tab != "main":
 				switch_tab("main")
 			else:
-				_close_pause_menu()
+				if not isPaused:
+					_open_pause_menu()
+				else:
+					_close_pause_menu()
 				
 		if visible and event.is_action_pressed("menuAccept"):
 			var focused_node = get_viewport().gui_get_focus_owner()
@@ -118,6 +122,7 @@ func _handle_selection(btn: Button) -> void:
 		print("Selected: ", btn.text) 
 
 func _open_pause_menu() -> void:
+	isPaused = true
 	buttonSelectSFX.play() 
 	show() 
 	_update_selection(%continuePause) 
@@ -132,6 +137,7 @@ func _open_pause_menu() -> void:
 	%continuePause.grab_focus() 
 
 func _close_pause_menu() -> void:
+	isPaused = false
 	buttonSelectSFX.play() 
 	isAnimated = true 
 	pausedAnim.play_backwards("cursorpauseOpen") 

@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://cbtu52yqo5lic"]
 
-[ext_resource type="FontFile" uid="uid://bego6u5b6j364" path="res://fonts/TradeWinds-Regular.ttf" id="1_yvuvd"]
+[ext_resource type="FontFile" uid="uid://xf7s4bq67q1c" path="res://fonts/Russo_One/RussoOne-Regular.ttf" id="1_256yl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_256yl"]
 
@@ -12,7 +12,7 @@
 
 [resource]
 Button/font_sizes/font_size = 32
-Button/fonts/font = ExtResource("1_yvuvd")
+Button/fonts/font = ExtResource("1_256yl")
 Button/styles/focus = SubResource("StyleBoxEmpty_256yl")
 Button/styles/hover = SubResource("StyleBoxEmpty_yvuvd")
 Button/styles/normal = SubResource("StyleBoxTexture_xlabo")
