@@ -1,0 +1,25 @@
+[gd_resource type="Theme" format=3 uid="uid://denj3pxbm30q0"]
+
+[ext_resource type="FontFile" uid="uid://cyr6i80q4heqb" path="res://fonts/AntonSC-Regular.ttf" id="1_4ccc6"]
+[ext_resource type="FontFile" uid="uid://xf7s4bq67q1c" path="res://fonts/Russo_One/RussoOne-Regular.ttf" id="2_tnvqi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lkfvv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_04qn5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ccc6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tnvqi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rviyy"]
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxEmpty_lkfvv")
+Button/styles/focus = SubResource("StyleBoxEmpty_04qn5")
+Button/styles/hover = SubResource("StyleBoxEmpty_4ccc6")
+Button/styles/normal = SubResource("StyleBoxEmpty_tnvqi")
+Button/styles/pressed = SubResource("StyleBoxEmpty_rviyy")
+Label/font_sizes/font_size = 74
+Label/fonts/font = ExtResource("1_4ccc6")
+TextEdit/font_sizes/font_size = 24
+TextEdit/fonts/font = ExtResource("2_tnvqi")

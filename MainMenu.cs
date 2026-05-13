@@ -85,7 +85,7 @@ public partial class MainMenu : Node3D
 		mainMenuUI.Hide();
 		creditTab.Show();
 		currTab = "credits";
-		
+		// i hate this
 		var creditAnim = GetNode<AnimationPlayer>("%creditsOpenClose");
 		creditAnim.Play("creditsOpenClose");
 	}

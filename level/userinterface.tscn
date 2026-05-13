@@ -1,14 +1,48 @@
 [gd_scene format=3 uid="uid://8tmob6qxga4"]
 
+[ext_resource type="Script" uid="uid://b7xaegr0sf73i" path="res://level/WakeUp.cs" id="1_adumv"]
 [ext_resource type="Shader" uid="uid://4r7ouyuealen" path="res://shaders/crt.gdshader" id="1_e78v2"]
-[ext_resource type="Script" uid="uid://c4gs0fs3bppeo" path="res://level/DisplayStamina.cs" id="2_adumv"]
 [ext_resource type="FontFile" uid="uid://ddnog8td2em4q" path="res://fonts/Fascinate/Fascinate-Regular.ttf" id="3_85tku"]
 [ext_resource type="Script" uid="uid://dcfid73h07hsp" path="res://level/progress_bar.gd" id="4_2h7ai"]
 [ext_resource type="Texture2D" uid="uid://cy5yie2rttsh0" path="res://Textures/interface-user/crosshair.png" id="5_ygsry"]
 [ext_resource type="Script" uid="uid://bj7vvpel3tfpa" path="res://level/DisplayINV.cs" id="6_7pbsh"]
+[ext_resource type="FontFile" uid="uid://bego6u5b6j364" path="res://fonts/TradeWinds-Regular.ttf" id="7_85tku"]
+[ext_resource type="FontFile" uid="uid://xf7s4bq67q1c" path="res://fonts/Russo_One/RussoOne-Regular.ttf" id="7_adumv"]
+[ext_resource type="Script" uid="uid://fvs2pguue11s" path="res://level/questPanel.gd" id="9_2h7ai"]
 [ext_resource type="Texture2D" uid="uid://doc3g02yl0vuf" path="res://Textures/interface-user/testHotbar.png" id="9_v3tjp"]
+[ext_resource type="FontFile" uid="uid://bt4hputpr73ke" path="res://fonts/Titan_One/TitanOne-Regular.ttf" id="10_ygsry"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjvyf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5syxp"]
+bg_color = Color(0.34374875, 0.30050412, 0.048988424, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 30
+corner_detail = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qs3s8"]
+bg_color = Color(0.9999998, 0.6811703, 0.08784237, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 30
+corner_detail = 3
+
+[sub_resource type="Theme" id="Theme_85tku"]
+Label/font_sizes/font_size = 112
+Label/fonts/font = ExtResource("7_85tku")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2h7ai"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ygsry"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tg3wo"]
 shader = ExtResource("1_e78v2")
 shader_parameter/overlay = true
 shader_parameter/scanlines_opacity = 0.0
@@ -22,59 +56,15 @@ shader_parameter/roll_size = 6.8610003258975
 shader_parameter/roll_variation = 0.10000000149012
 shader_parameter/distort_intensity = 0.0470000022325
 shader_parameter/noise_opacity = 0.0
-shader_parameter/noise_speed = 5.0
-shader_parameter/static_noise_intensity = 0.118000005605
+shader_parameter/noise_speed = 1.0
+shader_parameter/static_noise_intensity = 0.1600000076
 shader_parameter/aberration = 0.00100004754750004
 shader_parameter/brightness = 1.0
 shader_parameter/discolor = true
-shader_parameter/warp_amount = 0.050000002375
+shader_parameter/warp_amount = 0.106000005035
 shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
-shader_parameter/vignette_opacity = 0.314000014915
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e78v2"]
-bg_color = Color(0.34374875, 0.30050412, 0.048988424, 1)
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 30
-corner_detail = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adumv"]
-bg_color = Color(0.9999998, 0.6811703, 0.08784237, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 30
-corner_detail = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85tku"]
-bg_color = Color(0.5294118, 0, 0, 1)
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 30
-corner_detail = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2h7ai"]
-bg_color = Color(1, 0, 0.08627451, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 30
-corner_detail = 3
+shader_parameter/vignette_opacity = 0.5810000275975
 
 [node name="Control" type="Control" unique_id=1933538217]
 layout_mode = 3
@@ -83,15 +73,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_adumv")
 
-[node name="UserInterface" type="CanvasLayer" parent="." unique_id=1343664223]
+[node name="UserInterface" type="CanvasLayer" parent="." unique_id=675270097]
 
-[node name="ColorRect" type="ColorRect" parent="UserInterface" unique_id=2038453542]
-material = SubResource("ShaderMaterial_mjvyf")
-offset_right = 1920.0
-offset_bottom = 1080.0
-
-[node name="interactButton" type="Button" parent="UserInterface" unique_id=1693268507]
+[node name="interactButton" type="Button" parent="UserInterface" unique_id=1534889268]
 unique_name_in_owner = true
 offset_left = 818.0
 offset_top = 778.0
@@ -99,7 +85,7 @@ offset_right = 1298.0
 offset_bottom = 943.0
 scale = Vector2(0.62521887, 0.5437532)
 
-[node name="TextEdit" type="TextEdit" parent="UserInterface/interactButton" unique_id=1524737157]
+[node name="TextEdit" type="TextEdit" parent="UserInterface/interactButton" unique_id=669904711]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -114,46 +100,24 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/search_result_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
-text = "Press E to interact"
+text = "Press E to Interact"
+editable = false
 
-[node name="displayStam" type="Label" parent="UserInterface" unique_id=952652990]
-visible = false
-self_modulate = Color(0.98234254, 0.9823423, 0.9823424, 1)
-offset_left = 35.0
-offset_top = 204.0
-offset_right = 328.0
-offset_bottom = 306.0
-theme_override_font_sizes/font_size = 50
-text = "Stamina: "
-script = ExtResource("2_adumv")
-
-[node name="staminaBar" type="ProgressBar" parent="UserInterface" unique_id=1673594095]
-z_index = -1
+[node name="staminaBar" type="ProgressBar" parent="UserInterface" unique_id=290006275]
+z_index = 1
+z_as_relative = false
 offset_left = 56.0
 offset_top = 61.0
 offset_right = 456.0
 offset_bottom = 101.0
 theme_override_fonts/font = ExtResource("3_85tku")
 theme_override_font_sizes/font_size = 26
-theme_override_styles/background = SubResource("StyleBoxFlat_e78v2")
-theme_override_styles/fill = SubResource("StyleBoxFlat_adumv")
+theme_override_styles/background = SubResource("StyleBoxFlat_5syxp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qs3s8")
 value = 100.0
 script = ExtResource("4_2h7ai")
 
-[node name="healthBar" type="ProgressBar" parent="UserInterface" unique_id=955418702]
-visible = false
-z_index = -1
-offset_left = 56.0
-offset_top = 119.0
-offset_right = 456.0
-offset_bottom = 159.0
-theme_override_fonts/font = ExtResource("3_85tku")
-theme_override_font_sizes/font_size = 26
-theme_override_styles/background = SubResource("StyleBoxFlat_85tku")
-theme_override_styles/fill = SubResource("StyleBoxFlat_2h7ai")
-value = 100.0
-
-[node name="Crosshair" type="TextureRect" parent="UserInterface" unique_id=1288268692]
+[node name="Crosshair" type="TextureRect" parent="UserInterface" unique_id=1872192306]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -168,12 +132,12 @@ grow_vertical = 2
 size_flags_horizontal = 0
 texture = ExtResource("5_ygsry")
 
-[node name="Hotbar" type="Panel" parent="UserInterface" unique_id=136222724]
+[node name="Hotbar" type="Panel" parent="UserInterface" unique_id=649513073]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6_7pbsh")
 
-[node name="hotbarIcon-5" type="TextureRect" parent="UserInterface/Hotbar" unique_id=590250088]
+[node name="hotbarIcon-5" type="TextureRect" parent="UserInterface/Hotbar" unique_id=1215153771]
 layout_mode = 0
 offset_left = 1700.0
 offset_top = 871.0
@@ -182,7 +146,7 @@ offset_bottom = 1639.0
 scale = Vector2(0.14, 0.14)
 texture = ExtResource("9_v3tjp")
 
-[node name="TextureRect" type="TextureRect" parent="UserInterface/Hotbar/hotbarIcon-5" unique_id=1481845382]
+[node name="TextureRect" type="TextureRect" parent="UserInterface/Hotbar/hotbarIcon-5" unique_id=733994991]
 layout_mode = 0
 offset_left = 28.57143
 offset_top = 28.57143
@@ -191,7 +155,7 @@ offset_bottom = 388.57144
 scale = Vector2(1.6115681, 1.7643957)
 expand_mode = 1
 
-[node name="hotbarIcon-4" type="TextureRect" parent="UserInterface/Hotbar" unique_id=1355639741]
+[node name="hotbarIcon-4" type="TextureRect" parent="UserInterface/Hotbar" unique_id=1473289626]
 layout_mode = 0
 offset_left = 1580.0
 offset_top = 871.0
@@ -200,16 +164,16 @@ offset_bottom = 1639.0
 scale = Vector2(0.14, 0.14)
 texture = ExtResource("9_v3tjp")
 
-[node name="TextureRect" type="TextureRect" parent="UserInterface/Hotbar/hotbarIcon-4" unique_id=848597568]
+[node name="TextureRect" type="TextureRect" parent="UserInterface/Hotbar/hotbarIcon-4" unique_id=1552126945]
 layout_mode = 0
 offset_left = 28.57143
 offset_top = 28.57143
-offset_right = 68.57143
-offset_bottom = 68.57143
+offset_right = 434.7106
+offset_bottom = 440.58316
 scale = Vector2(1.6356118, 1.6816435)
 expand_mode = 1
 
-[node name="hotbarIcon-3" type="TextureRect" parent="UserInterface/Hotbar" unique_id=876388927]
+[node name="hotbarIcon-3" type="TextureRect" parent="UserInterface/Hotbar" unique_id=1366609373]
 layout_mode = 0
 offset_left = 1460.0
 offset_top = 871.0
@@ -218,7 +182,7 @@ offset_bottom = 1639.0
 scale = Vector2(0.14, 0.14)
 texture = ExtResource("9_v3tjp")
 
-[node name="TextureRect" type="TextureRect" parent="UserInterface/Hotbar/hotbarIcon-3" unique_id=1090433085]
+[node name="TextureRect" type="TextureRect" parent="UserInterface/Hotbar/hotbarIcon-3" unique_id=1036503562]
 layout_mode = 0
 offset_left = 28.57143
 offset_top = 28.57143
@@ -227,7 +191,7 @@ offset_bottom = 68.57143
 scale = Vector2(16.428589, 16.428572)
 expand_mode = 1
 
-[node name="hotbarIcon-2" type="TextureRect" parent="UserInterface/Hotbar" unique_id=1697355411]
+[node name="hotbarIcon-2" type="TextureRect" parent="UserInterface/Hotbar" unique_id=349825490]
 layout_mode = 0
 offset_left = 1340.0
 offset_top = 871.0
@@ -236,7 +200,7 @@ offset_bottom = 1639.0
 scale = Vector2(0.14, 0.14)
 texture = ExtResource("9_v3tjp")
 
-[node name="TextureRect" type="TextureRect" parent="UserInterface/Hotbar/hotbarIcon-2" unique_id=1305674893]
+[node name="TextureRect" type="TextureRect" parent="UserInterface/Hotbar/hotbarIcon-2" unique_id=507658550]
 layout_mode = 0
 offset_left = 28.57143
 offset_top = 28.57143
@@ -245,7 +209,7 @@ offset_bottom = 68.57143
 scale = Vector2(16.428589, 16.428572)
 expand_mode = 1
 
-[node name="hotbarIcon-1" type="TextureRect" parent="UserInterface/Hotbar" unique_id=218444273]
+[node name="hotbarIcon-1" type="TextureRect" parent="UserInterface/Hotbar" unique_id=539237628]
 layout_mode = 0
 offset_left = 1220.0
 offset_top = 871.0
@@ -254,7 +218,7 @@ offset_bottom = 1639.0
 scale = Vector2(0.14, 0.14)
 texture = ExtResource("9_v3tjp")
 
-[node name="TextureRect" type="TextureRect" parent="UserInterface/Hotbar/hotbarIcon-1" unique_id=1569247383]
+[node name="TextureRect" type="TextureRect" parent="UserInterface/Hotbar/hotbarIcon-1" unique_id=368448518]
 layout_mode = 0
 offset_left = 28.57143
 offset_top = 28.57143
@@ -262,3 +226,127 @@ offset_right = 68.57143
 offset_bottom = 68.57143
 scale = Vector2(16.428589, 16.428572)
 expand_mode = 1
+
+[node name="objectiveLabel" type="Label" parent="UserInterface" unique_id=80834050]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -551.0
+offset_bottom = 296.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+theme = SubResource("Theme_85tku")
+text = "OBJETIVE"
+horizontal_alignment = 2
+
+[node name="questDisplay" type="Label" parent="UserInterface" unique_id=2139813004]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -511.0
+offset_top = 119.0
+offset_right = -24.0
+offset_bottom = 219.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("7_adumv")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2h7ai")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ygsry")
+text = "OBJECTIVE"
+horizontal_alignment = 2
+
+[node name="shader" type="ColorRect" parent="UserInterface" unique_id=978064444]
+material = SubResource("ShaderMaterial_tg3wo")
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Panel" type="Panel" parent="." unique_id=461714406]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -427.0
+offset_right = 250.0
+offset_bottom = 423.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_2h7ai")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel" unique_id=1502420004]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("10_ygsry")
+theme_override_font_sizes/normal_font_size = 52
+theme_override_font_sizes/bold_font_size = 42
+text = "to do"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel" unique_id=112982048]
+
+[node name="questTitle1" type="RichTextLabel" parent="Panel" unique_id=1891194962]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.25
+offset_top = -325.0
+offset_right = 234.25
+offset_bottom = -283.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("10_ygsry")
+theme_override_font_sizes/normal_font_size = 32
+text = "Speak to \"Aling Neneng\""
+
+[node name="questDesc1" type="RichTextLabel" parent="Panel" unique_id=805467783]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.0
+offset_top = -286.0
+offset_right = 234.25
+offset_bottom = -231.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.68307734, 0.6830774, 0.68307734, 1)
+theme_override_fonts/normal_font = ExtResource("10_ygsry")
+theme_override_font_sizes/normal_font_size = 18
+text = "Bigyan mo siya ng 1 Balot."
+
+[node name="WakeUpFade" type="ColorRect" parent="." unique_id=1675457036]
+z_index = 100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BlurRect" type="ColorRect" parent="." unique_id=2083402922]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
