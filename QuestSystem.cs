@@ -40,12 +40,12 @@ public partial class QuestSystem : Node
 		{ 3, new Vector3(212.993f, 11.196f, -25.127f) },           // Aling neneng
 		{ 4, new Vector3(209.742f, 3.874f, -31.135f) },            // Get battery (was -4.126, now +5.874)
 		{ 5, new Vector3(161.067f, 7.529f, 33.426f) },            // Go to baranggay
-		{ 6, new Vector3(8.596f, 3.068f, -19.498f) },             // Aling shoneng
+		{ 6, new Vector3(103.593f, 3.222f, 15.961f) },             // Aling shoneng
 		{ 7, new Vector3(111.79f, 2.447f, 56.359f) },             // Aling marites
-		{ 8, new Vector3(-15.05f, -4.389f,-5.383f) },              // Aling marin
+		{ 8, new Vector3(70.945f, 2.303f, 80.838f) },              // Aling marin
 		{ 9, new Vector3(27.304f, 7.718f, -15.224f) },            // Maglako ulit sa bahay ni manong rafael(RAFAEL?????????????)
-		{ 10, new Vector3(12.021f, -3.792f, 53.391f) },             // Get key under rag (was -3.792, now +6.208)
-		{ 11, new Vector3(40.903f, 10.0f, 155.785f) },             // Manong rafael
+		{ 10, new Vector3(12.021f, 0.792f, 53.391f) },             // Get key under rag (was -3.792, now +6.208)
+		{ 11, new Vector3(10.37f, 2.222f, 52.94f) },             // Manong rafael
 	};
 
 	public override void _Ready()
@@ -378,11 +378,22 @@ public partial class QuestSystem : Node
 			if (currentQuest == 11)
 			{
 				GD.Print("[QUEST] Quest is 11! Proceeding!");
-				ProceedQuest("dialogue:manong_rafael_balut");
 			}
 			else
 			{
 				GD.PrintErr($"[QUEST] Expected quest 11, got {currentQuest}!");
+			}
+			break;
+			
+			case "gaveKuyaJames":
+			GD.Print("[QUEST] Matched: gaveKuyaJames");
+			if (currentQuest == 11)
+			{
+				GD.Print("[QUEST] Quest 11 complete - final scenario triggered!");
+			}
+			else
+			{
+				GD.PrintErr($"[QUEST] Expected quest 11 for gaveKuyaJames, got {currentQuest}");
 			}
 			break;
 		}

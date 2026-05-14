@@ -445,31 +445,32 @@ public partial class Player : CharacterBody3D
 	
 	// ================= UNLOCK MOUSE WHEN DIALOGUE ENDS ================
 	private void OnDialogueEnded(Resource resource) {
-	GlobalVariables.Instance.isTalking = false;
-	Input.MouseMode = Input.MouseModeEnum.Captured;
+		GlobalVariables.Instance.isTalking = false;
+		Input.MouseMode = Input.MouseModeEnum.Captured;
 
-	DialogueManager.DialogueEnded -= OnDialogueEnded;
+		DialogueManager.DialogueEnded -= OnDialogueEnded;
 
-	// ================= CALL CHARACTER'S DIALOGUE END METHOD =================
-	if (lastCharacterNode != null)
-	{
-		string characterName = lastCharacterNode.Name.ToString().ToLower();
-		
-		if (lastCharacterNode != null && lastCharacterNode.IsInGroup("Characters"))
+		// ================= CALL CHARACTER'S DIALOGUE END METHOD =================
+		if (lastCharacterNode != null)
 		{
-			if (lastCharacterNode.HasMethod("OnDialogueEnded"))
+			string characterName = lastCharacterNode.Name.ToString().ToLower();
+			
+			if (lastCharacterNode != null && lastCharacterNode.IsInGroup("Characters"))
 			{
-				lastCharacterNode.Call("OnDialogueEnded");
+				if (lastCharacterNode.HasMethod("OnDialogueEnded"))
+				{
+					lastCharacterNode.Call("OnDialogueEnded");
+					GD.Print($"[PLAYER] Called OnDialogueEnded on {characterName}");
+				}
 			}
 		}
+		else
+		{
+			GD.Print("[PLAYER] No character node to call");
+		}
+		
+		lastCharacterNode = null;
 	}
-	else
-	{
-		GD.Print("[PLAYER] No character node to call");
-	}
-	
-	lastCharacterNode = null;
-}
 	// ================= INPUT =================
 	public override void _Input(InputEvent @event) {
 		var g = GlobalVariables.Instance;

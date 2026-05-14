@@ -1,0 +1,22 @@
+~ start
+set GlobalVariables.Instance.isTalking = true
+do GlobalVariables.Instance.kuyaJames.PlayStandAnimation()
+Kuya James: Totoo ba ito?? Namamalik mata ba ako?? Totoong tunay nga talaga ito!! Sa wakas, maibibigay ko na ang sarili ko.
+- Kuya James? Aning sinasabi mo?
+	Kuya James: Bata, masyado ka pang bata para maintindihan ito. Pabili nalang ako niyang nag-iisang balut, na para bang inialay sa akin ito.
+	- Sige po... 15 Pesos Isa.
+		do GlobalVariables.Instance.GiveBalut(1)
+		Kuya James: Ohhhh diyos ko.. tinatawag kita!! Narito na ang kinakailangan nyo.. Ang iisang balut kasama ang aking katawan bilang sakripisyo.. Tangapin mo ako.
+		M̵̡̧̯͇̟̾͒͝ḁ̵̩͉̙̗̻̂̐͘͘n̸̨͇̯̭̞͎̍̀͝͠g̴͈̞̿̑͌̈́͘ ̴̤̰̮̪͋́͜J̸̜̪͂͆̽̎̿̇a̵̫̜͂̄̓s̸̛̲̠̪̝̯̝͊͋̈͜ö̸͙͎͈́͘n̵̰͊͊̉̆̀: ...
+		M̵̡̧̯͇̟̾͒͝ḁ̵̩͉̙̗̻̂̐͘͘n̸̨͇̯̭̞͎̍̀͝͠g̴͈̞̿̑͌̈́͘ ̴̤̰̮̪͋́͜J̸̜̪͂͆̽̎̿̇a̵̫̜͂̄̓s̸̛̲̠̪̝̯̝͊͋̈͜ö̸͙͎͈́͘n̵̰͊͊̉̆̀: H.-.;a;2l09i.k';a r:>"i"';t.'][o]	
+		set GlobalVariables.Instance.isTalking = false
+		- Panaginip lang 'to, panaginip lang 'to, panaginip lang 'to
+			Kuya James: ...
+			M̵̡̧̯͇̟̾͒͝ḁ̵̩͉̙̗̻̂̐͘͘n̸̨͇̯̭̞͎̍̀͝͠g̴͈̞̿̑͌̈́͘ ̴̤̰̮̪͋́͜J̸̜̪͂͆̽̎̿̇a̵̫̜͂̄̓s̸̛̲̠̪̝̯̝͊͋̈͜ö̸͙͎͈́͘n̵̰͊͊̉̆̀: C';.o-;o'me he@#!@$re3@#!%
+			do GlobalVariables.Instance.kuyaJames.OnDialogueEnded()
+			set GlobalVariables.Instance.isTalking = false
+			=> END
+~ no_balut
+Kuya James: Ano 'yon?
+set GlobalVariables.Instance.isTalking = false
+=> END

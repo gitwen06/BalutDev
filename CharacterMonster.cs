@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using DialogueManagerRuntime;
+//todo kill myself
 
 public partial class CharacterMonster : CharacterBody3D
 {
@@ -14,8 +15,8 @@ public partial class CharacterMonster : CharacterBody3D
 
 	private bool eventLocked = false;
 
-	private float hearingRange = 15.0f;
-	private float chaseSpeed = 5.0f;
+	private float hearingRange = 9999.0f;
+	private float chaseSpeed = 6.0f;
 	private float gravity = 9.8f;
 
 	private Vector3 velocity = Vector3.Zero;
@@ -103,7 +104,9 @@ public partial class CharacterMonster : CharacterBody3D
 			velocity.Z = dir.Z * chaseSpeed;
 
 			FaceDirection(dir);
-			PlayAnimationSafe("walk");
+			if (currentAnimation != "walk") {
+				PlayAnimationSafe("walk");
+			}
 		}
 		else
 		{
@@ -192,11 +195,12 @@ public partial class CharacterMonster : CharacterBody3D
 			return;
 		}
 
-		if (currentAnimation != animName)
-		{
-			animPlayer.Play(animName);
-			currentAnimation = animName;
-		}
+		// FORCE STOP CURRENT ANIMATION FIRST
+		animPlayer.Stop();
+
+		animPlayer.Play(animName);
+
+		currentAnimation = animName;
 	}
 
 	// ================= JUMPSCARE =================
@@ -287,9 +291,9 @@ public partial class CharacterMonster : CharacterBody3D
 	{
 		Debug("SPAWN MODE");
 
-		GlobalPosition = new Vector3(117.993f, 0.222f, 32.574f);
+		GlobalPosition = new Vector3(-50.328f, 0.827f, 5.951f);
 
-		isEventPlaying = false;
+		isEventPlaying = false; // somehow this was the problem im so fucking diumb im gonna gkill myself
 		eventLocked = false;
 
 		EnableMonster();
@@ -384,6 +388,50 @@ public partial class CharacterMonster : CharacterBody3D
 		}
 
 		Debug("PEEK END");
+	}
+	
+	public void StartScriptedAttack()
+	{
+		isEventPlaying = true;
+		isChasing = false;
+
+		velocity = Vector3.Zero;
+		Velocity = Vector3.Zero;
+
+		EnableMonster();
+
+		// STOP ANY CURRENT ANIMATION COMPLETELY
+		if (animPlayer != null)
+		{
+			animPlayer.Stop();
+			animPlayer.Play("attack");
+			currentAnimation = "attack";
+		}
+
+		Debug("SCRIPTED ATTACK START");
+	}
+
+	public async void EnableChaseAI()
+	{
+		// RESET CURRENT ANIMATION STATE
+		currentAnimation = "";
+
+		// FORCE STOP ATTACK COMPLETELY
+		if (animPlayer != null)
+		{
+			animPlayer.Stop();
+
+			await ToSignal(GetTree(), "process_frame");
+
+			animPlayer.Play("walk");
+			currentAnimation = "walk";
+		}
+
+		// ENABLE AI AFTER ANIMATION SWITCH
+		isEventPlaying = false;
+		isChasing = true;
+
+		Debug("CHASE AI ENABLED");
 	}
 
 	// ================= POSITIONS =================

@@ -11,7 +11,7 @@ public partial class GlobalVariables : Node
 	}
 	// ============= MOVEMENT =============
 	
-	public const float Speed = 5.0f;
+	public const float Speed = 20.0f;
 	public const float JumpVelocity = 4.5f;
 	public const float RunSpeed = 8.0f;
 	public const float CrouchSpeed = 2.5f; 
@@ -45,6 +45,8 @@ public partial class GlobalVariables : Node
 		inventory.Add(itemId);
 		return true;
 	}
+	
+	public bool isFinalChase = false;
 	
 	public void RemoveItem(int index) {
 		if (index < 0 || index >= inventory.Count)
@@ -127,6 +129,7 @@ public partial class GlobalVariables : Node
 	public AlingMarites alingMarites;
 	public AlingShoneng alingShoneng;
 	public OldLadyKnockDoor alingMarin;
+	public KuyaJames kuyaJames;
 	
 	// ==== Event controllersererser ====
 	public MonsterPeekTrigger monsterPeekTrigger;
