@@ -138,7 +138,8 @@ public partial class MainMenu : Node3D
 			cursorTween.Kill();
 		}
 		cursorTween = CreateTween().SetParallel(true);
-		// (Button Y) + (Half of Button Height) - (Half of Cursor Height)
+		// The "Button's Y Axis" + "Half of Button Height" - "Half of The Cursor Height".
+		// To equal the spacing for the cursor.
 		float centerY = selectedBtn.GlobalPosition.Y + (selectedBtn.Size.Y / 2) - (_cursorBox.Size.Y / 2); 
 		//formula to center
 		cursorTween.TweenProperty(_cursorBox, "global_position:y", centerY, 0.1f)
@@ -148,11 +149,11 @@ public partial class MainMenu : Node3D
 			if (b == selectedBtn) {
 				cursorTween.TweenProperty(b, "modulate", highlightColor, 0.1f).SetTrans(Tween.TransitionType.Sine);
 				cursorTween.TweenProperty(b, "position:x", 30.0f, 0.1f).SetTrans(Tween.TransitionType.Sine);
-				cursorTween.TweenProperty(b, "scale", new Vector2(1.1f, 1.1f), 0.1f).SetTrans(Tween.TransitionType.Sine);
+				//cursorTween.TweenProperty(b, "scale", new Vector2(1.1f, 1.1f), 0.1f).SetTrans(Tween.TransitionType.Sine);
 			} else {
 				cursorTween.TweenProperty(b, "modulate", Colors.White, 0.1f).SetTrans(Tween.TransitionType.Sine);
 				cursorTween.TweenProperty(b, "position:x", 0.0f, 0.1f).SetTrans(Tween.TransitionType.Sine);
-				cursorTween.TweenProperty(b, "scale", new Vector2(1.0f, 1.0f), 0.1f).SetTrans(Tween.TransitionType.Sine);
+				//cursorTween.TweenProperty(b, "scale", new Vector2(1.0f, 1.0f), 0.1f).SetTrans(Tween.TransitionType.Sine);
 			}
 		}
 	}
