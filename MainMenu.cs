@@ -17,61 +17,91 @@ public partial class MainMenu : Node3D
 	private Skeleton3D monster;
 	private AnimationPlayer tweakingAnim;
 	
-	private Control loadingOverlay;
-	private TextureProgressBar loadingBar;
-	private float loadVal = 0f;
+	//private Control loadingOverlay;
+	//private TextureProgressBar loadingBar;
+	
+	// --- Opening Loading Bar  ---
+	private CanvasLayer openGameLoadingScreen;
+	private Control loadingBackground;
+	private ProgressBar openingLoadingBar;
+	private bool isOpening = true;
 	private bool isLoading = false;
+	private float loadVal = 0f;
+	private AnimationPlayer newGameAnimPlayer;
 	
 	// --- Audio Stuff ---
 	private MarginContainer mainMenuUI;
 	private AudioStreamPlayer menuMove;
 	private AudioStreamPlayer menuSelect;
 	
-	
 	public override void _Ready() {
-	_cursorBox = GetNode<ColorRect>("%cursorBox");
-	menuMove = GetNode<AudioStreamPlayer>("%buttonMoveSFX");
-	menuSelect = GetNode<AudioStreamPlayer>("%buttonSelectSFX");
-	
-	optionTab = GetNode<Control>("%optionsTab");
-	creditTab = GetNode<Control>("%creditsTab");
-	mainMenuUI = GetNode<MarginContainer>("%mainMenuUI");
-	loadingOverlay = GetNode<Control>("%loadingScreen");
-	loadingBar = GetNode<TextureProgressBar>("%loadingPlay");
-	loadingOverlay.Hide();
-	
-	monster = GetNode<Skeleton3D>("Skeleton3D");
-	PlayMonsterAnimation();
-	
-	string[] buttonIdentity = {"%play", "%options", "%credit", "%exit"};
-	
-	// arrayed so less lines
-	foreach (string menuBtn in buttonIdentity) {
-		Button btn = GetNode<Button>(menuBtn);
-		_menuButtons.Add(btn);
+		_cursorBox = GetNode<ColorRect>("%cursorBox");
+		menuMove = GetNode<AudioStreamPlayer>("%buttonMoveSFX");
+		menuSelect = GetNode<AudioStreamPlayer>("%buttonSelectSFX");
 		
-		btn.MouseEntered += () => {
-			if (!btn.HasFocus()) {
-				btn.GrabFocus();
-				}
-		};
-		btn.FocusEntered += () => UpdateHighlight(btn);
+		optionTab = GetNode<Control>("%optionsTab");
+		creditTab = GetNode<Control>("%creditsTab");
+		mainMenuUI = GetNode<MarginContainer>("%mainMenuUI");
 		
-		// checkers so it doesn't randomly break
-		if (menuBtn == "%play") btn.Pressed += OnPlayPressed;
-		if (menuBtn == "%options") btn.Pressed += OnOptionPressed;
-		if (menuBtn == "%credit") btn.Pressed += OnCreditPressed;
-		if (menuBtn == "%exit") btn.Pressed += LeaveGamePressed;
+		//loadingOverlay = GetNode<Control>("%loadingScreen");
+		//loadingBar = GetNode<TextureProgressBar>("%loadingPlay");
+		//loadingOverlay.Hide();
+		
+		openGameLoadingScreen = GetNode<CanvasLayer>("%openGameLoadingScreen");
+		loadingBackground = GetNode<Control>("%loadingBackground");
+		openingLoadingBar = GetNode<ProgressBar>("%loadingProgressGame");
+		newGameAnimPlayer = GetNode<AnimationPlayer>("%newGameAnim");
+		
+		//openGameLoadingScreen.Visible = true;
+		openGameLoadingScreen.Show();
+		loadingBackground.Modulate = new Color(1, 1, 1, 1); // Fully visible
+		mainMenuUI.Modulate = new Color(1, 1, 1, 0);
+		// mainMenuUI.Hide();
+		isOpening = true;
+		
+		openingLoadingBar.Value = 0;
+		_cursorBox.Hide();
+		openGameLoadingScreen.Call("update_tip");
+		if (newGameAnimPlayer != null) {
+			newGameAnimPlayer.Play("newGame");
+		}
+		
+		monster = GetNode<Skeleton3D>("Skeleton3D");
+		PlayMonsterAnimation();
+		
+		string[] buttonIdentity = {"%play", "%options", "%credit", "%exit"};
+		
+		mainMenuUI.Modulate = new Color(1, 1, 1, 0);
+		if (_cursorBox != null) _cursorBox.Hide();
+		if (newGameAnimPlayer != null) {
+			newGameAnimPlayer.Play("newGame");
+		}
+		openGameLoadingScreen.Show();
+		isOpening = true;
+		
+		// arrayed so less lines
+		foreach (string menuBtn in buttonIdentity) {
+			Button btn = GetNode<Button>(menuBtn);
+			_menuButtons.Add(btn);
+			
+			btn.MouseEntered += () => {
+				if (!btn.HasFocus()) {
+					btn.GrabFocus();
+					}
+			};
+			btn.FocusEntered += () => UpdateHighlight(btn);
+			
+			// checkers so it doesn't randomly break
+			if (menuBtn == "%play") btn.Pressed += OnPlayPressed;
+			if (menuBtn == "%options") btn.Pressed += OnOptionPressed;
+			if (menuBtn == "%credit") btn.Pressed += OnCreditPressed;
+			if (menuBtn == "%exit") btn.Pressed += LeaveGamePressed;
+		}
+		GetNode<Button>("%play").GrabFocus();
 	}
-	GetNode<Button>("%play").GrabFocus();
-}
-
-	private async void PlayMonsterAnimation()
-	{
+	private async void PlayMonsterAnimation() {
 		var animPlayer = monster.GetNode<AnimationPlayer>("AnimationPlayer");
-		
-		while (true)
-		{
+		while (true) {
 			// Play the animation
 			animPlayer.Play("tweaking");
 			
@@ -83,24 +113,32 @@ public partial class MainMenu : Node3D
 			await ToSignal(GetTree().CreateTimer(randomDelay), "timeout");
 		}
 	}
-	
+	private async void OnPlayPressed() { 
+		if (isLoading || isOpening) return;
+		if (menuSelect != null) menuSelect.Play();
+		if (newGameAnimPlayer != null) {
+			newGameAnimPlayer.Play("newGame");
+			await ToSignal(newGameAnimPlayer, "animation_finished");
+		}
+		loadVal = 0;
+		openingLoadingBar.Value = 0;
+		loadingBackground.Modulate = new Color(1, 1, 1, 0); 
+		openGameLoadingScreen.Show();
+		Tween fadeInTween = CreateTween();
+		fadeInTween.TweenProperty(loadingBackground, "modulate:a", 1.0f, 0.5f);
+		// mainMenuUI.Hide();
 
-	private void OnPlayPressed() {
-		menuSelect.Play();
-		mainMenuUI.Hide();
-		_cursorBox.Hide();
-		loadingOverlay.Show();
-		
-		var loadingAnim = GetNode<AnimationPlayer>("%loadingScreenAnim");
-		loadingAnim.Play("loadingIN");
+		if (openGameLoadingScreen.HasMethod("update_tip")) {
+			openGameLoadingScreen.Call("update_tip");
+		}
 		isLoading = true;
 	}
+		
 	private void OnOptionPressed() {
 		menuSelect.Play();
 		mainMenuUI.Hide();
 		optionTab.Show();
 		currTab = "options";
-		
 		var optionAnim = GetNode<AnimationPlayer>("%optionsOpenClose");
 		optionAnim.Play("optionsTab");
 		
@@ -162,13 +200,36 @@ public partial class MainMenu : Node3D
 			OnBackPressed();
 		}
 	}
+	
 	public override void _Process(double delta) {
-		if (!isLoading) return;
-		loadVal += (float)delta * 30f;
-		loadingBar.Value = loadVal;
-		if (loadVal >= 100) {
-			isLoading = false;
-			GetTree().ChangeSceneToFile("res://level/level.scn");
+		if (isOpening) {
+			openingLoadingBar.Value += delta * 50f;
+			if (openingLoadingBar.Value >= 100) {
+				isOpening = false; // Stop the loop immediately
+				FinishOpeningSequence();
+			}
+			return;
 		}
+		if (isLoading) {
+			loadVal += (float)delta * 30f;
+			openingLoadingBar.Value = loadVal;
+			if (loadVal >= 100) {
+				isLoading = false;
+				GetTree().ChangeSceneToFile("res://level/level.scn");
+			}
+		}
+	}
+	private void FinishOpeningSequence() {
+		isOpening = false;
+		mainMenuUI.Show(); 
+		Tween fadeTween = CreateTween().SetParallel(true);
+		fadeTween.TweenProperty(loadingBackground, "modulate:a", 0.0f, 0.5f);
+		fadeTween.TweenProperty(mainMenuUI, "modulate:a", 1.0f, 0.5f);
+
+		fadeTween.Finished += () => {
+			openGameLoadingScreen.Hide(); // Hide the whole layer when done
+			if (_cursorBox != null) _cursorBox.Show();
+			GetNode<Button>("%play").GrabFocus();
+		};
 	}
 }

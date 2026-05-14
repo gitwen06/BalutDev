@@ -25,3 +25,8 @@ set GlobalVariables.Instance.isTalking = false
 Aling Neneng: Nasaan ang balut 'nak, labas mo na.
 set GlobalVariables.Instance.isTalking = false
 => END
+
+~ flashlight
+Aling Neneng: Binasa mo talaga yung tips sa tips menu? O gusto mo lang may reaction saakin?
+Aling Neneng: Nasaan ang balut 'nak, labas mo na.
+=> END
