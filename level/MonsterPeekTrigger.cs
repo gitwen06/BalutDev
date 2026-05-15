@@ -72,8 +72,8 @@ public partial class MonsterPeekTrigger : Area3D
 		if (monster != null)
 		{
 			monster.PlayPeek(
-			new Vector3(114.418f, 0.827f, 50.119f),
-			new Vector3(88.5f, 52.7f, 139.6f)
+			new Vector3(112.901f, 0.52f, 50.367f),
+			new Vector3(72.9f, -9.5f, 76.1f)
 		);
 			if (monster.HasMethod("PlayAnimationSafe"))
 				monster.Call("PlayAnimationSafe", "Idle");

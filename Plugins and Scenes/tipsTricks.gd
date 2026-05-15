@@ -7,11 +7,15 @@ extends CanvasLayer
 	{"text": "Don't skip the dialogue, so you don't get lost..."},
 	{"text": "This Game Has Loud Noises."},
 	{"text": "Save Your Battery and Energy Drink."},
+	{"text": "Be always on lookout for the monster.. You never know where it truly is."},
 	# Joke Tips
 	{"text": "Psst, Play Shin Megami Tensei V Vengeance."},
 	{"text": "Ignore the last keybinds in the menu."},
 	{"text": "Do you even read these??"},
-	{"text": "Psst, Bring Aling Neneng a Flashlight"}
+	{"text": "Psst, Bring Aling Neneng a Flashlight"},
+	{"text": "This game was originally way uglier than expected even if it is quite ugly though - lead dev"},
+	{"text": "Hello po enjoy po hehe - lead dev"},
+	{"text": "Have fun!! i guess its pretty scary i think. - lead dev"}
 ]
 var parameters: Dictionary
 var loaded := false

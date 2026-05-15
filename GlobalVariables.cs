@@ -11,7 +11,7 @@ public partial class GlobalVariables : Node
 	}
 	// ============= MOVEMENT =============
 	
-	public const float Speed = 20.0f;
+	public const float Speed = 5.5f;
 	public const float JumpVelocity = 4.5f;
 	public const float RunSpeed = 8.0f;
 	public const float CrouchSpeed = 2.5f; 

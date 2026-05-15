@@ -3,9 +3,9 @@ set GlobalVariables.Instance.isTalking = true
 Tatay: 'Nak gising ka na, ikaw naman ang toka sa pagbenta ng balut, magluluto pa ako ng ulam natin.
 Tatay: Kakarampot pa rin ang kita natin 'Nak, hindi ko pa masyadong nalayuan ang aking paglako doon sa baranggay piti piw wiw wiw.
 Tatay: May nagsabi pa sa akin na 'Wag na raw akong lumalim pa dahil may kababalaghan daw na naglilibot doon.
-Tatay: Magiingat ka palagi 'Nak, baka mayroon talagang kababalaghan doon.
-Tatay: Kunin mo na iyong balut na nasa lamesa, magdala ka na rin ng flashlight, milo para lagi kang energized at extra battery kung sakaling mawalan man ng ilaw ang battery mo.
-Tatay: Oo nga pala, lakuan mo rin pala si Aling Neneng 'dyaan sa may dulo, sabi niya ay bibili raw siya.
+Tatay: Magiingat ka palagi 'Nak, baka totoo ang pinagsasasabi nila sa lugar na iyon.
+Tatay: Kunin mo na itong balut na nasa lamesa, magdala ka na rin ng flashlight. Kumuha ka ng pepsi at battery doon kala Aling Neneng bago ka umalis papunta sa baranggay.
+Tatay: Lakuan mo rin pala si Aling Neneng 'dyaan sa may dulo, sabi niya ay bibili raw siya.
 - Sige Itay, ako na bahala sa paglalako. pangakong mauubos ko 'tong kakarampot na balut.
 	Tatay: Sige magingat ka 'Nak.
 	do QuestSystem.TriggerQuestAdvance("mang_jason_talk")

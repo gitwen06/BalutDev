@@ -1,7 +1,6 @@
 using Godot;
 using System;
 using DialogueManagerRuntime;
-//todo kill myself
 
 public partial class CharacterMonster : CharacterBody3D
 {
@@ -53,6 +52,7 @@ public partial class CharacterMonster : CharacterBody3D
 			ogg.Loop = true;
 
 		chasePlayer.Stream = stream;
+		chasePlayer.VolumeDb = 0f;
 
 		player = GetTree().Root.FindChild("player", true, false) as Node3D;
 
@@ -94,8 +94,11 @@ public partial class CharacterMonster : CharacterBody3D
 				isChasing = true;
 
 				// 🔊 START CHASE MUSIC
-				if (!chasePlayer.Playing)
+				if (chasePlayer != null && !chasePlayer.Playing)
+				{
+					GD.Print("[MONSTER] Playing chase music");
 					chasePlayer.Play();
+				}
 			}
 
 			Vector3 dir = (player.GlobalPosition - GlobalPosition).Normalized();
@@ -115,7 +118,7 @@ public partial class CharacterMonster : CharacterBody3D
 				Debug("CHASE END");
 				isChasing = false;
 
-				if (chasePlayer.Playing)
+				if (chasePlayer != null && chasePlayer.Playing)
 					chasePlayer.Stop();
 			}
 
@@ -293,7 +296,7 @@ public partial class CharacterMonster : CharacterBody3D
 
 		GlobalPosition = new Vector3(-50.328f, 0.827f, 5.951f);
 
-		isEventPlaying = false; // somehow this was the problem im so fucking diumb im gonna gkill myself
+		isEventPlaying = false;
 		eventLocked = false;
 
 		EnableMonster();
@@ -429,9 +432,9 @@ public partial class CharacterMonster : CharacterBody3D
 
 		// ENABLE AI AFTER ANIMATION SWITCH
 		isEventPlaying = false;
-		isChasing = true;
+		isChasing = false;  // Let _PhysicsProcess detect player proximity
 
-		Debug("CHASE AI ENABLED");
+		Debug("CHASE AI ENABLED - WAITING FOR PLAYER PROXIMITY");
 	}
 
 	// ================= POSITIONS =================
@@ -461,22 +464,22 @@ public partial class CharacterMonster : CharacterBody3D
 
 	private void OnDialogueEnded(Resource res)
 	{
-	GlobalVariables.Instance.isTalking = false;
-	Input.MouseMode = Input.MouseModeEnum.Captured;
+		GlobalVariables.Instance.isTalking = false;
+		Input.MouseMode = Input.MouseModeEnum.Captured;
 
-	DialogueManagerRuntime.DialogueManager.DialogueEnded -= OnDialogueEnded;
+		DialogueManagerRuntime.DialogueManager.DialogueEnded -= OnDialogueEnded;
 
-	Debug("DIALOGUE ENDED");
-	
-	if (QuestSystem.Instance != null)
-	{
-		GD.Print("[MONSTER] Calling quest advance for monster_walk_by_ended");
-		QuestSystem.Instance.TriggerQuestAdvance("monster_walk_by_ended");
-		GD.Print("[MONSTER] Quest advance called!");
+		Debug("DIALOGUE ENDED");
+		
+		if (QuestSystem.Instance != null)
+		{
+			GD.Print("[MONSTER] Calling quest advance for monster_walk_by_ended");
+			QuestSystem.Instance.TriggerQuestAdvance("monster_walk_by_ended");
+			GD.Print("[MONSTER] Quest advance called!");
+		}
+		else
+		{
+			GD.PrintErr("[MONSTER] QuestSystem.Instance is NULL!");
+		}
 	}
-	else
-	{
-		GD.PrintErr("[MONSTER] QuestSystem.Instance is NULL!");
-	}
-}
 }

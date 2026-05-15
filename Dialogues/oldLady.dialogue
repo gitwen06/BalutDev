@@ -20,7 +20,9 @@ set GlobalVariables.Instance.isTalking = false
 ~ no_balut
 Aling Marin: Bibili lang sana ako balut, parang ayaw mo pa... Magkano ba 'yan?
 - Nakakatakot ka naman 'nay. 15 Pesos lang po isa
-	Aling Marin: Sige pabili ako isa
+	Aling Marin: Sige pabili ako isa...
+	Aling Marin: 'Wag ka na tumakbo sa susunod na pagkikita natin..
+	Aling Marin: At chaka nga pala, may baliw dyan sa dulo, may sinasambang parang ewan..
 	do GlobalVariables.Instance.GiveBalut(1)
 	do QuestSystem.Instance.TriggerQuestAdvance("aling_marin_has_balut")
 	set GlobalVariables.Instance.gaveAlingMarin = true

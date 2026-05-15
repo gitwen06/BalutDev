@@ -12,7 +12,7 @@ Kuya James: Totoo ba ito?? Namamalik mata ba ako?? Totoong tunay nga talaga ito!
 		set GlobalVariables.Instance.isTalking = false
 		- Panaginip lang 'to, panaginip lang 'to, panaginip lang 'to
 			Kuya James: ...
-			M̵̡̧̯͇̟̾͒͝ḁ̵̩͉̙̗̻̂̐͘͘n̸̨͇̯̭̞͎̍̀͝͠g̴͈̞̿̑͌̈́͘ ̴̤̰̮̪͋́͜J̸̜̪͂͆̽̎̿̇a̵̫̜͂̄̓s̸̛̲̠̪̝̯̝͊͋̈͜ö̸͙͎͈́͘n̵̰͊͊̉̆̀: C';.o-;o'me he@#!@$re3@#!%
+			M̵̡̧̯͇̟̾͒͝ḁ̵̩͉̙̗̻̂̐͘͘n̸̨͇̯̭̞͎̍̀͝͠g̴͈̞̿̑͌̈́͘ ̴̤̰̮̪͋́͜J̸̜̪͂͆̽̎̿̇a̵̫̜͂̄̓s̸̛̲̠̪̝̯̝͊͋̈͜ö̸͙͎͈́͘n̵̰͊͊̉̆̀: ';.-;o'm h@#!@$r3@#!%
 			do GlobalVariables.Instance.kuyaJames.OnDialogueEnded()
 			set GlobalVariables.Instance.isTalking = false
 			=> END

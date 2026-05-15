@@ -51,7 +51,7 @@ public partial class FifthScenario : Node3D
 		GD.Print("[FIFTH SCENARIO] Monster attack started");
 
 		// ================= WAIT 5 SECONDS =================
-		await ToSignal(GetTree().CreateTimer(5.0f), "timeout");
+		await ToSignal(GetTree().CreateTimer(3.5f), "timeout");
 
 		// ================= KUYA JAMES DIES =================
 		if (kuyaJames != null)

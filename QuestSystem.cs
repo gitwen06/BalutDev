@@ -35,17 +35,17 @@ public partial class QuestSystem : Node
 	private static readonly Dictionary<int, Vector3> QuestWaypoints = new()
 	{
 		{ 0, new Vector3(211.843f, 2.5f, 76.982f) },              // Talk to mang jason
-		{ 1, new Vector3(209.42f, 5.185f, 77.739f) },              // Get flashlight (was -3.815, now +6.185)
-		{ 2, new Vector3(209.651f, 4.988f, 77.418f) },             // Get balut (was -4.012, now +5.988)
+		{ 1, new Vector3(209.42f, 4.185f, 77.739f) },              // Get flashlight (was -3.815, now +6.185)
+		{ 2, new Vector3(209.651f, 3.988f, 77.418f) },             // Get balut (was -4.012, now +5.988)
 		{ 3, new Vector3(212.993f, 11.196f, -25.127f) },           // Aling neneng
-		{ 4, new Vector3(209.742f, 3.874f, -31.135f) },            // Get battery (was -4.126, now +5.874)
+		{ 4, new Vector3(209.742f, 2.874f, -31.135f) },            // Get battery (was -4.126, now +5.874)
 		{ 5, new Vector3(161.067f, 7.529f, 33.426f) },            // Go to baranggay
 		{ 6, new Vector3(103.593f, 3.222f, 15.961f) },             // Aling shoneng
 		{ 7, new Vector3(111.79f, 2.447f, 56.359f) },             // Aling marites
 		{ 8, new Vector3(70.945f, 2.303f, 80.838f) },              // Aling marin
-		{ 9, new Vector3(27.304f, 7.718f, -15.224f) },            // Maglako ulit sa bahay ni manong rafael(RAFAEL?????????????)
-		{ 10, new Vector3(12.021f, 0.792f, 53.391f) },             // Get key under rag (was -3.792, now +6.208)
-		{ 11, new Vector3(10.37f, 2.222f, 52.94f) },             // Manong rafael
+		{ 9, new Vector3(15.37f, 4.222f, 52.94f) },            // Maglako ulit sa bahay ni manong rafael(RAFAEL?????????????)
+		{ 10, new Vector3(12.021f, 1.792f, 53.391f) },             // Get key under rag (was -3.792, now +6.208)
+		{ 11, new Vector3(6.503f, 1.753f, 50.64f) },             // Manong rafael
 	};
 
 	public override void _Ready()
@@ -132,20 +132,20 @@ public partial class QuestSystem : Node
 		waypointCanvas.Layer = 100;
 		GetTree().Root.AddChild(waypointCanvas);
 
-		// Create marker container
+		// Create marker container - SMALLER SIZE
 		waypointMarker = new Control();
 		waypointMarker.Name = "QuestMarker";
-		waypointMarker.CustomMinimumSize = new Vector2(64, 64);
+		waypointMarker.CustomMinimumSize = new Vector2(40, 40);
 		waypointMarker.AnchorLeft = 0.5f;
 		waypointMarker.AnchorTop = 0.5f;
-		waypointMarker.OffsetLeft = -32;
-		waypointMarker.OffsetTop = -32;
+		waypointMarker.OffsetLeft = -20;
+		waypointMarker.OffsetTop = -20;
 		waypointCanvas.AddChild(waypointMarker);
 
-		// Create marker background
+		// Create marker background - HORROR DESIGN
 		var panelStyleBox = new StyleBoxFlat();
-		panelStyleBox.BgColor = new Color(0, 1, 1, 0.9f);  // Cyan
-		panelStyleBox.BorderColor = new Color(0, 0.7f, 0.7f, 1);
+		panelStyleBox.BgColor = new Color(0.8f, 0.1f, 0.1f, 0.95f);  // Dark red/blood color
+		panelStyleBox.BorderColor = new Color(1, 0, 0, 1);            // Bright red border
 		panelStyleBox.BorderWidthLeft = 2;
 		panelStyleBox.BorderWidthRight = 2;
 		panelStyleBox.BorderWidthTop = 2;
@@ -153,20 +153,20 @@ public partial class QuestSystem : Node
 
 		var markerPanel = new Panel();
 		markerPanel.AddThemeStyleboxOverride("panel", panelStyleBox);
-		markerPanel.CustomMinimumSize = new Vector2(64, 64);
+		markerPanel.CustomMinimumSize = new Vector2(40, 40);
 		waypointMarker.AddChild(markerPanel);
 
-		// Create label for marker
+		// Create label for marker - HORROR SKULL
 		waypointLabel = new Label();
-		waypointLabel.Text = "►";
-		waypointLabel.AddThemeColorOverride("font_color", Colors.Black);
-		waypointLabel.AddThemeFontSizeOverride("font_size", 32);
+		waypointLabel.Text = "!";
+		waypointLabel.AddThemeColorOverride("font_color", Colors.White);
+		waypointLabel.AddThemeFontSizeOverride("font_size", 24);
 		waypointLabel.HorizontalAlignment = HorizontalAlignment.Center;
 		waypointLabel.VerticalAlignment = VerticalAlignment.Center;
-		waypointLabel.CustomMinimumSize = new Vector2(64, 64);
+		waypointLabel.CustomMinimumSize = new Vector2(40, 40);
 		waypointMarker.AddChild(waypointLabel);
 
-		GD.Print("[QUEST] 2D Waypoint marker created");
+		GD.Print("[QUEST] 2D Waypoint marker created - HORROR DESIGN");
 	}
 
 	// ================= UPDATE WAYPOINT POSITION =================
@@ -331,12 +331,12 @@ public partial class QuestSystem : Node
 				GD.Print($"[QUEST] Current quest: {currentQuest}");
 				if (currentQuest == 5)
 				{
-					GD.Print("[QUEST] Quest is 4! Proceeding!");
+					GD.Print("[QUEST] Quest is 5! Proceeding!");
 					ProceedQuest("dialogue:monster_walkby");
 				}
 				else
 				{
-					GD.PrintErr($"[QUEST] Expected quest 4, got {currentQuest}!");
+					GD.PrintErr($"[QUEST] Expected quest 5, got {currentQuest}!");
 				}
 				break;
 
@@ -358,48 +358,70 @@ public partial class QuestSystem : Node
 					ProceedQuest("dialogue:aling_marin");
 				break;
 
-			case "manong_rafael_call": // call for touching rear 3d ok
-			GD.Print("[QUEST] Matched: manong_rafael_call");
-			GD.Print($"[QUEST] Current quest: {currentQuest}");
-			if (currentQuest == 9)
-			{
-				GD.Print("[QUEST] Quest is 9! Proceeding to quest 10 (get key)!");
-				ProceedQuest("dialogue:manong_rafael_call");
-			}
-			else
-			{
-				GD.PrintErr($"[QUEST] Expected quest 9, got {currentQuest}!");
-			}
-			break;
+			case "manong_rafael_call":
+				GD.Print("[QUEST] Matched: manong_rafael_call");
+				if (currentQuest == 9)
+				{
+					GD.Print("[QUEST] Quest is 9! Proceeding to quest 10!");
+					ProceedQuest("dialogue:manong_rafael_call");
+				}
+				else
+				{
+					GD.PrintErr($"[QUEST] Expected quest 9, got {currentQuest}!");
+				}
+				break;
 			
-			case "manong_rafael_has_balut": // rafael del rosario gets balut cool ig
-			GD.Print("[QUEST] Matched: manong_rafael_has_balut");
-			GD.Print($"[QUEST] Current quest: {currentQuest}");
-			if (currentQuest == 11)
-			{
-				GD.Print("[QUEST] Quest is 11! Proceeding!");
-			}
-			else
-			{
-				GD.PrintErr($"[QUEST] Expected quest 11, got {currentQuest}!");
-			}
-			break;
+			case "manong_rafael_has_balut":
+				GD.Print("[QUEST] Matched: manong_rafael_has_balut");
+				if (currentQuest == 10)
+				{
+					GD.Print("[QUEST] Quest is 10! Proceeding to quest 11 (Kuya James)!");
+					ProceedQuest("dialogue:manong_rafael_has_balut");
+				}
+				else
+				{
+					GD.PrintErr($"[QUEST] Expected quest 10, got {currentQuest}!");
+				}
+				break;
 			
 			case "gaveKuyaJames":
-			GD.Print("[QUEST] Matched: gaveKuyaJames");
-			if (currentQuest == 11)
-			{
-				GD.Print("[QUEST] Quest 11 complete - final scenario triggered!");
-			}
-			else
-			{
-				GD.PrintErr($"[QUEST] Expected quest 11 for gaveKuyaJames, got {currentQuest}");
-			}
-			break;
+				GD.Print("[QUEST] Matched: gaveKuyaJames");
+				if (currentQuest == 11)
+				{
+					GD.Print("[QUEST] Quest 11 complete - advancing to quest 12 (run home)!");
+					ProceedQuest("dialogue:gaveKuyaJames");
+					
+					// ENABLE MONSTER CHASE AND HORROR
+					var monster = GetTree().Root.FindChild("Character_Monster", true, false) as CharacterMonster;
+					if (monster != null)
+					{
+						monster.EnableChaseAI();
+						GD.Print("[QUEST] Monster chase enabled!");
+					}
+				}
+				else
+				{
+					GD.PrintErr($"[QUEST] Expected quest 11 for gaveKuyaJames, got {currentQuest}");
+				}
+				break;
+
+			case "reached_home":
+				GD.Print("[QUEST] Matched: reached_home");
+				if (currentQuest == 12)
+				{
+					GD.Print("[QUEST] Quest 12 complete - player reached home!");
+					ProceedQuest("dialogue:reached_home");
+					
+					// Load end credits
+					GetTree().ChangeSceneToFile("res://Plugins and Scenes/endCredits.scn");
+				}
+				else
+				{
+					GD.PrintErr($"[QUEST] Expected quest 12 for reached_home, got {currentQuest}");
+				}
+				break;
 		}
 	}
-
-
 
 	// ================= ITEMS =================
 	public void OnItemPicked(string itemName)
@@ -503,7 +525,7 @@ public partial class QuestSystem : Node
 					OnQuestChanged(currentQuest);
 				}
 				break;
-
+				
 			case 4:
 				if (g.hasBattery && g.hasDrink)
 				{
@@ -564,7 +586,8 @@ public partial class QuestSystem : Node
 			8 => "Bigyan ng balut si Aling Marin",
 			9 => "Maglako ulit ng balut",
 			10 => "Kunin ang susi sa ilalim ng basahan",
-			11 => "Bigyan ng balut si Manong Rafael",
+			11 => "Bigyan ng balut si Kuya James",
+			12 => "Tumakbo pabalik sa bahay!",
 			_ => "Objective complete"
 		};
 	}

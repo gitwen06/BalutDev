@@ -11,6 +11,7 @@ Aling Marites: Pabili ako niyang balut, magkano?
 	do GlobalVariables.Instance.GiveBalut(1)
 	Aling Marites: Sige pabili ako isa lang.
 	Aling Marites: Mag-ingat ka, gabi na at maraming kababalaghan sa barangay na 'to.
+	Aling Marites: Huwag kang titingin sa likod mo.
 	do QuestSystem.Instance.TriggerQuestAdvance("aling_marites_has_balut")
 	set GlobalVariables.Instance.gaveAlingMarites = true
 	do GlobalVariables.Instance.CloseAnim()
