@@ -40,7 +40,7 @@ func _update_selection(btn: Button) -> void:
 	for b in pauseOptions:
 		if b == btn:
 			# Highlighted COlor, Slide to the Right, and Scale for no reason
-			b.modulate = Color("8b003b") 
+			b.modulate = Color("770031ff") 
 			tween.tween_property(b, "position:x", 280.0, 0.1).set_trans(Tween.TRANS_SINE) 
 			tween.tween_property(b, "scale", Vector2(1.1, 1.1), 0.1).set_trans(Tween.TRANS_SINE) 
 			# Cursor following the button currently highlighted
@@ -117,7 +117,9 @@ func _handle_selection(btn: Button) -> void:
 	elif  btn == %creditsPause:
 		switch_tab("credits")
 	elif btn == %leavePause:
-		get_tree().quit() 
+		get_tree().paused = false
+		# get_tree().change_scene_to_file("res://Plugins and Scenes/main_menu.scn")
+		get_tree().quit()
 	else:
 		print("Selected: ", btn.text) 
 

@@ -9,6 +9,7 @@ public partial class MainMenu : Node3D
 	private Color highlightColor = new Color("ffffffff");
 	private Tween cursorTween;
 	private ColorRect _cursorBox;
+	private TextureRect gameLogo;
 	private Control optionTab;
 	private Control creditTab;
 	private string currTab = "main";
@@ -37,6 +38,7 @@ public partial class MainMenu : Node3D
 	
 	public override void _Ready() {
 		_cursorBox = GetNode<ColorRect>("%cursorBox");
+		gameLogo = GetNode<TextureRect>("%companyLogo");
 		menuMove = GetNode<AudioStreamPlayer>("%buttonMoveSFX");
 		menuSelect = GetNode<AudioStreamPlayer>("%buttonSelectSFX");
 		menuMusic = GetNode<AudioStreamPlayer>("%mainMenuMusic");
@@ -65,6 +67,7 @@ public partial class MainMenu : Node3D
 		
 		openingLoadingBar.Value = 0;
 		_cursorBox.Hide();
+		gameLogo.Hide();
 		openGameLoadingScreen.Call("update_tip");
 		if (newGameAnimPlayer != null) {
 			newGameAnimPlayer.Play("newGame");
@@ -77,6 +80,7 @@ public partial class MainMenu : Node3D
 		
 		mainMenuUI.Modulate = new Color(1, 1, 1, 0);
 		if (_cursorBox != null) _cursorBox.Hide();
+		if (gameLogo != null) gameLogo.Hide();
 		if (newGameAnimPlayer != null) {
 			newGameAnimPlayer.Play("newGame");
 		}
@@ -233,6 +237,7 @@ public partial class MainMenu : Node3D
 		fadeTween.Finished += () => {
 			openGameLoadingScreen.Hide(); // Hide the whole layer when done
 			if (_cursorBox != null) _cursorBox.Show();
+			if (gameLogo != null) gameLogo.Show();
 			GetNode<Button>("%play").GrabFocus();
 		};
 	}

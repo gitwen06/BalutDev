@@ -608,14 +608,14 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_boynw"]
-bg_color = Color(0.8416634, 4.6205523e-06, 0.37289667, 1)
+bg_color = Color(0.46698117, 0, 0.19409439, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhygf"]
-bg_color = Color(0.8416634, 4.6205523e-06, 0.37289667, 1)
+bg_color = Color(0.5050245, 0, 0.21159363, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -1066,26 +1066,26 @@ unique_name_in_owner = true
 layout_mode = 1
 offset_left = 60.0
 offset_top = 86.0
-offset_right = 60.0
+offset_right = 220.0
 offset_bottom = 201.0
 size_flags_horizontal = 0
-color = Color(0.54509807, 0, 0.23137255, 1)
+color = Color(0.46698117, 0, 0.19409439, 1)
 
 [node name="frontlines" type="ColorRect" parent="pauseMenu/paused" unique_id=664869460]
 layout_mode = 1
-offset_left = 943.0
-offset_top = -269.0
-offset_right = 1302.0
-offset_bottom = 1350.0
+offset_left = 82.0
+offset_top = -257.0
+offset_right = 104.0
+offset_bottom = 1362.0
 size_flags_horizontal = 0
 color = Color(0.1744107, 0, 0.008364523, 1)
 
 [node name="frontlines2" type="ColorRect" parent="pauseMenu/paused" unique_id=86359338]
 layout_mode = 1
-offset_left = 1332.0
-offset_top = -236.0
-offset_right = 1868.0
-offset_bottom = 1383.0
+offset_left = 111.0
+offset_top = -288.0
+offset_right = 126.0
+offset_bottom = 1331.0
 size_flags_horizontal = 0
 color = Color(0.18568844, 0.13722199, 0, 1)
 
@@ -1104,9 +1104,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_5pjqc")
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 450.0
+offset_left = 250.0
 offset_top = 86.0
-offset_right = 925.0018
+offset_right = 725.00226
 offset_bottom = 201.0
 size_flags_vertical = 0
 focus_neighbor_top = NodePath("../leavePause")
@@ -1119,9 +1119,9 @@ alignment = 0
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 450.0
+offset_left = 250.0
 offset_top = 200.0
-offset_right = 925.0013
+offset_right = 725.0016
 offset_bottom = 315.00006
 size_flags_vertical = 0
 focus_neighbor_top = NodePath("../continuePause")
@@ -1137,9 +1137,9 @@ alignment = 0
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 450.0
+offset_left = 250.0
 offset_top = 314.0
-offset_right = 925.0009
+offset_right = 725.0012
 offset_bottom = 429.0
 size_flags_vertical = 0
 focus_neighbor_bottom = NodePath("../creditsPause")
@@ -1152,9 +1152,9 @@ alignment = 0
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 450.0
+offset_left = 250.0
 offset_top = 428.0
-offset_right = 925.00055
+offset_right = 725.00085
 offset_bottom = 543.0
 size_flags_vertical = 0
 focus_neighbor_top = NodePath("../optionsPause")
@@ -1168,9 +1168,9 @@ alignment = 0
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 450.0
+offset_left = 250.0
 offset_top = 542.0
-offset_right = 1023.0
+offset_right = 823.0
 offset_bottom = 657.0
 size_flags_vertical = 0
 focus_neighbor_top = NodePath("../creditsPause")
@@ -1209,7 +1209,7 @@ offset_left = -17.0
 offset_top = 100.0
 offset_right = 2089.0
 offset_bottom = 200.0
-color = Color(0.54509807, 0, 0.23137255, 1)
+color = Color(0.46698117, 0, 0.19409439, 1)
 
 [node name="tabPage" type="Label" parent="pauseMenu/keybinds" unique_id=160142515]
 layout_mode = 1
@@ -1519,7 +1519,7 @@ offset_left = -17.0
 offset_top = 100.0
 offset_right = 2072.0
 offset_bottom = 200.0
-color = Color(0.54509807, 0, 0.23137255, 1)
+color = Color(0.46698117, 0, 0.19409439, 1)
 
 [node name="tabLabel" type="Label" parent="pauseMenu/options" unique_id=1220794250]
 layout_mode = 0
@@ -1615,7 +1615,7 @@ offset_left = -17.0
 offset_top = 100.0
 offset_right = -17.0
 offset_bottom = 200.0
-color = Color(0.54509807, 0, 0.23137255, 1)
+color = Color(0.46698117, 0, 0.19409439, 1)
 
 [node name="tabLabel" type="Label" parent="pauseMenu/credits" unique_id=1116540876]
 layout_mode = 0
