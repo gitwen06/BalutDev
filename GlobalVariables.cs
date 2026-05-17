@@ -120,7 +120,7 @@ public partial class GlobalVariables : Node
 	
 	// ==== NPC VARIABLES ==== my ehad feels like its going to explode any moment. ive been coding for 9 hours 9 hours 9 hours 0h ours  hpisr= ssigpj
 	public bool gaveAlingNeneng = false;
-	public bool GaveAlingMarin = false;
+	public bool gaveAlingMarin = false;
 	public bool gaveAlingMarites = false;
 	public bool gaveKuyaJames = false;
 	public bool gaveManongRafael = false;

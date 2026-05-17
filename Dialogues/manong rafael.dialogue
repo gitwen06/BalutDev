@@ -8,9 +8,7 @@ Manong Rafael: Pasensya na sa abala iho.. Pabili ako isa, bayaran nalang kita ex
 	Manong Rafael: Salamat.. Pakisara nalang uli ng pinto iho..
 	Manong Rafael: Ay oo nga pala, mabuti pang mapaubos mo na ang iyang natitirang balut doon kay James. Dyan sa may tabi iyung may campfire, nung nakaraan pa sakin nagtatanong kung saan pwede bumili ng balut..
 	do QuestSystem.TriggerQuestAdvance("manong_rafael_has_balut")
-	do GlobalVariables.Instance.EnableDialogueAboutItems()
 	set GlobalVariables.Instance.gaveManongRafael = true
-	do GlobalVariables.Instance.RemoveNPC()
 	set GlobalVariables.Instance.isTalking = false
 	=> END
 	

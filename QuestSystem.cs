@@ -35,17 +35,19 @@ public partial class QuestSystem : Node
 	private static readonly Dictionary<int, Vector3> QuestWaypoints = new()
 	{
 		{ 0, new Vector3(211.843f, 2.5f, 76.982f) },              // Talk to mang jason
-		{ 1, new Vector3(209.42f, 4.185f, 77.739f) },              // Get flashlight (was -3.815, now +6.185)
-		{ 2, new Vector3(209.651f, 3.988f, 77.418f) },             // Get balut (was -4.012, now +5.988)
+		{ 1, new Vector3(209.42f, 3.185f, 77.739f) },              // Get flashlight
+		{ 2, new Vector3(209.651f, 2.988f, 77.418f) },             // Get balut
 		{ 3, new Vector3(212.993f, 11.196f, -25.127f) },           // Aling neneng
-		{ 4, new Vector3(209.742f, 2.874f, -31.135f) },            // Get battery (was -4.126, now +5.874)
+		{ 4, new Vector3(209.742f, 1.874f, -31.135f) },            // Get battery
 		{ 5, new Vector3(161.067f, 7.529f, 33.426f) },            // Go to baranggay
-		{ 6, new Vector3(103.593f, 3.222f, 15.961f) },             // Aling shoneng
+		{ 6, new Vector3(105.593f, 3.222f, 15.961f) },             // Aling shoneng
 		{ 7, new Vector3(111.79f, 2.447f, 56.359f) },             // Aling marites
 		{ 8, new Vector3(70.945f, 2.303f, 80.838f) },              // Aling marin
-		{ 9, new Vector3(15.37f, 4.222f, 52.94f) },            // Maglako ulit sa bahay ni manong rafael(RAFAEL?????????????)
-		{ 10, new Vector3(12.021f, 1.792f, 53.391f) },             // Get key under rag (was -3.792, now +6.208)
-		{ 11, new Vector3(6.503f, 1.753f, 50.64f) },             // Manong rafael
+		{ 9, new Vector3(15.37f, 4.222f, 52.94f) },            // Maglako ulit sa bahay ni manong rafael
+		{ 10, new Vector3(12.021f, 1.792f, 53.391f) },             // Get key under rag
+		{ 11, new Vector3(6.503f, 2.753f, 50.64f)},                  // manong rafel
+		{ 12, new Vector3(-49.082f, 2.435f, 6.45f) },             // Kuya James - give balut
+		{ 13, new Vector3(216.47f, 1f, 80.257f) },                 // Run back to the house
 	};
 
 	public override void _Ready()
@@ -156,7 +158,7 @@ public partial class QuestSystem : Node
 		markerPanel.CustomMinimumSize = new Vector2(40, 40);
 		waypointMarker.AddChild(markerPanel);
 
-		// Create label for marker - HORROR SKULL
+		// Create label for marker - HORROR ICON
 		waypointLabel = new Label();
 		waypointLabel.Text = "!";
 		waypointLabel.AddThemeColorOverride("font_color", Colors.White);
@@ -175,6 +177,10 @@ public partial class QuestSystem : Node
 		if (waypointMarker == null || playerCamera == null || viewport == null)
 			return;
 
+		// Safety check - camera must be in scene tree
+		if (!playerCamera.IsInsideTree())
+			return;
+
 		if (!QuestWaypoints.TryGetValue(currentQuest, out var targetWorldPos))
 		{
 			waypointMarker.Visible = false;
@@ -183,39 +189,56 @@ public partial class QuestSystem : Node
 
 		waypointMarker.Visible = true;
 
-		// Convert to camera space to check if behind camera
-		Vector3 targetCameraPos = playerCamera.GlobalTransform.AffineInverse() * targetWorldPos;
-		bool isBehindCamera = targetCameraPos.Z > 0;
-
-		// Project target position to screen space
-		Vector2 screenPos = playerCamera.UnprojectPosition(targetWorldPos);
-
-		// Get viewport size
-		Vector2 viewportSize = viewport.GetVisibleRect().Size;
-		var screenPos2D = screenPos;
-
-		// Add offset if behind camera
-		if (isBehindCamera)
+		try
 		{
-			// Flip position to opposite side of screen
-			screenPos2D.X = viewportSize.X - screenPos2D.X;
-			screenPos2D.Y = viewportSize.Y - screenPos2D.Y;
+			// Get viewport size
+			Vector2 viewportSize = viewport.GetVisibleRect().Size;
+			float padding = 40; // Padding for edge detection
+
+			// Convert to camera space to check if behind camera
+			Vector3 targetCameraPos = playerCamera.GlobalTransform.AffineInverse() * targetWorldPos;
+			bool isBehindCamera = targetCameraPos.Z > 0;
+
+			// Project target position to screen space
+			Vector2 screenPos = playerCamera.UnprojectPosition(targetWorldPos);
+			
+			// ALWAYS CLAMP TO EDGES - Don't allow center positioning
+			// Clamp X to left/right edges
+			if (screenPos.X < padding)
+				screenPos.X = padding;
+			else if (screenPos.X > viewportSize.X - padding)
+				screenPos.X = viewportSize.X - padding;
+
+			// Clamp Y to top/bottom edges
+			if (screenPos.Y < padding)
+				screenPos.Y = padding;
+			else if (screenPos.Y > viewportSize.Y - padding)
+				screenPos.Y = viewportSize.Y - padding;
+
+			// If behind camera, move to opposite edge
+			if (isBehindCamera)
+			{
+				// Move to center of opposite edge
+				if (Mathf.Abs(screenPos.X - viewportSize.X / 2) < Mathf.Abs(screenPos.Y - viewportSize.Y / 2))
+				{
+					// Target is more vertically centered, put marker on opposite horizontal edge
+					screenPos.X = screenPos.X < viewportSize.X / 2 ? viewportSize.X - padding : padding;
+				}
+				else
+				{
+					// Target is more horizontally centered, put marker on opposite vertical edge
+					screenPos.Y = screenPos.Y < viewportSize.Y / 2 ? viewportSize.Y - padding : padding;
+				}
+			}
+
+			// Set position
+			waypointMarker.Position = screenPos;
+			waypointMarker.Rotation = 0;
 		}
-
-		// Clamp to screen edges with padding
-		float padding = 80;
-		screenPos2D.X = Mathf.Clamp(screenPos2D.X, padding, viewportSize.X - padding);
-		screenPos2D.Y = Mathf.Clamp(screenPos2D.Y, padding, viewportSize.Y - padding);
-
-		// Set position
-		waypointMarker.Position = screenPos2D;
-
-		// Rotate arrow to point to target
-		if (!isBehindCamera && (targetCameraPos.Z > 0 && targetCameraPos.Z < 1000))
+		catch (System.Exception ex)
 		{
-			Vector3 dirToTarget = (targetWorldPos - playerCamera.GlobalPosition).Normalized();
-			float angle = Mathf.Atan2(dirToTarget.X, dirToTarget.Z);
-			waypointMarker.Rotation = angle;
+			GD.PrintErr($"[QUEST] Error updating waypoint position: {ex.Message}");
+			waypointMarker.Visible = false;
 		}
 	}
 
@@ -373,7 +396,7 @@ public partial class QuestSystem : Node
 			
 			case "manong_rafael_has_balut":
 				GD.Print("[QUEST] Matched: manong_rafael_has_balut");
-				if (currentQuest == 10)
+				if (currentQuest == 11)
 				{
 					GD.Print("[QUEST] Quest is 10! Proceeding to quest 11 (Kuya James)!");
 					ProceedQuest("dialogue:manong_rafael_has_balut");
@@ -386,7 +409,7 @@ public partial class QuestSystem : Node
 			
 			case "gaveKuyaJames":
 				GD.Print("[QUEST] Matched: gaveKuyaJames");
-				if (currentQuest == 11)
+				if (currentQuest == 12)
 				{
 					GD.Print("[QUEST] Quest 11 complete - advancing to quest 12 (run home)!");
 					ProceedQuest("dialogue:gaveKuyaJames");
@@ -407,7 +430,7 @@ public partial class QuestSystem : Node
 
 			case "reached_home":
 				GD.Print("[QUEST] Matched: reached_home");
-				if (currentQuest == 12)
+				if (currentQuest == 13)
 				{
 					GD.Print("[QUEST] Quest 12 complete - player reached home!");
 					ProceedQuest("dialogue:reached_home");
@@ -586,8 +609,9 @@ public partial class QuestSystem : Node
 			8 => "Bigyan ng balut si Aling Marin",
 			9 => "Maglako ulit ng balut",
 			10 => "Kunin ang susi sa ilalim ng basahan",
-			11 => "Bigyan ng balut si Kuya James",
-			12 => "Tumakbo pabalik sa bahay!",
+			11 => "Bigyan ng balut si Manong Rafael",
+			12 => "Bigyan ng balut si Kuya James",
+			13 => "Tumakbo pabalik sa bahay!",
 			_ => "Objective complete"
 		};
 	}

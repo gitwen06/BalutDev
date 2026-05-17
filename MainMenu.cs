@@ -33,11 +33,13 @@ public partial class MainMenu : Node3D
 	private MarginContainer mainMenuUI;
 	private AudioStreamPlayer menuMove;
 	private AudioStreamPlayer menuSelect;
+	private AudioStreamPlayer menuMusic;
 	
 	public override void _Ready() {
 		_cursorBox = GetNode<ColorRect>("%cursorBox");
 		menuMove = GetNode<AudioStreamPlayer>("%buttonMoveSFX");
 		menuSelect = GetNode<AudioStreamPlayer>("%buttonSelectSFX");
+		menuMusic = GetNode<AudioStreamPlayer>("%mainMenuMusic");
 		
 		optionTab = GetNode<Control>("%optionsTab");
 		creditTab = GetNode<Control>("%creditsTab");
@@ -51,6 +53,8 @@ public partial class MainMenu : Node3D
 		loadingBackground = GetNode<Control>("%loadingBackground");
 		openingLoadingBar = GetNode<ProgressBar>("%loadingProgressGame");
 		newGameAnimPlayer = GetNode<AnimationPlayer>("%newGameAnim");
+		
+		menuMusic.Play();
 		
 		//openGameLoadingScreen.Visible = true;
 		openGameLoadingScreen.Show();

@@ -139,12 +139,6 @@ public partial class Trigger : Node3D
 			GD.Print("[TRIGGER] Calling manong_rafael_call quest trigger");
 			QuestSystem.Instance.TriggerQuestAdvance("manong_rafael_call");
 		}
-		
-		else if (eventName == "ScreamArea")
-		{
-			GD.Print("[SCREAM AREA] Dialogue ended");
-			QuestSystem.Instance.TriggerQuestAdvance("aling_shoneng_has_balut");
-		}
 	}
 
 	// ================= BODY ENTER =================

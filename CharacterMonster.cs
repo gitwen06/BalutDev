@@ -15,7 +15,7 @@ public partial class CharacterMonster : CharacterBody3D
 	private bool eventLocked = false;
 
 	private float hearingRange = 9999.0f;
-	private float chaseSpeed = 6.0f;
+	private float chaseSpeed = 4.5f;
 	private float gravity = 9.8f;
 
 	private Vector3 velocity = Vector3.Zero;
@@ -44,8 +44,8 @@ public partial class CharacterMonster : CharacterBody3D
 		chasePlayer = new AudioStreamPlayer();
 		AddChild(chasePlayer);
 		chasePlayer.Bus = "Master";
-		chasePlayer.Stream = GD.Load<AudioStream>("res://Sounds/Chase.mp3");
-		var stream = GD.Load<AudioStream>("res://Sounds/Chase.mp3");
+		chasePlayer.Stream = GD.Load<AudioStream>("res://Sounds/Aooni_bgm.mp3");
+		var stream = GD.Load<AudioStream>("res://Sounds/Aooni_bgm.mp3");
 		if (stream is AudioStreamMP3 mp3)
 			mp3.Loop = true;
 		else if (stream is AudioStreamOggVorbis ogg)
@@ -226,7 +226,6 @@ public partial class CharacterMonster : CharacterBody3D
 		if (chasePlayer.Playing)
 			chasePlayer.Stop();
 
-		// 🔊 PLAY JUMPSCARE SOUND
 		audioPlayer.Stream = GD.Load<AudioStream>("res://Sounds/jumpscare1.mp3");
 		audioPlayer.VolumeDb = 6f;
 		audioPlayer.Play();

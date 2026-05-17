@@ -2,6 +2,7 @@ using Godot;
 using System;
 using DialogueManagerRuntime;
 
+//meowmeow
 public partial class Player : CharacterBody3D
 {
 	// ============= CACHE REFERENCES =============
@@ -15,7 +16,18 @@ public partial class Player : CharacterBody3D
 	private Node3D hand;
 	private Area3D collisionDetector;
 	private AudioStreamPlayer footstepPlayer;
+	private AudioStreamPlayer backgroundMusicPlayer;
+	private AudioStreamPlayer pickupPlayer;
 	private Node lastCharacterNode = null;
+
+	// ============= BACKGROUND MUSIC =============
+	private string[] backgroundMusicTracks = new string[]
+	{
+		"res://Sounds/Background_2.mp3",
+		"res://Sounds/Background_3.mp3"
+	};
+	private int currentMusicIndex = 0;
+	private SceneTreeTimer musicTimer;
 
 	// ============= CAMERA BOB & EFFECTS =============
 	private float bobTime = 0f;
@@ -47,6 +59,13 @@ public partial class Player : CharacterBody3D
 		interactBtn = GetNode<Button>("%interactButton");
 		hand = GetNode<Node3D>("head/Camera3D/Hand");
 		collisionDetector = GetNode<Area3D>("Area3D");
+		
+		// ================= PICKUP SOUND =================
+		pickupPlayer = new AudioStreamPlayer();
+		AddChild(pickupPlayer);
+		pickupPlayer.Bus = "Master";
+		pickupPlayer.VolumeDb = -5f;
+		pickupPlayer.Stream = GD.Load<AudioStream>("res://Sounds/PickingUpItem.wav");
 
 		var g = GlobalVariables.Instance;
 		
@@ -69,7 +88,52 @@ public partial class Player : CharacterBody3D
 		footstepPlayer.Stream = GD.Load<AudioStream>("res://Sounds/grass_walk.mp3");
 		footstepPlayer.VolumeDb = -10f;
 		footstepPlayer.Autoplay = false;
+
+		// ================= SETUP BACKGROUND MUSIC =================
+		backgroundMusicPlayer = new AudioStreamPlayer();
+		AddChild(backgroundMusicPlayer);
+		backgroundMusicPlayer.Bus = "Master";
+		backgroundMusicPlayer.VolumeDb = -3f;
+
+		// Start background music cycle
+		PlayNextBackgroundMusic();
 	}
+
+	// ================= BACKGROUND MUSIC SYSTEM =================
+	private void PlayNextBackgroundMusic()
+	{
+		// Load the current track
+		var musicStream = GD.Load<AudioStream>(backgroundMusicTracks[currentMusicIndex]);
+		if (musicStream != null)
+		{
+			backgroundMusicPlayer.Stream = musicStream;
+			backgroundMusicPlayer.Play();
+			GD.Print($"[PLAYER] Now playing: {backgroundMusicTracks[currentMusicIndex]}");
+		}
+		else
+		{
+			GD.PrintErr($"[PLAYER] Failed to load music: {backgroundMusicTracks[currentMusicIndex]}");
+		}
+
+		// Move to next track for next time woho
+		currentMusicIndex = (currentMusicIndex + 1) % backgroundMusicTracks.Length;
+
+		// does that i guess
+		float songLength = 0f;
+
+		if (musicStream != null)
+			songLength = (float)musicStream.GetLength();
+
+		// THEN add random pause between songs
+		float randomDelay = GD.Randf() * 5.0f + 5.0f;
+
+		float totalDelay = songLength + randomDelay;
+
+		// Schedule next track for next meetging when huh
+		musicTimer = GetTree().CreateTimer(totalDelay);
+		musicTimer.Timeout += PlayNextBackgroundMusic;
+	}
+
 	//imgonnacrashoutonthismotherfuckingsystemohmygodthisshitissoirritatingimlitteralyabouttocrashout
 	// ================= HOTBAR FUNCTION =================
 	private void EquipItem(int index)
@@ -205,6 +269,7 @@ public partial class Player : CharacterBody3D
 					if(target.IsInGroup("batteries")) {
 						if (GlobalVariables.Instance.AddItem(target.Name)) {
 							GD.Print($"Picked up: {target.Name}");
+							pickupPlayer.Play();
 
 							QuestSystem.Instance.OnItemPicked(target.Name);
 
@@ -215,43 +280,44 @@ public partial class Player : CharacterBody3D
 					}
 					//Interact system for characters
 					else if(target.IsInGroup("Characters")) {
-					GlobalVariables.Instance.isTalking = true;
-					Input.MouseMode = Input.MouseModeEnum.Visible;
-					shouldShowButton = false;
-					
-					Node characterNode = target;
-					if (target is Area3D && target.GetParent() is Node3D parent)
-					{
-						characterNode = parent;
+						GlobalVariables.Instance.isTalking = true;
+						Input.MouseMode = Input.MouseModeEnum.Visible;
+						shouldShowButton = false;
+						
+						Node characterNode = target;
+						if (target is Area3D && target.GetParent() is Node3D parent)
+						{
+							characterNode = parent;
+						}
+						
+						string characterName = characterNode.Name.ToString().ToLower();
+						lastCharacterNode = characterNode;  // Store the actual character node
+						
+						bool hasBalut = g.equippedIndex >= 0 && g.currentItem != null && g.currentItem.Name.ToString().Contains("balut");
+						
+						string startDialogue = "start";
+						if (characterName != "mang jason" && !hasBalut)
+						{
+							startDialogue = "no_balut";
+						}
+						
+						string dialoguePath = $"res://Dialogues/{characterName}.dialogue";
+						var dialogueResource = GD.Load<Resource>(dialoguePath);
+						if(dialogueResource != null) {
+							DialogueManager.ShowDialogueBalloon(dialogueResource, startDialogue);
+							DialogueManager.DialogueEnded += OnDialogueEnded;
+						} else {
+							GD.PrintErr($"Dialogue file not found: {dialoguePath}");
+							GlobalVariables.Instance.isTalking = false;
+						}
+						
+						GlobalVariables.Instance.target = null;
 					}
-					
-					string characterName = characterNode.Name.ToString().ToLower();
-					lastCharacterNode = characterNode;  // Store the actual character node
-					
-					bool hasBalut = g.equippedIndex >= 0 && g.currentItem != null && g.currentItem.Name.ToString().Contains("balut");
-					
-					string startDialogue = "start";
-					if (characterName != "mang jason" && !hasBalut)
-					{
-						startDialogue = "no_balut";
-					}
-					
-					string dialoguePath = $"res://Dialogues/{characterName}.dialogue";
-					var dialogueResource = GD.Load<Resource>(dialoguePath);
-					if(dialogueResource != null) {
-						DialogueManager.ShowDialogueBalloon(dialogueResource, startDialogue);
-						DialogueManager.DialogueEnded += OnDialogueEnded;
-					} else {
-						GD.PrintErr($"Dialogue file not found: {dialoguePath}");
-						GlobalVariables.Instance.isTalking = false;
-					}
-					
-					GlobalVariables.Instance.target = null;
-				}
 					//Interact system for drinks
 					else if(target.IsInGroup("drinks")) {
 						if (GlobalVariables.Instance.AddItem(target.Name)) {
 							GD.Print($"Picked up: {target.Name}");
+							pickupPlayer.Play();
 
 							QuestSystem.Instance.OnItemPicked(target.Name);
 
@@ -313,6 +379,7 @@ public partial class Player : CharacterBody3D
 					//Interact system for pickups
 					else if (GlobalVariables.Instance.AddItem(target.Name)) {
 						GD.Print($"Picked up: {target.Name}");
+						pickupPlayer.Play();
 
 						QuestSystem.Instance.OnItemPicked(target.Name);
 
