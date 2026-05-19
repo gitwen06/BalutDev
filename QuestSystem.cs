@@ -413,14 +413,6 @@ public partial class QuestSystem : Node
 				{
 					GD.Print("[QUEST] Quest 11 complete - advancing to quest 12 (run home)!");
 					ProceedQuest("dialogue:gaveKuyaJames");
-					
-					// ENABLE MONSTER CHASE AND HORROR
-					var monster = GetTree().Root.FindChild("Character_Monster", true, false) as CharacterMonster;
-					if (monster != null)
-					{
-						monster.EnableChaseAI();
-						GD.Print("[QUEST] Monster chase enabled!");
-					}
 				}
 				else
 				{

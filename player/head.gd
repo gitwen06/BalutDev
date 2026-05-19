@@ -1,6 +1,6 @@
 extends Node3D
 
-var sensitivity: float = 0.5
+var sensitivity: float = 0.2
 var contSensitivity: float = 0.1
 var contDeadzone: float = 0.15
 var camera: Camera3D

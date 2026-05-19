@@ -7,7 +7,7 @@ if GlobalVariables.Instance.gaveAlingMarites == true:
 do GlobalVariables.Instance.OpenAnim()
 
 Aling Marites: Pabili ako niyang balut, magkano?
-- 15₱ po isa
+- 15 po isa
 	do GlobalVariables.Instance.GiveBalut(1)
 	Aling Marites: Sige pabili ako isa lang.
 	Aling Marites: Mag-ingat ka, gabi na at maraming kababalaghan sa barangay na 'to.

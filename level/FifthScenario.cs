@@ -44,6 +44,7 @@ public partial class FifthScenario : Node3D
 
 	public async void StartMonsterSequence()
 	{
+		QuestSystem.Instance.TriggerQuestAdvance("gaveKuyaJames");
 		GD.Print("[FIFTH SCENARIO] Starting monster sequence");
 		if (monster == null)
 		{
@@ -62,6 +63,7 @@ public partial class FifthScenario : Node3D
 		
 		// ================= DISABLE AI + PLAY ATTACK =================
 		monster.StartScriptedAttack();
+		GD.Print("[FIFTH SCENARIO] Monster attack started");
 		
 		// ================= STAB SOUND (1.4 seconds in) =================
 		await ToSignal(GetTree().CreateTimer(1.4f), "timeout");
@@ -70,7 +72,6 @@ public partial class FifthScenario : Node3D
 			stabPlayer.Play();
 			GD.Print("[FIFTH SCENARIO] Stab sound played");
 		}
-		GD.Print("[FIFTH SCENARIO] Monster attack started");
 		
 		// ================= WAIT 2.1 MORE SECONDS =================
 		await ToSignal(GetTree().CreateTimer(2.1f), "timeout");
@@ -93,7 +94,6 @@ public partial class FifthScenario : Node3D
 		monster.EnableChaseAI();
 		GlobalVariables.Instance.isFinalChase = true;
 		GD.Print("[FIFTH SCENARIO] Monster AI enabled - FINAL CHASE START");
-		QuestSystem.Instance.TriggerQuestAdvance("gaveKuyaJames");
 	}
 
 	// ================= OPTIMIZED FIRE MESH ENABLING =================
@@ -139,8 +139,11 @@ public partial class FifthScenario : Node3D
 		// Enable collision
 		if (node is CollisionObject3D collision)
 		{
-			collision.CollisionLayer = 1;
-			collision.CollisionMask = 1;
+			collision.CollisionLayer = 2;
+			collision.CollisionMask = 0;
+			GD.Print($"[COLLISION] {node.Name}");
+			GD.Print($"Layer: {collision.CollisionLayer}");
+			GD.Print($"Mask: {collision.CollisionMask}");
 		}
 
 		// Recursively enable all children

@@ -3,7 +3,7 @@ set GlobalVariables.Instance.isTalking = true
 if GlobalVariables.Instance.gaveAlingShoneng == true:
     => gave_already
 Aling Shoneng: Magkano isang balut anak..?
-- 15 Pesos po
+- 15 po
 	Aling Shoneng: Sige pabili ako isa lang... Salamat
 	do GlobalVariables.Instance.GiveBalut(1)
 	do QuestSystem.TriggerQuestAdvance("aling_shoneng_has_balut")

@@ -15,7 +15,7 @@ public partial class CharacterMonster : CharacterBody3D
 	private bool eventLocked = false;
 
 	private float hearingRange = 9999.0f;
-	private float chaseSpeed = 4.5f;
+	private float chaseSpeed = 5.0f;
 	private float gravity = 9.8f;
 
 	private Vector3 velocity = Vector3.Zero;
@@ -37,6 +37,7 @@ public partial class CharacterMonster : CharacterBody3D
 
 	public override void _Ready()
 	{
+		SafeMargin = 0.001f;
 		audioPlayer = new AudioStreamPlayer();
 		AddChild(audioPlayer);
 		audioPlayer.Bus = "Master";
@@ -65,20 +66,26 @@ public partial class CharacterMonster : CharacterBody3D
 
 		GlobalPosition = GetPointA();
 
+		// ================= SET COLLISION TO IGNORE WALLS =================
+		// Monster only collides with floor/ground, passes through walls
+		CollisionLayer = 2;      // Monster is on layer 2
+		CollisionMask = 1;       // Only collides with layer 1 (floor/ground)
+
 		DisableMonster();
 
 		Debug("READY (START DISABLED)");
 	}
 
 	public override void _PhysicsProcess(double delta)
-	{
+	{	
 		if (isDestroyed || !isVisible || player == null)
 			return;
 
 		float distance = GlobalPosition.DistanceTo(player.GlobalPosition);
 
-		// ================= JUMPSCARE =================
-		if (!jumpscareTriggered && distance <= 2.0f)
+		// ================= JUMPSCARE - ONLY DURING ACTIVE CHASE =================
+		// Don't trigger jumpscare during scripted events (peek, attack, etc)
+		if (!jumpscareTriggered && !isEventPlaying && distance <= 2.0f)
 		{
 			Debug($"JUMPSCARE DIST HIT: {distance}");
 			TriggerJumpscare();
@@ -93,7 +100,6 @@ public partial class CharacterMonster : CharacterBody3D
 				Debug("CHASE START");
 				isChasing = true;
 
-				// 🔊 START CHASE MUSIC
 				if (chasePlayer != null && !chasePlayer.Playing)
 				{
 					GD.Print("[MONSTER] Playing chase music");
@@ -251,7 +257,8 @@ public partial class CharacterMonster : CharacterBody3D
 
 	private void OnJumpscareAreaEntered(Area3D area)
 	{
-		if (area.IsInGroup("player"))
+		// Only trigger jumpscare if not in an event and area is player
+		if (!isEventPlaying && area.IsInGroup("player"))
 			TriggerJumpscare();
 	}
 
